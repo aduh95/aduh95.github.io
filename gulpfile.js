@@ -55,7 +55,7 @@ var errorHandler = function (error) {
 gulp.task('connect', function() {
     connect.server({
         port: 8080,
-        base: PROJECT_ROOT + "/src",
+        base: PROJECT_ROOT + "/public",
         livereload: true
     });
 });

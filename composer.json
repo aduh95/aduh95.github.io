@@ -12,6 +12,15 @@
     "require": {
         "aduh95/html-generator": "^1.0"
     },
+    "autoload": {
+        "psr-4" : {
+			"aduh95\\Resume\\": "src/class"
+		},
+		"files" : [
+			"config/bootstrap.php",
+			"src/middleware/bootstrap.php"
+		]
+    },
     "scripts": {
         "post-create-project-cmd": [
 			"npm install",
