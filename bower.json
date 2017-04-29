@@ -4,7 +4,7 @@
     "Antoine du HAMEL <duhamelantoine1995@gmail.com>"
   ],
   "description": "My résumé",
-  "main": "index.html",
+  "main": "index.php",
   "keywords": [
     "Antoine",
     "du",
@@ -19,5 +19,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "bootstrap": "v4",
+    "font-awesome": "^4.7.0"
+  }
 }

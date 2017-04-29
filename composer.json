@@ -1,0 +1,15 @@
+{
+    "name": "aduh95/resume",
+    "description": "My resume",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Antoine du HAMEL",
+            "email": "duhamelantoine1995@gmail.com"
+        }
+    ],
+    "require": {
+        "aduh95/html-generator": "^1.0"
+    }
+}

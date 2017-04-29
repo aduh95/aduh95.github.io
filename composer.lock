@@ -1,0 +1,66 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "c422b2f5a8174fbc1bcbb1d381f8c2c2",
+    "packages": [
+        {
+            "name": "aduh95/html-generator",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aduh95/html-generator.git",
+                "reference": "fc7996995b92ac1ceebd267ec981d88801f4f2bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aduh95/html-generator/zipball/fc7996995b92ac1ceebd267ec981d88801f4f2bc",
+                "reference": "fc7996995b92ac1ceebd267ec981d88801f4f2bc",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "~2.0",
+                "phpunit/phpunit": "~5.0"
+            },
+            "suggest": {
+                "wa72/html-pretty-min": "Minify or indent HTML documents",
+                "wa72/htmlpagedom": "To add some more jQuery implementation in PHP"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "aduh95\\HTMLGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antoine du HAMEL",
+                    "email": "duhamelantoine1995@gmail.com"
+                }
+            ],
+            "description": "HTML generator in PHP, implementing most of the jQuery DOM manipulation API",
+            "keywords": [
+                "dom",
+                "generator",
+                "html",
+                "jquery",
+                "php"
+            ],
+            "time": "2016-09-25T21:40:15+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
