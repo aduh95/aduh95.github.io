@@ -77,41 +77,11 @@ gulp.task('typescript', function () {
         .pipe(ts({
             noImplicitAny: true,
             out: 'global.js',
+            lib: ["es2017", "dom"],
             target: "ES5"
         }).on("error", errorHandler))
         .pipe(gulp.dest(DEST))
         .pipe(livereload());
-});
-
-gulp.task('cms-typescript', function () {
-    return gulp.src([TS_CMS, TS_DEF])
-        .pipe(ts({
-            noImplicitAny: false,
-            out: 'global.js'
-        }).on("error", errorHandler))
-        .pipe(gulp.dest(DEST_CMS))
-        .pipe(livereload());
-});
-
-gulp.task('cms-sass', function () {
-    return gulp.src(SASS_CMS)
-        .pipe(sass({
-            outputStyle: 'compressed'
-        }).on('error', errorHandler))
-        .pipe(autoprefixer())
-        .pipe(gulp.dest(DEST_CMS))
-        .pipe(livereload());
-});
-
-gulp.task("cms", ["cms-typescript", "cms-sass"]);
-gulp.task("uglify-cms", function () {
-	gulp.src([DEST_CMS + "global.js"])
-		.pipe(uglify())
-		.pipe(gulp.dest(DEST_CMS));
-
-	gulp.src(DEST_CMS + "global.css")
-		.pipe(uglifycss())
-		.pipe(gulp.dest(DEST));
 });
 
 gulp.task('vendorjs', function() {
