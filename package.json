@@ -1,0 +1,34 @@
+{
+  "name": "my-resume",
+  "description": "My résumé",
+  "main": "src/index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antoine du HAMEL",
+  "license": "UNLICENSED",
+  "homepage": "https://antoine.du-hamel.fr",
+  "devDependencies": {
+    "gulp-connect": "^5.0.0",
+    "gulp-connect-php": "0.0.8",
+    "gulp-livereload": "^3.8.1",
+    "gulp-notify": "^2.2.0"
+  },
+  "dependencies": {
+    "@types/core-js": "^0.9.37",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-composer": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-git": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rm": "^1.0.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-typescript": "^3.1.6",
+    "gulp-uglify": "^2.1.2",
+    "gulp-util": "^3.0.8",
+    "main-bower-files": "^2.13.1",
+    "typescript": "^2.3.2"
+  }
+}

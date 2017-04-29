@@ -1,6 +1,6 @@
 {
     "name": "aduh95/resume",
-    "description": "My resume",
+    "description": "My résumé",
     "type": "project",
     "license": "proprietary",
     "authors": [
@@ -11,5 +11,28 @@
     ],
     "require": {
         "aduh95/html-generator": "^1.0"
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+			"npm install",
+			"bower install",
+			"typings install",
+			"echo \"Project is ready!\"",
+			"echo \"You can now run the `gulp` command to get started.\""
+		],
+		"pre-install-cmd": [
+			"npm install --production",
+			"bower install -p"
+		],
+		"pre-update-cmd": [
+			"npm update",
+			"bower update",
+            "typings update"
+		],
+		"production" : [
+			"php -r \"try{require 'vendor/autoload.php';}catch(Throwable \\$e){echo 'Exception:'.\\$e;exit(9);}\"",
+			"gulp clean-uglify",
+			"gulp production"
+		]
     }
 }
