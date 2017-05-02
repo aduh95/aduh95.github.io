@@ -26,7 +26,7 @@
     },
     "overrides": {
         "jquery": {
-            "main": "dist/jquery.min.js"
+            "main": "dist/jquery.slim.js"
         },
         "font-awesome": {
             "main": [
