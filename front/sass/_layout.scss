@@ -1,8 +1,58 @@
+$red_400: #ef5350;
+$red_400_light: #ff867c;
+$red_400_dark: #b61827;
+
+$icons: (date "\f073") (place "\f276") (website "\f0ac");
+
 body {
+    display: flex;
+    flex-flow: row wrap;
+
     margin: auto;
-    max-width: 1080px;
+    max-width: 1920px;
+
+    &>* {
+        flex: 1 100%;
+        padding: 1rem;
+    }
     &>header{
-        width: 100%;
+        // order: 2;
+        // width: 100%;
         text-align: center;
+
+        background-color: $red_400_light;
+    }
+    &>aside{
+        flex: 1 auto;
+        order: 2;
+
+        background-color: $red_400;
+    }
+    &>main{
+        order: 3;
+        flex: 5 0;
+
+        @each $class, $content in $icons {
+            & .#{$class}::before {
+                content: $content;
+                font: normal normal normal 14px/1 FontAwesome;
+                padding-right: .6rem; 
+            }
+        }
+
+        & ul {
+            &>li{
+                display: inline-block;
+                &::after {
+                    content: "|";
+                    padding: 0 .5rem;
+                }
+                &:empty, &:last-child {
+                    &::after {
+                        font-size: 0;
+                    }
+                }
+            }
+        }
     }
 }

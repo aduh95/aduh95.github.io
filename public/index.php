@@ -28,7 +28,7 @@ $sections = <<<'JSON'
             "date":"July 2016 to November 2016",
             "place": "Paris, France",
             "website": "https://www.bonjour.agency",
-            "mission": ""
+            "mission": "Lorem ipsum dolor sit amet"
         },
         "SEIO": {
             "date":"June 2015 to May 2017",
@@ -90,10 +90,17 @@ foreach ($sections as $section_name => $info) {
         ();
 
     foreach ($info as $name => $infos) {
-        $section->article()->append()
-            ()->h5()->text($name)
-            ()->ul()->append($infos)
-            ();
+        $list = $section->article()->append()
+        ()->h5()->text($name)
+        ()->ul();
+        if (is_array($infos)) {
+            foreach ($infos as $key => $value) {
+                $list[] = $doc->createElement('li')->attr('class', $key)->text($value);
+            }
+        } else {
+            $list->append($infos);
+        }
+
     }
 }
 

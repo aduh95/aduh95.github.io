@@ -32,7 +32,7 @@ const TS_SRC   = FRONT_ROOT + '/ts/*.ts';
 const TS_DEF = PROJECT_ROOT + '/typings/**/*.d.ts';
 
 const DEST = PROJECT_ROOT + '/public/dist/';
-const VENDOR_FONTS = DEST + 'fonts/';
+const VENDOR_FONTS = DEST + '../fonts/';
 
 
 var errorHandler = function (error) {
@@ -93,7 +93,7 @@ gulp.task('vendorjs', function() {
             return name.endsWith(".css");
         });
     let fontFiles = vendorFiles.filter(function (name) {
-            return name.endsWith(".ttf") ||name.endsWith(".woff") ||name.endsWith(".woff2") ||name.endsWith(".otf");
+            return name.endsWith(".ttf") ||name.endsWith(".woff") ||name.endsWith(".woff2") || name.endsWith(".otf");
         });
 
     gulp.src(JSfiles)
