@@ -1,0 +1,28 @@
+body>aside {
+    & ul.personal_information {
+        display: flex;
+        flex-direction: column;
+
+        // font-size: 2rem;
+        & a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        &>li {
+            list-style: none;
+        }
+        &>.linkedin {
+            @include add-fa-icon(linkedin);
+        }
+        &>.telephone {
+            @include add-fa-icon(phone);
+        }
+        &>.email {
+            @include add-fa-icon(envelope);
+        }
+        &>.address {
+            @include add-fa-icon(map);
+        }
+    }
+}

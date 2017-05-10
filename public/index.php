@@ -104,8 +104,4 @@ foreach ($sections as $section_name => $info) {
     }
 }
 
-$doc()->aside()->append()
-    ()->h3()->img(['src'=>CONFIG\MEDIAS\IMG_DIR.'antoineduhamel.jpg', 'alt'=>CONFIG\MY_INFO\PUBLIC_NAME])()
-    ()->p()->text('Lorem ipsum')
-    ()
-();
+$doc->addView('aside');

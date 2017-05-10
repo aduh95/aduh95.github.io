@@ -6,7 +6,7 @@
  * @author Antoine du HAMEL
  */
 
-namespace BonjourParis\APIs;
+namespace aduh95\Resume;
 
 use DOMComment;
 

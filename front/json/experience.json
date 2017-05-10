@@ -1,0 +1,26 @@
+{
+    "Bonjour Paris":{
+        "date":"July 2016 to November 2016",
+        "place": "Paris, France",
+        "website": "https://www.bonjour.agency",
+        "mission": "Lorem ipsum dolor sit amet"
+    },
+    "SEIO": {
+        "date":"June 2015 to May 2017",
+        "place": "Angers, France",
+        "website": "https://www.seio.org",
+        "mission": ""
+    },
+    "Crédit Agricole": {
+        "date":"July 2015",
+        "place": "Saintes, France",
+        "website": "https://www.ca-cmds.fr",
+        "mission": ""
+    },
+    "Journées Paysannes": {
+        "date":"August 2013 to December 2015",
+        "place": "Angers, France",
+        "website": "http://www.journees-paysannes.fr",
+        "mission": ""
+    }
+}

@@ -2,7 +2,7 @@ $red_400: #ef5350;
 $red_400_light: #ff867c;
 $red_400_dark: #b61827;
 
-$icons: (date "\f073") (place "\f276") (website "\f0ac");
+$icons: (date calendar) (place map-marker) (website globe);
 
 body {
     display: flex;
@@ -32,11 +32,9 @@ body {
         order: 3;
         flex: 5 0;
 
-        @each $class, $content in $icons {
-            & .#{$class}::before {
-                content: $content;
-                font: normal normal normal 14px/1 FontAwesome;
-                padding-right: .6rem; 
+        @each $class, $icon in $icons {
+            & .#{$class} {
+                @include add-fa-icon($icon);
             }
         }
 

@@ -1,0 +1,8 @@
+
+@mixin add-fa-icon ($icon-name) {
+    @include fa-icon();
+    @extend .#{$fa-css-prefix}-#{$icon-name};
+    &::before {
+        padding-right: .5em;
+    }
+}

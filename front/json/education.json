@@ -1,0 +1,16 @@
+{
+    "Groupe ESEO - Engineering school": {
+        "begin": 2015,
+        "end": "present",
+        "description": ""
+    },
+    "Groupe ESEO - Intensive program preparing for engineering school": {
+        "begin": 2013,
+        "end": 2015,
+        "description": ""
+    },
+    "French baccalauréat": {
+        "date": 2013,
+        "description": "Mention Bien"
+    }
+}
