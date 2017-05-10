@@ -2,8 +2,10 @@ body>aside {
     & ul.personal_information {
         display: flex;
         flex-direction: column;
+        justify-content: space-around;
 
         // font-size: 2rem;
+        min-height: 10rem;
         & a {
             color: inherit;
             text-decoration: none;

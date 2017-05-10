@@ -15,7 +15,7 @@ $doc = new Document('Résumé');
 
 $doc()->header()->append()
         ()->h1(CONFIG\MY_INFO\PUBLIC_NAME)
-        ()->p('IT Student')
+        ()->p(['lang'=>'en'], 'IT Student')
         ()->p(['lang'=>'fr'])->text('Étudiant en informatique')
         ();
 
@@ -82,26 +82,35 @@ $sections = <<<'JSON'
     }
 }
 JSON;
-$sections = json_decode($sections, true);
+$sections = [
+    'experience' => [
+        'en' => 'Experience',
+        'fr' => 'Expérience',
+    ],
+    'education' => [
+        'en' => 'Education',
+        'fr' => 'Éducation',
+    ],
+    'languages' => [
+        'en' => 'Languages',
+        'fr' => 'Langues',
+    ],
+    'programing_languages' => [
+        'en' => 'Programing Languages',
+        'fr' => 'Programation informatique',
+    ],
+];
 
-foreach ($sections as $section_name => $info) {
-    $section = $main->section()->append()
-        ()->h3()->text($section_name)
-        ();
+foreach ($sections as $view_name => $section_name) {
+    $section = $main->section();
 
-    foreach ($info as $name => $infos) {
-        $list = $section->article()->append()
-        ()->h5()->text($name)
-        ()->ul();
-        if (is_array($infos)) {
-            foreach ($infos as $key => $value) {
-                $list[] = $doc->createElement('li')->attr('class', $key)->text($value);
-            }
-        } else {
-            $list->append($infos);
-        }
-
+    foreach ($section_name as $lang => $value) {
+        $section->h3()->attr('lang', $lang)->text($value);
     }
+    $doc->addView(
+        $view_name,
+        $section
+    );
 }
 
 $doc->addView('aside');

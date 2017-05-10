@@ -1,16 +1,40 @@
-{
-    "Groupe ESEO - Engineering school": {
+[
+    {
+        "name": {
+            "en": "Groupe ESEO - Engineering school",
+            "fr": ""
+        },
         "begin": 2015,
         "end": "present",
-        "description": ""
+        "place": "Angers, France",
+        "description": {
+            "en": "",
+            "fr":""
+        }
     },
-    "Groupe ESEO - Intensive program preparing for engineering school": {
+    {
+        "name": {
+            "en": "Groupe ESEO - Intensive program preparing for engineering school",
+            "fr": ""
+        },
         "begin": 2013,
         "end": 2015,
-        "description": ""
+        "place": "Angers, France",
+        "description": {
+            "en": "",
+            "fr":""
+        }
     },
-    "French baccalauréat": {
+    {
+        "name": {
+            "en": "French baccalauréat",
+            "fr": ""
+        },
         "date": 2013,
-        "description": "Mention Bien"
+        "place": "Bordeaux, France",
+        "description": {
+            "en": "",
+            "fr":"Mention Bien"
+        }
     }
-}
+]

@@ -10,6 +10,7 @@ body {
 
     margin: auto;
     max-width: 1920px;
+    min-height: 100vh;
 
     &>* {
         flex: 1 100%;
