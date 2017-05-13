@@ -39,6 +39,9 @@ body {
         order: 3;
         flex: 5 0;
 
+        display: flex;
+        flex-wrap: wrap;
+
         @each $class, $icon in $icons {
             & .#{$class} {
                 @include add-fa-icon($icon);
