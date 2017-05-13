@@ -12,7 +12,7 @@ require_once '../vendor/autoload.php';
 
 
 return function ($doc, $sectionElem) {
-    $sectionElem->attr('id', 'programing_languages');
+    $sectionElem->attr('class', 'col-md-6 meter-section');
 
     $languages = JSONSource::parse('programing_languages');
     usort($languages, function ($pv, $cv) {

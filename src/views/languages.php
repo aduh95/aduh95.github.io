@@ -12,7 +12,7 @@ require_once '../vendor/autoload.php';
 
 
 return function ($doc, $sectionElem) {
-    $sectionElem->attr('id', 'languages');
+    $sectionElem->attr('class', 'col-md-6 meter-section');
 
     foreach (JSONSource::parse('languages') as $section) {
         $article = $sectionElem->article();

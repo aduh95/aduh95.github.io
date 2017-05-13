@@ -1,9 +1,23 @@
 [
     {
         "name": {
-            "fr": "Football",
-            "en": "Football"
+            "fr": "Mouvement scout",
+            "en": "Boy-scout"
         },
-        "icon": "soccer-ball-o"
+        "icon": "hand-peace-o"
+    },
+    {
+        "name": {
+            "fr": "Piano",
+            "en": "Piano"
+        },
+        "icon": "music"
+    },
+    {
+        "name": {
+            "fr": "Voyages",
+            "en": "Abroad travels"
+        },
+        "icon": "plane"
     }
 ]
