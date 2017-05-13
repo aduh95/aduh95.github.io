@@ -1,14 +1,35 @@
 {
-    "English": {
-        "en":"Quite fluent (TOEIC score 930)",
-        "fr": "Courant (TOEIC 930)"
+    "en": {
+        "name": {
+            "en":"English",
+            "fr":"Anglais"
+        },
+        "description": {
+            "en":"Quite fluent (TOEIC score 930)",
+            "fr": "Courant (TOEIC 930)"
+        },
+        "level":0.93
     },
-    "French": {
-        "en":"Native speaker",
-        "fr": "Langue maternelle"
+    "fr": {
+        "name": {
+            "en":"French",
+            "fr":"Français"
+        },
+        "description": {
+            "en":"Native speaker",
+            "fr": "Langue maternelle"
+        },
+        "level":1
     },
-    "German": {
-        "en":"Working knowledge (Goethe-Zertifikat B1)",
-        "fr": "Notions élémentaires (Goethe-Zertifikat B1)"
+    "de": {
+        "name": {
+            "en":"German",
+            "fr":"Allemand"
+        },
+        "description": {
+            "en":"Working knowledge (Goethe-Zertifikat B1)",
+            "fr": "Notions élémentaires (Goethe-Zertifikat B1)"
+        },
+        "level":0.5
     }
 }

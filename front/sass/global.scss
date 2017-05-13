@@ -3,6 +3,7 @@
 @import '../../bower_components/font-awesome/scss/font-awesome';
 @import '_layout';
 @import '_aside';
+@import '_languages';
 
 [lang=fr]:not(html) {
     display: none;
