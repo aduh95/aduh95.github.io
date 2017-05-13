@@ -16,13 +16,16 @@ return function ($doc, $section) {
         $list = $section->article()->append()
             ()->h5()->text($name)
             ()->ul();
-        if (is_array($infos)) {
-            foreach ($infos as $key => $value) {
-                $list[] = $doc->createElement('li')->attr('class', $key)->text($value);
-            }
-        } else {
-            $list->append($infos);
+
+        foreach ($infos['info'] as $key => $value) {
+            $list[] = $doc->createElement('li')->attr('class', $key)->text($value);
+        }
+
+
+        foreach ($infos['mission'] as $lang => $text) {
+            $list()->p(['lang' => $lang, 'class' => 'mission'])->text($text);
         }
 
     }
+
 };

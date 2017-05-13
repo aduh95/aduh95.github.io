@@ -28,12 +28,17 @@ body {
     }
     &>aside{
         @media print {
-            max-width: 25vw;
+            max-width: 33vw;
         }
         flex: 1 auto;
         order: 2;
 
         background-color: $red_400;
+
+        &>ul {
+            margin: 0;
+            padding: 0;
+        }
     }
     &>main{
         order: 3;
