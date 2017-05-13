@@ -33,6 +33,10 @@ body {
         flex: 1 auto;
         order: 2;
 
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
         background-color: $red_400;
 
         &>ul {
