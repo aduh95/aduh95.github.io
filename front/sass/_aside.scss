@@ -26,5 +26,8 @@ body>aside {
         &>.address {
             @include add-fa-icon(map);
         }
+        &>.github {
+            @include add-fa-icon(github);
+        }
     }
 }
