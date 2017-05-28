@@ -5,6 +5,6 @@
 @import '_aside';
 @import '_languages';
 
-[lang=fr]:not(html) {
+[lang=en]:not(html) {
     display: none;
 }

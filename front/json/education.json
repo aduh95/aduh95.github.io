@@ -2,7 +2,7 @@
     {
         "name": {
             "en": "Groupe ESEO - Engineering school",
-            "fr": ""
+            "fr": "Groupe ESEO - Grande école d'ingénieur"
         },
         "begin": 2015,
         "end": "present",
@@ -15,7 +15,7 @@
     {
         "name": {
             "en": "Groupe ESEO - Intensive program preparing for engineering school",
-            "fr": ""
+            "fr": "Groupe ESEO - Classe préparatoire"
         },
         "begin": 2013,
         "end": 2015,
@@ -28,7 +28,7 @@
     {
         "name": {
             "en": "French baccalauréat",
-            "fr": ""
+            "fr": "Baccalauréat"
         },
         "date": 2013,
         "place": "Bordeaux, France",

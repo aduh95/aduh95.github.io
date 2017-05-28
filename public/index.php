@@ -24,11 +24,11 @@ $main = $doc()->main();
 $sections = [
     'experience' => [
         'en' => 'Experience',
-        'fr' => 'Expérience',
+        'fr' => 'Expérience professionnelle',
     ],
     'education' => [
         'en' => 'Education',
-        'fr' => 'Éducation',
+        'fr' => 'Formation',
     ],
     'languages' => [
         'en' => 'Languages',

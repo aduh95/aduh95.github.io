@@ -11,23 +11,12 @@ body>aside {
             text-decoration: none;
         }
 
-        &>li {
-            list-style: none;
+    }
+    li {
+        & .fa {
+            padding-right: .5em;
         }
-        &>.linkedin {
-            @include add-fa-icon(linkedin);
-        }
-        &>.telephone {
-            @include add-fa-icon(phone);
-        }
-        &>.email {
-            @include add-fa-icon(envelope);
-        }
-        &>.address {
-            @include add-fa-icon(map);
-        }
-        &>.github {
-            @include add-fa-icon(github);
-        }
+        
+        list-style: none;
     }
 }
