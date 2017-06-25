@@ -2,10 +2,14 @@
     display: flex;
     flex-wrap: wrap;
 
+
     &>h3 {
         width: 100%;
     }
 
+    & h5 {
+        display: block;
+    }
     &>article {
         flex-grow: 1;
     }

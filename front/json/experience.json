@@ -1,44 +1,75 @@
 {
-    "Bonjour Paris":{
+    "ProSE": {
+        "mission": {
+            "en": "Android developer",
+            "fr": "Développeur d'application Android"
+        },
+        "info": {
+            "date":"Mars 2017 to June 2017",
+            "place": "Angers, France",
+            "website": "https://www.qowisio.com"
+        },
+        "description": {
+            "en": "Lorem ipsum dolor sit amet",
+            "fr": ""
+        }
+    },
+    "Bonjour Paris": {
+        "mission": {
+            "en": "Web developer",
+            "fr": "Intégration de solutions web"
+        },
         "info": {
             "date":"July 2016 to November 2016",
             "place": "Paris, France",
             "website": "https://www.bonjour.agency"
         },
-        "mission": {
-            "en":"Lorem ipsum dolor sit amet",
+        "description": {
+            "en": "Lorem ipsum dolor sit amet",
             "fr": ""
         }
     },
     "SEIO": {
+        "mission": {
+            "en": "Vice-Chairman",
+            "fr": "Vice-Président"
+        },
         "info": {
             "date":"June 2015 to May 2017",
             "place": "Angers, France",
             "website": "https://www.seio.org"
         },
-        "mission": {
+        "description": {
             "en":"",
             "fr": ""
         }
     },
     "Crédit Agricole": {
+        "mission": {
+            "en": "",
+            "fr": "Assistant chargé d'affaires en agence entreprise"
+        },
         "info": {
             "date":"July 2015",
             "place": "Saintes, France",
             "website": "https://www.ca-cmds.fr"
         },
-        "mission": {
+        "description": {
             "en":"",
             "fr": ""
         }
     },
     "Journées Paysannes": {
+        "mission": {
+            "en": "",
+            "fr": "Developpement web de solutions de gestion"
+        },
         "info": {
             "date":"August 2013 to December 2015",
             "place": "Angers, France",
             "website": "http://www.journees-paysannes.fr"
         },
-        "mission": {
+        "description": {
             "en":"",
             "fr": ""
         }

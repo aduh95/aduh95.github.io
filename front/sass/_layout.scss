@@ -51,6 +51,19 @@ body {
         display: flex;
         flex-wrap: wrap;
 
+        & h5 {
+            display: inline-block;
+            // float: right;
+            &~h6 {
+                display: inline-block;
+                &::before {
+                    content: "—";
+                    padding: 0 .4em;
+                    display: inherit;
+                }
+            }
+        }
+
         @each $class, $icon in $icons {
             & .#{$class} {
                 @include add-fa-icon($icon);

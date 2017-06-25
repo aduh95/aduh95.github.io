@@ -13,18 +13,24 @@ require_once '../vendor/autoload.php';
 
 return function ($doc, $section) {
     foreach (JSONSource::parse('experience') as $name => $infos) {
-        $list = $section->article()->append()
-            ()->h5()->text($name)
-            ()->ul();
+        $article = $section->article();
+        $article->h5()->text($name);
+
+        foreach ($infos['mission'] as $lang => $text) {
+            $article->h6(['lang' => $lang, 'class' => 'mission'])->text($text);
+        }
+
+        $list = $article->ul();
 
         foreach ($infos['info'] as $key => $value) {
             $list[] = $doc->createElement('li')->attr('class', $key)->text($value);
         }
 
 
-        foreach ($infos['mission'] as $lang => $text) {
-            $list()->p(['lang' => $lang, 'class' => 'mission'])->text($text);
+        foreach ($infos['description'] as $lang => $text) {
+            $article->p(['lang' => $lang, 'class' => 'mission'])->text($text);
         }
+
 
     }
 
