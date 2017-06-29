@@ -4,6 +4,27 @@
             "fr": "Autonomie",
             "en": "Autonomous"
         },
-        "icon": "graduation-cap"
+        "icon": "bullseye"
+    },
+    {
+        "name": {
+            "fr": "Travailleur acharné",
+            "en": "Hard-worker"
+        },
+        "icon": "pencil-square-o"
+    },
+    {
+        "name": {
+            "fr": "Attentif",
+            "en": "?"
+        },
+        "icon": "assistive-listening-systems"
+    },
+    {
+        "name": {
+            "fr": "Entousiste",
+            "en": "Zestful"
+        },
+        "icon": "tachometer"
     }
 ]
