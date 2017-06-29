@@ -2,6 +2,8 @@ $red_400: #ef5350;
 $red_400_light: #ff867c;
 $red_400_dark: #b61827;
 
+$body_width: 1920px;
+
 $icons: (date calendar) (place map-marker) (website globe);
 
 body {
@@ -9,7 +11,7 @@ body {
     flex-flow: row wrap;
 
     margin: auto;
-    max-width: 1920px;
+    max-width: $body_width;
     min-height: 100vh;
 
     &>* {

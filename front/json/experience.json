@@ -11,7 +11,7 @@
         },
         "description": {
             "en": "Lorem ipsum dolor sit amet",
-            "fr": ""
+            "fr": "Qowisio, une PME angevine dont marché est de fournir des solutions clé en main d'exploitation d'objets connectés, nous a demandé de réaliser un kit de démonstration de sa technologie Ultra-Narrow-Band (UNB). Le kit devait être capable d'émuler un réseau UNB hébergeant quelques objets connectés de Qowisio ainsi qu'un réseau WiFi sur lequel les prospects peuvent se connecter pour constater l'efficacité du réseau Qowisio. Mon rôle dans ce projet fut de diriger l'équipe Androïd de 4 personnes et de réaliser l'API qui permet à la dîte application de récupérer les données émanant des objets connectés."
         }
     },
     "Bonjour Paris": {
@@ -26,7 +26,7 @@
         },
         "description": {
             "en": "Lorem ipsum dolor sit amet",
-            "fr": ""
+            "fr": "Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme au service de l'industrie du luxe. Ma mission durant mon expérience chez Bonjour Paris fut de réaliser l'intégration de leur site internet de présentation de l'agence."
         }
     },
     "SEIO": {
@@ -41,7 +41,7 @@
         },
         "description": {
             "en":"",
-            "fr": ""
+            "fr": "Le SEIO est la Junior-Entreprise de l'ESEO, école dans laquelle j'efectue ma formation d'ingénieur. J'ai occupé le poste de Vice-Président chargé de la communication interne et externe, du pôle audit et qualité, et des systèmes d'information. Mon rôle au sein de cette Junior-Entreprise était de manager mes équipe et participer aux prises de décisions concernant le fonctionnement de l'association."
         }
     },
     "Crédit Agricole": {
