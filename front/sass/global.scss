@@ -5,6 +5,16 @@
 @import '_aside';
 @import '_languages';
 
-[lang=en]:not(html) {
+[lang=fr]:not(html) {
     display: none;
 }
+
+// @media screen {
+//     body {
+//         max-height: 100vh;
+//         overflow-y: hidden;
+//         &>* {
+//             overflow-y: scroll;
+//         }
+//     }
+// }
