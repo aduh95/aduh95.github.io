@@ -27,6 +27,5 @@ return function ($doc, $sectionElem) {
             $meter->span()->text($text)->attr('lang', $lang);
         }
 
-
     }
 };
