@@ -34,6 +34,7 @@
         float: left;
         margin: 0 0.1em 0.1em 0;
         background-color: $red_50_dark;
+        overflow: visible;
 
         & *::before, & *::after {
             box-sizing: content-box;
@@ -61,22 +62,44 @@
         }
 
         & > span {
+            @include base-effects();
+
+            background: $balloon-bg;
+            border-radius: 4px;
+            color: #fff;
+            font-size: $balloon-base-size + 2;
+            padding: .5em 1em;
             position: absolute;
-            width: 100%;
+            white-space: nowrap;
+            z-index: 10;
+
+            position: absolute;
             z-index: 1;
-            left: 0;
-            top: 0;
-            width: 5em;
+            left: 50%;
+            bottom: 0;
             line-height: 5em;
             font-size: 0;
-            color: $red_50_dark;
+            color: $white;
             // display: block;
             text-align: center;
             white-space: nowrap;
-            transform: translateY(50%);
-            transition-property: all;
-            transition-duration: 0.2s;
-            transition-timing-function: ease-out;
+            transform: translate(-50%, calc(100% + 5px));
+            // transition-property: all;
+            // transition-duration: 0.2s;
+            // transition-timing-function: ease-out;
+        }
+        &::before {
+            @include svg-arrow($balloon-bg, "down");
+            @include base-effects();
+
+            content: '';
+            position: absolute;
+            z-index: 10;
+
+            left: 50%;
+            margin-top: 5px;
+            top: 100%;
+            transform: translate(-50%, -5px);
         }
         &::after {
             content: " ";
@@ -103,6 +126,9 @@
         }
 
         &:hover {
+            &::before {
+                opacity: 1;
+            }
             &::after {
                 top: 0.04em;
                 left: 0.04em;
@@ -112,10 +138,9 @@
 
             &> span {
                 visibility: visible;
-                width: 3.33em;
+                opacity: 1;
                 line-height: 3.33em;
-                font-size: 0.3em;
-                color: #307bbb;
+                font-size: 0.2em;
             }
         }
     }
