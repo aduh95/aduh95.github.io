@@ -1,7 +1,7 @@
 [
     {
         "name": {
-            "fr": "Autonomie",
+            "fr": "Autonome",
             "en": "Autonomous"
         },
         "icon": "bullseye"
@@ -9,7 +9,7 @@
     {
         "name": {
             "fr": "Travailleur acharné",
-            "en": "Hard-worker"
+            "en": "Hard-working"
         },
         "icon": "pencil-square-o"
     },
@@ -29,8 +29,8 @@
     },
     {
         "name": {
-            "fr": "Entousiste",
-            "en": "Zestful"
+            "fr": "Enthousiaste",
+            "en": "Enthusiastic"
         },
         "icon": "tachometer"
     }

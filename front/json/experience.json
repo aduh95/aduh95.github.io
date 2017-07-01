@@ -10,7 +10,7 @@
             "website": "https://www.qowisio.com"
         },
         "description": {
-            "en": "The small french company Qowisio asked us to make a demonstration kit for its Ultra-Narrow-Band technology (UNB) implementation ; the purpose of this kit is to emulate a UNB network able to interact with the connected objects nearby, and a WiFi network to allow customers to connect and try the Android app I created with my team of four developers.",
+            "en": "The small French company Qowisio asked us to make a demonstration kit for its Ultra-Narrow-Band technology (UNB) implementation; the purpose of this kit is to emulate a UNB network able to interact with the connected objects nearby, and a WiFi network to allow customers to connect their device and try the Android app we created with the team I led (four developers). This application gathers all the data from the connected objets and displays it on the screen.",
             "fr": "Qowisio, PME angevine spécialisée dans le traitement de données issues d'objets connectés, nous a demandé de réaliser un kit de démonstration de sa technologie Ultra-Narrow-Band (UNB). Le kit devait être capable d'émuler un réseau UNB hébergeant quelques objets connectés de Qowisio ainsi qu'un réseau WiFi sur lequel les prospects peuvent se connecter pour constater l'efficacité du réseau Qowisio. Mon rôle dans ce projet fut de diriger l'équipe Androïd de 4 personnes et de réaliser l'API qui permet à la dîte application de récupérer les données émanant des objets connectés."
         }
     },
@@ -25,7 +25,7 @@
             "website": "https://www.bonjour.agency"
         },
         "description": {
-            "en": "Bonjour Paris is a global luxury communication agency focused on forward-thinking ideas, business-minded solutions for premium brands. My job was to build up the agency's website from scratch using the agency's visual identity; also I colaborated on the Vuarnet commercial website, and the Peter Lindbergh's presentation website as well.",
+            "en": "Bonjour Paris is a global luxury communication agency focused on forward-thinking ideas, business-minded solutions for premium brands. My task was to build up the agency's website from scratch using the agency's visual identity; also I colaborated on the Vuarnet commercial website, and the Peter Lindbergh's presentation website as well.",
             "fr": "Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme au service de l'industrie du luxe. Ma mission durant mon expérience chez Bonjour Paris fut de réaliser l'intégration de leur site internet de présentation de l'agence. J'ai également été solicité pour réaliser certaines parties du site du célèbre photographe allemand Peter Lindbergh et reprendre le développement du site e-commerce de Vuarnet, marque de lunettes de soleil française."
         }
     },
