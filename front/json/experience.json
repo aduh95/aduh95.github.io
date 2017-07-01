@@ -10,8 +10,8 @@
             "website": "https://www.qowisio.com"
         },
         "description": {
-            "en": "Lorem ipsum dolor sit amet",
-            "fr": "Qowisio, une PME angevine dont marché est de fournir des solutions clé en main d'exploitation d'objets connectés, nous a demandé de réaliser un kit de démonstration de sa technologie Ultra-Narrow-Band (UNB). Le kit devait être capable d'émuler un réseau UNB hébergeant quelques objets connectés de Qowisio ainsi qu'un réseau WiFi sur lequel les prospects peuvent se connecter pour constater l'efficacité du réseau Qowisio. Mon rôle dans ce projet fut de diriger l'équipe Androïd de 4 personnes et de réaliser l'API qui permet à la dîte application de récupérer les données émanant des objets connectés."
+            "en": "The small french company Qowisio asked us to make a demonstration kit for its Ultra-Narrow-Band technology (UNB) implementation ; the purpose of this kit is to emulate a UNB network to be able to interact with the connected objects nearby, and a WiFi network to allow customers to connect and try the Android app I have created with my team of four developers.",
+            "fr": "Qowisio, PME angevine spécialisée dans le traitement de données issues d'objets connectés, nous a demandé de réaliser un kit de démonstration de sa technologie Ultra-Narrow-Band (UNB). Le kit devait être capable d'émuler un réseau UNB hébergeant quelques objets connectés de Qowisio ainsi qu'un réseau WiFi sur lequel les prospects peuvent se connecter pour constater l'efficacité du réseau Qowisio. Mon rôle dans ce projet fut de diriger l'équipe Androïd de 4 personnes et de réaliser l'API qui permet à la dîte application de récupérer les données émanant des objets connectés."
         }
     },
     "Bonjour Paris": {
@@ -25,8 +25,8 @@
             "website": "https://www.bonjour.agency"
         },
         "description": {
-            "en": "Lorem ipsum dolor sit amet",
-            "fr": "Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme au service de l'industrie du luxe. Ma mission durant mon expérience chez Bonjour Paris fut de réaliser l'intégration de leur site internet de présentation de l'agence."
+            "en": "Bonjour Paris is a global luxury communication agency focused on forward-thinking ideas, business-minded solutions for premium brands.",
+            "fr": "Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme au service de l'industrie du luxe. Ma mission durant mon expérience chez Bonjour Paris fut de réaliser l'intégration de leur site internet de présentation de l'agence. J'ai également été solicité pour réaliser certaines parties du site du célèbre photographe allemand Peter Lindbergh et reprendre le développement du site e-commerce de Vuarnet, marque de lunettes de soleil française."
         }
     },
     "SEIO": {
@@ -56,7 +56,7 @@
         },
         "description": {
             "en":"",
-            "fr": ""
+            "fr": "Au sein de l'agence entreprise de Saintes du Crédit-Agricole, j'ai appris à gérer la relation client professionnel, nottament par l'accueil téléphonique et physique. Cette experience m'a également permi de comprendre le fonctionnement interne des mécanismes bancaires."
         }
     },
     "Journées Paysannes": {
@@ -71,7 +71,7 @@
         },
         "description": {
             "en":"",
-            "fr": ""
+            "fr": "En août 2013, l'association des Journées Paysannes a fait appel à moi pour mettre à jour leur système de gestion interne par une solution plsu moderne et plus adaptée à leurs besoins."
         }
     }
 }
