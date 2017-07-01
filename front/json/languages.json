@@ -8,7 +8,8 @@
             "en":"Quite fluent (TOEIC score 930)",
             "fr": "Courant (TOEIC 930)"
         },
-        "level":0.93
+        "level":0.93,
+        "levelTitle":"TOEIC"
     },
     "fr": {
         "name": {
@@ -19,7 +20,8 @@
             "en":"Native speaker",
             "fr": "Langue maternelle"
         },
-        "level":1
+        "level":1,
+        "levelTitle":null
     },
     "de": {
         "name": {
@@ -30,6 +32,7 @@
             "en":"Working knowledge (Goethe-Zertifikat B1)",
             "fr": "Notions élémentaires (Goethe-Zertifikat B1)"
         },
-        "level":0.5
+        "level":0.5,
+        "levelTitle":"B1"
     }
 }

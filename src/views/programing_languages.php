@@ -25,7 +25,7 @@ return function ($doc, $sectionElem) {
 
         $article->h5()->text($section['name']);
 
-        $meter = $article->meter(['value'=>$section['level']]);
+        $meter = $article->meter(['value'=>$section['level'], 'title'=>intval($section['level'] * 100) . '%']);
 
         // foreach ($section['description'] as $lang => $text) {
         //     $meter->span()->text($text)->attr('lang', $lang);

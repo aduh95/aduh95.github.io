@@ -22,6 +22,36 @@
     }
     &>article {
         flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+        &:hover {
+            &>h5 {
+                font-weight: bold;
+            }
+
+            & .dynamic {
+                &::before {
+                    opacity: 1;
+                }
+                &::after {
+                    top: 004%;
+                    left: 004%;
+                    width: 092%;
+                    height: 092%;
+                    line-height: 2.8em;
+                }
+
+                &> span {
+                    visibility: visible;
+                    opacity: 1;
+                    line-height: 3.33em;
+                    font-size: 0.2em;
+                }
+            }
+        }
     }
 
     & .dynamic {
@@ -32,7 +62,7 @@
         height: 1em;
         border-radius: 50%;
         float: left;
-        margin: 0 0.1em 0.1em 0;
+        margin: 0 auto .1em;
         background-color: $red_50_dark;
         overflow: visible;
 
@@ -102,15 +132,18 @@
             transform: translate(-50%, -5px);
         }
         &::after {
-            content: " ";
+            content: attr(title);
+            color: $red_50_dark;
+            font-size: .3em;
+            line-height: 2.75em;
             position: absolute;
-            top: 0.08em;
-            left: 0.08em;
+            top: 8%;
+            left: 8%;
             display: block;
             border-radius: 50%;
             background-color: $white;
-            width: 0.84em;
-            height: 0.84em;
+            width: 84%;
+            height: 84%;
             transition-property: all;
             transition-duration: 0.2s;
             transition-timing-function: ease-in;
@@ -123,25 +156,6 @@
         }
         & .bar {
             @extend %bar;
-        }
-
-        &:hover {
-            &::before {
-                opacity: 1;
-            }
-            &::after {
-                top: 0.04em;
-                left: 0.04em;
-                width: 0.92em;
-                height: 0.92em;
-            }
-
-            &> span {
-                visibility: visible;
-                opacity: 1;
-                line-height: 3.33em;
-                font-size: 0.2em;
-            }
         }
     }
 }
