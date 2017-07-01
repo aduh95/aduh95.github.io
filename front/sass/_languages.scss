@@ -20,6 +20,12 @@
     & h5 {
         display: block;
     }
+    & meter {
+        width: 80%;
+        min-width: 1em;
+        padding: .1rem;
+        transform: translateX(10%);
+    }
     &>article {
         flex-grow: 1;
         display: flex;
@@ -33,7 +39,7 @@
             }
 
             & .dynamic {
-                &::before {
+                &.balloon::before {
                     opacity: 1;
                 }
                 &::after {
@@ -63,6 +69,7 @@
         border-radius: 50%;
         float: left;
         margin: 0 auto .1em;
+        padding: 0;
         background-color: $red_50_dark;
         overflow: visible;
 
