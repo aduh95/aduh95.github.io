@@ -1,3 +1,9 @@
+$red_400: #ef5350;
+$red_400_light: #ff867c;
+$red_400_dark: #b61827;
+
+$red_50_dark: #ccb9bc;
+$white: #fff;
 
 @mixin add-fa-icon ($icon-name) {
     @include fa-icon();

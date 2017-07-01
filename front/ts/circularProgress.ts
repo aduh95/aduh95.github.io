@@ -20,10 +20,8 @@ module aduh95.resume.circularProgress {
         let progressElem = this.querySelectorAll("meter,progress");
 
         for (let elem of <Element[]><any>progressElem) {
-            if(!elem.classList.contains(DYNAMIC_CLASS)) {
-                elem.appendChild(getSlice());
-                elem.classList.add(DYNAMIC_CLASS);
-            }
+            elem.appendChild(getSlice());
+            elem.classList.add(DYNAMIC_CLASS);
         }
     }, false);
 }

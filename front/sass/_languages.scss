@@ -1,6 +1,6 @@
 %bar {
     position: absolute;
-    border: 0.08em solid #307bbb;
+    border: 0.08em solid $red_400_dark;
     width: 0.84em;
     height: 0.84em;
     clip: rect(0em, 0.5em, 1em, 0em);
@@ -33,7 +33,7 @@
         border-radius: 50%;
         float: left;
         margin: 0 0.1em 0.1em 0;
-        background-color: #cccccc;
+        background-color: $red_50_dark;
 
         & *::before, & *::after {
             box-sizing: content-box;
@@ -69,7 +69,7 @@
             width: 5em;
             line-height: 5em;
             font-size: 0;
-            color: #cccccc;
+            color: $red_50_dark;
             // display: block;
             text-align: center;
             white-space: nowrap;
@@ -85,7 +85,7 @@
             left: 0.08em;
             display: block;
             border-radius: 50%;
-            background-color: #f5f5f5;
+            background-color: $white;
             width: 0.84em;
             height: 0.84em;
             transition-property: all;
@@ -102,18 +102,21 @@
             @extend %bar;
         }
 
-        &:hover > span {
-            visibility: visible;
-            width: 3.33em;
-            line-height: 3.33em;
-            font-size: 0.3em;
-            color: #307bbb;
-        }
-        &:hover::after {
-            top: 0.04em;
-            left: 0.04em;
-            width: 0.92em;
-            height: 0.92em;
+        &:hover {
+            &::after {
+                top: 0.04em;
+                left: 0.04em;
+                width: 0.92em;
+                height: 0.92em;
+            }
+
+            &> span {
+                visibility: visible;
+                width: 3.33em;
+                line-height: 3.33em;
+                font-size: 0.3em;
+                color: #307bbb;
+            }
         }
     }
 }
