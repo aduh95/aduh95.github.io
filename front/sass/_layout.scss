@@ -68,6 +68,11 @@ body {
             }
         }
 
+        & .website>a {
+            color: inherit;
+            text-decoration: none;
+        }
+
         & ul {
             &>li{
                 display: inline-block;
