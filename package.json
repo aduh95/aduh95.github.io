@@ -16,6 +16,9 @@
   },
   "dependencies": {
     "@types/core-js": "^0.9.37",
+    "balloon-css": "^0.4.0",
+    "bootstrap": "alpha",
+    "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-composer": "^0.4.0",
@@ -28,7 +31,6 @@
     "gulp-typescript": "^3.1.6",
     "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.8",
-    "main-bower-files": "^2.13.1",
     "typescript": "^2.3.2"
   }
 }

@@ -12,7 +12,6 @@ try {
     var livereload = util.noop, notify = util.noop, connect = util.noop;
 }
 
-const mainBowerFiles = require('main-bower-files');
 const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 const uglifycss = require('gulp-cssnano');
@@ -30,6 +29,12 @@ const FRONT_ROOT = PROJECT_ROOT + '/front/';
 const SASS_SRC = FRONT_ROOT + '/sass/**/*.scss';
 const TS_SRC   = FRONT_ROOT + '/ts/*.ts';
 const TS_DEF = PROJECT_ROOT + '/typings/**/*.d.ts';
+
+const FONT_FILES = [
+    "font-awesome/fonts/fontawesome-webfont.woff2",
+    "font-awesome/fonts/fontawesome-webfont.woff",
+    "font-awesome/fonts/fontawesome-webfont.ttf"
+];
 
 const DEST = PROJECT_ROOT + '/public/dist/';
 const VENDOR_FONTS = DEST + '../fonts/';
@@ -84,24 +89,18 @@ gulp.task('typescript', function () {
         .pipe(livereload());
 });
 
-gulp.task('vendorjs', function() {
-    let vendorFiles = mainBowerFiles();
+gulp.task('vendor_dependencies', function() {
+    let vendorFiles = [];
     let JSfiles = vendorFiles.filter(function (name) {
             return name.endsWith(".js");
         });
-    let CSSFiles = vendorFiles.filter(function (name) {
-            return name.endsWith(".css");
-        });
-    let fontFiles = vendorFiles.filter(function (name) {
-            return name.endsWith(".ttf") ||name.endsWith(".woff") ||name.endsWith(".woff2") || name.endsWith(".otf");
-        });
+    let fontFiles = FONT_FILES.map(function (cv) {
+        return PROJECT_ROOT+"/node_modules/"+cv;
+    });
 
-    gulp.src(JSfiles)
-        .pipe(concat('vendor.js'))
-        .pipe(gulp.dest(DEST));
-    gulp.src(CSSFiles)
-        .pipe(concat('vendor.css'))
-        .pipe(gulp.dest(DEST));
+    // gulp.src(JSfiles)
+    //     .pipe(concat('vendor.js'))
+    //     .pipe(gulp.dest(DEST));
 
     fontFiles.forEach(function (fontFile) {
         gulp.src(fontFile)
@@ -158,13 +157,13 @@ gulp.task('watch', function(){
 	  .on("change", changeHandler);
 });
 
-gulp.task('default', ['connect','sass','vendorjs','typescript','watch']);
+gulp.task('default', ['connect','sass','vendor_dependencies','typescript','watch']);
 
 gulp.task("init", function () {
 	composer("create-project");
 });
 
-gulp.task("production", ["sass", "vendorjs", "typescript", "cms"], function () {
+gulp.task("production", ["sass", "vendor_dependencies", "typescript", "cms"], function () {
 	composer({
 		"no-dev": true,
         "optimize-autoloader": true

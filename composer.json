@@ -24,18 +24,15 @@
     "scripts": {
         "post-create-project-cmd": [
 			"npm install",
-			"bower install",
 			"typings install",
 			"echo \"Project is ready!\"",
 			"echo \"You can now run the `gulp` command to get started.\""
 		],
 		"pre-install-cmd": [
-			"npm install --production",
-			"bower install -p"
+			"npm install --production"
 		],
 		"pre-update-cmd": [
 			"npm update",
-			"bower update",
             "typings update"
 		],
 		"production" : [

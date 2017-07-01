@@ -52,9 +52,8 @@ class Document extends ParentDocument
             $this->head->meta('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no');
 
             if (!PROD_ENVIRONMENT) {
-                $this->head->style(CONFIG\MEDIAS\VENDOR_CSS_SRC);
                 $this->head->style(CONFIG\MEDIAS\CSS_SRC);
-                $this->head->script(CONFIG\MEDIAS\VENDOR_JS_SRC);
+                // $this->head->script(CONFIG\MEDIAS\VENDOR_JS_SRC);
                 $this->head->script(CONFIG\MEDIAS\JS_SRC);
             } else {
                 $this->head->style(CONFIG\MEDIAS\UGLY_CSS_SRC);
