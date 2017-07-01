@@ -10,7 +10,7 @@
             "website": "https://www.qowisio.com"
         },
         "description": {
-            "en": "The small french company Qowisio asked us to make a demonstration kit for its Ultra-Narrow-Band technology (UNB) implementation ; the purpose of this kit is to emulate a UNB network to be able to interact with the connected objects nearby, and a WiFi network to allow customers to connect and try the Android app I have created with my team of four developers.",
+            "en": "The small french company Qowisio asked us to make a demonstration kit for its Ultra-Narrow-Band technology (UNB) implementation ; the purpose of this kit is to emulate a UNB network able to interact with the connected objects nearby, and a WiFi network to allow customers to connect and try the Android app I created with my team of four developers.",
             "fr": "Qowisio, PME angevine spécialisée dans le traitement de données issues d'objets connectés, nous a demandé de réaliser un kit de démonstration de sa technologie Ultra-Narrow-Band (UNB). Le kit devait être capable d'émuler un réseau UNB hébergeant quelques objets connectés de Qowisio ainsi qu'un réseau WiFi sur lequel les prospects peuvent se connecter pour constater l'efficacité du réseau Qowisio. Mon rôle dans ce projet fut de diriger l'équipe Androïd de 4 personnes et de réaliser l'API qui permet à la dîte application de récupérer les données émanant des objets connectés."
         }
     },
@@ -25,7 +25,7 @@
             "website": "https://www.bonjour.agency"
         },
         "description": {
-            "en": "Bonjour Paris is a global luxury communication agency focused on forward-thinking ideas, business-minded solutions for premium brands.",
+            "en": "Bonjour Paris is a global luxury communication agency focused on forward-thinking ideas, business-minded solutions for premium brands. My job was to build up the agency's website from scratch using the agency's visual identity; also I colaborated on the Vuarnet commercial website, and the Peter Lindbergh's presentation website as well.",
             "fr": "Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme au service de l'industrie du luxe. Ma mission durant mon expérience chez Bonjour Paris fut de réaliser l'intégration de leur site internet de présentation de l'agence. J'ai également été solicité pour réaliser certaines parties du site du célèbre photographe allemand Peter Lindbergh et reprendre le développement du site e-commerce de Vuarnet, marque de lunettes de soleil française."
         }
     },
@@ -40,8 +40,8 @@
             "website": "https://www.seio.org"
         },
         "description": {
-            "en":"",
-            "fr": "Le SEIO est la Junior-Entreprise de l'ESEO, école dans laquelle j'efectue ma formation d'ingénieur. J'ai occupé le poste de Vice-Président chargé de la communication interne et externe, du pôle audit et qualité, et des systèmes d'information. Mon rôle au sein de cette Junior-Entreprise était de manager mes équipe et participer aux prises de décisions concernant le fonctionnement de l'association."
+            "en":"The SEIO is ",
+            "fr": "Le SEIO est la Junior-Entreprise de l'ESEO, école dans laquelle j'efectue ma formation d'ingénieur. J'ai occupé le poste de Vice-Président chargé de la communication interne et externe, du pôle audit et qualité, et des systèmes d'information. Mon rôle au sein de cette Junior-Entreprise était de manager mes équipe et participer aux prises de décisions concernant le fonctionnement de l'association. Pour ce faire, j'ai réalisé, en colaboration avec deux de mes camarades, un intranet intégré aux différents environements de travail nécessaires à notre activité."
         }
     },
     "Crédit Agricole": {
