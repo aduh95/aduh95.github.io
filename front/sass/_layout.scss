@@ -1,7 +1,5 @@
 $body_width: 1920px;
 
-$icons: (date calendar) (place map-marker) (website globe);
-
 body {
     display: flex;
     flex-flow: row wrap;
@@ -62,20 +60,17 @@ body {
             }
         }
 
-        @each $class, $icon in $icons {
-            & .#{$class} {
-                @include add-fa-icon($icon);
-            }
-        }
-
-        & .website>a {
-            color: inherit;
-            text-decoration: none;
-        }
 
         & ul {
             &>li{
                 display: inline-block;
+                & a {
+                    color: inherit;
+                    text-decoration: none;
+                }
+                &::before {
+                    padding-right: .3em;
+                }
                 &::after {
                     content: "|";
                     padding: 0 .5rem;
