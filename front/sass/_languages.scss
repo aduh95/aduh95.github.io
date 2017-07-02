@@ -83,8 +83,8 @@
                 transform: rotate(3.6deg * $i);
             }
         }
-        @for $i from 51 through 100 {
-            &[value="#{$i/100}"] {
+        @for $i from 5 through 10 {
+            &[value^="#{$i/10}"] {
                 & .fill {
                     @extend %bar;
                     transform: rotate(180deg);
