@@ -41,7 +41,7 @@ $sections = [
 ];
 
 foreach ($sections as $view_name => $section_name) {
-    $section = $main->section()->attr('class', 'col-md-12');
+    $section = $main->section()->attr('class', $view_name.' col-md-12');
 
     foreach ($section_name as $lang => $value) {
         $section->h3()->attr('lang', $lang)->text($value);
