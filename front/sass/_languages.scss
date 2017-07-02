@@ -64,6 +64,9 @@
         position: relative;
         appearance: none;
         font-size: 3rem;
+        @media print {
+            font-size: 2.5rem;
+        }
         width: 1em;
         height: 1em;
         border-radius: 50%;

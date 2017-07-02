@@ -1,0 +1,8 @@
+@media print {
+    :root {
+        font-size: 12px;
+    }
+    summary {
+        display: none;
+    }
+}

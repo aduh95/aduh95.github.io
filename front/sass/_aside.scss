@@ -11,6 +11,9 @@ body>aside {
             text-decoration: none;
         }
 
+        @media print {
+            padding-left: 1rem;
+        }
     }
     li {
         & .fa {
@@ -19,4 +22,5 @@ body>aside {
 
         list-style: none;
     }
+
 }

@@ -80,6 +80,7 @@ body {
                 }
                 &:empty, &:last-child {
                     &::after {
+                        visibility: hidden;
                         font-size: 0;
                     }
                 }
