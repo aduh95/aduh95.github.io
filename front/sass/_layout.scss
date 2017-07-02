@@ -48,11 +48,11 @@ body {
         flex-wrap: wrap;
 
         & h3 {
+            // Usefull for mobile device
             z-index: -1;
         }
         & h5 {
             display: inline-block;
-            // float: right;
             &~h6 {
                 display: inline-block;
                 &::before {

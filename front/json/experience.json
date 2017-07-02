@@ -1,4 +1,39 @@
 {
+    "Freelance": {
+        "mission": {
+            "en": "Front-end developer",
+            "fr": "Développeur front"
+        },
+        "info": {
+            "date":{
+                "begin": "2017-01-09",
+                "end": "now"
+            },
+            "place": {
+                "link":"https://www.google.fr/maps/place/Angers/@47.481983,-0.6331467,12z/data=!3m1!4b1!4m5!3m4!1s0x480878da00e58e9d:0x40d37521e0d9c30!8m2!3d47.478419!4d-0.563166",
+                "text":"Angers, France"
+            },
+            "website": "https://vuarnet.com"
+        },
+        "description": {
+            "en": "",
+            "fr": ""
+        },
+        "technologies": [
+            {
+                "name": "Windows Server",
+                "icon": "windows"
+            },
+            {
+                "name": "ASP.NET",
+                "icon": "code"
+            },
+            {
+                "name": "JavaScript",
+                "icon": "code"
+            }
+        ]
+    },
     "ProSE": {
         "mission": {
             "en": "Android developer",
@@ -33,16 +68,16 @@
                 "icon": "linux"
             },
             {
-                "name": "C",
-                "icon": "code"
-            },
-            {
                 "name": "PHP",
                 "icon": "code"
             },
             {
                 "name": "Apache",
                 "icon": "server"
+            },
+            {
+                "name": "C",
+                "icon": "code"
             }
         ]
     },

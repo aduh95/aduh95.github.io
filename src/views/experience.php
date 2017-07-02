@@ -66,9 +66,14 @@ return function ($doc, $section) {
             }
         }
 
-
-        foreach ($infos['description'] as $lang => $text) {
-            $article->p(['lang' => $lang, 'class' => 'mission'])->text($text);
+        if (!empty($infos['description'])) {
+            $details = $article->details();
+            $details->summary()->append()
+                ()->span(['lang'=>'en'], 'More information')
+                ()->span(['lang'=>'fr'], 'En savoir plus');
+            foreach ($infos['description'] as $lang => $text) {
+                $details->p(['lang' => $lang, 'class' => 'mission'])->text($text);
+            }
         }
 
         if (!empty($infos['technologies'])) {
