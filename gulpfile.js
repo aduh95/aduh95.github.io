@@ -30,6 +30,10 @@ const SASS_SRC = FRONT_ROOT + '/sass/**/*.scss';
 const TS_SRC   = FRONT_ROOT + '/ts/*.ts';
 const TS_DEF = PROJECT_ROOT + '/typings/**/*.d.ts';
 
+const JSON_FILES = FRONT_ROOT+"json/*.json";
+const PHP_SRC = PROJECT_ROOT+"/src/*/*.php";
+
+
 const FONT_FILES = [
     "font-awesome/fonts/fontawesome-webfont.woff2",
     "font-awesome/fonts/fontawesome-webfont.woff",
@@ -149,6 +153,10 @@ gulp.task('watch', function(){
 
 	gulp.watch([TS_SRC,TS_DEF], ['typescript'])
 	  .on('change', changeHandler);
+
+    gulp.watch([JSON_FILES, PHP_SRC])
+        .on("change", changeHandler)
+        .on("change", function (event) {livereload.reload(event.path)});
 
 	gulp.watch("composer.lock", ["composer-install"])
 	  .on("change", changeHandler);
