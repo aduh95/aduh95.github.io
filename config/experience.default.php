@@ -7,3 +7,5 @@ const ICONS = array(
     'place' => 'map-marker',
     'website' => 'globe',
 );
+
+const DATE_FORMAT = 'Y-m-d';

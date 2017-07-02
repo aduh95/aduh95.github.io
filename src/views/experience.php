@@ -9,6 +9,7 @@
 namespace aduh95\Resume;
 
 use const aduh95\Resume\CONFIG\EXPERIENCE\ICONS;
+use const aduh95\Resume\CONFIG\EXPERIENCE\DATE_FORMAT;
 
 require_once '../vendor/autoload.php';
 
@@ -36,14 +37,14 @@ return function ($doc, $section) {
                     $end = date_create($value['end']);
                     if ($begin->diff($end)->m) {
                         $li->span(['lang'=>'en'])->append()
-                            ()->text('From ')->time(['datetime'=>$value['begin']])
+                            ()->text('From ')->time(['datetime'=>$begin->format(DATE_FORMAT)])
                                 ->text($begin->format('F Y'))
-                            ()->text(' to ')->time(['datetime'=>$value['end']])
+                            ()->text(' to ')->time(['datetime'=>$end->format(DATE_FORMAT)])
                                 ->text($end->format('F Y'));
                         $li->span(['lang'=>'fr'])->append()
-                            ()->text('De ')->time(['datetime'=>$value['begin']])
+                            ()->text('De ')->time(['datetime'=>$begin->format(DATE_FORMAT)])
                                 ->text($begin->format('m/Y'))
-                            ()->text(' à ')->time(['datetime'=>$value['end']])
+                            ()->text(' à ')->time(['datetime'=>$end->format(DATE_FORMAT)])
                                 ->text($end->format('m/Y'));
                     } else {
                         $li->span(['lang'=>'en'])
