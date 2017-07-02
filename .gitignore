@@ -2,5 +2,7 @@
 /node_modules/
 /typings/
 /vendor/
+/dist/
 /public/dist
 /public/fonts
+/public/img

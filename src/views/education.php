@@ -26,7 +26,7 @@ return function ($doc, $sectionElem) {
 
 
         foreach ($section['description'] as $lang => $text) {
-            $article->p()->text($text)->attr('lang', $lang);
+            // $article->p()->text($text)->attr('lang', $lang);
         }
 
 
