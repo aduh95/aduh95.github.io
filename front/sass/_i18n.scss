@@ -1,0 +1,13 @@
+$languages: en fr;
+
+:root {
+    @each $lang in $languages {
+        @each $otherLang in $languages {
+            @if $otherLang != $lang {
+                &[lang=#{$lang}] [lang=#{$otherLang}] {
+                    display: none;
+                }
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-module aduh95.resume.linkToWebsite {
+module aduh95.resume.i18n {
 
     if (!location.hash) {
         let locale =  (<any>window).navigator.userLanguage || window.navigator.language;
