@@ -5,8 +5,18 @@
 @import '_aside';
 @import '_languages';
 
-[lang=fr]:not(html) {
-    display: none;
+$languages: en fr;
+
+:root {
+    @each $lang in $languages {
+        @each $otherLang in $languages {
+            @if $otherLang != $lang {
+                &[lang=#{$lang}] [lang=#{$otherLang}] {
+                    display: none;
+                }
+            }
+        }
+    }
 }
 
 // @media screen {
