@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const util = require('gulp-util');
+const fs = require('fs');
 
 const sass = require('gulp-sass');
 const ts = require('gulp-typescript');
@@ -16,6 +17,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 const uglifycss = require('gulp-cssnano');
 
+const exec = require('child_process').exec;
 const concat = require('gulp-concat');
 const rm = require( 'gulp-rm' );
 const rename = require( 'gulp-rename' );
@@ -114,20 +116,16 @@ gulp.task('vendor_dependencies', function() {
 });
 
 gulp.task("clean-uglify", function () {
-    gulp.src(DEST+"concat.**", { read: false })
+    gulp.src(DEST+"*.min.*", { read: false })
         .pipe(rm());
 });
-gulp.task("uglify", ["clean-uglify"], function () {
-    gulp.src([DEST + "vendor.js", DEST + "global.js"])
-        .pipe(concat("concat.js"))
-        .pipe(gulp.dest(DEST))
+gulp.task("uglify", ["clean-uglify", "sass", "vendor_dependencies", "typescript"], function () {
+    gulp.src([DEST + "global.js"])
         .pipe(uglify())
         .pipe(rename({suffix:".min"}))
         .pipe(gulp.dest(DEST));
 
-    gulp.src(DEST + "*.css")
-        .pipe(concat("concat.css"))
-        .pipe(gulp.dest(DEST))
+    gulp.src(DEST + "global.css")
         .pipe(uglifycss())
         .pipe(rename({suffix:".min"}))
         .pipe(gulp.dest(DEST));
@@ -171,11 +169,25 @@ gulp.task("init", function () {
 	composer("create-project");
 });
 
-gulp.task("production", ["sass", "vendor_dependencies", "typescript", "cms"], function () {
-	composer({
-		"no-dev": true,
-        "optimize-autoloader": true
-	});
-    gulp.start("uglify");
-	gulp.start("uglify-cms");
+gulp.task("production", /*["uglify"],*/ function () {
+	// composer({
+	// 	"no-dev": true,
+    //     "optimize-autoloader": true
+	// });
+
+
+    exec('php public/index.php --one-file', {maxBuffer: 500<<10}, function (err, stdout, stderr) {
+        if (err) {
+            errorHandler(err);
+            console.log(stderr);
+        } else {
+            fs.writeFile(
+                require("path").join(__dirname, PROJECT_ROOT + "/dist/cv.html"),
+                stdout,
+                function () {
+                    console.log("Done");
+                }
+            );
+        }
+      });
 })

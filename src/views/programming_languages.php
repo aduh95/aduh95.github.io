@@ -8,8 +8,6 @@
 
 namespace aduh95\Resume;
 
-require_once '../vendor/autoload.php';
-
 
 return function ($doc, $sectionElem) {
     $sectionElem->attr('class', 'col-md-6 meter-section');

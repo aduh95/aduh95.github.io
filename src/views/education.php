@@ -8,8 +8,6 @@
 
 namespace aduh95\Resume;
 
-require_once '../vendor/autoload.php';
-
 
 return function ($doc, $sectionElem) {
     foreach (JSONSource::parse('education') as $section) {

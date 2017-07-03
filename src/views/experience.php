@@ -11,8 +11,6 @@ namespace aduh95\Resume;
 use const aduh95\Resume\CONFIG\EXPERIENCE\ICONS;
 use const aduh95\Resume\CONFIG\EXPERIENCE\DATE_FORMAT;
 
-require_once '../vendor/autoload.php';
-
 
 return function ($doc, $section) {
     foreach (JSONSource::parse('experience') as $name => $infos) {

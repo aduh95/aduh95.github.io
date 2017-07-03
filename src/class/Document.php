@@ -4,6 +4,7 @@ namespace aduh95\Resume;
 
 use aduh95\HTMLGenerator\Document as ParentDocument;
 use RuntimeException;
+use const aduh95\Resume\CONFIG\GENERAL\SRC_DIR;
 use const aduh95\Resume\CONFIG\GENERAL\CACHE_DIR;
 use const aduh95\Resume\CONFIG\GENERAL\CACHE_PERSISTANT;
 
@@ -29,13 +30,15 @@ class Document extends ParentDocument
     protected $pageContainer;
 
     protected $cacheURI;
+    protected $outputOneFile = false;
 
     public $autoOut = true;
 
     /**
      * @param string $title The title of the document
+     * @param bool $outputOneFile Flag to embed scripts and style into the generated HTML
      */
-    public function __construct($title)
+    public function __construct($title, $outputOneFile = false)
     {
         try {
             $this->loadFromCache();
@@ -52,9 +55,19 @@ class Document extends ParentDocument
             $this->head->meta('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no');
 
             if (!PROD_ENVIRONMENT) {
-                $this->head->style(CONFIG\MEDIAS\CSS_SRC);
-                // $this->head->script(CONFIG\MEDIAS\VENDOR_JS_SRC);
-                $this->head->script(CONFIG\MEDIAS\JS_SRC);
+                $this->outputOneFile = $outputOneFile;
+                if ($this->outputOneFile) {
+                    $this->head->append(
+                        $this->dom->createCDATASection(
+                            '<style>'.
+                            file_get_contents(SRC_DIR . DIRECTORY_SEPARATOR . CONFIG\MEDIAS\UGLY_CSS_SRC).
+                            '</style>'
+                        )
+                    );
+                } else {
+                    $this->head->style(CONFIG\MEDIAS\CSS_SRC);
+                    $this->head->script(CONFIG\MEDIAS\JS_SRC);
+                }
             } else {
                 $this->head->style(CONFIG\MEDIAS\UGLY_CSS_SRC);
                 $this->head->script(CONFIG\MEDIAS\UGLY_JS_SRC);
@@ -83,6 +96,24 @@ class Document extends ParentDocument
         if (!is_readable($this->cacheURI)) {
             if (PROD_ENVIRONMENT) {
                 $this->getBody()->script()->append($this->dom->createCDATASection(CONFIG\MAIL_CHIMP\GOOGLE_ANALYTICS));
+            } else if ($this->outputOneFile) {
+                $list = $this->getBody()->getElementsByTagName('img');
+
+                for ($i = $list->length - 1; $i >= 0; --$i) {
+                    $list->item($i)->setAttribute(
+                        'src',
+                        'data:img/jpeg;base64,'.base64_encode(
+                            file_get_contents(
+                                SRC_DIR . DIRECTORY_SEPARATOR . $list->item($i)->getAttribute('src')
+                            )
+                        )
+                    );
+                }
+                $this->getBody()->script()->append(
+                    $this->dom->createCDATASection(
+                        file_get_contents(SRC_DIR . DIRECTORY_SEPARATOR .CONFIG\MEDIAS\UGLY_JS_SRC)
+                    )
+                );
             }
 
             $this->easyLoading();
@@ -94,7 +125,7 @@ class Document extends ParentDocument
             }
         }
 
-        $headers = apache_request_headers();
+        $headers = function_exists('apache_request_headers') ? apache_request_headers() : [];
 
         $Etag = $headers['If-None-Match'] ?? null;
         $sha1 = sha1_file($this->cacheURI);

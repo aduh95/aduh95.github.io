@@ -7,9 +7,9 @@
 
 namespace aduh95\Resume;
 
-require_once '../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
-$doc = new Document('Résumé');
+$doc = new Document('Résumé', $argc > 1 && $argv[1] === '--one-file');
 
 
 
