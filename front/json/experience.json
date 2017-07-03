@@ -176,7 +176,7 @@
             "website": "https://www.ca-cmds.fr"
         },
         "description": {
-            "en":"",
+            "en":"During the time I spent working with Crédit-Agricole, at the enterprises' bank office, my task was to welcome customers who come by or phone.",
             "fr": "Au sein de l'agence entreprise de Saintes du Crédit-Agricole, j'ai appris à gérer la relation client professionnel, nottament par l'accueil téléphonique et physique. Cette experience m'a également permi de comprendre le fonctionnement interne des mécanismes bancaires."
         },
         "technologies": [
@@ -188,8 +188,8 @@
     },
     "Journées Paysannes": {
         "mission": {
-            "en": "",
-            "fr": "Developpement web de solutions de gestion"
+            "en": "Managment solution developer",
+            "fr": "Developpement solutions de gestion"
         },
         "info": {
             "date":{
@@ -203,7 +203,7 @@
             "website": "http://www.journees-paysannes.fr"
         },
         "description": {
-            "en":"",
+            "en":"This French association needed a custom solution to handle their subscribers batabase.",
             "fr": "En août 2013, l'association des Journées Paysannes a fait appel à moi pour mettre à jour leur système de gestion interne par une solution plsu moderne et plus adaptée à leurs besoins."
         },
         "technologies": [
