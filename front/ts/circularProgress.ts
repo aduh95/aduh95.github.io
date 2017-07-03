@@ -44,6 +44,9 @@ module aduh95.resume.circularProgress {
             newElem.classList.add(DYNAMIC_CLASS);
             newElem.dataset.title = elem.title;
 
+            // Needed to use CSS hover on iOS
+            newElem.setAttribute("onclick", "");
+
             insertAfter(newElem, elem);
             elem.hidden = true;
         }
