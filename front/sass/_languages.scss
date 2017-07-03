@@ -1,8 +1,8 @@
 %bar {
     position: absolute;
     border: 0.08em solid $red_400_dark;
-    width: 0.84em;
-    height: 0.84em;
+    width: 1em;
+    height: 1em;
     clip: rect(0em, 0.5em, 1em, 0em);
     border-radius: 50%;
     transform: rotate(0deg);
@@ -20,12 +20,7 @@
     & h5 {
         display: block;
     }
-    & meter {
-        width: 80%;
-        min-width: 1em;
-        padding: .1rem;
-        transform: translateX(10%);
-    }
+
     &>article {
         flex-grow: 1;
         display: flex;
@@ -38,10 +33,13 @@
                 font-weight: bold;
             }
 
-            & .dynamic {
-                &.balloon::before {
+            & meter:not(:empty) {
+                &+.dynamic::before {
                     opacity: 1;
                 }
+            }
+
+            & .dynamic {
                 &::after {
                     top: 004%;
                     left: 004%;
@@ -60,9 +58,35 @@
         }
     }
 
+    & meter {
+        width: 80%;
+        min-width: 1em;
+        padding: .1rem;
+        transform: translateX(10%);
+
+        @for $i from 1 through 100 {
+            &[value="#{$i/100}"]+.dynamic .bar {
+                transform: rotate(3.6deg * $i);
+            }
+        }
+        @for $i from 5 through 10 {
+            &[value^="#{$i/10}"]+.dynamic {
+                & .fill {
+                    @extend %bar;
+                    transform: rotate(180deg);
+                }
+                & .bar::after {
+                    transform: rotate(180deg);
+                }
+                & .slice {
+                    clip: rect(auto, auto, auto, auto);
+                }
+            }
+        }
+    }
+
     & .dynamic {
         position: relative;
-        appearance: none;
         font-size: 3rem;
         @media print {
             font-size: 2.5rem;
@@ -78,27 +102,6 @@
 
         & *::before, & *::after {
             box-sizing: content-box;
-        }
-
-
-        @for $i from 1 through 100 {
-            &[value="#{$i/100}"] .bar {
-                transform: rotate(3.6deg * $i);
-            }
-        }
-        @for $i from 5 through 10 {
-            &[value^="#{$i/10}"] {
-                & .fill {
-                    @extend %bar;
-                    transform: rotate(180deg);
-                }
-                & .bar::after {
-                    transform: rotate(180deg);
-                }
-                & .slice {
-                    clip: rect(auto, auto, auto, auto);
-                }
-            }
         }
 
         & > span {
@@ -142,7 +145,7 @@
             transform: translate(-50%, -5px);
         }
         &::after {
-            content: attr(title);
+            content: attr(data-title);
             color: $red_50_dark;
             font-size: .3em;
             line-height: 2.75em;
