@@ -1,4 +1,13 @@
 body>aside {
+    & header>h3 {
+        margin: auto;
+        text-align: center;
+        &>img {
+            border-radius: 50%;
+            max-height: 10rem;
+            width: auto;
+        }
+    }
     & ul.personal_information {
         display: flex;
         flex-direction: column;

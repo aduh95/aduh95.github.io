@@ -14,7 +14,12 @@ require_once '../vendor/autoload.php';
 return function ($doc) {
     $info_list = $doc()->aside()->append()
         ()->header()->append()
-            ()->h3()->img(['src'=>CONFIG\MEDIAS\IMG_DIR.'antoineduhamel.jpg', 'alt'=>CONFIG\MY_INFO\PUBLIC_NAME])()
+            ()->h3()->img([
+                'src'=>CONFIG\MEDIAS\IMG_DIR.'antoineduhamel.jpg',
+                'alt'=>CONFIG\MY_INFO\PUBLIC_NAME,
+                'width'=>1400,
+                'height'=>1600
+            ])()
             ()->ul()->attr('class', 'personal_information');
     $skills_list = $info_list
             ()
