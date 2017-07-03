@@ -6,13 +6,13 @@
 
 The aim of this to project is to build from scratch a software engine generating
 a multilingual Résumé, to put into practice my knowledge of web development. You
-can see the HTML version on [https://aduh95.github.io/].
+can see the HTML version on [aduh95.github.io](https://aduh95.github.io/).
 
 Please note I do not wish you to change my work to adapt it for your own
 curriculum vitae, but you are welcome to read the source code to help you
 build your own.
 
-### Run on your own environment
+### Install locally
 
 First, you have to ensure you these dependencies installed and available on your path:
 
@@ -30,8 +30,12 @@ I also suggest you to have the Livereload browser extension:
 
 Then you can proceed to the installation:
 
-1. Clone this repository
-2. Run `composer create-project` in the project directory
+1. Clone this repository;
+2. Run `composer create-project` in the project directory;
 3. It's done!
 
-Now, you just have to type `gulp` in the project directory to have your PHP server up and running.
+### Run locally
+
+1. Run `gulp` in the project directory;
+2. Visit `localhost:8080` with your navigator;
+3. *Optional* Activate the **livereload** extension.
