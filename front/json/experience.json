@@ -2,7 +2,7 @@
     "Freelance": {
         "mission": {
             "en": "Front-end developer",
-            "fr": "Développeur front"
+            "fr": "Développeur web (front-end)"
         },
         "info": {
             "date":{
@@ -16,8 +16,8 @@
             "website": "https://vuarnet.com"
         },
         "description": {
-            "en": "",
-            "fr": ""
+            "en": "Along side my formation at the ESEO, Bonjour Paris asked me to continue to work for them on the Vuarnet website we have been building. My task was to code the evolutions of their current e-shop website.",
+            "fr": "En parrallèle de ma formation à l'ESEO, Bonjour Paris a souhaité que je continue à m'occuper des évolutions sur le site e-commerce de Vuarnet."
         },
         "technologies": [
             {
