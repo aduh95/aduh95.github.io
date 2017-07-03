@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Antoine du HAMEL",
-  "license": "UNLICENSED",
+  "license": "CC-BY-NC-ND-4.0",
   "homepage": "https://antoine.du-hamel.fr",
   "devDependencies": {
     "gulp-connect": "^5.0.0",

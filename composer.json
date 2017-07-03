@@ -2,7 +2,7 @@
     "name": "aduh95/resume",
     "description": "My résumé",
     "type": "project",
-    "license": "proprietary",
+    "license": "CC-BY-NC-ND-4.0",
     "authors": [
         {
             "name": "Antoine du HAMEL",
@@ -23,22 +23,22 @@
     },
     "scripts": {
         "post-create-project-cmd": [
-			"npm install",
+			"yarn install",
 			"typings install",
 			"echo \"Project is ready!\"",
 			"echo \"You can now run the `gulp` command to get started.\""
 		],
 		"pre-install-cmd": [
-			"npm install --production"
+			"yarn install"
 		],
 		"pre-update-cmd": [
-			"npm update",
+			"yarn update",
             "typings update"
 		],
-		"production" : [
-			"php -r \"try{require 'vendor/autoload.php';}catch(Throwable \\$e){echo 'Exception:'.\\$e;exit(9);}\"",
+		"one-file" : [
 			"gulp clean-uglify",
-			"gulp production"
+			"gulp uglify",
+			"gulp one-file"
 		]
     }
 }
