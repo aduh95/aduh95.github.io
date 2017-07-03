@@ -19,6 +19,11 @@
         "href": "https://www.google.fr/maps/place/La+Merci+Dieu,+86270+La+Roche-Posay/@46.764378,0.834581,17z/data=!3m1!4b1!4m5!3m4!1s0x47fc59a1ff228a7b:0x54bb6a6f82327164!8m2!3d46.764378!4d0.836775",
         "text": "5 La Merci-Dieu, 86270 La Roche-Posay, France"
     },
+    "website": {
+        "icon": "globe",
+        "href": "https://aduh95.github.io/",
+        "text": "aduh95.github.io"
+    },
     "github": {
         "icon": "github",
         "href": "https://www.github.com/aduh95",

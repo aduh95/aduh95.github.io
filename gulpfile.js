@@ -182,7 +182,7 @@ gulp.task("one-file", function () {
                     errorHandler(err);
                 } else {
                     fs.writeFile(
-                        require("path").join(__dirname, PROJECT_ROOT + "/dist/cv.html"),
+                        require("path").join(__dirname, PROJECT_ROOT + "/index.html"),
                         stdout.replace(
                             /<!--style:(.+)-->/,
                             (match, $1) => {
