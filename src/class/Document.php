@@ -4,6 +4,7 @@ namespace aduh95\Resume;
 
 use aduh95\HTMLGenerator\Document as ParentDocument;
 use RuntimeException;
+use DOMComment;
 use const aduh95\Resume\CONFIG\GENERAL\SRC_DIR;
 use const aduh95\Resume\CONFIG\GENERAL\CACHE_DIR;
 use const aduh95\Resume\CONFIG\GENERAL\CACHE_PERSISTANT;
@@ -58,11 +59,7 @@ class Document extends ParentDocument
                 $this->outputOneFile = $outputOneFile;
                 if ($this->outputOneFile) {
                     $this->head->append(
-                        $this->dom->createCDATASection(
-                            '<style>'.
-                            SRC_DIR . DIRECTORY_SEPARATOR . CONFIG\MEDIAS\UGLY_CSS_SRC.
-                            '</style>'
-                        )
+                        new DOMComment('style:'.SRC_DIR . DIRECTORY_SEPARATOR . CONFIG\MEDIAS\UGLY_CSS_SRC)
                     );
                 } else {
                     $this->head->style(CONFIG\MEDIAS\CSS_SRC);

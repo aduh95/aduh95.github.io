@@ -184,11 +184,10 @@ gulp.task("one-file", function () {
                     fs.writeFile(
                         require("path").join(__dirname, PROJECT_ROOT + "/dist/cv.html"),
                         stdout.replace(
-                            /<style>(.+)<\/style>/,
+                            /<!--style:(.+)-->/,
                             (match, $1) => {
-                                let css=fs.readFileSync($1);
-                                console.log(css);
-                                return "<style>"+css.toString()
+                                // embeding CSS and Font Awesome
+                                return "<style>"+fs.readFileSync($1).toString()
                                 .replace('url(../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format("embedded-opentype"),url(../fonts/fontawesome-webfont.woff2?v=4.7.0) format("woff2"),', '')
                                 .replace(',url(../fonts/fontawesome-webfont.ttf?v=4.7.0) format("truetype"),url(../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format("svg")', '')
                                 .replace(
