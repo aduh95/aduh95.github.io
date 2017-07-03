@@ -60,7 +60,7 @@ class Document extends ParentDocument
                     $this->head->append(
                         $this->dom->createCDATASection(
                             '<style>'.
-                            file_get_contents(SRC_DIR . DIRECTORY_SEPARATOR . CONFIG\MEDIAS\UGLY_CSS_SRC).
+                            SRC_DIR . DIRECTORY_SEPARATOR . CONFIG\MEDIAS\UGLY_CSS_SRC.
                             '</style>'
                         )
                     );

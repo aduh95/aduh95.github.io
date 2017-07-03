@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const util = require('gulp-util');
 const fs = require('fs');
+const DataURI = require('datauri');
 
 const sass = require('gulp-sass');
 const ts = require('gulp-typescript');
@@ -35,11 +36,12 @@ const TS_DEF = PROJECT_ROOT + '/typings/**/*.d.ts';
 const JSON_FILES = FRONT_ROOT+"json/*.json";
 const PHP_SRC = PROJECT_ROOT+"/src/*/*.php";
 
-
+const NPM_ROOT = PROJECT_ROOT+"/node_modules/";
+const FONT_ROOT = NPM_ROOT+"font-awesome/fonts/";
 const FONT_FILES = [
-    "font-awesome/fonts/fontawesome-webfont.woff2",
-    "font-awesome/fonts/fontawesome-webfont.woff",
-    "font-awesome/fonts/fontawesome-webfont.ttf"
+    "fontawesome-webfont.woff2",
+    "fontawesome-webfont.woff",
+    "fontawesome-webfont.ttf"
 ];
 
 const DEST = PROJECT_ROOT + '/public/dist/';
@@ -101,7 +103,7 @@ gulp.task('vendor_dependencies', function() {
             return name.endsWith(".js");
         });
     let fontFiles = FONT_FILES.map(function (cv) {
-        return PROJECT_ROOT+"/node_modules/"+cv;
+        return FONT_ROOT+cv;
     });
 
     // gulp.src(JSfiles)
@@ -169,25 +171,38 @@ gulp.task("init", function () {
 	composer("create-project");
 });
 
-gulp.task("production", /*["uglify"],*/ function () {
-	// composer({
-	// 	"no-dev": true,
-    //     "optimize-autoloader": true
-	// });
-
-
+gulp.task("one-file", function () {
     exec('php public/index.php --one-file', {maxBuffer: 500<<10}, function (err, stdout, stderr) {
         if (err) {
             errorHandler(err);
             console.log(stderr);
         } else {
-            fs.writeFile(
-                require("path").join(__dirname, PROJECT_ROOT + "/dist/cv.html"),
-                stdout,
-                function () {
-                    console.log("Done");
+            (new DataURI()).encode(FONT_ROOT + FONT_FILES[1], (err, content) => {
+                if (err) {
+                    errorHandler(err);
+                } else {
+                    fs.writeFile(
+                        require("path").join(__dirname, PROJECT_ROOT + "/dist/cv.html"),
+                        stdout.replace(
+                            /<style>(.+)<\/style>/,
+                            (match, $1) => {
+                                let css=fs.readFileSync($1);
+                                console.log(css);
+                                return "<style>"+css.toString()
+                                .replace('url(../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format("embedded-opentype"),url(../fonts/fontawesome-webfont.woff2?v=4.7.0) format("woff2"),', '')
+                                .replace(',url(../fonts/fontawesome-webfont.ttf?v=4.7.0) format("truetype"),url(../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format("svg")', '')
+                                .replace(
+                                    '../fonts/fontawesome-webfont.woff?v=4.7.0',
+                                    content
+                                )+"</style>";
+                            }
+                        ),
+                        function () {
+                          console.log("Done");
+                        }
+                    );
                 }
-            );
+            });
         }
-      });
+    });
 })

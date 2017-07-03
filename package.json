@@ -19,6 +19,7 @@
     "balloon-css": "^0.4.0",
     "bootstrap": "alpha",
     "cssnano": "rc",
+    "datauri": "^1.0.5",
     "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
