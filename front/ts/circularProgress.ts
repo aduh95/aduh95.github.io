@@ -1,7 +1,6 @@
 module aduh95.resume.circularProgress {
 
     const DYNAMIC_CLASS = "dynamic";
-    const BALLOON_CLASS = "balloon";
 
     let insertAfter = function (newNode: Node, referenceNode: Node) {
         if (referenceNode.nextSibling) {
@@ -44,7 +43,7 @@ module aduh95.resume.circularProgress {
             newElem.classList.add(DYNAMIC_CLASS);
             newElem.dataset.title = elem.title;
 
-            // Needed to use CSS hover on iOS
+            // Needed to use CSS hover on iOS (http://www.codehaven.co.uk/fix-css-hover-on-iphone-ipad/)
             newElem.setAttribute("onclick", "");
 
             insertAfter(newElem, elem);

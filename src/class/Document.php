@@ -6,8 +6,6 @@ use aduh95\HTMLGenerator\Document as ParentDocument;
 use RuntimeException;
 use DOMComment;
 use const aduh95\Resume\CONFIG\GENERAL\SRC_DIR;
-use const aduh95\Resume\CONFIG\GENERAL\CACHE_DIR;
-use const aduh95\Resume\CONFIG\GENERAL\CACHE_PERSISTANT;
 
 /**
 * The default Document for the website
@@ -30,7 +28,6 @@ class Document extends ParentDocument
 
     protected $pageContainer;
 
-    protected $cacheURI;
     protected $outputOneFile = false;
 
     public $autoOut = true;
@@ -41,121 +38,80 @@ class Document extends ParentDocument
      */
     public function __construct($title, $outputOneFile = false)
     {
-        try {
-            $this->loadFromCache();
-        } catch (RuntimeException $e) {
-            parent::__construct(CONFIG\MY_INFO\PUBLIC_NAME.' | '.$title);
+        parent::__construct(CONFIG\MY_INFO\PUBLIC_NAME.' | '.$title);
 
-            $this->head->meta(['charset'=>'utf-8']);
-            $this->addView('easter_egg');
+        $this->head->meta(['charset'=>'utf-8']);
+        $this->addView('easter_egg', $outputOneFile);
 
-            $this->head->meta('description', CONFIG\MY_INFO\WEBSITE_DESCRIPTION);
-            $this->head->meta('author', CONFIG\MY_INFO\PUBLIC_NAME);
+        $this->head->meta('description', CONFIG\MY_INFO\WEBSITE_DESCRIPTION);
+        $this->head->meta('author', CONFIG\MY_INFO\PUBLIC_NAME);
 
-            $this->head->link(['rel'=>'icon', 'type'=>'image/png', 'href'=>format\getHref(CONFIG\MEDIAS\FAVICON)]);
-            $this->head->meta('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no');
+        $this->head->link([
+            'rel'=>'icon',
+            'type'=>'image/png',
+            'href'=>$outputOneFile ?
+                'data:img/png;base64,'.base64_encode(file_get_contents(
+                    SRC_DIR . DIRECTORY_SEPARATOR .CONFIG\MEDIAS\FAVICON
+                )) :
+                format\getHref(CONFIG\MEDIAS\FAVICON)
+        ]);
+        $this->head->meta('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no');
 
-            if (!PROD_ENVIRONMENT) {
-                $this->outputOneFile = $outputOneFile;
-                if ($this->outputOneFile) {
-                    $this->head->append(
-                        new DOMComment('style:'.SRC_DIR . DIRECTORY_SEPARATOR . CONFIG\MEDIAS\UGLY_CSS_SRC)
-                    );
-                } else {
-                    $this->head->style(CONFIG\MEDIAS\CSS_SRC);
-                    $this->head->script(CONFIG\MEDIAS\JS_SRC);
-                }
+        if (!PROD_ENVIRONMENT) {
+            $this->outputOneFile = $outputOneFile;
+            if ($this->outputOneFile) {
+                $this->head->append(
+                    new DOMComment('style:'.SRC_DIR . DIRECTORY_SEPARATOR . CONFIG\MEDIAS\UGLY_CSS_SRC)
+                );
             } else {
-                $this->head->style(CONFIG\MEDIAS\UGLY_CSS_SRC);
-                $this->head->script(CONFIG\MEDIAS\UGLY_JS_SRC);
+                $this->head->style(CONFIG\MEDIAS\CSS_SRC);
+                $this->head->script(CONFIG\MEDIAS\JS_SRC);
             }
-        }
-    }
-
-    public function loadFromCache()
-    {
-        if (!is_dir(CACHE_DIR)) {
-            mkdir(CACHE_DIR, 0750);
-        }
-
-        $callingFile = (new RuntimeException)->getTrace();
-        $this->cacheURI = CACHE_DIR . DIRECTORY_SEPARATOR . strtr(base64_encode(array_pop($callingFile)['file']), '=/+', '-_,');
-
-        if (is_readable($this->cacheURI)) {
-            exit;
         } else {
-            throw new RuntimeException('This document is not cached yet');
+            $this->head->style(CONFIG\MEDIAS\UGLY_CSS_SRC);
+            $this->head->script(CONFIG\MEDIAS\UGLY_JS_SRC);
         }
     }
 
     public function __destruct()
     {
-        if (!is_readable($this->cacheURI)) {
-            if (PROD_ENVIRONMENT) {
-                $this->getBody()->script()->append($this->dom->createCDATASection(CONFIG\MAIL_CHIMP\GOOGLE_ANALYTICS));
-            } else if ($this->outputOneFile) {
-                $list = $this->getBody()->getElementsByTagName('img');
+        if (PROD_ENVIRONMENT) {
+            $this->getBody()->script()->append(
+                $this->dom->createCDATASection(CONFIG\MAIL_CHIMP\GOOGLE_ANALYTICS)
+            );
+        } else if ($this->outputOneFile) {
 
-                for ($i = $list->length - 1; $i >= 0; --$i) {
-                    $list->item($i)->setAttribute(
-                        'src',
-                        'data:img/jpeg;base64,'.base64_encode(
-                            file_get_contents(
-                                SRC_DIR . DIRECTORY_SEPARATOR . $list->item($i)->getAttribute('src')
-                            )
+            // Inlining JPEG image(s)
+            $list = $this->getBody()->getElementsByTagName('img');
+            for ($i = $list->length - 1; $i >= 0; --$i) {
+                $list->item($i)->setAttribute(
+                    'src',
+                    'data:img/jpeg;base64,'.base64_encode(
+                        file_get_contents(
+                            SRC_DIR . DIRECTORY_SEPARATOR . $list->item($i)->getAttribute('src')
                         )
-                    );
-                }
-                $this->getBody()->script()->append(
-                    $this->dom->createCDATASection(
-                        file_get_contents(SRC_DIR . DIRECTORY_SEPARATOR .CONFIG\MEDIAS\UGLY_JS_SRC)
                     )
                 );
             }
 
-            $this->easyLoading();
-
-            if ($this->autoOut) {
-                $cacheFile = fopen($this->cacheURI, 'w');
-                fwrite($cacheFile, gzencode($this->saveHTML()));
-                fclose($cacheFile);
-            }
+            // Inlining minified JS
+            $this->getBody()->script()->append(
+                $this->dom->createCDATASection(
+                    file_get_contents(SRC_DIR . DIRECTORY_SEPARATOR .CONFIG\MEDIAS\UGLY_JS_SRC)
+                )
+            );
         }
 
-        $headers = function_exists('apache_request_headers') ? apache_request_headers() : [];
-
-        $Etag = $headers['If-None-Match'] ?? null;
-        $sha1 = sha1_file($this->cacheURI);
-
-        if ($Etag === $sha1) {
-            header('HTTP/1.0 304 Not Modified');
-        } else {
-            header('ETag: '.$sha1);
-
-            if (PROD_ENVIRONMENT && preg_match('#gzip#', $headers['Accept-Encoding'])) {
-                header('Content-Encoding: gzip');
-                readfile($this->cacheURI);
-            } else {
-                echo gzdecode(file_get_contents($this->cacheURI));
-            }
+        if ($this->autoOut) {
+            print $this->saveHTML();
         }
-
-        if (!CACHE_PERSISTANT) {
-            // No cache on dev mode
-            unlink($this->cacheURI);
-        }
-
     }
 
-    public function easyLoading()
-    {
-        // $list = $this->pageContainer->getElementsByTagName('img');
-        //
-        // for ($i = $list->length - 1; $i >= 0; --$i) {
-        //     $list->item($i)->parentNode->insertBefore($this->createElement('noscript')->attr('class', 'image'), $list->item($i))->appendChild($list->item($i));
-        // }
-    }
-
+    /**
+     * Patch the PHP invalid HTML bug on some HTML5 elements
+     * @see https://bugs.php.net/bug.php?id=73175
+     * @return string
+     */
     public function saveHTML()
     {
         return str_replace(
