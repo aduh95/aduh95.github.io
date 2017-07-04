@@ -19,6 +19,9 @@ body>aside {
         & a {
             color: inherit;
             text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
         }
 
         @media print {

@@ -60,7 +60,10 @@ return function ($doc, $section) {
                         'text' => preg_replace('#^https?://(www\.)?#', '', $value)
                     ];
                 case 'place':
-                    $li->a()->attr('href', $value['link'])->text($value['text']);
+                    $li->a()
+                        ->attr('href', $value['link'])
+                        ->attr('target', '_blank')
+                        ->text($value['text']);
                     break;
             }
         }
