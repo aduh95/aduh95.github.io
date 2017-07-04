@@ -23,7 +23,8 @@ TXT;
 
 const MESSAGE_ONE_FILE = <<<'TXT'
 
-N.B.: You are currently looking at the standalone version.
+N.B.: You are currently looking at the standalone version, embeding images, web
+fonts, CSS stylesheets and JavaScript scripts.
 
 TXT;
 // '

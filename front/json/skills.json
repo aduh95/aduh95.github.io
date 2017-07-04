@@ -15,6 +15,13 @@
     },
     {
         "name": {
+            "fr": "Esprit créatif",
+            "en": "Creative mind"
+        },
+        "icon": "bolt"
+    },
+    {
+        "name": {
             "fr": "Attentif",
             "en": "Focused"
         },

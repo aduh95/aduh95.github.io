@@ -28,9 +28,6 @@ function link(string $path)
 }
 
 const IMG = 1;
-const VIDEO = 2;
-const CONTRIBUTOR_IMG = 3;
-const ASSET = 4;
 
 const SVG = 5;
 const JPEG = 6;
@@ -48,9 +45,6 @@ function getHref($file, int $type = 0)
     return [
             MEDIAS\HTTP_ROOT,
             IMG => MEDIAS\IMG_DIR,
-            VIDEO => MEDIAS\VIDEO_DIR,
-            CONTRIBUTOR_IMG => MEDIAS\CONTRIBUTOR_IMG_DIR,
-            ASSET => MEDIAS\ASSETS_DIR,
 
             SVG => MEDIAS\IMG_DIR,
             JPEG => MEDIAS\IMG_DIR,

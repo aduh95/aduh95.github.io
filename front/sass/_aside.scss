@@ -27,7 +27,8 @@ body>aside {
     }
     li {
         & .fa {
-            padding-right: .5em;
+            min-width: 2rem;
+            text-align: center;
         }
 
         list-style: none;
