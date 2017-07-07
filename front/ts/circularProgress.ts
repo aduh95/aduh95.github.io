@@ -1,7 +1,5 @@
 module aduh95.resume.circularProgress {
 
-    const DYNAMIC_CLASS = "dynamic";
-
     let insertAfter = function (newNode: Node, referenceNode: Node) {
         if (referenceNode.nextSibling) {
             referenceNode.parentNode.insertBefore(
@@ -40,7 +38,6 @@ module aduh95.resume.circularProgress {
                 }
             }
             newElem.appendChild(getSlice());
-            // newElem.classList.add(DYNAMIC_CLASS);
             newElem.dataset.title = elem.title;
 
             // Needed to use CSS hover on iOS (http://www.codehaven.co.uk/fix-css-hover-on-iphone-ipad/)
