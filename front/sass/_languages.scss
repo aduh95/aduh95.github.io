@@ -37,12 +37,12 @@
             }
 
             & meter:not(:empty) {
-                &+.dynamic::before {
+                &+output::before {
                     opacity: 1;
                 }
             }
 
-            & .dynamic {
+            & output {
                 &::after {
                     top: 004%;
                     left: 004%;
@@ -68,12 +68,12 @@
         transform: translateX(10%);
 
         @for $i from 1 through 100 {
-            &[value="#{$i/100}"]+.dynamic .bar {
+            &[value="#{$i/100}"]+output .bar {
                 transform: rotate(3.6deg * $i);
             }
         }
         @for $i from 5 through 10 {
-            &[value^="#{$i/10}"]+.dynamic {
+            &[value^="#{$i/10}"]+output {
                 & .fill {
                     @extend %bar;
                     transform: rotate(180deg);
@@ -88,7 +88,7 @@
         }
     }
 
-    & .dynamic {
+    & output {
         position: relative;
         font-size: 3rem;
         @media print {

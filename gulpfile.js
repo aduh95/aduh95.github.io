@@ -172,20 +172,25 @@ gulp.task("init", function () {
 });
 
 gulp.task("one-file", function () {
+    console.info("Generating HTML...");
     exec('php public/index.php --one-file', {maxBuffer: 500<<10}, function (err, stdout, stderr) {
         if (err) {
             errorHandler(err);
             console.log(stderr);
         } else {
+            console.info("Success!");
+            console.info("Embeding font file...");
             (new DataURI()).encode(FONT_ROOT + FONT_FILES[1], (err, content) => {
                 if (err) {
                     errorHandler(err);
                 } else {
+                    console.info("Success!");
                     fs.writeFile(
                         require("path").join(__dirname, PROJECT_ROOT + "/index.html"),
                         stdout.replace(
                             /<!--style:(.+)-->/,
                             (match, $1) => {
+                                console.info("Embeding CSS...");
                                 // embeding CSS and Font Awesome
                                 return "<style>"+fs.readFileSync($1).toString()
                                 .replace('url(../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format("embedded-opentype"),url(../fonts/fontawesome-webfont.woff2?v=4.7.0) format("woff2"),', '')
