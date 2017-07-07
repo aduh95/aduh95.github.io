@@ -21,16 +21,16 @@
         },
         "technologies": [
             {
-                "name": "Windows Server",
-                "icon": "windows"
+                "name": "JavaScript",
+                "icon": "code"
             },
             {
                 "name": "ASP.NET",
                 "icon": "code"
             },
             {
-                "name": "JavaScript",
-                "icon": "code"
+                "name": "Windows Server",
+                "icon": "windows"
             }
         ]
     },
@@ -103,6 +103,14 @@
         },
         "technologies": [
             {
+                "name": "PHP",
+                "icon": "code"
+            },
+            {
+                "name": "JavaScript",
+                "icon": "code"
+            },
+            {
                 "name": "Linux",
                 "icon": "linux"
             },
@@ -113,10 +121,6 @@
             {
                 "name": "SQL",
                 "icon": "database"
-            },
-            {
-                "name": "PHP",
-                "icon": "code"
             }
         ]
     },
