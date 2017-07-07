@@ -1,5 +1,10 @@
 $body_width: 1920px;
 
+html {
+    background-color: $red_400_light;
+}
+
+
 body {
     display: flex;
     flex-flow: row wrap;
@@ -47,10 +52,6 @@ body {
         display: flex;
         flex-wrap: wrap;
 
-        & h3 {
-            // Usefull for mobile device
-            z-index: -1;
-        }
         & h5 {
             display: inline-block;
             &~h6 {

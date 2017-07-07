@@ -22,9 +22,10 @@ return function ($doc, $sectionElem) {
                 ()->li()->attr('class', 'place')->text($section['place'])
             ();
 
-
-        foreach ($section['description'] as $lang => $text) {
+        if (!empty($section['description'])) {
+            // foreach ($section['description'] as $lang => $text) {
             // $article->p()->text($text)->attr('lang', $lang);
+            // }
         }
 
 
