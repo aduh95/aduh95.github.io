@@ -1,29 +1,23 @@
 [
     {
         "name": {
-            "en": "Groupe ESEO - Engineering school",
-            "fr": "Groupe ESEO - Grande école d'ingénieur"
+            "en": "Groupe ESEO — Engineering school",
+            "fr": "Groupe ESEO — Grande école d'ingénieur"
         },
         "begin": 2015,
         "end": "present",
         "place": "Angers, France",
-        "description": {
-            "en": "",
-            "fr":""
-        }
+        "description": null
     },
     {
         "name": {
-            "en": "Groupe ESEO - Intensive program preparing for engineering school",
-            "fr": "Groupe ESEO - Classe préparatoire"
+            "en": "Groupe ESEO — Intensive program preparing for engineering school",
+            "fr": "Groupe ESEO — Classe préparatoire"
         },
         "begin": 2013,
         "end": 2015,
         "place": "Angers, France",
-        "description": {
-            "en": "",
-            "fr":""
-        }
+        "description": null
     },
     {
         "name": {
@@ -33,7 +27,7 @@
         "date": 2013,
         "place": "Bordeaux, France",
         "description": {
-            "en": "",
+            "en": null,
             "fr":"Mention Bien"
         }
     }
