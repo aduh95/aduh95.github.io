@@ -1,22 +1,28 @@
 module aduh95.resume.i18n {
+    const supportedLanguages = ["en", "fr"];
 
-    if (!location.hash) {
-        let locale =  (<any>window).navigator.userLanguage || window.navigator.language;
+    let extractLocale = (locale: string) => {
+        let localeLang = locale.substr(0, 2);
 
-        if ("fr" === locale.substr(0, 2)) {
-            locale = "fr-"+(locale.split("-")[1] || "FR");
+        if (~supportedLanguages.indexOf(localeLang)) {
+            let countryCode = locale.split("-")[1];
+            locale = localeLang;
+            if (countryCode) {
+                locale+= "-"+countryCode;
+            }
         } else {
             locale = "en-"+(locale.split("-")[1] || "US");
         }
 
-        location.hash = locale;
-    }
+        return locale;
+    };
 
     let changeLanguage = function () {
-        let locale = location.hash.replace(/^#/, "");
+        let locale = extractLocale(location.hash.replace(/^#/, ""));
         let progressElem = document.querySelectorAll("time");
+        let lang = locale.substr(0, 2);
 
-        document.documentElement.setAttribute("lang", locale.substr(0, 2));
+        document.documentElement.setAttribute("lang", lang);
 
         for (let elem of <HTMLTimeElement[]><any>progressElem) {
             let dateTime = elem.dateTime || elem.getAttribute("datetime");
@@ -28,7 +34,19 @@ module aduh95.resume.i18n {
                 }
             );
         }
+
+
     };
+
+    if (!location.hash) {
+        location.hash = extractLocale(
+            (<any>window).navigator.userLanguage ||
+            window.navigator.languages[0] ||
+            window.navigator.language ||
+            window.document.documentElement.getAttribute("lang")
+        );
+    }
+
 
     window.addEventListener("hashchange", changeLanguage);
 
