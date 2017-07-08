@@ -1,8 +1,8 @@
-body>aside {
-    & header>h3 {
+body > aside {
+    & header > h3 {
         margin: auto;
         text-align: center;
-        &>img {
+        & > img {
             border-radius: 50%;
             max-height: 10rem;
             width: auto;
@@ -36,5 +36,4 @@ body>aside {
 
         list-style: none;
     }
-
 }

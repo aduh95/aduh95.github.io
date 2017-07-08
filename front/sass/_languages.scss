@@ -12,8 +12,7 @@
     display: flex;
     flex-wrap: wrap;
 
-
-    &>h3 {
+    & > h3 {
         width: 100%;
         @media print {
             margin: auto 0 0;
@@ -24,7 +23,7 @@
         display: block;
     }
 
-    &>article {
+    & > article {
         flex-grow: 1;
         display: flex;
         flex-direction: column;
@@ -32,12 +31,12 @@
         text-align: center;
 
         &:hover {
-            &>h5 {
+            & > h5 {
                 font-weight: bold;
             }
 
             & meter:not(:empty) {
-                &+output::before {
+                & + output::before {
                     opacity: 1;
                 }
             }
@@ -51,7 +50,7 @@
                     line-height: 2.8em;
                 }
 
-                &> span {
+                & > span {
                     visibility: visible;
                     opacity: 1;
                     line-height: 3.33em;
@@ -68,12 +67,12 @@
         transform: translateX(10%);
 
         @for $i from 1 through 100 {
-            &[value="#{$i/100}"]+output .bar {
+            &[value="#{$i/100}"] + output .bar {
                 transform: rotate(3.6deg * $i);
             }
         }
         @for $i from 5 through 10 {
-            &[value^="#{$i/10}"]+output {
+            &[value^="#{$i/10}"] + output {
                 & .fill {
                     @extend %bar;
                     transform: rotate(180deg);
@@ -103,7 +102,8 @@
         background-color: $red_50_dark;
         overflow: visible;
 
-        & *::before, & *::after {
+        & *::before,
+        & *::after {
             box-sizing: content-box;
         }
 

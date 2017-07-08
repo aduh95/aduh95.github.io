@@ -4,7 +4,6 @@ html {
     background-color: $red_400_light;
 }
 
-
 body {
     display: flex;
     flex-flow: row wrap;
@@ -13,11 +12,11 @@ body {
     max-width: $body_width;
     min-height: 100vh;
 
-    &>* {
+    & > * {
         flex: 1 100%;
         padding: 1rem;
     }
-    &>header{
+    & > header {
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -25,9 +24,8 @@ body {
         text-align: center;
 
         background-color: $red_400_light;
-
     }
-    &>aside{
+    & > aside {
         @media print {
             max-width: 33vw;
         }
@@ -40,12 +38,12 @@ body {
 
         background-color: $red_400;
 
-        &>ul {
+        & > ul {
             margin: 0;
             padding: 0;
         }
     }
-    &>main{
+    & > main {
         order: 3;
         flex: 5 0;
 
@@ -54,7 +52,7 @@ body {
 
         & h5 {
             display: inline-block;
-            &~h6 {
+            & ~ h6 {
                 display: inline-block;
                 &::before {
                     content: "—";
@@ -64,9 +62,8 @@ body {
             }
         }
 
-
         & ul {
-            &>li{
+            & > li {
                 display: inline-block;
                 & a {
                     color: inherit;
@@ -79,7 +76,8 @@ body {
                     content: "|";
                     padding: 0 .5rem;
                 }
-                &:empty, &:last-child {
+                &:empty,
+                &:last-child {
                     &::after {
                         visibility: hidden;
                         font-size: 0;
