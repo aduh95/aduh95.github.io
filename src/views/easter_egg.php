@@ -9,6 +9,7 @@
 namespace aduh95\Resume;
 
 use DOMComment;
+use DateTime;
 
 const MESSAGE = <<<'TXT'
 
@@ -23,16 +24,34 @@ TXT;
 
 const MESSAGE_ONE_FILE = <<<'TXT'
 
-N.B.: You are currently looking at the standalone version, embeding images, web
-fonts, CSS stylesheets and JavaScript scripts.
+N.B.: You are currently looking at the **standalone version**, embeding images,
+web fonts, CSS stylesheets and JavaScript scripts.
+
+Generation date:
 
 TXT;
-// '
+
+const LICENSE_NOTICE = <<<'TXT'
+
+LICENSE INFORMATION:
+The following document is licensed under [CC BY-NC-ND 4.0](https://github.com/aduh95/aduh95.github.io/blob/master/LICENSE)
+
+It uses the following licensed content: *Please see the attached CSS file*
+
+TXT;
 
 
 
 return function ($doc, $outputOneFile) {
+
     $doc->getHead()->append(
-        new DOMComment(MESSAGE.($outputOneFile ? MESSAGE_ONE_FILE : null)
-    ));
+        new DOMComment(
+            MESSAGE.
+            LICENSE_NOTICE.
+            ($outputOneFile ?
+                MESSAGE_ONE_FILE.date_create()->format(DateTime::ATOM).PHP_EOL :
+                null
+            )
+        )
+    );
 };

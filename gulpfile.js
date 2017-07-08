@@ -180,10 +180,11 @@ gulp.task("one-file", function () {
         } else {
             console.info("Success!");
             console.info("Embeding font file...");
-            (new DataURI()).encode(FONT_ROOT + FONT_FILES[1], (err, content) => {
+            (new DataURI).encode(FONT_ROOT + FONT_FILES[1], (err, content) => {
                 if (err) {
                     errorHandler(err);
                 } else {
+                    let cssLicenses = "";
                     console.info("Success!");
                     fs.writeFile(
                         require("path").join(__dirname, PROJECT_ROOT + "/index.html"),
@@ -193,6 +194,10 @@ gulp.task("one-file", function () {
                                 console.info("Embeding CSS...");
                                 // embeding CSS and Font Awesome
                                 return "<style>"+fs.readFileSync($1).toString()
+                                .replace(/\/\*\!(\n.+)+\*\//g, (match) => {
+                                    cssLicenses+= match.replace("/*!", "\n").replace("*/", "")+"\n";
+                                })
+                                .replace(/\n/g, "")
                                 .replace('url(../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format("embedded-opentype"),url(../fonts/fontawesome-webfont.woff2?v=4.7.0) format("woff2"),', '')
                                 .replace(',url(../fonts/fontawesome-webfont.ttf?v=4.7.0) format("truetype"),url(../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format("svg")', '')
                                 .replace(
@@ -200,7 +205,7 @@ gulp.task("one-file", function () {
                                     content
                                 )+"</style>";
                             }
-                        ),
+                        ).replace("*Please see the attached CSS file*", cssLicenses),
                         function () {
                           console.log("Done");
                         }
