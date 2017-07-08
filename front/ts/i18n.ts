@@ -1,5 +1,6 @@
 module aduh95.resume.i18n {
     const supportedLanguages = ["en", "fr"];
+    const htmlElement = window.document.documentElement;
 
     let extractLocale = (locale: string) => {
         let localeLang = locale.substr(0, 2);
@@ -22,7 +23,7 @@ module aduh95.resume.i18n {
         let progressElem = document.querySelectorAll("time");
         let lang = locale.substr(0, 2);
 
-        document.documentElement.setAttribute("lang", lang);
+        htmlElement.setAttribute("lang", lang);
 
         for (let elem of <HTMLTimeElement[]><any>progressElem) {
             let dateTime = elem.dateTime || elem.getAttribute("datetime");
@@ -39,11 +40,12 @@ module aduh95.resume.i18n {
     };
 
     if (!location.hash) {
+        let navigator = window.navigator;
         location.hash = extractLocale(
-            (<any>window).navigator.userLanguage ||
-            window.navigator.languages[0] ||
-            window.navigator.language ||
-            window.document.documentElement.getAttribute("lang")
+            (<any>navigator).userLanguage ||
+            ("languages" in navigator && navigator.languages[0]) ||
+            navigator.language ||
+            htmlElement.getAttribute("lang")
         );
     }
 
