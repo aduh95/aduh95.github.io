@@ -222,6 +222,7 @@ gulp.task('one-file', function() {
                                                         .replace('/*!', '\n')
                                                         .replace('*/', '') +
                                                     '\n';
+                                                return '';
                                             }
                                         )
                                         .replace(/\n/g, '')
