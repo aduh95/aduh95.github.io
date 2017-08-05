@@ -45,6 +45,7 @@ class Document extends ParentDocument
 
         $this->head->meta('description', CONFIG\MY_INFO\WEBSITE_DESCRIPTION);
         $this->head->meta('author', CONFIG\MY_INFO\PUBLIC_NAME);
+        $this->head->meta('theme-color', CONFIG\MY_INFO\THEME_COLOR);
 
         $this->head->link([
             'rel'=>'icon',
