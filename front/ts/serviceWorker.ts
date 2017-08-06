@@ -1,12 +1,21 @@
 interface Navigator {
-    storage: {
-        requestPersistent: () => Promise<boolean>;
-    };
+    storage: StorageManager;
+}
+
+interface StorageManager {
+    estimate: () => StorageEstimate;
+    persist: () => Promise<boolean>;
+    persisted: () => Promise<boolean>;
+}
+
+interface StorageEstimate {
+    quota: number;
+    usage: number;
 }
 
 if ('serviceWorker' in navigator && 'storage' in navigator) {
     window.addEventListener('load', () => {
-        navigator.storage.requestPersistent().then(function(granted) {
+        navigator.storage.persist().then(function(granted) {
             if (granted) {
                 // Hurrah, your data is here to stay!
                 navigator.serviceWorker
