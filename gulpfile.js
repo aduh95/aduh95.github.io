@@ -25,7 +25,13 @@ const uglifycss = require('gulp-cssnano');
 const uglify_composer = require('gulp-uglify/composer');
 const uglify_es = require('uglify-es');
 const uglifyES6 = uglify_composer(uglify_es, console);
-const uglifyOptions = { mangle: { toplevel: true } };
+const uglifyOptions = {
+    mangle: { toplevel: true },
+    warnings: true,
+    compress: {
+        drop_console: true,
+    },
+};
 
 const exec = require('child_process').exec;
 const concat = require('gulp-concat');
@@ -135,20 +141,20 @@ gulp.task('vendor_dependencies', function() {
 });
 
 gulp.task('clean-uglify', function() {
-    gulp.src(DEST + '*.min.*', { read: false }).pipe(rm());
+    gulp.src(DEST + path.sep + '*.min.*', { read: false }).pipe(rm());
 });
 gulp.task(
     'uglify',
     ['clean-uglify', 'sass', 'vendor_dependencies', 'typescript'],
     function() {
         gulp
-            .src([DEST + 'global.js'])
+            .src(path.join(DEST, 'global.js'))
             .pipe(uglify(uglifyOptions))
             .pipe(rename({ suffix: '.min' }))
             .pipe(gulp.dest(DEST));
 
         gulp
-            .src(DEST + 'global.css')
+            .src(path.join(DEST, 'global.css'))
             .pipe(uglifycss())
             .pipe(rename({ suffix: '.min' }))
             .pipe(gulp.dest(DEST));
