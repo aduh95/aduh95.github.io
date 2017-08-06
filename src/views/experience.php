@@ -63,6 +63,7 @@ return function ($doc, $section) {
                     $li->a()
                         ->attr('href', $value['link'])
                         ->attr('target', '_blank')
+                        ->attr('rel', 'noopener')
                         ->text($value['text']);
                     break;
             }

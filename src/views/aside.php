@@ -35,7 +35,7 @@ return function ($doc) {
     foreach (JSONSource::parse('personal_information') as $class => $info) {
         $info_list->li()->attr('class', $class)
             ->i(['class'=>'fa fa-'.$info['icon']])()
-            ->a(['href' => $info['href'], 'target' => '_blank'])->text($info['text']);
+            ->a(['href' => $info['href'], 'target' => '_blank', 'rel'=>'noopener'])->text($info['text']);
     }
 
     foreach (JSONSource::parse('skills') as $skill) {
