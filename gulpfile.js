@@ -34,7 +34,7 @@ const rename = require('gulp-rename');
 
 const composer = require('gulp-composer');
 
-const PROJECT_ROOT = '.';
+const PROJECT_ROOT = path.resolve(__dirname);
 const PUBLIC_ROOT = path.join(PROJECT_ROOT, 'public');
 const FRONT_ROOT = PROJECT_ROOT + '/front/';
 
@@ -120,7 +120,7 @@ gulp.task('serviceWorker', function() {
             }).on('error', errorHandler)
         )
         .pipe(uglifyES6(uglifyOptions))
-        .pipe(gulp.dest(PUBLIC_ROOT))
+        .pipe(gulp.dest(PROJECT_ROOT))
         .pipe(livereload());
 });
 
@@ -226,7 +226,7 @@ gulp.task('one-file', function() {
                     let cssLicenses = '';
                     console.info('Success!');
                     fs.writeFile(
-                        path.join(__dirname, PUBLIC_ROOT, 'index.html'),
+                        path.join(PROJECT_ROOT, 'index.html'),
                         stdout
                             .replace(
                                 /<!--style:(.+)-->/,
