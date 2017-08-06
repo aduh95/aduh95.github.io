@@ -2,23 +2,14 @@
 
 'use strict';
 
-const version = '0.0.1';
+const version = '0.0.2';
 const cacheName = 'sw-aduh95';
 const cache = cacheName + '-' + version;
 
 //Add event listener for fetch
 self.addEventListener('fetch', function(event: FetchEvent) {
     event.respondWith(
-        caches.open(cache).then(cache =>
-            cache.match(event.request).then(
-                response =>
-                    response ||
-                    fetch(event.request).then(function(response) {
-                        cache.put(event.request, response.clone());
-                        return response;
-                    })
-            )
-        )
+        fetch(event.request).catch(() => caches.match(event.request))
     );
 });
 
