@@ -1,6 +1,12 @@
-if ('serviceWorker' in navigator) {
+interface Navigator {
+    storage: {
+        requestPersistent: () => Promise<boolean>;
+    };
+}
+
+if ('serviceWorker' in navigator && 'storage' in navigator) {
     window.addEventListener('load', () => {
-        (<any>navigator).storage.requestPersistent().then(function(granted) {
+        navigator.storage.requestPersistent().then(function(granted) {
             if (granted) {
                 // Hurrah, your data is here to stay!
                 navigator.serviceWorker
