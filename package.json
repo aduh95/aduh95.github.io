@@ -1,39 +1,41 @@
 {
-  "name": "my-resume",
-  "description": "My résumé",
-  "main": "src/index.php",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Antoine du HAMEL",
-  "license": "CC-BY-NC-ND-4.0",
-  "homepage": "https://antoine.du-hamel.fr",
-  "devDependencies": {
-    "gulp-connect": "^5.0.0",
-    "gulp-connect-php": "0.0.8",
-    "gulp-livereload": "^3.8.1",
-    "gulp-notify": "^2.2.0"
-  },
-  "dependencies": {
-    "@types/core-js": "^0.9.37",
-    "balloon-css": "^0.4.0",
-    "bootstrap": "alpha",
-    "cssnano": "rc",
-    "datauri": "^1.0.5",
-    "font-awesome": "^4.7.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-composer": "^0.4.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-cssnano": "^2.1.2",
-    "gulp-exec": "^2.1.3",
-    "gulp-git": "^2.2.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-rm": "^1.0.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-typescript": "^3.1.6",
-    "gulp-uglify": "^2.1.2",
-    "gulp-util": "^3.0.8",
-    "typescript": "^2.3.2"
-  }
+    "name": "my-resume",
+    "description": "My résumé",
+    "main": "src/index.php",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Antoine du HAMEL",
+    "license": "CC-BY-NC-ND-4.0",
+    "homepage": "https://antoine.du-hamel.fr",
+    "devDependencies": {
+        "gulp-connect": "^5.0.0",
+        "gulp-connect-php": "^1.0.0",
+        "gulp-livereload": "^3.8.1",
+        "gulp-notify": "^3.0.0"
+    },
+    "dependencies": {
+        "@types/core-js": "^0.9.37",
+        "@types/service_worker_api": "^0.0.9",
+        "all": "^0.0.0",
+        "balloon-css": "^0.4.0",
+        "bootstrap": "^4.0.0",
+        "cssnano": "^4.0.0",
+        "datauri": "^1.0.5",
+        "font-awesome": "^4.7.0",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "^4.0.0",
+        "gulp-composer": "^0.4.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-cssnano": "^2.1.2",
+        "gulp-exec": "^2.1.3",
+        "gulp-rename": "^1.2.2",
+        "gulp-rm": "^1.0.2",
+        "gulp-sass": "^3.1.0",
+        "gulp-typescript": "^3.1.6",
+        "gulp-uglify": "^3.0.0",
+        "gulp-util": "^3.0.8",
+        "typescript": "^2.3.2",
+        "uglify-es": "^3.0.27"
+    }
 }

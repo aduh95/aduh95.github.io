@@ -22,6 +22,11 @@ const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 const uglifycss = require('gulp-cssnano');
 
+const uglify_composer = require('gulp-uglify/composer');
+const uglify_es = require('uglify-es');
+const uglifyES6 = uglify_composer(uglify_es, console);
+const uglifyOptions = { mangle: { toplevel: true } };
+
 const exec = require('child_process').exec;
 const concat = require('gulp-concat');
 const rm = require('gulp-rm');
@@ -35,7 +40,8 @@ const FRONT_ROOT = PROJECT_ROOT + '/front/';
 
 const SASS_SRC = FRONT_ROOT + '/sass/**/*.scss';
 const TS_SRC = FRONT_ROOT + '/ts/*.ts';
-const TS_DEF = PROJECT_ROOT + '/typings/**/*.d.ts';
+const TS_SW = PUBLIC_ROOT + '/sw.ts';
+const TS_DEF = PROJECT_ROOT + '/node_modules/@types/**/*.d.ts';
 
 const JSON_FILES = FRONT_ROOT + 'json/*.json';
 const PHP_SRC = PROJECT_ROOT + '/src/*/*.php';
@@ -103,6 +109,21 @@ gulp.task('typescript', function() {
         .pipe(livereload());
 });
 
+gulp.task('serviceWorker', function() {
+    return gulp
+        .src([TS_SW, TS_DEF])
+        .pipe(
+            ts({
+                noImplicitAny: true,
+                out: 'sw.js',
+                target: 'ES6',
+            }).on('error', errorHandler)
+        )
+        .pipe(uglifyES6(uglifyOptions))
+        .pipe(gulp.dest(PUBLIC_ROOT))
+        .pipe(livereload());
+});
+
 gulp.task('vendor_dependencies', function() {
     let vendorFiles = [];
     let JSfiles = vendorFiles.filter(name => name.endsWith('.js'));
@@ -122,7 +143,7 @@ gulp.task(
     function() {
         gulp
             .src([DEST + 'global.js'])
-            .pipe(uglify({ mangle: { toplevel: true } }))
+            .pipe(uglify(uglifyOptions))
             .pipe(rename({ suffix: '.min' }))
             .pipe(gulp.dest(DEST));
 
@@ -154,6 +175,7 @@ gulp.task('watch', function() {
     gulp.watch(SASS_SRC, ['sass']).on('change', changeHandler);
 
     gulp.watch([TS_SRC, TS_DEF], ['typescript']).on('change', changeHandler);
+    gulp.watch(TS_SW, ['serviceWorker']).on('change', changeHandler);
 
     gulp
         .watch([JSON_FILES, PHP_SRC])
@@ -176,6 +198,7 @@ gulp.task('default', [
     'sass',
     'vendor_dependencies',
     'typescript',
+    'serviceWorker',
     'watch',
 ]);
 
