@@ -1,8 +1,10 @@
+const fs = require('fs');
+const path = require('path');
+
 const gulp = require('gulp');
 const util = require('gulp-util');
-const fs = require('fs');
-const DataURI = require('datauri');
 
+const DataURI = require('datauri');
 const sass = require('gulp-sass');
 const ts = require('gulp-typescript');
 
@@ -26,9 +28,9 @@ const rm = require('gulp-rm');
 const rename = require('gulp-rename');
 
 const composer = require('gulp-composer');
-const git = require('gulp-git');
 
 const PROJECT_ROOT = '.';
+const PUBLIC_ROOT = path.join(PROJECT_ROOT, 'public');
 const FRONT_ROOT = PROJECT_ROOT + '/front/';
 
 const SASS_SRC = FRONT_ROOT + '/sass/**/*.scss';
@@ -46,8 +48,8 @@ const FONT_FILES = [
     'fontawesome-webfont.ttf',
 ];
 
-const DEST = PROJECT_ROOT + '/public/dist/';
-const VENDOR_FONTS = DEST + '../fonts/';
+const DEST = path.join(PUBLIC_ROOT, 'dist');
+const VENDOR_FONTS = path.join(PUBLIC_ROOT, 'fonts');
 
 var errorHandler = function(error) {
     if (!error.diagnostic || !error.diagnostic.messageText) {
@@ -120,7 +122,7 @@ gulp.task(
     function() {
         gulp
             .src([DEST + 'global.js'])
-            .pipe(uglify())
+            .pipe(uglify({ mangle: { toplevel: true } }))
             .pipe(rename({ suffix: '.min' }))
             .pipe(gulp.dest(DEST));
 
@@ -201,15 +203,11 @@ gulp.task('one-file', function() {
                     let cssLicenses = '';
                     console.info('Success!');
                     fs.writeFile(
-                        require('path').join(
-                            __dirname,
-                            PROJECT_ROOT + '/index.html'
-                        ),
+                        path.join(__dirname, PUBLIC_ROOT, 'index.html'),
                         stdout
-                            .replace(/<!--style:(.+)-->/, (match, $1) => {
-                                console.info('Embeding CSS...');
-                                // embeding CSS and Font Awesome
-                                return (
+                            .replace(
+                                /<!--style:(.+)-->/,
+                                (match, $1) =>
                                     '<style>' +
                                     fs
                                         .readFileSync($1)
@@ -239,8 +237,7 @@ gulp.task('one-file', function() {
                                             content
                                         ) +
                                     '</style>'
-                                );
-                            })
+                            )
                             .replace(
                                 '*Please see the attached CSS file*',
                                 cssLicenses
