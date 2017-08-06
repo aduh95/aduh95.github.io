@@ -35,7 +35,7 @@
         "gulp-typescript": "^3.1.6",
         "gulp-uglify": "^3.0.0",
         "gulp-util": "^3.0.8",
-        "purifycss": "^1.1.9",
+        "purify-css": "^1.2.5",
         "typescript": "^2.3.2",
         "uglify-es": "^3.0.27"
     }
