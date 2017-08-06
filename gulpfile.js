@@ -21,6 +21,7 @@ try {
 const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 const uglifycss = require('gulp-cssnano');
+const purifycss = require('purify-css');
 
 const uglify_composer = require('gulp-uglify/composer');
 const uglify_es = require('uglify-es');
@@ -224,58 +225,63 @@ gulp.task('one-file', function() {
             console.log(stderr);
         } else {
             console.info('Success!');
-            console.info('Embeding font file...');
-            new DataURI().encode(FONT_ROOT + FONT_FILES[1], (err, content) => {
-                if (err) {
-                    errorHandler(err);
-                } else {
-                    let cssLicenses = '';
-                    console.info('Success!');
-                    fs.writeFile(
-                        path.join(PROJECT_ROOT, 'index.html'),
-                        stdout
-                            .replace(
-                                /<!--style:(.+)-->/,
-                                (match, $1) =>
-                                    '<style>' +
-                                    fs
-                                        .readFileSync($1)
-                                        .toString()
-                                        .replace(
-                                            /\/\*\!(\n.+)+\*\//g,
-                                            match => {
-                                                cssLicenses +=
-                                                    match
-                                                        .replace('/*!', '\n')
-                                                        .replace('*/', '') +
-                                                    '\n';
-                                                return '';
-                                            }
-                                        )
-                                        .replace(/\n/g, '')
-                                        .replace(
-                                            'url(../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format("embedded-opentype"),url(../fonts/fontawesome-webfont.woff2?v=4.7.0) format("woff2"),',
-                                            ''
-                                        )
-                                        .replace(
-                                            ',url(../fonts/fontawesome-webfont.ttf?v=4.7.0) format("truetype"),url(../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format("svg")',
-                                            ''
-                                        )
-                                        .replace(
-                                            '../fonts/fontawesome-webfont.woff?v=4.7.0',
-                                            content
-                                        ) +
-                                    '</style>'
-                            )
-                            .replace(
-                                '*Please see the attached CSS file*',
-                                cssLicenses
-                            ),
-                        function() {
-                            console.log('Done');
+
+            console.log('Reading CSS');
+            fs.readFile(stdout.match(/<!--style:(.+)-->/)[1], (err, css) => {
+                console.info('Purifying css...');
+                let cssLicenses = '';
+                let inlineCSS = (match, $1) =>
+                    '<style>' +
+                    purifycss(
+                        stdout,
+                        css.toString().replace(/\/\*\!(\n.+)+\*\//g, match => {
+                            cssLicenses +=
+                                match.replace('/*!', '\n').replace('*/', '') +
+                                '\n';
+                            return '';
+                        }),
+                        {
+                            minify: true,
                         }
-                    );
-                }
+                    )
+                        .replace(/\n/g, '')
+                        .replace(
+                            'url(../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format("embedded-opentype"),url(../fonts/fontawesome-webfont.woff2?v=4.7.0) format("woff2"),',
+                            ''
+                        )
+                        .replace(
+                            ',url(../fonts/fontawesome-webfont.ttf?v=4.7.0) format("truetype"),url(../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format("svg")',
+                            ''
+                        )
+                        .replace(
+                            '../fonts/fontawesome-webfont.woff?v=4.7.0',
+                            content
+                        ) +
+                    '</style>';
+
+                console.info('Embeding font file...');
+                new DataURI().encode(
+                    FONT_ROOT + FONT_FILES[1],
+                    (err, content) => {
+                        if (err) {
+                            errorHandler(err);
+                        } else {
+                            console.info('Success!');
+                            fs.writeFile(
+                                path.join(PROJECT_ROOT, 'index.html'),
+                                stdout
+                                    .replace(/<!--style:(.+)-->/, inlineCSS)
+                                    .replace(
+                                        '*Please see the attached CSS file*',
+                                        cssLicenses
+                                    ),
+                                function() {
+                                    console.log('Done');
+                                }
+                            );
+                        }
+                    }
+                );
             });
         }
     });
