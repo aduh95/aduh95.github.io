@@ -2,9 +2,13 @@
 
 'use strict';
 
-const version = '0.0.2';
+const version = '0.0.3';
 const cacheName = 'sw-aduh95';
 const cache = cacheName + '-' + version;
+
+self.addEventListener('install', function(event: ExtendableEvent) {
+    event.waitUntil(self.skipWaiting());
+});
 
 //Add event listener for fetch
 self.addEventListener('fetch', function(event: FetchEvent) {
@@ -26,5 +30,6 @@ self.addEventListener('activate', function(event: ExtendableEvent) {
                     )
                 )
             )
+            .then(() => self.clients.claim())
     );
 });
