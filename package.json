@@ -17,7 +17,6 @@
     "dependencies": {
         "@types/core-js": "^0.9.37",
         "@types/service_worker_api": "^0.0.9",
-        "all": "^0.0.0",
         "balloon-css": "^0.4.0",
         "bootstrap": "^4.0.0",
         "cssnano": "^4.0.0",
