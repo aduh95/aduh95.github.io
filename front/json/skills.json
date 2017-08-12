@@ -8,8 +8,8 @@
     },
     {
         "name": {
-            "fr": "Travailleur acharné",
-            "en": "Hard-working"
+            "fr": "Polyvalant",
+            "en": "Versatile"
         },
         "icon": "pencil-square-o"
     },
@@ -29,8 +29,8 @@
     },
     {
         "name": {
-            "fr": "Serviable",
-            "en": "Helpful"
+            "fr": "Entreprenant",
+            "en": "Resourceful"
         },
         "icon": "handshake-o"
     },

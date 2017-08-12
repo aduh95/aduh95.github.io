@@ -5,13 +5,13 @@
             "fr": "Développeur web (front-end)"
         },
         "info": {
-            "date":{
+            "date": {
                 "begin": "2017-01-09",
                 "end": "now"
             },
             "place": {
-                "link":"https://www.google.fr/maps/place/Angers/@47.481983,-0.6331467,12z/data=!3m1!4b1!4m5!3m4!1s0x480878da00e58e9d:0x40d37521e0d9c30!8m2!3d47.478419!4d-0.563166",
-                "text":"Angers, France"
+                "link": "https://www.google.fr/maps/place/Angers/@47.481983,-0.6331467,12z/data=!3m1!4b1!4m5!3m4!1s0x480878da00e58e9d:0x40d37521e0d9c30!8m2!3d47.478419!4d-0.563166",
+                "text": "Angers, France"
             },
             "website": "https://vuarnet.com"
         },
@@ -40,13 +40,13 @@
             "fr": "Développeur d'application Android"
         },
         "info": {
-            "date":{
+            "date": {
                 "begin": "2017-03-15",
                 "end": "2017-06-21"
             },
             "place": {
-                "link":"https://www.google.fr/maps/place/Qowisio/@47.4622272,-0.5630493,17.78z/data=!4m5!3m4!1s0x48087447aea98d77:0xd175597396fb2edd!8m2!3d47.4623394!4d-0.5619584",
-                "text":"Angers, France"
+                "link": "https://www.google.fr/maps/place/Qowisio/@47.4622272,-0.5630493,17.78z/data=!4m5!3m4!1s0x48087447aea98d77:0xd175597396fb2edd!8m2!3d47.4623394!4d-0.5619584",
+                "text": "Angers, France"
             },
             "website": "https://www.qowisio.com"
         },
@@ -87,12 +87,12 @@
             "fr": "Intégration de solutions web"
         },
         "info": {
-            "date":{
-                "begin":"2016-07-11",
-                "end":"2016-11-26"
+            "date": {
+                "begin": "2016-07-11",
+                "end": "2016-11-26"
             },
             "place": {
-                "text":"Paris, France",
+                "text": "Paris, France",
                 "link": "https://www.google.fr/maps/place/Bonjour+Paris/@48.8748121,2.3530751,17z/data=!3m1!4b1!4m5!3m4!1s0x47e66e12e8380f8b:0x26663d64703602b5!8m2!3d48.8748121!4d2.3552638"
             },
             "website": "https://www.bonjour.agency"
@@ -124,24 +124,24 @@
             }
         ]
     },
-    "SEIO": {
+    "SEIO Junior-Entreprise": {
         "mission": {
             "en": "Vice-Chairman",
             "fr": "Vice-Président"
         },
         "info": {
-            "date":{
-                "begin":"2015-06-11",
-                "end":"2017-05-11"
+            "date": {
+                "begin": "2015-06-11",
+                "end": "2017-05-11"
             },
             "place": {
-                "text":"Angers, France",
+                "text": "Angers, France",
                 "link": "https://www.google.com/maps/place/SEIO+Junior-Entreprise/@47.493483,-0.550851,16z/data=!4m5!3m4!1s0x0:0x9ba3d648073c86d5!8m2!3d47.4934831!4d-0.5508506?ll=47.493483,-0.550851&z=16&t=m&hl=fr&gl=FR&mapclient=embed&cid=11215043101930063573"
             },
             "website": "https://www.seio.org"
         },
         "description": {
-            "en":"The SEIO is the Junior Entreprise of the ESEO (the engineer school I attend). As Vice-Chairman, my task was to supervise the internal and external communication department, audit and quality department and IT department.",
+            "en": "The SEIO is the Junior Entreprise of the ESEO (the engineer school I attend). As Vice-Chairman, my task was to supervise the internal and external communication department, audit and quality department and IT department.",
             "fr": "Le SEIO est la Junior-Entreprise de l'ESEO, école dans laquelle j'effectue ma formation d'ingénieur. J'ai occupé le poste de Vice-Président chargé de la communication interne et externe, du pôle audit et qualité, et des systèmes d'informations. Mon rôle au sein de cette Junior-Entreprise était de manager mes équipe et participer aux prises de décisions concernant le fonctionnement de l'association. Pour ce faire, j'ai réalisé, en colaboration avec deux de mes camarades, un intranet intégré aux différents environnements de travail nécessaires à notre activité."
         },
         "technologies": [
@@ -169,18 +169,18 @@
             "fr": "Assistant chargé d'affaires en agence entreprise"
         },
         "info": {
-            "date":{
+            "date": {
                 "begin": "2015-07-06",
                 "end": "2015-07-31"
             },
             "place": {
-                "link":"https://www.google.fr/maps/place/Cr%C3%A9dit+Agricole+Charente-Maritime+Deux-S%C3%A8vres/@45.7468535,-0.6271264,19.27z/data=!4m8!1m2!2m1!1ssaintes+credit+agricole+entreprise!3m4!1s0x0:0xb7e8b7c7981d521d!8m2!3d45.746941!4d-0.627188",
-                "text":"Saintes, France"
+                "link": "https://www.google.fr/maps/place/Cr%C3%A9dit+Agricole+Charente-Maritime+Deux-S%C3%A8vres/@45.7468535,-0.6271264,19.27z/data=!4m8!1m2!2m1!1ssaintes+credit+agricole+entreprise!3m4!1s0x0:0xb7e8b7c7981d521d!8m2!3d45.746941!4d-0.627188",
+                "text": "Saintes, France"
             },
             "website": "https://www.ca-cmds.fr"
         },
         "description": {
-            "en":"During the time I spent working with Crédit-Agricole, at the enterprises' bank office, my task was to welcome customers who come by or phone.",
+            "en": "During the time I spent working with Crédit-Agricole, at the enterprises' bank office, my task was to welcome customers who come by or phone.",
             "fr": "Au sein de l'agence entreprise de Saintes du Crédit-Agricole, j'ai appris à gérer la relation client professionnel, nottament par l'accueil téléphonique et physique. Cette experience m'a également permi de comprendre le fonctionnement interne des mécanismes bancaires."
         },
         "technologies": [
@@ -196,19 +196,19 @@
             "fr": "Developpement solutions de gestion"
         },
         "info": {
-            "date":{
+            "date": {
                 "begin": "2013-08-19",
                 "end": "2015-12-18"
             },
             "place": {
-                "link":"https://www.google.fr/maps/place/Angers/@47.481983,-0.6331467,12z/data=!3m1!4b1!4m5!3m4!1s0x480878da00e58e9d:0x40d37521e0d9c30!8m2!3d47.478419!4d-0.563166",
-                "text":"Angers, France"
+                "link": "https://www.google.fr/maps/place/Angers/@47.481983,-0.6331467,12z/data=!3m1!4b1!4m5!3m4!1s0x480878da00e58e9d:0x40d37521e0d9c30!8m2!3d47.478419!4d-0.563166",
+                "text": "Angers, France"
             },
             "website": "http://www.journees-paysannes.fr"
         },
         "description": {
-            "en":"This French association needed a custom solution to handle their subscribers batabase.",
-            "fr": "En août 2013, l'association des Journées Paysannes a fait appel à moi pour mettre à jour leur système de gestion interne par une solution plsu moderne et plus adaptée à leurs besoins."
+            "en": "This French association needed a custom solution to handle their subscribers batabase.",
+            "fr": "En août 2013, l'association des Journées Paysannes a fait appel à moi pour mettre à jour leur système de gestion interne par une solution plus moderne et plus adaptée à leurs besoins."
         },
         "technologies": [
             {
