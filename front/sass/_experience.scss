@@ -1,0 +1,24 @@
+section.experience {
+    // Capitalize only child time tag for languages that does not autocapitalize month names
+    & ul > li time:first-child:last-child {
+        display: inline-block;
+        &::first-letter {
+            text-transform: uppercase;
+        }
+    }
+
+    // Styling open details elements
+    & details[open] {
+        & > summary {
+            float: left;
+
+            & > span {
+                display: none;
+            }
+        }
+
+        & > p {
+            margin-left: 1rem;
+        }
+    }
+}
