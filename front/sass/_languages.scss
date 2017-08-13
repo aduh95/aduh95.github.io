@@ -47,7 +47,7 @@
                     left: 004%;
                     width: 092%;
                     height: 092%;
-                    line-height: 2.8em;
+                    line-height: 3.7em;
                 }
 
                 & > span {
@@ -150,8 +150,8 @@
         &::after {
             content: attr(data-title);
             color: $red_50_dark;
-            font-size: .3em;
-            line-height: 2.75em;
+            font-size: .25em;
+            line-height: 3.4em;
             position: absolute;
             top: 8%;
             left: 8%;
