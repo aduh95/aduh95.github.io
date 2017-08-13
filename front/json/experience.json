@@ -1,7 +1,7 @@
 {
     "Freelance": {
         "mission": {
-            "en": "Front-end developer",
+            "en": "Front-end web developer",
             "fr": "Développeur web (front-end)"
         },
         "info": {
@@ -204,11 +204,11 @@
                 "link": "https://www.google.fr/maps/place/Angers/@47.481983,-0.6331467,12z/data=!3m1!4b1!4m5!3m4!1s0x480878da00e58e9d:0x40d37521e0d9c30!8m2!3d47.478419!4d-0.563166",
                 "text": "Angers, France"
             },
-            "website": "http://www.journees-paysannes.fr"
+            "website": "http://www.journees-paysannes.org"
         },
         "description": {
             "en": "This French association needed a custom solution to handle their subscribers batabase.",
-            "fr": "En août 2013, l'association des Journées Paysannes a fait appel à moi pour mettre à jour leur système de gestion interne par une solution plus moderne et plus adaptée à leurs besoins."
+            "fr": "En août 2013, l'association des Journées Paysannes (association mettant en relation ses adhérants pour former des groupes de réfléxion et d'échanges) a fait appel à moi pour mettre à jour leur système de gestion interne par une solution plus moderne et plus adaptée à leurs besoins."
         },
         "technologies": [
             {
