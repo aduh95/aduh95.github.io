@@ -47,8 +47,7 @@
             "place": {
                 "link": "https://www.google.fr/maps/place/Qowisio/@47.4622272,-0.5630493,17.78z/data=!4m5!3m4!1s0x48087447aea98d77:0xd175597396fb2edd!8m2!3d47.4623394!4d-0.5619584",
                 "text": "Angers, France"
-            },
-            "website": "https://www.qowisio.com"
+            }
         },
         "description": {
             "en": "The small French company Qowisio asked us to make a demonstration kit for its Ultra-Narrow-Band technology (UNB) implementation; the purpose of this kit is to emulate a UNB network able to interact with the connected objects nearby, and a WiFi network to allow customers to connect their device and try the Android app we created with the team I led (four developers). This application gathers all the data from the connected objets and displays it on the screen.",
@@ -176,12 +175,11 @@
             "place": {
                 "link": "https://www.google.fr/maps/place/Cr%C3%A9dit+Agricole+Charente-Maritime+Deux-S%C3%A8vres/@45.7468535,-0.6271264,19.27z/data=!4m8!1m2!2m1!1ssaintes+credit+agricole+entreprise!3m4!1s0x0:0xb7e8b7c7981d521d!8m2!3d45.746941!4d-0.627188",
                 "text": "Saintes, France"
-            },
-            "website": "https://www.ca-cmds.fr"
+            }
         },
         "description": {
             "en": "During the time I spent working with Crédit-Agricole, at the enterprises' bank office, my task was to welcome customers who come by or phone.",
-            "fr": "Au sein de l'agence entreprise de Saintes du Crédit-Agricole, j'ai appris à gérer la relation client professionnel, nottament par l'accueil téléphonique et physique. Cette experience m'a également permi de comprendre le fonctionnement interne des mécanismes bancaires."
+            "fr": "Au sein de l'agence entreprise de Saintes du Crédit-Agricole Charente-Maritime Deux-Sèvres, j'ai appris à gérer la relation client professionnel, nottament par l'accueil téléphonique et physique. Cette experience m'a également permi de comprendre le fonctionnement interne des mécanismes bancaires."
         },
         "technologies": [
             {
@@ -203,8 +201,7 @@
             "place": {
                 "link": "https://www.google.fr/maps/place/Angers/@47.481983,-0.6331467,12z/data=!3m1!4b1!4m5!3m4!1s0x480878da00e58e9d:0x40d37521e0d9c30!8m2!3d47.478419!4d-0.563166",
                 "text": "Angers, France"
-            },
-            "website": "http://www.journees-paysannes.org"
+            }
         },
         "description": {
             "en": "This French association needed a custom solution to handle their subscribers batabase.",
