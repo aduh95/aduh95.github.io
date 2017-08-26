@@ -32,19 +32,25 @@ return function ($doc, $section) {
             switch ($key) {
                 case 'date':
                     $begin = date_create($value['begin']);
+                    $hasEnded = 'now'!==$value['end'];
                     $end = date_create($value['end']);
-                    if ($begin->diff($end)->m) {
-                        $li->span(['lang'=>'en'])->append()
-                            ()->text('From ')->time(['datetime'=>$begin->format(DATE_FORMAT)])
-                                ->text($begin->format('F Y'))
-                            ()->text(' to ')->time(['datetime'=>$end->format(DATE_FORMAT)])
+                    if (!$hasEnded || $begin->diff($end)->m) {
+                        $span = $li->span(['lang'=>'en']);
+                        $span->text($hasEnded ? 'From ' : 'Since ')->time(['datetime'=>$begin->format(DATE_FORMAT)])
+                                ->text($begin->format('F Y'));
+                        if ($hasEnded) {
+                            $span->text(' to ')->time(['datetime'=>$end->format(DATE_FORMAT)])
                                 ->text($end->format('F Y'));
-                        $li->span(['lang'=>'fr'])->append()
-                            ()->text('De ')->time(['datetime'=>$begin->format(DATE_FORMAT)])
-                                ->text($begin->format('m/Y'))
-                            ()->text(' à ')->time(['datetime'=>$end->format(DATE_FORMAT)])
+                        }
+                        $span = $li->span(['lang'=>'fr']);
+                        $span->text($hasEnded ? 'De ' : 'Depuis ')->time(['datetime'=>$begin->format(DATE_FORMAT)])
+                            ->text($begin->format('m/Y'));
+                        if ($hasEnded) {
+                            $span->text(' à ')->time(['datetime'=>$end->format(DATE_FORMAT)])
                                 ->text($end->format('m/Y'));
+                        }
                     } else {
+                        // If the current experience did not last more than a mounth
                         $li->span(['lang'=>'en'])
                             ->time(['datetime'=>$begin->format('Y-m')])
                                 ->text($begin->format('F Y'));
