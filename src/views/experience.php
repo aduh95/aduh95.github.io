@@ -32,22 +32,26 @@ return function ($doc, $section) {
             switch ($key) {
                 case 'date':
                     $begin = date_create($value['begin']);
-                    $hasEnded = 'now'!==$value['end'];
-                    $end = date_create($value['end']);
+                    $hasEnded = !empty($value['end']);
+                    $end = $hasEnded ? date_create($value['end']) : null;
                     if (!$hasEnded || $begin->diff($end)->m) {
                         $span = $li->span(['lang'=>'en']);
-                        $span->text($hasEnded ? 'From ' : 'Since ')->time(['datetime'=>$begin->format(DATE_FORMAT)])
+                        $span->text($hasEnded ? 'From ' : 'Since ')
+                            ->time(['datetime'=>$begin->format(DATE_FORMAT)])
                                 ->text($begin->format('F Y'));
                         if ($hasEnded) {
-                            $span->text(' to ')->time(['datetime'=>$end->format(DATE_FORMAT)])
-                                ->text($end->format('F Y'));
+                            $span->text(' to ')
+                                ->time(['datetime'=>$end->format(DATE_FORMAT)])
+                                    ->text($end->format('F Y'));
                         }
                         $span = $li->span(['lang'=>'fr']);
-                        $span->text($hasEnded ? 'De ' : 'Depuis ')->time(['datetime'=>$begin->format(DATE_FORMAT)])
-                            ->text($begin->format('m/Y'));
+                        $span->text($hasEnded ? 'De ' : 'Depuis ')
+                            ->time(['datetime'=>$begin->format(DATE_FORMAT)])
+                                ->text($begin->format('m/Y'));
                         if ($hasEnded) {
-                            $span->text(' à ')->time(['datetime'=>$end->format(DATE_FORMAT)])
-                                ->text($end->format('m/Y'));
+                            $span->text(' à ')
+                                ->time(['datetime'=>$end->format(DATE_FORMAT)])
+                                    ->text($end->format('m/Y'));
                         }
                     } else {
                         // If the current experience did not last more than a mounth
