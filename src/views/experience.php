@@ -45,7 +45,8 @@ return function ($doc, $section) {
                                     ->text($end->format('F Y'));
                         }
                         $span = $li->span(['lang'=>'fr']);
-                        $span->text($hasEnded ? 'De ' : 'Depuis ')
+                        // Using a span to avoid capatalization of the month name
+                        $span->span($hasEnded ? 'De ' : 'Depuis ')()
                             ->time(['datetime'=>$begin->format(DATE_FORMAT)])
                                 ->text($begin->format('m/Y'));
                         if ($hasEnded) {
