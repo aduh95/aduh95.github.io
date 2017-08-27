@@ -10,23 +10,27 @@ namespace aduh95\Resume;
 
 
 return function ($doc) {
-    $info_list = $doc()->aside()->append()
+    $aside = $doc()->aside();
+    $info_list = $aside->append()
         ()->header()->append()
             ()->h3()->img([
-                'src'=>CONFIG\MEDIAS\IMG_DIR.'antoineduhamel.jpg',
+                'src'=>CONFIG\MEDIAS\IMG_DIR.CONFIG\MY_INFO\SELF_PORTRAYAL_FILE,
                 'alt'=>CONFIG\MY_INFO\PUBLIC_NAME,
                 'width'=>1400,
                 'height'=>1600
             ])()
             ()->ul()->attr('class', 'personal_information');
-    $skills_list = $info_list
-            ()
+    $about_section = $aside->append()
+        ()->section(['class'=>'about'])->append()
+            ()->h3(['lang' => 'en'], 'About me')
+            ()->h3(['lang' => 'fr'], 'À propos de moi')
+            ();
+    $skills_list = $aside->append()
         ()->section()->append()
             ()->h3(['lang' => 'en'], 'Skills')
             ()->h3(['lang' => 'fr'], 'Points forts')
-            ()->ul()->attr('class', 'hobbies');
-    $hobbies_list = $skills_list
-            ()
+            ()->ul()->attr('class', 'skills');
+    $hobbies_list = $aside->append()
         ()->section()->append()
             ()->h3(['lang' => 'en'], 'Hobbies')
             ()->h3(['lang' => 'fr'], 'Loisirs')
@@ -35,7 +39,12 @@ return function ($doc) {
     foreach (JSONSource::parse('personal_information') as $class => $info) {
         $info_list->li()->attr('class', $class)
             ->i(['class'=>'fa fa-'.$info['icon']])()
-            ->a(['href' => $info['href'], 'target' => '_blank', 'rel'=>'noopener'])->text($info['text']);
+            ->a(['href' => $info['href'], 'target' => '_blank', 'rel'=>'noopener'])
+                ->text($info['text']);
+    }
+
+    foreach (JSONSource::parse('about') as $lang => $text) {
+        $about_section->p()->attr('lang', $lang)->text($text);
     }
 
     foreach (JSONSource::parse('skills') as $skill) {

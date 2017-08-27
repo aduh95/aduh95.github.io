@@ -9,6 +9,11 @@ body > aside {
         }
         padding-bottom: 1rem;
     }
+    & .about p {
+        max-width: 40vh;
+        padding-left: 2rem;
+        text-align: justify;
+    }
     & ul.personal_information {
         display: flex;
         flex-direction: column;
