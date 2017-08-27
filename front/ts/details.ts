@@ -5,14 +5,19 @@ interface HTMLDetailsElement extends HTMLElement {
 document.addEventListener(
     'DOMContentLoaded',
     function(this: Document) {
-        let summaryElem = this.querySelectorAll('summary');
+        const SUMMARY_ELEMENT = 'SUMMARY';
+        let summaryElem = this.querySelectorAll(SUMMARY_ELEMENT);
         for (let elem of <HTMLElement[]>(<any>summaryElem)) {
             if (window.hasOwnProperty('HTMLDetailsElement')) {
                 // Allow the user to close the detail element by clicking on it
                 elem.parentNode.addEventListener(
                     'click',
-                    function(this: HTMLDetailsElement) {
-                        if (this.open) {
+                    function(this: HTMLDetailsElement, ev: Event) {
+                        if (
+                            SUMMARY_ELEMENT !==
+                                (<HTMLElement>ev.target).nodeName &&
+                            this.open
+                        ) {
                             this.open = false;
                         }
                     },
