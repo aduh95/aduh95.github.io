@@ -11,6 +11,11 @@ namespace aduh95\Resume;
 use const aduh95\Resume\CONFIG\EXPERIENCE\ICONS;
 use const aduh95\Resume\CONFIG\EXPERIENCE\DATE_FORMAT;
 
+const MORE_INFO = [
+    'en' => 'More information',
+    'fr' => 'En savoir plus',
+];
+
 
 return function ($doc, $section) {
     foreach (JSONSource::parse('experience') as $name => $infos) {
@@ -82,11 +87,41 @@ return function ($doc, $section) {
 
         if (!empty($infos['description'])) {
             $details = $article->details();
-            $details->summary()->append()
-                ()->span(['lang'=>'en'], 'More information')
-                ()->span(['lang'=>'fr'], 'En savoir plus');
-            foreach ($infos['description'] as $lang => $text) {
-                $details->p(['lang' => $lang, 'class' => 'mission'])->text($text);
+            $keywords = $infos['keywords']??[];
+            $summary = $details->summary();
+            //     ()->span(['lang'=>'en'], 'More information')
+            //     ()->span(['lang'=>'fr'], 'En savoir plus');
+
+            foreach ($infos['description']??[] as $lang => $text) {
+                $lang_keywords = $keywords[$lang]??[];
+                $summary->span()
+                    ->attr('lang', $lang)
+                    ->text(
+                        empty($lang_keywords) ?
+                            MORE_INFO[$lang] :
+                            implode($keywords[$lang], ', ')
+                    );
+                $p = $details->p(['lang' => $lang, 'class' => 'mission'])->text($text);
+
+                // Strongify keywords in the text (not working yet with non ascii)
+                // $pointersList = [];
+                // $strlen = strlen($text);
+                //
+                // foreach ($lang_keywords as $keyword) {
+                //     $offset = 0;
+                //     while (false !== $offset = stripos($text, $keyword, $offset)) {
+                //         $pointersList[$offset++] = $keyword;
+                //     }
+                // }
+                //
+                // $lastKey = 0;
+                // for ($i=0; $i < $strlen; $i++) {
+                //     if(isset($pointersList[$i])) {
+                //         $p->text(substr($text, $lastKey, $i));
+                //         $p->strong()->text($pointersList[$i]);
+                //         $lastKey = $i+=strlen($pointersList[$i]);
+                //     }
+                // }
             }
         }
 
