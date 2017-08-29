@@ -51,6 +51,13 @@ body {
         display: flex;
         flex-wrap: wrap;
 
+        @media screen {
+            margin-bottom: 1rem;
+            & > section {
+                margin-bottom: 1rem;
+            }
+        }
+
         & h5 {
             display: inline-block;
             & ~ h6 {
