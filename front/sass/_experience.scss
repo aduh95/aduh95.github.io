@@ -1,5 +1,8 @@
 section.experience {
     // Capitalize only child time tag for languages that does not autocapitalize month names
+    & ul {
+        margin-bottom: .5rem;
+    }
     & ul > li time:first-child:last-child {
         display: inline-block;
         &::first-letter {
