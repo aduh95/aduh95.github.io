@@ -11,7 +11,14 @@ section.experience {
     }
 
     & details {
-        will-change: height;
+        &:hover {
+            &[open] {
+                will-change: height;
+            }
+            &:not([open]) > summary > span {
+                will-change: font-size, opacity;
+            }
+        }
         transition: height 300ms ease-in;
 
         & > summary > span {
@@ -42,7 +49,7 @@ section.experience {
             animation-name: invisiblyGrowFontSize, fadeIn;
             animation-duration: 300ms, 400ms;
             animation-delay: 0;
-            animation-timing-function: ease-out, ease-out;
+            animation-timing-function: ease-out;
             margin-left: 1rem;
         }
     }

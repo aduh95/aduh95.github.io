@@ -62,7 +62,7 @@
         },
         "description": {
             "en": "The small French company Qowisio asked us to make a demonstration kit for its Ultra-Narrow-Band technology (UNB) implementation; the purpose of this kit is to emulate a UNB network able to interact with the connected objects nearby, and a WiFi network to allow customers to connect their device and try the Android app we created with the team I led (four developers). This application gathers all the data from the connected objets and displays it on the screen.",
-            "fr": "Qowisio, PME angevine spécialisée dans le traitement de données issues d'objets connectés, nous a demandé de réaliser un kit de démonstration de sa technologie Ultra-Narrow-Band (UNB). Le kit devait être capable d'émuler un réseau UNB hébergeant quelques objets connectés de Qowisio ainsi qu'un réseau WiFi sur lequel les prospects peuvent se connecter pour constater l'efficacité du réseau Qowisio. Mon rôle dans ce projet fut de diriger l'équipe Androïd de 4 personnes et de réaliser l'API qui permet à la dîte application de récupérer les données émanant des objets connectés."
+            "fr": "Qowisio, PME angevine spécialisée dans le traitement de données issues d'objets connectés, nous a demandé de réaliser un kit de démonstration de sa technologie Ultra-Narrow-Band (UNB). Le kit devait être capable d'émuler un réseau UNB hébergeant quelques objets connectés de Qowisio ainsi qu'un réseau WiFi sur lequel les prospects peuvent se connecter pour constater l'efficacité du réseau Qowisio. Mon rôle dans ce projet fut de diriger l'équipe Android de 4 personnes et de réaliser l'API qui permet à la dîte application de récupérer les données émanant des objets connectés."
         },
         "technologies": [
             {
