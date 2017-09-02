@@ -1,5 +1,5 @@
 {
-    "Freelance": {
+    "Freelance (Bonjour Paris)": {
         "mission": {
             "en": "Front-end web developer",
             "fr": "Développeur web (front-end)"
@@ -15,7 +15,7 @@
             "website": "https://vuarnet.com"
         },
         "keywords": {
-            "en": [],
+            "en": ["Freelance", "e-shop", "WebDev"],
             "fr": []
         },
         "description": {
@@ -53,7 +53,11 @@
             }
         },
         "keywords": {
-            "en": [],
+            "en": [
+                "Project management",
+                "Team management",
+                "Demonstration kit"
+            ],
             "fr": ["Gestion de projet", "Conception de systèmes embarqués"]
         },
         "description": {
@@ -104,7 +108,7 @@
             "website": "https://www.bonjour.agency"
         },
         "keywords": {
-            "en": [],
+            "en": ["UI design integration", "Startup"],
             "fr": []
         },
         "description": {
@@ -151,11 +155,11 @@
             "website": "https://www.seio.org"
         },
         "keywords": {
-            "en": [],
+            "en": ["Team managment", "Quality", "ERP devloppement"],
             "fr": []
         },
         "description": {
-            "en": "The SEIO is the Junior Entreprise of the ESEO (the engineer school I attend). As Vice-Chairman, my task was to supervise the internal and external communication department, audit and quality department and IT department.",
+            "en": "The SEIO is the Junior Entreprise of the ESEO (the engineer school I attend). As Vice-Chairman, my task was to supervise the internal and external communication department, audit and quality department and IT department. I was in charge of managing the develpement of our internal ERP.",
             "fr": "Le SEIO est la Junior-Entreprise de l'ESEO, école dans laquelle j'effectue ma formation d'ingénieur. J'ai occupé le poste de Vice-Président chargé de la communication interne et externe, du pôle audit et qualité, et des systèmes d'informations. Mon rôle au sein de cette Junior-Entreprise était de manager mes équipe et participer aux prises de décisions concernant le fonctionnement de l'association. Pour ce faire, j'ai réalisé, en colaboration avec deux de mes camarades, un intranet intégré aux différents environnements de travail nécessaires à notre activité."
         },
         "technologies": [
@@ -227,7 +231,7 @@
             "fr": []
         },
         "description": {
-            "en": "This French association needed a custom solution to handle their subscribers batabase.",
+            "en": "This French association needed a custom solution to handle their subscribers database.",
             "fr": "En août 2013, l'association des Journées Paysannes (association mettant en relation ses adhérants pour former des groupes de réfléxion et d'échanges) a fait appel à moi pour mettre à jour leur système de gestion interne par une solution plus moderne et plus adaptée à leurs besoins."
         },
         "technologies": [
