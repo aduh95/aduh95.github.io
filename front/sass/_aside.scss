@@ -11,7 +11,7 @@ body > aside {
     }
     & p {
         @include media-breakpoint-up(lg) {
-            max-width: 40vh;
+            max-width: 30vw;
         }
         padding-left: 2rem;
         text-align: justify;

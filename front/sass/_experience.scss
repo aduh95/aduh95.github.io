@@ -47,7 +47,7 @@ section.experience {
 
         & > p {
             animation-name: invisiblyGrowFontSize, fadeIn;
-            animation-duration: 300ms, 400ms;
+            animation-duration: 300ms;
             animation-delay: 0;
             animation-timing-function: ease-out;
             margin-left: 1rem;
@@ -67,7 +67,7 @@ section.experience {
     0% {
         opacity: 0;
     }
-    50% {
+    90% {
         opacity: 0;
     }
     100% {
