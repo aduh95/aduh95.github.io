@@ -20,8 +20,9 @@ document.addEventListener(
                             // the transition starts
                             this.style.height = this.offsetHeight + 'px';
                             window.requestAnimationFrame(() => {
-                                // Set a height on one line to start the transition
-                                this.style.height = '1.5rem';
+                                // Set the height at the last known to start the transition
+                                this.style.height =
+                                    this.dataset.closedHeight || '1.5rem';
                                 window.setTimeout(() => {
                                     // At the end of the transition, removing the
                                     // height style attribute to let the browser
@@ -29,6 +30,10 @@ document.addEventListener(
                                     this.style.height = '';
                                 }, 300);
                             });
+                        } else {
+                            // Saving the current height to allow sweet transition
+                            this.dataset.closedHeight =
+                                this.offsetHeight + 'px';
                         }
                         if (
                             SUMMARY_ELEMENT !==
