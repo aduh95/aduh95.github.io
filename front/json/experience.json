@@ -15,11 +15,11 @@
             "website": "https://vuarnet.com"
         },
         "keywords": {
-            "en": ["Freelance", "e-shop", "WebDev"],
+            "en": ["Freelance", "e-shop", "Team work"],
             "fr": []
         },
         "description": {
-            "en": "Along side my formation at the ESEO, Bonjour Paris asked me to continue to work for them on the Vuarnet website we have been building. My task was to code the evolutions of their current e-shop website. You can browse this very website using the link above.",
+            "en": "Along side my formation at Groupe ESEO, Bonjour Paris asked me to continue to work for them on the Vuarnet website we have been building. My task was to code the evolutions of their current e-shop website. You can browse this very website using the link above.",
             "fr": "En parrallèle de ma formation à l'ESEO, Bonjour Paris a souhaité que je continue à m'occuper des évolutions sur le site e-commerce de Vuarnet, entreprise française, connue pour ses lunettes de soleil et ses masques de ski. Mes missions consistent à implémenter les nouvelles fonctionnalités demandées par Vuarnet sur la partie front-end de leur site internet. Vous pouvez visiter ce site web en utilisant le lien ci-dessus."
         },
         "technologies": [
@@ -55,8 +55,8 @@
         "keywords": {
             "en": [
                 "Project management",
-                "Team management",
-                "Demonstration kit"
+                "Android app devloppement",
+                "Connected objects"
             ],
             "fr": ["Gestion de projet", "Conception de systèmes embarqués"]
         },
@@ -108,12 +108,16 @@
             "website": "https://www.bonjour.agency"
         },
         "keywords": {
-            "en": ["UI design integration", "Startup"],
+            "en": [
+                "Server maintenance&administration",
+                "UI design integration",
+                "WebDev"
+            ],
             "fr": []
         },
         "description": {
-            "en": "Bonjour Paris is a global luxury communication agency focused on forward-thinking ideas, business-minded solutions for premium brands. My task was to build up the agency's website from scratch using the agency's visual identity; also I colaborated on the Vuarnet commercial website, and the Peter Lindbergh's presentation website as well. You can browse this very website using the link above.",
-            "fr": "Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme au service de l'industrie du luxe. Ma mission durant mon expérience chez Bonjour Paris fut de réaliser l'intégration de leur site internet de présentation de l'agence. J'ai également été sollicité pour réaliser certaines parties du site du célèbre photographe allemand Peter Lindbergh et reprendre le développement du site e-commerce de Vuarnet, marque de lunettes de soleil française. Vous pouvez visiter ce site web en utilisant le lien ci-dessus."
+            "en": "Bonjour Paris is a global luxury communication agency focused on forward-thinking ideas, business-minded solutions for premium brands. My task was to build up the agency's website from scratch using the agency's visual identity; you can browse this very website using the link above. Also I colaborated on the Vuarnet commercial website (vuarnet.com), and the Peter Lindbergh's presentation website as well (peterlindbergh.com).",
+            "fr": "Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme au service de l'industrie du luxe. Ma mission durant mon expérience chez Bonjour Paris fut de réaliser l'intégration de leur site internet de présentation de l'agence. Vous pouvez visiter ce site web en utilisant le lien ci-dessus. J'ai également été sollicité pour réaliser certaines parties du site du célèbre photographe allemand Peter Lindbergh et reprendre le développement du site e-commerce de Vuarnet, marque de lunettes de soleil française."
         },
         "technologies": [
             {
@@ -155,11 +159,15 @@
             "website": "https://www.seio.org"
         },
         "keywords": {
-            "en": ["Team managment", "Quality", "ERP devloppement"],
+            "en": [
+                "Team managment",
+                "Quality process supervision",
+                "intern ERP devloppement"
+            ],
             "fr": []
         },
         "description": {
-            "en": "The SEIO is the Junior Entreprise of the ESEO (the engineer school I attend). As Vice-Chairman, my task was to supervise the internal and external communication department, audit and quality department and IT department. I was in charge of managing the develpement of our internal ERP.",
+            "en": "The SEIO is the Junior Entreprise of Groupe ESEO (the engineer school I attend). As Vice-Chairman, my task was to supervise the internal and external communication department, audit and quality department and IT department. I was in charge of managing the develpement of our internal ERP.",
             "fr": "Le SEIO est la Junior-Entreprise de l'ESEO, école dans laquelle j'effectue ma formation d'ingénieur. J'ai occupé le poste de Vice-Président chargé de la communication interne et externe, du pôle audit et qualité, et des systèmes d'informations. Mon rôle au sein de cette Junior-Entreprise était de manager mes équipe et participer aux prises de décisions concernant le fonctionnement de l'association. Pour ce faire, j'ai réalisé, en colaboration avec deux de mes camarades, un intranet intégré aux différents environnements de travail nécessaires à notre activité."
         },
         "technologies": [
@@ -197,12 +205,20 @@
             }
         },
         "keywords": {
-            "en": [],
-            "fr": []
+            "en": [
+                "Audit customers' files",
+                "Customer reminder tool",
+                "Reception of customers"
+            ],
+            "fr": [
+                "Audit dossier clients",
+                "Modélisation relance clients",
+                "Accueil clients"
+            ]
         },
         "description": {
             "en": "During the time I spent working with Crédit-Agricole, at the enterprises' bank office, my task was to welcome customers who come by or phone.",
-            "fr": "Au sein de l'agence entreprise de Saintes du Crédit-Agricole Charente-Maritime Deux-Sèvres, j'ai appris à gérer la relation client professionnel, nottament par l'accueil téléphonique et physique. Cette experience m'a également permi de comprendre le fonctionnement interne des mécanismes bancaires."
+            "fr": "Au sein de l'agence entreprise de Saintes du Crédit-Agricole Charente-Maritime Deux-Sèvres, j'ai appris à gérer la relation client professionnel, nottament par l'accueil téléphonique et physique. Cette expérience m'a également permis de comprendre le fonctionnement interne des mécanismes bancaires. J'ai eu pour missions d'auditer les dossiers juridiques et de proposer une modélisation des relances client sur tableur."
         },
         "technologies": [
             {
@@ -213,7 +229,7 @@
     },
     "Journées Paysannes": {
         "mission": {
-            "en": "Managment solution developer",
+            "en": "Management solution developer",
             "fr": "Developpement solutions de gestion"
         },
         "info": {
@@ -227,12 +243,16 @@
             }
         },
         "keywords": {
-            "en": [],
+            "en": [
+                "Database management system",
+                "upgrade of legacy system",
+                "task automation"
+            ],
             "fr": []
         },
         "description": {
             "en": "This French association needed a custom solution to handle their subscribers database.",
-            "fr": "En août 2013, l'association des Journées Paysannes (association mettant en relation ses adhérants pour former des groupes de réfléxion et d'échanges) a fait appel à moi pour mettre à jour leur système de gestion interne par une solution plus moderne et plus adaptée à leurs besoins."
+            "fr": "En août 2013, l'association des Journées Paysannes (association de réflexion sur la ruralité avec rencontre nationale annuelle) a fait appel à moi pour mettre à jour leur système de gestion interne par une solution plus moderne et plus adaptée à leurs besoins. J'ai créé pour eux une application Web de gestion de la base de données qui leur permettez d'automatiser certaines tâches, afin de leur permettre de transitionner vers un service dédié aux associations (AssoConnect)."
         },
         "technologies": [
             {

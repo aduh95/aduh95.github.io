@@ -89,6 +89,7 @@ return function ($doc, $section) {
             $details = $article->details();
             $keywords = $infos['keywords']??[];
             $summary = $details->summary();
+            $summary->i(['class'=>'fa fa-thumb-tack', 'hidden'=>false]);
             //     ()->span(['lang'=>'en'], 'More information')
             //     ()->span(['lang'=>'fr'], 'En savoir plus');
 

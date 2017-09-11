@@ -3,6 +3,15 @@
         font-size: 12px;
     }
     summary {
-        display: none;
+        // display: none;
+        visibility: hidden;
+        & > i.fa,
+        & > span {
+            padding-left: 28px;
+            visibility: visible;
+        }
+        & > span {
+            padding-left: 6px;
+        }
     }
 }
