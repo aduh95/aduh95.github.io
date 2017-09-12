@@ -2,21 +2,21 @@
     :root {
         font-size: 12px;
     }
+    & summary {
+        visibility: hidden;
+        transform: translateX(-1rem);
+        & > i.fa {
+            visibility: visible;
+        }
+    }
 
     details {
-        &[open] {
-            & summary {
-                display: none;
-            }
+        &[open] summary {
+            position: absolute;
         }
         &:not([open]) summary {
-            visibility: hidden;
-            padding-left: 28px;
-            & > i.fa,
             & > span {
                 visibility: visible;
-            }
-            & > span {
                 padding-left: 6px;
             }
         }

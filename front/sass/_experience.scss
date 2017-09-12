@@ -1,6 +1,8 @@
 section.experience {
     // Capitalize only child time tag for languages that does not autocapitalize month names
-    & ul {
+    & ul,
+    & details {
+        padding-left: 2rem;
         margin-bottom: .5rem;
     }
     & ul > li time:first-child:last-child {
@@ -53,8 +55,8 @@ section.experience {
         }
 
         & > p {
-            animation-name: invisiblyGrowFontSize, fadeIn;
-            animation-duration: 300ms;
+            animation-name: invisiblyGrowFontSize;
+            animation-duration: 350ms;
             animation-delay: 0;
             animation-timing-function: ease-out;
             margin-left: 1rem;
@@ -65,19 +67,14 @@ section.experience {
 @keyframes invisiblyGrowFontSize {
     0% {
         font-size: 0;
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+        font-size: 1em;
     }
     100% {
         font-size: 1em;
-    }
-}
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    90% {
-        opacity: 0;
-    }
-    100% {
         opacity: 1;
     }
 }
