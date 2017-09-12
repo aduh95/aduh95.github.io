@@ -5,9 +5,9 @@
     summary {
         // display: none;
         visibility: hidden;
+        padding-left: 28px;
         & > i.fa,
         & > span {
-            padding-left: 28px;
             visibility: visible;
         }
         & > span {
