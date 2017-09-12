@@ -2,16 +2,23 @@
     :root {
         font-size: 12px;
     }
-    summary {
-        // display: none;
-        visibility: hidden;
-        padding-left: 28px;
-        & > i.fa,
-        & > span {
-            visibility: visible;
+
+    details {
+        &[open] {
+            & summary {
+                display: none;
+            }
         }
-        & > span {
-            padding-left: 6px;
+        &:not([open]) summary {
+            visibility: hidden;
+            padding-left: 28px;
+            & > i.fa,
+            & > span {
+                visibility: visible;
+            }
+            & > span {
+                padding-left: 6px;
+            }
         }
     }
 }
