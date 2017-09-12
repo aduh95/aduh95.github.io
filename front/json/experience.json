@@ -19,7 +19,7 @@
             "fr": []
         },
         "description": {
-            "en": "Along side my formation at Groupe ESEO, Bonjour Paris asked me to continue to work for them on the Vuarnet website we have been building. My task was to code the evolutions of their current e-shop website. You can browse this very website using the link above.",
+            "en": "Along side my formation at Groupe ESEO, Bonjour Paris asked me to continue to work for them on the Vuarnet website we have been building. My task was to code the evolutions of their current e-shop website on the front end. You can browse this very website using the link above.",
             "fr": "En parrallèle de ma formation à l'ESEO, Bonjour Paris a souhaité que je continue à m'occuper des évolutions sur le site e-commerce de Vuarnet, entreprise française, connue pour ses lunettes de soleil et ses masques de ski. Mes missions consistent à implémenter les nouvelles fonctionnalités demandées par Vuarnet sur la partie front-end de leur site internet. Vous pouvez visiter ce site web en utilisant le lien ci-dessus."
         },
         "technologies": [
@@ -55,7 +55,7 @@
         "keywords": {
             "en": [
                 "Project management",
-                "Android app devloppement",
+                "Android app development",
                 "Connected objects"
             ],
             "fr": ["Gestion de projet", "Conception de systèmes embarqués"]
@@ -116,7 +116,7 @@
             "fr": []
         },
         "description": {
-            "en": "Bonjour Paris is a global luxury communication agency focused on forward-thinking ideas, business-minded solutions for premium brands. My task was to build up the agency's website from scratch using the agency's visual identity; you can browse this very website using the link above. Also I colaborated on the Vuarnet commercial website (vuarnet.com), and the Peter Lindbergh's presentation website as well (peterlindbergh.com).",
+            "en": "Bonjour Paris is a global luxury communication agency focused on forward-thinking ideas, business-minded solutions for premium brands. My task was to build up the agency's website from scratch using the agency's visual identity; you can browse this very website using the link above. Also I colaborated on the Vuarnet commercial website (vuarnet.com), and the Peter Lindbergh's presentation website as well (peterlindbergh.com). Also, I was in charge of chosing, setting up and maintaining their virtual private servers which host their websites and serve a Gitlab instance for code versionning purpose.",
             "fr": "Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme au service de l'industrie du luxe. Ma mission durant mon expérience chez Bonjour Paris fut de réaliser l'intégration de leur site internet de présentation de l'agence. Vous pouvez visiter ce site web en utilisant le lien ci-dessus. J'ai également été sollicité pour réaliser certaines parties du site du célèbre photographe allemand Peter Lindbergh et reprendre le développement du site e-commerce de Vuarnet, marque de lunettes de soleil française."
         },
         "technologies": [
@@ -162,12 +162,12 @@
             "en": [
                 "Team managment",
                 "Quality process supervision",
-                "intern ERP devloppement"
+                "intern ERP development"
             ],
             "fr": []
         },
         "description": {
-            "en": "The SEIO is the Junior Entreprise of Groupe ESEO (the engineer school I attend). As Vice-Chairman, my task was to supervise the internal and external communication department, audit and quality department and IT department. I was in charge of managing the develpement of our internal ERP.",
+            "en": "The SEIO is the Junior Entreprise of Groupe ESEO (the engineer school I attend). As Vice-Chairman, my task was to supervise the internal and external communication department, audit and quality department and IT department. I was in charge of managing the development of our internal ERP.",
             "fr": "Le SEIO est la Junior-Entreprise de l'ESEO, école dans laquelle j'effectue ma formation d'ingénieur. J'ai occupé le poste de Vice-Président chargé de la communication interne et externe, du pôle audit et qualité, et des systèmes d'informations. Mon rôle au sein de cette Junior-Entreprise était de manager mes équipe et participer aux prises de décisions concernant le fonctionnement de l'association. Pour ce faire, j'ai réalisé, en colaboration avec deux de mes camarades, un intranet intégré aux différents environnements de travail nécessaires à notre activité."
         },
         "technologies": [
@@ -217,7 +217,7 @@
             ]
         },
         "description": {
-            "en": "During the time I spent working with Crédit-Agricole, at the enterprises' bank office, my task was to welcome customers who come by or phone.",
+            "en": "During the time I spent working with Crédit-Agricole, at the enterprises' bank office, my task was to welcome customers who come by or phone. Also, I was in charge of checking customers juridical files integrity and contacting them to get updated documents.",
             "fr": "Au sein de l'agence entreprise de Saintes du Crédit-Agricole Charente-Maritime Deux-Sèvres, j'ai appris à gérer la relation client professionnel, nottament par l'accueil téléphonique et physique. Cette expérience m'a également permis de comprendre le fonctionnement interne des mécanismes bancaires. J'ai eu pour missions d'auditer les dossiers juridiques et de proposer une modélisation des relances client sur tableur."
         },
         "technologies": [
@@ -230,7 +230,7 @@
     "Journées Paysannes": {
         "mission": {
             "en": "Management solution developer",
-            "fr": "Developpement solutions de gestion"
+            "fr": "Développement solutions de gestion"
         },
         "info": {
             "date": {
