@@ -48,8 +48,8 @@ section.experience {
             float: left;
 
             & > span {
-                font-size: 0;
                 opacity: 0;
+                font-size: 0;
                 transition-property: all;
             }
         }
@@ -60,6 +60,7 @@ section.experience {
             animation-delay: 0;
             animation-timing-function: ease-out;
             margin-left: 1rem;
+            min-height: 1.5rem;
         }
     }
 }
