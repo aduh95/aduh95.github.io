@@ -23,20 +23,21 @@ document.addEventListener(
                                 // Waiting for the next frame because of Firefox
                                 window.requestAnimationFrame(() => {
                                     // Set the height at the last known to start the transition
-                                    this.style.height =
-                                        this.dataset.closedHeight || '1.5rem';
+                                    this.style.height = this.style.minHeight;
                                     window.setTimeout(() => {
                                         // At the end of the transition, removing the
                                         // height style attribute to let the browser
                                         // chose the best height
                                         this.style.height = '';
+                                        this.style.minHeight = '';
                                     }, 300);
                                 });
                             });
                         } else {
                             // Saving the current height to allow sweet transition
-                            this.dataset.closedHeight =
-                                this.offsetHeight + 'px';
+                            this.style.minHeight =
+                                (<HTMLElement>this.firstElementChild)
+                                    .offsetHeight + 'px';
                         }
                         if (
                             SUMMARY_ELEMENT !==
