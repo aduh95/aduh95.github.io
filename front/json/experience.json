@@ -19,7 +19,7 @@
             "fr": []
         },
         "description": {
-            "en": "Along side my formation at Groupe ESEO, Bonjour Paris asked me to continue to work for them on the Vuarnet website we have been building. My task was to code the evolutions of their current e-shop website on the front end. You can browse this very website using the link above.",
+            "en": "Along side my formation at Groupe ESEO, Bonjour Paris asked me to continue to work for them on the Vuarnet website we have been building. My task was to code the evolutions of their current e-shop website on the front end, and to add some scripts on the server (Windows Server 2012) to automate the deploying process. You can browse this very website using the link above.",
             "fr": "En parrallèle de ma formation à l'ESEO, Bonjour Paris a souhaité que je continue à m'occuper des évolutions sur le site e-commerce de Vuarnet, entreprise française, connue pour ses lunettes de soleil et ses masques de ski. Mes missions consistent à implémenter les nouvelles fonctionnalités demandées par Vuarnet sur la partie front-end de leur site internet. Vous pouvez visiter ce site web en utilisant le lien ci-dessus."
         },
         "technologies": [
@@ -61,7 +61,7 @@
             "fr": ["Gestion de projet", "Conception de systèmes embarqués"]
         },
         "description": {
-            "en": "The small French company Qowisio asked us to make a demonstration kit for its Ultra-Narrow-Band technology (UNB) implementation; the purpose of this kit is to emulate a UNB network able to interact with the connected objects nearby, and a WiFi network to allow customers to connect their device and try the Android app we created with the team I led (four developers). This application gathers all the data from the connected objets and displays it on the screen.",
+            "en": "The small French company Qowisio asked us to make a demonstration kit for its Ultra-Narrow-Band technology (UNB) implementation; the purpose of this kit is to emulate a UNB network able to interact with the connected objects nearby, and a WiFi network to allow customers to connect their device and try the Android app we created with the team I led (four developers). This application gathers all the data from the connected objets and displays it on the screen. This application is internally used by Qowisio to sell its technology to its customers.",
             "fr": "Qowisio, PME angevine spécialisée dans le traitement de données issues d'objets connectés, nous a demandé de réaliser un kit de démonstration de sa technologie Ultra-Narrow-Band (UNB). Le kit devait être capable d'émuler un réseau UNB hébergeant quelques objets connectés de Qowisio ainsi qu'un réseau WiFi sur lequel les prospects peuvent se connecter pour constater l'efficacité du réseau Qowisio. Mon rôle dans ce projet fut de diriger l'équipe Android de 4 personnes et de réaliser l'API qui permet à la dîte application de récupérer les données émanant des objets connectés."
         },
         "technologies": [
@@ -251,7 +251,7 @@
             "fr": []
         },
         "description": {
-            "en": "This French association needed a custom solution to handle their subscribers database.",
+            "en": "This French association needed a custom solution to handle their subscribers database, and to manage the organization of their annual events. My task was to export the data from their legacy system to insert it into a MySQL database, build a temporary interface to manaage it before they can move to a dedicated service of management for associations (AssoConnect).",
             "fr": "En août 2013, l'association des Journées Paysannes (association de réflexion sur la ruralité avec rencontre nationale annuelle) a fait appel à moi pour mettre à jour leur système de gestion interne par une solution plus moderne et plus adaptée à leurs besoins. J'ai créé pour eux une application Web de gestion de la base de données qui leur permettez d'automatiser certaines tâches, afin de leur permettre de transitionner vers un service dédié aux associations (AssoConnect)."
         },
         "technologies": [
