@@ -182,9 +182,9 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 
-balloon-css@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/balloon-css/-/balloon-css-0.4.0.tgz#0d6edf8bf595f16b21ef88a6a676caa5a418b955"
+balloon-css@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/balloon-css/-/balloon-css-0.5.0.tgz#6a3c065efab9ea5f509a95d4315df00aae114fa3"
 
 base64-url@1.2.1:
   version "1.2.1"
@@ -273,7 +273,7 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-bootstrap@^4.0.0:
+bootstrap@4.0.0-beta:
   version "4.0.0-beta"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.0.0-beta.tgz#dc5928175d2e71310bc668cf9e05a907211b72a6"
 
@@ -761,6 +761,15 @@ cssnano-util-same-parent@^4.0.0-rc.2:
   version "4.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/cssnano-util-same-parent/-/cssnano-util-same-parent-4.0.0-rc.2.tgz#b036b89f0d7c7516aafd1dc9e70f0ed05768834a"
 
+cssnano@4.0.0-rc.2:
+  version "4.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-4.0.0-rc.2.tgz#bcc06fe303d4f0f14070e59c121667c1727e2feb"
+  dependencies:
+    cosmiconfig "^2.0.0"
+    cssnano-preset-default "^4.0.0-rc.2"
+    is-resolvable "^1.0.0"
+    postcss "^6.0.0"
+
 cssnano@^3.0.0:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-3.10.0.tgz#4f38f6cea2b9b17fa01490f23f1dc68ea65c1c38"
@@ -797,15 +806,6 @@ cssnano@^3.0.0:
     postcss-unique-selectors "^2.0.2"
     postcss-value-parser "^3.2.3"
     postcss-zindex "^2.0.1"
-
-cssnano@^4.0.0:
-  version "4.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-4.0.0-rc.2.tgz#bcc06fe303d4f0f14070e59c121667c1727e2feb"
-  dependencies:
-    cosmiconfig "^2.0.0"
-    cssnano-preset-default "^4.0.0-rc.2"
-    is-resolvable "^1.0.0"
-    postcss "^6.0.0"
 
 csso@~2.3.1:
   version "2.3.2"
@@ -1441,8 +1441,8 @@ gulp-autoprefixer@^4.0.0:
     vinyl-sourcemaps-apply "^0.2.0"
 
 gulp-composer@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/gulp-composer/-/gulp-composer-0.4.0.tgz#e54f17044a4fdc0d78edee6067fb5aa8666ce791"
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/gulp-composer/-/gulp-composer-0.4.2.tgz#f067de7d6ff8851d00add08c3e4f64eb1d197747"
   dependencies:
     gulp-util latest
     shelljs "~0.2.6"
@@ -1542,8 +1542,8 @@ gulp-sourcemaps@1.6.0:
     vinyl "^1.0.0"
 
 gulp-typescript@^3.1.6:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/gulp-typescript/-/gulp-typescript-3.2.1.tgz#52cd77e9c6844e3b9a8bddd88e884ceb46a5db79"
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/gulp-typescript/-/gulp-typescript-3.2.2.tgz#b7e5e1d3cb35f772e53e604026601826e2be77fc"
   dependencies:
     gulp-util "~3.0.7"
     source-map "~0.5.3"
@@ -4048,12 +4048,12 @@ type-is@~1.6.10, type-is@~1.6.6:
     mime-types "~2.1.15"
 
 typescript@^2.3.2:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.4.2.tgz#f8395f85d459276067c988aa41837a8f82870844"
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.5.2.tgz#038a95f7d9bbb420b1bf35ba31d4c5c1dd3ffe34"
 
 uglify-es@^3.0.27:
-  version "3.0.27"
-  resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.0.27.tgz#391790388f369196be23a49caeb0d5c424fa774e"
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.1.1.tgz#27615a1203cd0b351d8b5bda743ac92ed482b826"
   dependencies:
     commander "~2.11.0"
     source-map "~0.5.1"
