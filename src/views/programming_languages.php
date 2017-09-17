@@ -8,7 +8,6 @@
 
 namespace aduh95\Resume;
 
-
 return function ($doc, $sectionElem) {
     $sectionElem->attr('class', 'col-md-6 meter-section');
 
@@ -28,7 +27,5 @@ return function ($doc, $sectionElem) {
         // foreach ($section['description'] as $lang => $text) {
         //     $meter->span()->text($text)->attr('lang', $lang);
         // }
-
-
     }
 };

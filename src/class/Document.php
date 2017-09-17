@@ -81,8 +81,7 @@ class Document extends ParentDocument
             $this->getBody()->script()->append(
                 $this->dom->createCDATASection(CONFIG\MAIL_CHIMP\GOOGLE_ANALYTICS)
             );
-        } else if ($this->outputOneFile) {
-
+        } elseif ($this->outputOneFile) {
             // Inlining JPEG image(s)
             $list = $this->getBody()->getElementsByTagName('img');
             for ($i = $list->length - 1; $i >= 0; --$i) {

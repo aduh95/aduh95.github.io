@@ -34,7 +34,7 @@ TXT;
 const LICENSE_NOTICE = <<<'TXT'
 
 LICENSE INFORMATION:
-The following document is licensed under [CC BY-NC-ND 4.0](https://github.com/aduh95/aduh95.github.io/blob/master/LICENSE)
+The following document is licensed under [CC BY-NC-ND 4.0](//github.com/aduh95/aduh95.github.io/blob/master/LICENSE)
 
 It uses the following licensed content: *Please see the attached CSS file*
 

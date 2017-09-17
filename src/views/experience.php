@@ -28,7 +28,9 @@ return function ($doc, $section) {
 
         $list = $article->ul();
 
-        if (empty($infos['info'])) $infos['info'] = array();
+        if (empty($infos['info'])) {
+            $infos['info'] = array();
+        }
 
         foreach ($infos['info'] as $key => $value) {
             $li = $list[] = $doc->createElement('li')
@@ -75,6 +77,7 @@ return function ($doc, $section) {
                         'link' => $value,
                         'text' => preg_replace('#^https?://(www\.)?#', '', $value)
                     ];
+                    // non breaking to add the list item
                 case 'place':
                     $li->a()
                         ->attr('href', $value['link'])
@@ -133,8 +136,5 @@ return function ($doc, $section) {
                 $list[] = $doc->createElement('li')->attr('class', 'fa fa-'.$techno['icon'])->text($techno['name']);
             }
         }
-
-
     }
-
 };

@@ -8,7 +8,6 @@
 
 namespace aduh95\Resume;
 
-
 return function ($doc, $sectionElem) {
     foreach (JSONSource::parse('education') as $section) {
         $article = $sectionElem->article();
@@ -27,7 +26,5 @@ return function ($doc, $sectionElem) {
             // $article->p()->text($text)->attr('lang', $lang);
             // }
         }
-
-
     }
 };

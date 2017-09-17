@@ -8,7 +8,6 @@
 
 namespace aduh95\Resume;
 
-
 return function ($doc) {
     $aside = $doc()->aside();
     $info_list = $aside->append()
