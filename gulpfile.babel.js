@@ -79,10 +79,8 @@ var errorHandler = function(error) {
   }
 };
 
-var changeHandler = function(event) {
-  console.log(
-    "File " + event.path + " was " + event.type + ", running tasks..."
-  );
+var changeHandler = function(filepath) {
+  console.log("File " + filepath + " was modified, running tasks...");
 };
 
 export function connect(done) {
@@ -95,7 +93,7 @@ export function connect(done) {
   done();
 }
 
-export const sass = done => {
+export const sass = () =>
   gulp
     .src(SASS_SRC)
     .pipe(sassCompiler().on("error", errorHandler))
@@ -103,10 +101,7 @@ export const sass = done => {
     .pipe(gulp.dest(DEST))
     .pipe(livereload());
 
-  done();
-};
-
-export const typescript = done => (
+export const typescript = () =>
   gulp
     .src([TS_SRC, TS_DEF])
     .pipe(
@@ -118,11 +113,9 @@ export const typescript = done => (
       }).on("error", errorHandler)
     )
     .pipe(gulp.dest(DEST))
-    .pipe(livereload()),
-  done()
-);
+    .pipe(livereload());
 
-export const serviceWorker = done => (
+export const serviceWorker = () =>
   gulp
     .src([TS_SW, TS_DEF])
     .pipe(
@@ -134,9 +127,7 @@ export const serviceWorker = done => (
     )
     .pipe(uglifyES6(uglifyOptions))
     .pipe(gulp.dest(PROJECT_ROOT))
-    .pipe(livereload()),
-  done()
-);
+    .pipe(livereload());
 
 export function vendor_dependencies(done) {
   let vendorFiles = [];
@@ -162,27 +153,20 @@ export const cleanMinify = () =>
 
 export const minify = gulp.series(
   gulp.parallel(cleanMinify, frontCompile),
-  () =>
-    Promise.all([
-      new Promise(resolve => {
-        gulp
-          .src(path.join(DEST, "global.js"))
-          .pipe(uglify(uglifyOptions))
-          .pipe(rename({ suffix: ".min" }))
-          .pipe(gulp.dest(DEST));
-
-        resolve();
-      }),
-      new Promise(resolve => {
-        gulp
-          .src(path.join(DEST, "global.css"))
-          .pipe(uglifycss())
-          .pipe(rename({ suffix: ".min" }))
-          .pipe(gulp.dest(DEST));
-
-        resolve();
-      }),
-    ])
+  gulp.parallel(
+    () =>
+      gulp
+        .src(path.join(DEST, "global.js"))
+        .pipe(uglify(uglifyOptions))
+        .pipe(rename({ suffix: ".min" }))
+        .pipe(gulp.dest(DEST)),
+    () =>
+      gulp
+        .src(path.join(DEST, "global.css"))
+        .pipe(uglifycss())
+        .pipe(rename({ suffix: ".min" }))
+        .pipe(gulp.dest(DEST))
+  )
 );
 
 export const composerInstall = done => done(composer());
@@ -191,7 +175,7 @@ export const composerUpdate = done => done(composer("update"));
 export const watch = () => {
   livereload.listen();
 
-  gulp.watch(SASS_SRC, sassCompiler).on("change", changeHandler);
+  gulp.watch(SASS_SRC, sass).on("change", changeHandler);
   gulp.watch([TS_SRC, TS_DEF], typescript).on("change", changeHandler);
   gulp.watch(TS_SW, serviceWorker).on("change", changeHandler);
   gulp
@@ -244,7 +228,7 @@ export const oneFile = gulp.series(minify, function(done) {
 
       console.log("Reading CSS");
       fs.readFile(stdout.match(/<!--style:(.+)-->/)[1], (err, css) => {
-        err && errorHandler(err);
+        if (err) return errorHandler(err);
         console.info("Purifying css...");
 
         console.info("Embeding font file...");
@@ -277,10 +261,5 @@ gulp.task("one-file", oneFile);
 
 export const init = done => done(composer("create-project"));
 
-export const build = gulp.parallel(
-  connect,
-  frontCompile,
-  watch,
-  done => new Promise(done => setTimeout(() => done(), 2000))
-);
+export const build = gulp.parallel(connect, frontCompile, watch);
 export default build;
