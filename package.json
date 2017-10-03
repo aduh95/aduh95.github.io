@@ -9,6 +9,8 @@
   "license": "CC-BY-NC-ND-4.0",
   "homepage": "https://aduh95.github.io/",
   "devDependencies": {
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
     "gulp-connect": "^5.0.0",
     "gulp-connect-php": "^1.0.0",
     "gulp-livereload": "^3.8.1",
@@ -20,7 +22,7 @@
     "cssnano": "4.0.0-rc.2",
     "datauri": "^1.0.5",
     "font-awesome": "^4.7.0",
-    "gulp": "^3.9.1",
+    "gulp": "gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-composer": "^0.4.0",
     "gulp-concat": "^2.6.1",
