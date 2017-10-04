@@ -21,13 +21,11 @@
   "scripts": {
     "post-create-project-cmd": [
       "yarn install",
-      "typings install",
       "echo \"Project is ready!\"",
       "echo \"You can now run the `gulp` command to get started.\""
     ],
     "pre-install-cmd": ["yarn install"],
-    "pre-update-cmd": ["yarn upgrade"],
-    "one-file": ["gulp clean-uglify", "gulp uglify", "gulp one-file"]
+    "pre-update-cmd": ["yarn upgrade"]
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.0"

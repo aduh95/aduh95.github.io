@@ -14,13 +14,12 @@ build your own.
 
 ### Install locally
 
-First, you have to ensure you these dependencies installed and available on your path:
+First, you have to ensure that these dependencies are installed and available on your path:
 
 * [PHP 7](php.net)
 * [Yarn](yarnpkg.com)
-* [Typings](https://github.com/typings/typings)
 * [Composer](getcomposer.org)
-* [Gulp 3](gulpjs.com)
+* [Gulp CLI](gulpjs.com)
 
 I also suggest you to have the Livereload browser extension:
 
@@ -40,4 +39,4 @@ Then you can proceed to the installation:
 2. Visit `localhost:8080` with your navigator;
 3. *Optional* Activate the **livereload** extension.
 
-To get the standalone version, just run `composer one-file`.
+To get the standalone version, just run `gulp one-file`.
