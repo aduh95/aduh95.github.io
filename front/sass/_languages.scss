@@ -1,177 +1,178 @@
 %bar {
-    position: absolute;
-    border: 0.08em solid $red_400_dark;
-    width: 1em;
-    height: 1em;
-    clip: rect(0em, 0.5em, 1em, 0em);
-    border-radius: 50%;
-    transform: rotate(0deg);
+  position: absolute;
+  border: 0.08em solid $red_400_dark;
+  width: 1em;
+  height: 1em;
+  clip: rect(0em, 0.5em, 1em, 0em);
+  border-radius: 50%;
+  transform: rotate(0deg);
 }
 
 .meter-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  & > h3 {
+    width: 100%;
+    @media print {
+      margin: auto 0 0;
+    }
+  }
+
+  & h5 {
+    display: block;
+  }
+
+  & > article {
+    flex-grow: 1;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 
-    & > h3 {
-        width: 100%;
-        @media print {
-            margin: auto 0 0;
+    &:hover {
+      & > h5 {
+        font-weight: bold;
+      }
+
+      & meter:not(:empty) {
+        & + output::before {
+          opacity: 1;
         }
-    }
+      }
 
-    & h5 {
-        display: block;
-    }
-
-    & > article {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-
-        &:hover {
-            & > h5 {
-                font-weight: bold;
-            }
-
-            & meter:not(:empty) {
-                & + output::before {
-                    opacity: 1;
-                }
-            }
-
-            & output {
-                &::after {
-                    top: 004%;
-                    left: 004%;
-                    width: 092%;
-                    height: 092%;
-                    line-height: 3.7em;
-                }
-
-                & > span {
-                    visibility: visible;
-                    opacity: 1;
-                    line-height: 3.33em;
-                    font-size: 0.2em;
-                }
-            }
-        }
-    }
-
-    & meter {
-        width: 80%;
-        min-width: 1em;
-        padding: .1rem;
-        transform: translateX(10%);
-
-        @for $i from 1 through 100 {
-            &[value="#{$i/100}"] + output .bar {
-                transform: rotate(3.6deg * $i);
-            }
-        }
-        @for $i from 5 through 10 {
-            &[value^="#{$i/10}"] + output {
-                & .fill {
-                    @extend %bar;
-                    transform: rotate(180deg);
-                }
-                & .bar::after {
-                    transform: rotate(180deg);
-                }
-                & .slice {
-                    clip: rect(auto, auto, auto, auto);
-                }
-            }
-        }
-    }
-
-    & output {
-        position: relative;
-        font-size: 3rem;
-        @media print {
-            font-size: 2.5rem;
-        }
-        width: 1em;
-        height: 1em;
-        border-radius: 50%;
-        float: left;
-        margin: 0 auto .1em;
-        padding: 0;
-        background-color: $red_50_dark;
-        overflow: visible;
-
-        & *::before,
-        & *::after {
-            box-sizing: content-box;
+      & output {
+        &::after {
+          top: 004%;
+          left: 004%;
+          width: 092%;
+          height: 092%;
+          line-height: 3.7em;
         }
 
         & > span {
-            @include base-effects();
-
-            background: $balloon-bg;
-            border-radius: 4px;
-            color: #fff;
-            font-size: $balloon-base-size + 2;
-            padding: .5em 1em;
-            position: absolute;
-            white-space: nowrap;
-            z-index: 10;
-
-            position: absolute;
-            z-index: 1;
-            left: 50%;
-            bottom: 0;
-            line-height: 5em;
-            font-size: 0;
-            color: $white;
-            // display: block;
-            text-align: center;
-            white-space: nowrap;
-            transform: translate(-50%, calc(100% + 5px));
-            // transition-property: all;
-            // transition-duration: 0.2s;
-            // transition-timing-function: ease-out;
+          visibility: visible;
+          opacity: 1;
+          line-height: 3.33em;
+          font-size: 0.2em;
         }
-        &::before {
-            @include svg-arrow($balloon-bg, "down");
-            @include base-effects();
+      }
+    }
+  }
 
-            content: '';
-            position: absolute;
-            z-index: 10;
+  & meter {
+    width: 80%;
+    min-width: 1em;
+    padding: 0.1rem;
+    transform: translateX(10%);
 
-            left: 50%;
-            margin-top: 5px;
-            top: 100%;
-            transform: translate(-50%, -5px);
+    @for $i from 1 through 100 {
+      &[value="#{$i/100}"] + output .bar {
+        transform: rotate(3.6deg * $i);
+      }
+    }
+    @for $i from 5 through 10 {
+      &[value^="#{$i/10}"] + output {
+        & .fill {
+          @extend %bar;
+          transform: rotate(180deg);
         }
-        &::after {
-            content: attr(data-title);
-            color: $red_50_dark;
-            font-size: .25em;
-            line-height: 3.4em;
-            position: absolute;
-            top: 8%;
-            left: 8%;
-            display: block;
-            border-radius: 50%;
-            background-color: $white;
-            width: 84%;
-            height: 84%;
-            transition-property: all;
-            transition-duration: 0.2s;
-            transition-timing-function: ease-in;
+        & .bar::after {
+          transform: rotate(180deg);
         }
         & .slice {
-            position: absolute;
-            width: 1em;
-            height: 1em;
-            clip: rect(0em, 1em, 1em, 0.5em);
+          clip: rect(auto, auto, auto, auto);
         }
-        & .bar {
-            @extend %bar;
-        }
+      }
     }
+  }
+
+  & output {
+    position: relative;
+    font-size: 3rem;
+    @media print {
+      font-size: 2.5rem;
+    }
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    float: left;
+    margin: 0 auto 0.1em;
+    padding: 0;
+    background-color: $red_50_dark;
+    overflow: visible;
+
+    & *::before,
+    & *::after {
+      box-sizing: content-box;
+    }
+
+    & > span {
+      @include base-effects();
+
+      background: $balloon-bg;
+      border-radius: 4px;
+      color: #fff;
+      font-size: $balloon-base-size + 2;
+      padding: 0.5em 1em;
+      position: absolute;
+      white-space: nowrap;
+      z-index: 10;
+
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      bottom: 0;
+      line-height: 5em;
+      font-size: 0;
+      color: $white;
+      // display: block;
+      text-align: center;
+      white-space: nowrap;
+      transform: translate(-50%, calc(100% + 5px));
+      // transition-property: all;
+      // transition-duration: 0.2s;
+      // transition-timing-function: ease-out;
+    }
+    &::before {
+      @include svg-arrow($balloon-bg, "down");
+      @include base-effects();
+
+      content: "";
+      position: absolute;
+      z-index: 10;
+
+      left: 50%;
+      margin-top: 5px;
+      top: 100%;
+      transform: translate(-50%, -5px);
+    }
+    &::after {
+      content: attr(data-title);
+      color: $red_50_dark;
+      font-size: 0.25em;
+      line-height: 3.4em;
+      position: absolute;
+      top: 8%;
+      left: 8%;
+      display: block;
+      border-radius: 50%;
+      background-color: $white;
+      width: 84%;
+      height: 84%;
+      transition-property: all;
+      transition-duration: 0.2s;
+      transition-timing-function: ease-in;
+    }
+    & .slice {
+      position: absolute;
+      width: 1em;
+      height: 1em;
+      clip: rect(0em, 1em, 1em, 0.5em);
+    }
+    & .bar {
+      @extend %bar;
+    }
+  }
 }
