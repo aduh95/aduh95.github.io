@@ -26,7 +26,7 @@ document.addEventListener(
                   this.style.height = this.style.minHeight;
                 });
               });
-              ev.target.addEventListener(
+              ev.currentTarget.addEventListener(
                 "transitionend",
                 (event: TransitionEvent) => {
                   // At the end of the transition, removing the
