@@ -40,7 +40,7 @@ $sections = [
     ],
     'programming_languages' => [
         'en' => 'Programming Languages',
-        'fr' => 'Programation informatique',
+        'fr' => 'Programmation informatique',
     ],
 ];
 
