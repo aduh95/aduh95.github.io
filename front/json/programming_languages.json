@@ -1,34 +1,34 @@
 [
-    {
-        "name":"PHP",
-        "level": 0.8
-    },
-    {
-        "name":"JavaScript",
-        "level": 0.75
-    },
-    {
-        "name":"Java",
-        "level": 0.5
-    },
-    {
-        "name":"SQL",
-        "level": 0.7
-    },
-    {
-        "name":"C",
-        "level": 0.6
-    },
-    {
-        "name":"Python",
-        "level": 0.4
-    },
-    {
-        "name":"HTML/CSS",
-        "level": 0.7
-    },
-    {
-        "name":"Matlab",
-        "level": 0.3
-    }
+  {
+    "name": "JavaScript",
+    "level": 0.8
+  },
+  {
+    "name": "PHP",
+    "level": 0.8
+  },
+  {
+    "name": "Java",
+    "level": 0.5
+  },
+  {
+    "name": "SQL",
+    "level": 0.7
+  },
+  {
+    "name": "C",
+    "level": 0.6
+  },
+  {
+    "name": "Python",
+    "level": 0.4
+  },
+  {
+    "name": "HTML/CSS",
+    "level": 0.7
+  },
+  {
+    "name": "Matlab",
+    "level": 0.3
+  }
 ]
