@@ -18,8 +18,8 @@ $doc = new Document(
 
 $doc()->header()->append()
         ()->h1(CONFIG\MY_INFO\PUBLIC_NAME)
-        ()->h6(['lang'=>'en'], 'Looking for a 6-month internship in IT electronic engineering')
-        ()->h6(['lang'=>'fr'])
+        ()->h5(['lang'=>'en'], 'Looking for a 6-month internship in IT electronic engineering')
+        ()->h5(['lang'=>'fr'])
             ->text('À la recherche d\'un stage de fin d\'études d\'ingénieur en informatique et électronique')
         ();
 
