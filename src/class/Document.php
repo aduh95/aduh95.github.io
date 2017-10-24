@@ -57,7 +57,7 @@ class Document extends ParentDocument
                 )) :
                 format\getHref(CONFIG\MEDIAS\FAVICON)
         ]);
-        $this->head->meta('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no');
+        $this->head->meta('viewport', 'width=device-width, initial-scale=1');
 
         if (!PROD_ENVIRONMENT) {
             $this->outputOneFile = $outputOneFile;
