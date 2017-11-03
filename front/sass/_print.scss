@@ -1,24 +1,27 @@
 @media print {
-    :root {
-        font-size: 12px;
+  :root {
+    font-size: 12px;
+  }
+  & summary {
+    visibility: hidden;
+    transform: translateX(-1rem);
+    & span {
+      text-decoration: none !important;
     }
-    & summary {
-        visibility: hidden;
-        transform: translateX(-1rem);
-        & > i.fa {
-            visibility: visible;
-        }
+    & > i.fa {
+      visibility: visible;
     }
+  }
 
-    details {
-        &[open] summary {
-            position: absolute;
-        }
-        &:not([open]) summary {
-            & > span {
-                visibility: visible;
-                padding-left: 6px;
-            }
-        }
+  details {
+    &[open] summary {
+      position: absolute;
     }
+    &:not([open]) summary {
+      & > span {
+        visibility: visible;
+        padding-left: 6px;
+      }
+    }
+  }
 }

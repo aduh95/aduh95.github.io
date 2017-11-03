@@ -103,7 +103,7 @@ return function ($doc, $section) {
                     ->text(
                         empty($lang_keywords) ?
                             MORE_INFO[$lang] :
-                            implode($keywords[$lang], ', ')
+                            implode($keywords[$lang], ' · ')
                     );
                 $p = $details->p(['lang' => $lang, 'class' => 'mission'])->text($text);
 
