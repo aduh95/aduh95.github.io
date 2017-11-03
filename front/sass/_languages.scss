@@ -18,6 +18,9 @@
     @media print {
       margin: auto 0 0;
     }
+    @include media-breakpoint-only(lg) {
+      text-align: center;
+    }
   }
 
   & h5 {
