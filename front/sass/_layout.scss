@@ -1,97 +1,105 @@
 $body_width: 1920px;
 
 html {
-    background-color: $red_400_light;
+  background-color: $red_400_light;
 }
 
 body {
+  display: flex;
+  flex-flow: row wrap;
+
+  margin: auto;
+  max-width: $body_width;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+
+  & > * {
+    flex: 1 100%;
+    padding: 1rem;
+  }
+  & > header {
     display: flex;
-    flex-flow: row wrap;
+    justify-content: center;
+    flex-direction: column;
 
-    margin: auto;
-    max-width: $body_width;
-    min-height: 100vh;
-    background-color: #f8f8f8;
+    text-align: center;
 
-    & > * {
-        flex: 1 100%;
-        padding: 1rem;
+    background-color: $red_400_light;
+  }
+  & > aside {
+    @media print {
+      max-width: 33vw;
     }
-    & > header {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
+    flex: 1 auto;
+    order: 2;
 
-        text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 
-        background-color: $red_400_light;
+    background-color: $red_400;
+
+    & > ul {
+      margin: 0;
+      padding: 0;
     }
-    & > aside {
-        @media print {
-            max-width: 33vw;
-        }
-        flex: 1 auto;
-        order: 2;
+  }
+  & > main {
+    order: 3;
+    flex: 5 0;
 
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
 
-        background-color: $red_400;
-
-        & > ul {
-            margin: 0;
-            padding: 0;
-        }
+    @include media-breakpoint-down(sm) {
+      & > section[class*="col-"],
+      & > section.col {
+        padding-left: 0;
+        padding-right: 0;
+      }
     }
-    & > main {
-        order: 3;
-        flex: 5 0;
 
-        display: flex;
-        flex-wrap: wrap;
-
-        @media screen {
-            margin-bottom: 1rem;
-            & > section {
-                margin-bottom: 1rem;
-            }
-        }
-
-        & h5 {
-            display: inline-block;
-            & ~ h6 {
-                display: inline-block;
-                &::before {
-                    content: "—";
-                    padding: 0 .4em;
-                    display: inherit;
-                }
-            }
-        }
-
-        & ul {
-            & > li {
-                display: inline-block;
-                & a {
-                    color: inherit;
-                    text-decoration: none;
-                }
-                &::before {
-                    padding-right: .3em;
-                }
-                &::after {
-                    content: "|";
-                    padding: 0 .5rem;
-                }
-                &:empty,
-                &:last-child {
-                    &::after {
-                        visibility: hidden;
-                        font-size: 0;
-                    }
-                }
-            }
-        }
+    @media screen {
+      margin-bottom: 1rem;
+      & > section {
+        margin-bottom: 1rem;
+      }
     }
+
+    & h5 {
+      display: inline-block;
+      & ~ h6 {
+        display: inline-block;
+        &::before {
+          content: "—";
+          padding: 0 0.4em;
+          display: inherit;
+        }
+      }
+    }
+
+    & ul {
+      & > li {
+        display: inline-block;
+        & a {
+          color: inherit;
+          text-decoration: none;
+        }
+        &::before {
+          padding-right: 0.3em;
+        }
+        &::after {
+          content: "|";
+          padding: 0 0.5rem;
+        }
+        &:empty,
+        &:last-child {
+          &::after {
+            visibility: hidden;
+            font-size: 0;
+          }
+        }
+      }
+    }
+  }
 }
