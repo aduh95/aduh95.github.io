@@ -51,6 +51,11 @@ section.experience {
 
   // Styling open details elements
   & details[open] {
+    @include media-breakpoint-down(sm) {
+      transition-property: padding-left;
+      padding-left: 0;
+    }
+
     & ::after {
       content: "";
       clear: both;
