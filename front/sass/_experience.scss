@@ -12,6 +12,13 @@ section.experience {
     }
   }
 
+  & article {
+    margin-top: 1rem;
+    @media print {
+      margin-top: initial;
+    }
+  }
+
   & details {
     &:hover {
       &[open] {
