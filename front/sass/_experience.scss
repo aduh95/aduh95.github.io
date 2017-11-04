@@ -47,41 +47,43 @@ section.experience {
       // text-underline-position: under;
       text-decoration-skip: ink;
     }
-  }
 
-  // Styling open details elements
-  & details[open] {
     @include media-breakpoint-down(sm) {
-      transition-property: padding-left;
-      padding-left: 0;
-    }
-
-    & ::after {
-      content: "";
-      clear: both;
-      display: block;
-    }
-    & > summary {
-      float: left;
-
-      & > span {
-        position: absolute;
-
-        line-height: 1.5rem;
-        opacity: 0;
-        font-size: 0;
-        transition-property: all;
+      transition-property: padding-left, height;
+      &[open] {
+        padding-left: 0;
       }
     }
 
-    & > p {
-      animation-name: invisiblyGrowFontSize;
-      animation-duration: 350ms;
-      animation-delay: 0;
-      animation-timing-function: ease-out;
-      margin-left: 1rem;
-      min-height: 1.5rem;
-      text-align: justify;
+    // Styling open details elements
+    &[open] {
+      & ::after {
+        content: "";
+        clear: both;
+        display: block;
+      }
+      & > summary {
+        float: left;
+
+        & > span {
+          position: absolute;
+
+          line-height: 1.5rem;
+          opacity: 0;
+          font-size: 0;
+          transition-property: all;
+        }
+      }
+
+      & > p {
+        animation-name: invisiblyGrowFontSize;
+        animation-duration: 350ms;
+        animation-delay: 0;
+        animation-timing-function: ease-out;
+        margin-left: 1rem;
+        min-height: 1.5rem;
+        text-align: justify;
+      }
     }
   }
 }
