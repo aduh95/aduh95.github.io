@@ -46,19 +46,6 @@ section.experience {
       text-decoration-skip: ink;
     }
 
-    @include media-breakpoint-down(sm) {
-      &[open] {
-        // Transition on padding-left does not work on Safari
-        // Plus it requires more ressources than translate animation
-        animation: translate2linesX 300ms ease-in;
-        padding-left: 0;
-        & > summary span {
-          display: inline-block;
-          max-width: calc(100vw - 2rem - #{$grid-gutter-width*2});
-        }
-      }
-    }
-
     // Styling open details elements
     &[open] {
       & ::after {
@@ -74,6 +61,12 @@ section.experience {
           animation: fadeOutKeepingFontSize 200ms ease-out;
           position: absolute;
 
+          // The following lines are there to fix the behavior of
+          // multi-line elements
+          left: 2rem;
+          text-indent: 1rem;
+          transform: translateX(1rem);
+
           opacity: 0;
           font-size: 0;
           transition-property: all;
@@ -81,13 +74,22 @@ section.experience {
       }
 
       & > p {
-        animation-name: invisiblyGrowFontSize;
-        animation-duration: 350ms;
-        animation-delay: 0;
-        animation-timing-function: ease-out;
+        animation: invisiblyGrowFontSize 350ms ease-out;
         margin-left: 1rem;
         min-height: 1.5rem;
         text-align: justify;
+      }
+
+      @include media-breakpoint-down(sm) {
+        // Transition on padding-left does not work on Safari
+        // Plus it requires more ressources than translate animation
+        animation: translate2linesX 300ms ease-in;
+        padding-left: 0;
+        & > summary span {
+          display: inline-block;
+          max-width: calc(100vw - #{$grid-gutter-width*2});
+          transform: translateX(-2rem);
+        }
       }
     }
   }
