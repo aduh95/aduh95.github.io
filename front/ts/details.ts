@@ -38,6 +38,9 @@ document.addEventListener(
                 { once: true, passive: true }
               );
             } else {
+              // Unsetting the height in case the transition did not end
+              this.style.height = "";
+
               // Saving the current height to allow sweet transition
               this.style.minHeight =
                 (<HTMLElement>this.firstElementChild).offsetHeight + "px";
