@@ -49,9 +49,15 @@ section.experience {
     }
 
     @include media-breakpoint-down(sm) {
-      transition-property: padding-left, height;
       &[open] {
+        // Transition on padding-left does not work on Safari
+        // Plus it requires more ressources than translate animation
+        animation: translate2linesX 300ms ease-in;
         padding-left: 0;
+        & > summary span {
+          display: inline-block;
+          max-width: calc(100vw - 2rem - #{$grid-gutter-width*2});
+        }
       }
     }
 
@@ -69,7 +75,7 @@ section.experience {
           position: absolute;
 
           line-height: 1.5rem;
-          opacity: 0;
+          // opacity: 0;
           font-size: 0;
           transition-property: all;
         }
@@ -104,5 +110,14 @@ section.experience {
   100% {
     font-size: 1em;
     opacity: 1;
+  }
+}
+
+@keyframes translate2linesX {
+  0% {
+    transform: translateX(2rem);
+  }
+  100% {
+    transform: translateX(0rem);
   }
 }
