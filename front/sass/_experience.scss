@@ -24,6 +24,9 @@ section.experience {
       &[open] {
         will-change: height;
       }
+      &:not([open]) p {
+        will-change: font-size;
+      }
     }
     transition: height 300ms ease-in;
 
@@ -33,13 +36,12 @@ section.experience {
       }
     }
 
-    & > summary {
-      display: flex;
-      align-items: baseline;
-      flex-direction: row;
-    }
-
     & > summary > span {
+      display: block;
+      margin-bottom: -1.5rem;
+      transform: translate(1rem, -1.5rem);
+      max-width: calc(100% - 1rem);
+
       cursor: pointer;
       font-style: italic;
 
@@ -60,7 +62,6 @@ section.experience {
         display: block;
       }
       & > summary {
-        display: initial;
         float: left;
 
         & > span {
