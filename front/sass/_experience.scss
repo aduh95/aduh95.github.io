@@ -36,6 +36,7 @@ section.experience {
     & > summary {
       display: flex;
       align-items: baseline;
+      flex-direction: row;
     }
 
     & > summary > span {
