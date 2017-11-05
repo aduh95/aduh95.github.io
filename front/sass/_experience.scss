@@ -24,9 +24,6 @@ section.experience {
       &[open] {
         will-change: height;
       }
-      &:not([open]) > summary > span {
-        will-change: font-size, opacity;
-      }
     }
     transition: height 300ms ease-in;
 
@@ -36,10 +33,18 @@ section.experience {
       }
     }
 
+    & > summary {
+      display: flex;
+      align-items: baseline;
+    }
+
     & > summary > span {
-      font-style: italic;
-      opacity: 1;
       cursor: pointer;
+      font-style: italic;
+
+      opacity: 1;
+      transition: opacity 300ms;
+
       text-decoration: underline;
       // text-decoration-style: dotted;
       // text-underline-position: under;
@@ -54,6 +59,7 @@ section.experience {
         display: block;
       }
       & > summary {
+        display: initial;
         float: left;
 
         & > span {
@@ -61,15 +67,9 @@ section.experience {
           animation: fadeOutKeepingFontSize 200ms ease-out;
           position: absolute;
 
-          // The following lines are there to fix the behavior of
-          // multi-line elements
-          left: 2rem;
-          text-indent: 1rem;
-          transform: translateX(1rem);
-
           opacity: 0;
           font-size: 0;
-          transition-property: all;
+          max-width: calc(100% - 2rem - #{2*$grid_gutter_width});
         }
       }
 
@@ -86,9 +86,7 @@ section.experience {
         animation: translate2linesX 300ms ease-in;
         padding-left: 0;
         & > summary span {
-          display: inline-block;
-          max-width: calc(100vw - #{$grid-gutter-width*2});
-          transform: translateX(-2rem);
+          max-width: calc(100vw - 4rem);
         }
       }
     }
