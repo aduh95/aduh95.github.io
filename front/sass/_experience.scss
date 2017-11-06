@@ -1,3 +1,6 @@
+$experience_transition_duration: 300ms;
+$experience_longertransition_duration: $experience_transition_duration+50ms;
+
 section.experience {
   // Capitalize only child time tag for languages that does not autocapitalize month names
   & ul,
@@ -28,7 +31,7 @@ section.experience {
         will-change: font-size;
       }
     }
-    transition: height 300ms ease-in;
+    transition: height #{$experience_transition_duration} ease-in;
 
     @media screen {
       i.fa {
@@ -46,7 +49,7 @@ section.experience {
       font-style: italic;
 
       opacity: 1;
-      transition: opacity 300ms;
+      transition: opacity #{$experience_transition_duration} ease-in;
 
       text-decoration: underline;
       // text-decoration-style: dotted;
@@ -66,7 +69,7 @@ section.experience {
 
         & > span {
           // I don't use transition to avoid weird font-size change
-          animation: fadeOutKeepingFontSize 200ms ease-out;
+          animation: fadeOutKeepingFontSize #{$experience_longertransition_duration*0.4} ease-out;
           position: absolute;
 
           opacity: 0;
@@ -76,7 +79,7 @@ section.experience {
       }
 
       & > p {
-        animation: invisiblyGrowFontSize 350ms ease-out;
+        animation: invisiblyGrowFontSize #{$experience_longertransition_duration} ease-out;
         margin-left: 1rem;
         min-height: 1.5rem;
         text-align: justify;
@@ -85,10 +88,14 @@ section.experience {
       @include media-breakpoint-down(sm) {
         // Transition on padding-left does not work on Safari
         // Plus it requires more ressources than translate animation
-        animation: translate2linesX 300ms ease-in;
+        animation: translate2linesX #{$experience_transition_duration} ease-in;
         padding-left: 0;
         & > summary span {
-          max-width: calc(100vw - 4rem);
+          // 5rem=
+          //      2*1rem (body padding) +
+          //      2rem (ul padding-right) +
+          //      1rem (summary arrow)
+          max-width: calc(100vw - 5rem);
         }
       }
     }
