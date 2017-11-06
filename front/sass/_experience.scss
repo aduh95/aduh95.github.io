@@ -42,8 +42,8 @@ section.experience {
     & > summary > span {
       display: block;
       margin-bottom: -1.5rem;
-      transform: translate(1rem, -1.5rem);
-      max-width: calc(100% - 1rem);
+      margin-left: 1rem;
+      transform: translateY(-1.5rem);
 
       cursor: pointer;
       font-style: italic;
@@ -59,11 +59,6 @@ section.experience {
 
     // Styling open details elements
     &[open] {
-      & ::after {
-        content: "";
-        clear: both;
-        display: block;
-      }
       & > summary {
         float: left;
 
@@ -74,7 +69,10 @@ section.experience {
 
           opacity: 0;
           font-size: 0;
-          max-width: calc(100% - 2rem - #{2*$grid_gutter_width});
+          // 3rem =
+          //        2rem (ul padding-left) +
+          //        1rem (summary arrow)
+          max-width: calc(100% - 3rem - #{$grid_gutter_width});
         }
       }
 
