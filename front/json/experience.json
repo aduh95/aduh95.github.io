@@ -17,7 +17,11 @@
     },
     "keywords": {
       "en": ["Freelance", "e-shop", "Team work"],
-      "fr": []
+      "fr": [
+        "Auto-entrepreneur",
+        "Plateforme e-commerce",
+        "Travail en collaboration"
+      ]
     },
     "description": {
       "en":
@@ -62,7 +66,11 @@
         "Android app development",
         "Connected objects"
       ],
-      "fr": ["Gestion de projet", "Conception de systèmes embarqués"]
+      "fr": [
+        "Gestion de projet",
+        "Conception de systèmes embarqués",
+        "Développement mobile"
+      ]
     },
     "description": {
       "en":
@@ -120,7 +128,11 @@
         "UI design integration",
         "WebDev"
       ],
-      "fr": []
+      "fr": [
+        "Administration de serveur",
+        "Conception d'interface d'utilisateur",
+        "Développement Web"
+      ]
     },
     "description": {
       "en":
@@ -174,7 +186,7 @@
         "Quality process supervision",
         "Intern ERP development"
       ],
-      "fr": []
+      "fr": ["Management", "Suivi qualité", "Développement d'un ERP interne"]
     },
     "description": {
       "en":
@@ -264,7 +276,11 @@
         "Upgrade of legacy system",
         "Task automation"
       ],
-      "fr": []
+      "fr": [
+        "Gestion de base de données",
+        "Transition technologique",
+        "Automatisation de tâches"
+      ]
     },
     "description": {
       "en":
