@@ -27,7 +27,7 @@
     &:not([open]) summary {
       & > span {
         visibility: visible;
-        padding-left: 6px;
+        padding-left: 1em;
       }
     }
   }

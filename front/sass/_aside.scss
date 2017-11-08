@@ -1,47 +1,57 @@
 body > aside {
-    & header > h3 {
-        margin: auto;
-        text-align: center;
-        & > img {
-            border-radius: 50%;
-            max-height: 10rem;
-            width: auto;
-        }
-        padding-bottom: 1rem;
+  & header > h3 {
+    margin: auto;
+    text-align: center;
+    & > img {
+      border-radius: 50%;
+      max-height: 10rem;
+      width: auto;
     }
-    & p {
-        @include media-breakpoint-up(lg) {
-            max-width: 30vw;
-        }
-        padding-left: 2rem;
-        text-align: justify;
+    padding-bottom: 1rem;
+  }
+  & p {
+    @include media-breakpoint-up(lg) {
+      max-width: 30vw;
+    }
+    padding-left: 2rem;
+    text-align: justify;
+  }
+
+  ul {
+    padding-left: 1rem;
+    @include media-breakpoint-up(lg) {
+      padding-left: 2rem;
+    }
+  }
+
+  & ul.personal_information {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    // font-size: 2rem;
+    min-height: 10rem;
+    & a {
+      color: inherit;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
-    & ul.personal_information {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-
-        // font-size: 2rem;
-        min-height: 10rem;
-        & a {
-            color: inherit;
-            text-decoration: none;
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-
-        @media print {
-            padding-left: 1rem;
-        }
+    @media print {
+      padding-left: 1rem;
     }
-    li {
-        & .fa {
-            min-width: 2rem;
-            text-align: center;
-        }
-
-        list-style: none;
+  }
+  li {
+    & .fa {
+      min-width: 2rem;
+      text-align: center;
+      @include media-breakpoint-up(lg) {
+        min-width: 3rem;
+      }
     }
+
+    list-style: none;
+  }
 }
