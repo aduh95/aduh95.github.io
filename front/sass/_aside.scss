@@ -10,11 +10,12 @@ body > aside {
     padding-bottom: 1rem;
   }
   & p {
+    text-align: justify;
+    padding-left: 2rem;
     @include media-breakpoint-up(lg) {
       max-width: 30vw;
+      padding-left: 3rem;
     }
-    padding-left: 2rem;
-    text-align: justify;
   }
 
   ul {
@@ -29,7 +30,6 @@ body > aside {
     flex-direction: column;
     justify-content: space-around;
 
-    // font-size: 2rem;
     min-height: 10rem;
     & a {
       color: inherit;
@@ -47,9 +47,6 @@ body > aside {
     & .fa {
       min-width: 2rem;
       text-align: center;
-      @include media-breakpoint-up(lg) {
-        min-width: 3rem;
-      }
     }
 
     list-style: none;
