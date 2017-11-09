@@ -15,7 +15,8 @@ document.addEventListener(
         elem.parentNode.addEventListener(
           "click",
           function(this: HTMLDetailsElement, ev: Event) {
-            if (this.open) {
+            let shouldClose = this.open && window.getSelection().isCollapsed;
+            if (shouldClose) {
               // Compute the actual height of the element before
               // the transition starts
               this.style.height = this.offsetHeight + "px";
@@ -47,7 +48,7 @@ document.addEventListener(
             }
             if (
               SUMMARY_ELEMENT !== (<HTMLElement>ev.target).nodeName &&
-              this.open
+              shouldClose
             ) {
               this.open = false;
             }
