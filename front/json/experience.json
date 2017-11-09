@@ -136,7 +136,7 @@
     },
     "description": {
       "en":
-        "Bonjour Paris is a global luxury communication agency focused on forward-thinking ideas, business-minded solutions for premium brands. My task was to build up the agency's website from scratch using the agency's visual identity; you can browse this very website using the link above. With a talented team of designers, I colaborated on the Vuarnet commercial website (vuarnet.com), and the Peter Lindbergh's presentation website as well (peterlindbergh.com). I was also in charge of chosing, setting up and maintaining their virtual private servers which host their websites and serve a Gitlab instance for code versionning purpose.",
+        "Bonjour Paris is a global luxury communication agency focused on forward-thinking ideas, business-minded solutions for premium brands. My task was to build up the agency's website from scratch using the agency's visual identity; you can browse this very website using the link above. With a talented team of designers, I collaborated on the Vuarnet commercial website (vuarnet.com), and the Peter Lindbergh's presentation website as well (peterlindbergh.com). I was also in charge of chosing, setting up and maintaining their virtual private servers which host their websites and serve a Gitlab instance for code versioning purpose.",
       "fr":
         "Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme au service de l'industrie du luxe. Ma mission durant mon expérience chez Bonjour Paris fut de réaliser l'intégration de leur site internet de présentation de l'agence. Vous pouvez visiter ce site web en utilisant le lien ci-dessus. J'ai également été sollicité pour réaliser certaines parties du site du célèbre photographe allemand Peter Lindbergh et reprendre le développement du site e-commerce de Vuarnet, marque de lunettes de soleil française."
     },
@@ -284,7 +284,7 @@
     },
     "description": {
       "en":
-        "This French association needed a custom solution to handle their subscribers database, and to manage the organization of their annual events. My task was to export the data from their legacy system to insert it into a MySQL database, build a temporary interface to manaage it before they can move to a dedicated service of management for associations (AssoConnect).",
+        "This French association needed a custom solution to handle their subscribers database, and to manage the organization of their annual events. My task was to export the data from their legacy system to insert it into a MySQL database, build a temporary interface to manage it before they can move to a dedicated service of management for associations (AssoConnect).",
       "fr":
         "En août 2013, l'association des Journées Paysannes (association de réflexion sur la ruralité avec rencontre nationale annuelle) a fait appel à moi pour mettre à jour leur système de gestion interne par une solution plus moderne et plus adaptée à leurs besoins. J'ai créé pour eux une application Web de gestion de la base de données qui leur permet d'automatiser certaines tâches, afin de leur permettre de transitionner vers un service dédié aux associations (AssoConnect)."
     },
