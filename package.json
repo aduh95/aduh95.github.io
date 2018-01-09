@@ -9,8 +9,9 @@
   "license": "CC-BY-NC-ND-4.0",
   "homepage": "https://aduh95.github.io/",
   "devDependencies": {
-    "babel-preset-env": "^1.6.0",
-    "babel-register": "^6.26.0",
+    "@babel/core": "^7.0.0-beta.37",
+    "@babel/preset-env": "^7.0.0-beta.37",
+    "@babel/register": "^7.0.0-beta.37",
     "gulp-connect": "^5.0.0",
     "gulp-connect-php": "^1.0.0",
     "gulp-livereload": "^3.8.1",
