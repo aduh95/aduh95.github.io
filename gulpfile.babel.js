@@ -14,7 +14,7 @@ import notify from "gulp-notify";
 import uglify from "gulp-uglify";
 import uglify_es from "uglify-es";
 import uglify_composer from "gulp-uglify/composer";
-import uglifycss from "gulp-cssnano";
+// import uglifycss from "gulp-cssnano";
 import purifycss from "purify-css";
 
 import composer from "gulp-composer";
@@ -163,7 +163,7 @@ export const minify = gulp.series(
     () =>
       gulp
         .src(path.join(DEST, "global.css"))
-        .pipe(uglifycss())
+        // .pipe(uglifycss())
         .pipe(rename({ suffix: ".min" }))
         .pipe(gulp.dest(DEST))
   )
@@ -202,7 +202,7 @@ export const oneFile = gulp.series(minify, function(done) {
       console.info("Success!");
 
       let cssLicenses = "";
-      let inlineCSS = (css, woff) => (match, $1) =>
+      const inlineCSS = (css, woff) => (match, $1) =>
         "<style>" +
         purifycss(
           stdout,
@@ -212,6 +212,8 @@ export const oneFile = gulp.series(minify, function(done) {
           }),
           {
             minify: true,
+            info: true,
+            rejected: false,
           }
         )
           .replace(/\n/g, "")
@@ -227,7 +229,8 @@ export const oneFile = gulp.series(minify, function(done) {
         "</style>";
 
       console.log("Reading CSS");
-      fs.readFile(stdout.match(/<!--style:(.+)-->/)[1], (err, css) => {
+      const cssFileTag = /<!--style:(.+)-->/;
+      fs.readFile(stdout.match(cssFileTag)[1], (err, css) => {
         if (err) return errorHandler(err);
         console.info("Purifying css...");
 
@@ -242,7 +245,7 @@ export const oneFile = gulp.series(minify, function(done) {
               fs.writeFile(
                 path.join(PROJECT_ROOT, "index.html"),
                 stdout
-                  .replace(/<!--style:(.+)-->/, inlineCSS(css, dataURI))
+                  .replace(cssFileTag, inlineCSS(css, dataURI))
                   .replace("*Please see the attached CSS file*", cssLicenses),
                 function() {
                   console.log("Done");
