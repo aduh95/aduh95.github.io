@@ -47,6 +47,7 @@ class Document extends ParentDocument
         $this->head->meta('author', CONFIG\MY_INFO\PUBLIC_NAME);
         $this->head->meta('theme-color', CONFIG\MY_INFO\THEME_COLOR);
         $this->head->link(['rel'=>'manifest', 'href'=>'/manifest.json']);
+        $this->head->link(['rel'=>'canonical', 'href'=>CONFIG\MY_INFO\CANONICAL_URL]);
 
         $this->head->link([
             'rel'=>'icon',
@@ -87,12 +88,13 @@ class Document extends ParentDocument
             for ($i = $list->length - 1; $i >= 0; --$i) {
                 $list->item($i)->setAttribute(
                     'src',
-                    'data:img/jpeg;base64,'.base64_encode(
-                        file_get_contents(
-                            SRC_DIR . DIRECTORY_SEPARATOR . $list->item($i)->getAttribute('src')
-                        )
-                    )
+                    '/public'.$list->item($i)->getAttribute('src')
                 );
+                $this->head->link([
+                    'rel'=>'preload',
+                    'as'=>'image',
+                    'href'=>$list->item($i)->getAttribute('src')
+                ]);
             }
 
             // Inlining minified JS
