@@ -15,8 +15,8 @@ return function ($doc) {
             ()->h3()->img([
                 'src'=>CONFIG\MEDIAS\IMG_DIR.CONFIG\MY_INFO\SELF_PORTRAYAL_FILE,
                 'alt'=>CONFIG\MY_INFO\PUBLIC_NAME,
-                'width'=>1400,
-                'height'=>1600
+                'width'=>280,
+                'height'=>360,
             ])()
             ()->ul()->attr('class', 'personal_information');
     $about_section = $aside->append()
