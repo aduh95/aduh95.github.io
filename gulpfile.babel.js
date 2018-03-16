@@ -55,7 +55,7 @@ const PHP_SRC = path.join(PROJECT_ROOT, "src", "*", "*.php");
 const NPM_ROOT = path.join(PROJECT_ROOT, "node_modules");
 const FONT_ROOT = path.join(NPM_ROOT, "font-awesome", "fonts");
 const FONT_FILES = [
-  "fontawesome-webfont.woff2",
+  "FontAwesome-subset.woff2",
   "fontawesome-webfont.woff",
   "fontawesome-webfont.ttf",
 ];
@@ -218,14 +218,14 @@ export const oneFile = gulp.series(minify, function(done) {
         )
           .replace(/\n/g, "")
           .replace(
-            'url(../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format("embedded-opentype"),url(../fonts/fontawesome-webfont.woff2?v=4.7.0) format("woff2"),',
+            'url(../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format("embedded-opentype"),',
             ""
           )
           .replace(
-            ',url(../fonts/fontawesome-webfont.ttf?v=4.7.0) format("truetype"),url(../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format("svg")',
+            ',url(../fonts/fontawesome-webfont.woff?v=4.7.0) format("woff"),url(../fonts/fontawesome-webfont.ttf?v=4.7.0) format("truetype"),url(../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format("svg")',
             ""
           )
-          .replace("../fonts/fontawesome-webfont.woff?v=4.7.0", woff) +
+          .replace("../fonts/fontawesome-webfont.woff2?v=4.7.0", woff) +
         "</style>";
 
       console.log("Reading CSS");
@@ -236,7 +236,7 @@ export const oneFile = gulp.series(minify, function(done) {
 
         console.info("Embeding font file...");
         new DataURI().encode(
-          path.join(FONT_ROOT, FONT_FILES[1]),
+          path.join(FONT_ROOT, FONT_FILES[0]),
           (err, dataURI) => {
             if (err) {
               errorHandler(err);
