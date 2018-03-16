@@ -206,7 +206,7 @@ export const oneFile = gulp.series(minify, function(done) {
         "<style>" +
         purifycss(
           stdout,
-          css.toString().replace(/\/\*\!(\n.+)+\*\//g, match => {
+          css.toString().replace(/\/\*\!(\n.+?)+\*\//g, match => {
             cssLicenses += match.replace("/*!", "\n").replace("*/", "") + "\n";
             return "";
           }),

@@ -88,7 +88,7 @@ class Document extends ParentDocument
             for ($i = $list->length - 1; $i >= 0; --$i) {
                 $list->item($i)->setAttribute(
                     'src',
-                    '/public'.$list->item($i)->getAttribute('src')
+                    substr($list->item($i)->getAttribute('src'), strlen(CONFIG\MEDIAS\IMG_DIR) - 1)
                 );
                 $this->head->link([
                     'rel'=>'preload',
