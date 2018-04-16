@@ -1,4 +1,29 @@
 {
+  "Schneider Electric": {
+    "mission": {
+      "en": "Intern",
+      "fr": "Stagiaire"
+    },
+    "info": {
+      "date": {
+        "begin": "2018-04-03"
+      },
+      "place": {
+        "link": "https://goo.gl/maps/xf7HVYrEgFz",
+        "text": "HIVE, Rueil-Malmaison, France"
+      }
+    },
+    "technologies": [
+      {
+        "name": "JavaScript",
+        "icon": "code"
+      },
+      {
+        "name": "Linux",
+        "icon": "linux"
+      }
+    ]
+  },
   "Freelance (Bonjour Paris)": {
     "mission": {
       "en": "Front-end web developer",
@@ -6,7 +31,8 @@
     },
     "info": {
       "date": {
-        "begin": "2017-01-09"
+        "begin": "2017-01-09",
+        "end": "2018-03-30"
       },
       "place": {
         "link":

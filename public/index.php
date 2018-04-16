@@ -18,9 +18,9 @@ $doc = new Document(
 
 $doc()->header()->append()
         ()->h1(CONFIG\MY_INFO\PUBLIC_NAME)
-        ()->h5(['lang'=>'en'], 'Looking for a 6-month internship in web development / IT electronic engineering')
+        ()->h5(['lang'=>'en'], 'IT electronic engineering student specialized in web development')
         ()->h5(['lang'=>'fr'])
-            ->text('À la recherche d\'un stage de fin d\'études d\'ingénieur en informatique et électronique')
+            ->text('Étudiant Ingénieur en informatique et électronique, spécialisé en développement web')
         ();
 
 $main = $doc()->main();
