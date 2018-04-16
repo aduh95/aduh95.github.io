@@ -55,10 +55,16 @@ const PHP_SRC = path.join(PROJECT_ROOT, "src", "*", "*.php");
 const NPM_ROOT = path.join(PROJECT_ROOT, "node_modules");
 const FONT_ROOT = path.join(NPM_ROOT, "font-awesome", "fonts");
 const FONT_FILES = [
-  "FontAwesome-subset.woff2",
+  "fontawesome-webfont.woff2",
   "fontawesome-webfont.woff",
   "fontawesome-webfont.ttf",
 ];
+
+const OPTIMIZED_FONT_FILE = path.join(
+  PROJECT_ROOT,
+  "fonts",
+  "FontAwesome-subset.woff2"
+);
 
 const DEST = path.join(PUBLIC_ROOT, "dist");
 const VENDOR_FONTS = path.join(PUBLIC_ROOT, "fonts");
@@ -199,7 +205,7 @@ export const oneFile = gulp.series(minify, function(done) {
       errorHandler(err);
       console.log(stderr);
     } else {
-      console.info("Success!");
+      console.info("PHP done!");
 
       let cssLicenses = "";
       const inlineCSS = (css, woff) => (match, $1) =>
@@ -234,27 +240,24 @@ export const oneFile = gulp.series(minify, function(done) {
         if (err) return errorHandler(err);
         console.info("Purifying css...");
 
-        console.info("Embeding font file...");
-        new DataURI().encode(
-          path.join(FONT_ROOT, FONT_FILES[0]),
-          (err, dataURI) => {
-            if (err) {
-              errorHandler(err);
-            } else {
-              console.info("Success!");
-              fs.writeFile(
-                path.join(PROJECT_ROOT, "index.html"),
-                stdout
-                  .replace(cssFileTag, inlineCSS(css, dataURI))
-                  .replace("*Please see the attached CSS file*", cssLicenses),
-                function() {
-                  console.log("Done");
-                  done();
-                }
-              );
-            }
+        console.info("Embedding font file...");
+        new DataURI().encode(OPTIMIZED_FONT_FILE, (err, dataURI) => {
+          if (err) {
+            errorHandler(err);
+          } else {
+            console.info("Success!");
+            fs.writeFile(
+              path.join(PROJECT_ROOT, "index.html"),
+              stdout
+                .replace(cssFileTag, inlineCSS(css, dataURI))
+                .replace("*Please see the attached CSS file*", cssLicenses),
+              function() {
+                console.log("Done");
+                done();
+              }
+            );
           }
-        );
+        });
       });
     }
   });
