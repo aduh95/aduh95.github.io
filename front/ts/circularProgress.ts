@@ -1,5 +1,5 @@
 namespace aduh95.resume.circularProgress {
-  let insertAfter = function(newNode: Node, referenceNode: Node) {
+  const insertAfter = function(newNode: Node, referenceNode: Node) {
     if (referenceNode.nextSibling) {
       referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     } else {
@@ -7,10 +7,10 @@ namespace aduh95.resume.circularProgress {
     }
   };
 
-  let getSlice = () => {
-    let slice = document.createElement("div");
-    let bar = document.createElement("div");
-    let fill = document.createElement("div");
+  const getSlice = () => {
+    const slice = document.createElement("div");
+    const bar = document.createElement("div");
+    const fill = document.createElement("div");
     fill.className = "fill";
     bar.className = "bar";
     slice.className = "slice";
@@ -21,30 +21,39 @@ namespace aduh95.resume.circularProgress {
     return slice;
   };
 
+  const getElementCSSFontValue = elem => {
+    const elemStyle = window.getComputedStyle(elem);
+
+    return (
+      elemStyle.getPropertyValue("font") ||
+      // Gecko (on Firefox) does not compute the font property, so each sub property must be got
+      ["font-style", "font-variant", "font-weight", "font-size", "font-family"]
+        .map(property => elemStyle.getPropertyValue(property))
+        .join(" ")
+    );
+  };
+
   window.addEventListener("load", function() {
     // Waiting load event to be sure CSS is fully loaded
-    let meterSection = document.querySelectorAll(".meter-section");
-    let canvasContext = document.createElement("canvas").getContext("2d");
-    let maxWidth = 0;
+    const meterSection = document.querySelectorAll(".meter-section");
+    const canvasContext = document.createElement("canvas").getContext("2d");
 
-    for (let section of <HTMLElement[]>(<any>meterSection)) {
-      let titles = section.querySelectorAll("h5");
+    for (const section of <HTMLElement[]>(<any>meterSection)) {
+      const titles = section.querySelectorAll("h5");
+      const titlesWidth = [];
 
-      // Getting the max width of the title elements
-      canvasContext.font = window
-        .getComputedStyle(titles.item(0))
-        .getPropertyValue("font");
-      for (let title of <HTMLElement[]>(<any>titles)) {
-        maxWidth = Math.max(
-          canvasContext.measureText(title.textContent).width,
-          maxWidth
-        );
+      // Getting the widths of the title elements
+      canvasContext.font = getElementCSSFontValue(titles.item(0));
+      for (const title of <HTMLElement[]>(<any>titles)) {
+        titlesWidth.push(canvasContext.measureText(title.textContent).width);
       }
 
-      // Setting computed max width as the min width of all the elements
-      for (let title of <HTMLElement[]>(<any>titles)) {
-        // Adding 10px gap as margin
-        title.style.minWidth = maxWidth + 10 + "px";
+      // Computing max width as the min width of all the elements
+      // Adding 10px gap as margin
+      const minWidth = Math.max.apply(this, titlesWidth) + 10 + "px";
+
+      for (const title of <HTMLElement[]>(<any>titles)) {
+        title.style.minWidth = minWidth;
       }
     }
   });
@@ -52,12 +61,12 @@ namespace aduh95.resume.circularProgress {
   document.addEventListener(
     "DOMContentLoaded",
     function(this: Document) {
-      let progressElem = this.querySelectorAll("meter,progress");
+      const progressElem = this.querySelectorAll("meter,progress");
 
-      for (let elem of <HTMLMeterElement[]>(<any>progressElem)) {
-        let newElem = document.createElement("output");
+      for (const elem of <HTMLMeterElement[]>(<any>progressElem)) {
+        const newElem = document.createElement("output");
         if (elem.hasChildNodes()) {
-          for (let child of <HTMLElement[]>(<any>elem.children)) {
+          for (const child of <HTMLElement[]>(<any>elem.children)) {
             newElem.appendChild(child.cloneNode(true));
           }
         }
