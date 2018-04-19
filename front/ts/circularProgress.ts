@@ -21,18 +21,6 @@ namespace aduh95.resume.circularProgress {
     return slice;
   };
 
-  const getElementCSSFontValue = elem => {
-    const elemStyle = window.getComputedStyle(elem);
-
-    return (
-      elemStyle.getPropertyValue("font") ||
-      // Gecko (on Firefox) does not compute the font property, so each sub property must be got
-      ["font-style", "font-variant", "font-weight", "font-size", "font-family"]
-        .map(property => elemStyle.getPropertyValue(property))
-        .join(" ")
-    );
-  };
-
   window.addEventListener("load", function() {
     // Waiting load event to be sure CSS is fully loaded
     const meterSection = document.querySelectorAll(".meter-section");
@@ -43,7 +31,9 @@ namespace aduh95.resume.circularProgress {
       const titlesWidth = [];
 
       // Getting the widths of the title elements
-      canvasContext.font = getElementCSSFontValue(titles.item(0));
+      canvasContext.font = aduh95.resume.polyfill.getElementCSSFontValue(
+        titles.item(0)
+      );
       for (const title of <HTMLElement[]>(<any>titles)) {
         titlesWidth.push(canvasContext.measureText(title.textContent).width);
       }
