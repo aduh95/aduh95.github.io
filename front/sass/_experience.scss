@@ -1,5 +1,5 @@
 $experience_transition_duration: 300ms;
-$experience_longertransition_duration: $experience_transition_duration+50ms;
+$experience_longer_transition_duration: $experience_transition_duration + 50ms;
 
 section.experience {
   // Capitalize only child time tag for languages that does not autocapitalize month names
@@ -19,6 +19,14 @@ section.experience {
     margin-top: 1rem;
     @media print {
       margin-top: initial;
+    }
+    @include media-breakpoint-down(sm) {
+      &:not(:last-child)::after {
+        content: "";
+        display: block;
+        border-top: 1px solid #aaa;
+        margin: 1rem;
+      }
     }
   }
 
@@ -64,7 +72,8 @@ section.experience {
 
         & > span {
           // I don't use transition to avoid weird font-size change
-          animation: fadeOutKeepingFontSize #{$experience_longertransition_duration*0.4} ease-out;
+          animation: fadeOutKeepingFontSize #{$experience_longer_transition_duration *
+            0.4} ease-out;
           position: absolute;
 
           opacity: 0;
@@ -77,7 +86,8 @@ section.experience {
       }
 
       & > p {
-        animation: invisiblyGrowFontSize #{$experience_longertransition_duration} ease-out;
+        animation: invisiblyGrowFontSize #{$experience_longer_transition_duration}
+          ease-out;
         margin-left: 1rem;
         min-height: 1.5rem;
         text-align: justify;
