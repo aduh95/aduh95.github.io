@@ -39,7 +39,11 @@ section.experience {
         will-change: font-size;
       }
     }
-    transition: height #{$experience_transition_duration} ease-in;
+    position: relative;
+
+    summary {
+      outline: none;
+    }
 
     @media screen {
       i.fa {
@@ -108,6 +112,16 @@ section.experience {
       }
     }
   }
+}
+
+.movable-element,
+.movable-element-after::after {
+  transform: translateY(var(--movable-height));
+  transition: transform #{$experience_transition_duration} ease-in;
+}
+body.moving-elements > main {
+  margin-bottom: var(--movable-height, 1rem);
+  transition: margin-bottom #{$experience_transition_duration} ease-in;
 }
 
 @keyframes invisiblyGrowFontSize {
