@@ -12,8 +12,8 @@ namespace aduh95.resume.polyfill {
   };
 
   // FontAwesome WOFF2 detection using CSS Font Loading API
-  document.addEventListener(
-    "DOMContentLoaded",
+  addEventListener(
+    "load",
     function(this: Document) {
       if (
         !("fonts" in document) ||
