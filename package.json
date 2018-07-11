@@ -4,6 +4,10 @@
   "main": "public/index.php",
   "scripts": {
     "start": "gulp",
+    "build": "gulp one-file",
+    "preversion": "yarn build",
+    "version": "git add index.html",
+    "postversion": "git push",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Antoine du HAMEL",
@@ -37,5 +41,6 @@
     "purify-css": "^1.2.5",
     "typescript": "^2.3.2",
     "uglify-es": "^3.0.27"
-  }
+  },
+  "version": "0.0.1"
 }
