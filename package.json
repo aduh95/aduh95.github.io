@@ -3,6 +3,7 @@
   "description": "My résumé",
   "main": "public/index.php",
   "scripts": {
+    "start": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Antoine du HAMEL",
