@@ -1,8 +1,8 @@
 {
-  "Schneider Electric": {
+  "Schneider Electric Ecobuilding": {
     "mission": {
-      "en": "Intern",
-      "fr": "Stagiaire"
+      "en": "Web Programming Engineer and Data Analyst",
+      "fr": "Ingénieur Dévelopement Web et Analyse de Données"
     },
     "info": {
       "date": {
@@ -19,8 +19,12 @@
         "icon": "code"
       },
       {
-        "name": "Linux",
-        "icon": "linux"
+        "name": "Python",
+        "icon": "code"
+      },
+      {
+        "name": "API integration",
+        "icon": "database"
       }
     ]
   },
