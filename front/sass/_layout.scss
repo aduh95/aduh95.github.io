@@ -59,11 +59,9 @@ body {
       }
     }
 
-    @media screen {
-      margin-bottom: 1rem;
-      & > section {
-        margin-bottom: 1rem;
-      }
+    margin-bottom: 1rem;
+    & > section {
+      margin-bottom: 2rem;
     }
 
     & h5 {
