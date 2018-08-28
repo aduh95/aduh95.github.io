@@ -14,14 +14,12 @@ import notify from "gulp-notify";
 import uglify from "gulp-uglify";
 import uglify_es from "uglify-es";
 import uglify_composer from "gulp-uglify/composer";
-// import uglifycss from "gulp-cssnano";
 import purifycss from "purify-css";
 
 import composer from "gulp-composer";
 import autoprefixer from "gulp-autoprefixer";
 import rm from "gulp-rm";
 import rename from "gulp-rename";
-import concat from "gulp-concat";
 
 import { exec } from "child_process";
 
@@ -155,7 +153,7 @@ const frontCompile = gulp.parallel(
 );
 
 export const cleanMinify = () =>
-  gulp.src(DEST + path.sep + "*.min.*", { read: false }).pipe(rm());
+  gulp.src(path.join(DEST, "*.min.*"), { read: false }).pipe(rm());
 
 export const minify = gulp.series(
   gulp.parallel(cleanMinify, frontCompile),
@@ -169,7 +167,6 @@ export const minify = gulp.series(
     () =>
       gulp
         .src(path.join(DEST, "global.css"))
-        // .pipe(uglifycss())
         .pipe(rename({ suffix: ".min" }))
         .pipe(gulp.dest(DEST))
   )
