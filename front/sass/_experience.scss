@@ -8,10 +8,13 @@ section.experience {
     padding-left: 2rem;
     margin-bottom: 0.5rem;
   }
-  & ul > li time:first-child:last-child {
-    display: inline-block;
-    &::first-letter {
-      text-transform: uppercase;
+  & ul > li {
+    line-height: 1.25em;
+    time:first-child:last-child {
+      display: inline-block;
+      &::first-letter {
+        text-transform: uppercase;
+      }
     }
   }
 

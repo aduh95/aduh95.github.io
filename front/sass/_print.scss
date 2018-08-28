@@ -1,6 +1,10 @@
 @media print {
   :root {
-    font-size: 12px;
+    font-size: 13px;
+  }
+
+  main {
+    font-size: 16px;
   }
 
   h5 {
@@ -11,7 +15,7 @@
   }
   & summary {
     visibility: hidden;
-    transform: translateX(-1rem);
+    transform: translate(-1rem, -0.25rem);
     & span {
       text-decoration: none !important;
     }
@@ -27,7 +31,8 @@
     &:not([open]) summary {
       & > span {
         visibility: visible;
-        padding-left: 1em;
+        line-height: 0.9em;
+        padding-left: 1.5rem;
       }
     }
   }
