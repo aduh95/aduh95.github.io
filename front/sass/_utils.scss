@@ -1,14 +1,14 @@
-$red_400: #ef5350;
-$red_400_light: #ff867c;
-$red_400_dark: #b61827;
+$red_400: #3dcd58;
+$red_400_light: #009530;
+$red_400_dark: #e47f00;
 
-$red_50_dark: #ccb9bc;
+$red_50_dark: #9fa0a4;
 $white: #fff;
 
-@mixin add-fa-icon ($icon-name) {
-    @include fa-icon();
-    @extend .#{$fa-css-prefix}-#{$icon-name};
-    &::before {
-        padding-right: .5em;
-    }
+@mixin add-fa-icon($icon-name) {
+  @include fa-icon();
+  @extend .#{$fa-css-prefix}-#{$icon-name};
+  &::before {
+    padding-right: 0.5em;
+  }
 }
