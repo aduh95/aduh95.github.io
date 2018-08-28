@@ -13,6 +13,10 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 
+  @include media-breakpoint-up(md) {
+    @include make-col(6);
+  }
+
   & > h3 {
     width: 100%;
     @media print {

@@ -9,7 +9,7 @@
 namespace aduh95\Resume;
 
 return function ($doc, $sectionElem) {
-    $sectionElem->attr('class', 'col-md-6 meter-section');
+    $sectionElem->attr('class', 'meter-section');
 
     foreach (JSONSource::parse('languages') as $section) {
         $article = $sectionElem->article();
