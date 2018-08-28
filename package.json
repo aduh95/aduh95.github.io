@@ -41,5 +41,5 @@
     "typescript": "^3.0.1",
     "uglify-es": "^3.0.27"
   },
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
