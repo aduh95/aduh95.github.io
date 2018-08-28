@@ -17,6 +17,7 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "gulp-cli": "^2.0.1",
     "gulp-connect": "^5.0.0",
     "gulp-connect-php": "^1.0.0",
     "gulp-livereload": "^3.8.1",

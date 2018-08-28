@@ -9,23 +9,24 @@ a multilingual Résumé, to put into practice my knowledge of web development. Y
 can see the HTML version on [aduh95.github.io](https://aduh95.github.io/).
 
 Please note I do not wish you to change my work to adapt it for your own
-curriculum vitae, but you are welcome to read the source code to help you
-build your own.
+curriculum vitae, but you are welcome to read the source code to help you build
+your own.
 
 ### Install locally
 
-First, you have to ensure that these dependencies are installed and available on your path:
+First, you have to ensure that these dependencies are installed and available on
+your path:
 
-* [PHP 7](php.net)
-* [Yarn](yarnpkg.com)
-* [Composer](getcomposer.org)
-* [Gulp CLI](gulpjs.com)
+- [PHP 7](php.net)
+- [Yarn](yarnpkg.com)
+- [Composer](getcomposer.org)
 
 I also suggest you to have the Livereload browser extension:
 
-* for [Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
-* for [Firefox](https://addons.mozilla.org/fr/firefox/addon/livereload/)
-* ...
+- for
+  [Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+- for [Firefox](https://addons.mozilla.org/fr/firefox/addon/livereload/)
+- ...
 
 Then you can proceed to the installation:
 
@@ -35,8 +36,8 @@ Then you can proceed to the installation:
 
 ### Run locally
 
-1. Run `gulp` in the project directory;
+1. Run `yarn start` in the project directory;
 2. Visit `localhost:8080` with your navigator;
-3. *Optional* Activate the **livereload** extension.
+3. _Optional_ Activate the **livereload** extension.
 
-To get the standalone version, just run `gulp one-file`.
+To get the standalone version, just run `yarn build`.
