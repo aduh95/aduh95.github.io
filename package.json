@@ -20,7 +20,7 @@
     "gulp-cli": "^2.0.1",
     "gulp-connect": "^5.0.0",
     "gulp-connect-php": "^1.0.0",
-    "gulp-livereload": "^3.8.1",
+    "gulp-livereload": "^4.0.1",
     "gulp-notify": "^3.0.0"
   },
   "dependencies": {
@@ -35,7 +35,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-rm": "^1.0.2",
     "gulp-sass": "^4.0.1",
-    "gulp-typescript": "5.0.0-alpha.3",
+    "gulp-typescript": "^5.0.0",
     "gulp-uglify": "^3.0.0",
     "purify-css": "^1.2.5",
     "typescript": "^3.0.1",
