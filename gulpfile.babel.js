@@ -111,9 +111,10 @@ export const typescript = () =>
     .pipe(
       ts({
         noImplicitAny: true,
-        out: "global.js",
+        outFile: "global.js",
         lib: ["es2017", "dom"],
         target: "ES5",
+        module: "amd",
       }).on("error", errorHandler)
     )
     .pipe(gulp.dest(DEST))
