@@ -68,10 +68,9 @@ class Document extends ParentDocument
                 );
             } else {
                 $this->head->style(CONFIG\MEDIAS\CSS_SRC);
-                // "AMD" lite module loader
                 $this->head->appendChild($this->createElement('script'))
                     ->append(
-                        $this->dom->createCDATASection('(function(){var n={};define=function(i,o,c){c(null,n,n)}})()')
+                        $this->dom->createCDATASection(CONFIG\MEDIAS\JS_MODULE_LOADER)
                     );
                 $this->head->script(CONFIG\MEDIAS\JS_SRC);
             }
@@ -105,6 +104,7 @@ class Document extends ParentDocument
             // Inlining minified JS
             $this->getBody()->script()->append(
                 $this->dom->createCDATASection(
+                    CONFIG\MEDIAS\JS_MODULE_LOADER.';'.
                     file_get_contents(SRC_DIR . DIRECTORY_SEPARATOR .CONFIG\MEDIAS\UGLY_JS_SRC)
                 )
             );
