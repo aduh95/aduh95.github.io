@@ -24,7 +24,7 @@ TXT;
 
 const MESSAGE_ONE_FILE = <<<'TXT'
 
-N.B.: You are currently looking at the **standalone version**, embeding images,
+N.B.: You are currently looking at the **standalone version**, embedding images,
 web fonts, CSS stylesheets and JavaScript scripts.
 
 Generation date:

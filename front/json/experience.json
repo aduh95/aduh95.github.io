@@ -2,7 +2,7 @@
   "Schneider Electric Ecobuilding": {
     "mission": {
       "en": "Web Programming Engineer and Data Analyst",
-      "fr": "Ingénieur Dévelopement Web et Analyse de Données"
+      "fr": "Ingénieur Développement Web et Analyse de Données"
     },
     "info": {
       "date": {
@@ -165,10 +165,8 @@
       ]
     },
     "description": {
-      "en":
-        "Bonjour Paris is a global luxury communication agency focused on forward-thinking ideas, business-minded solutions for premium brands. My task was to build up the agency's website from scratch using the agency's visual identity; you can browse this very website using the link above. With a talented team of designers, I collaborated on the Vuarnet commercial website (vuarnet.com), and the Peter Lindbergh's presentation website as well (peterlindbergh.com). I was also in charge of chosing, setting up and maintaining their virtual private servers which host their websites and serve a Gitlab instance for code versioning purpose.",
-      "fr":
-        "Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme au service de l'industrie du luxe. Ma mission durant mon expérience chez Bonjour Paris fut de réaliser l'intégration de leur site internet de présentation de l'agence. Vous pouvez visiter ce site web en utilisant le lien ci-dessus. J'ai également été sollicité pour réaliser certaines parties du site du célèbre photographe allemand Peter Lindbergh et reprendre le développement du site e-commerce de Vuarnet, marque de lunettes de soleil française."
+      "en": "Bonjour Paris is a global luxury communication agency focused on forward-thinking ideas, business-minded solutions for premium brands. My task was to build up the agency's website from scratch using the agency's visual identity; you can browse this very website using the link above. With a talented team of designers, I collaborated on the Vuarnet commercial website (vuarnet.com), and the Peter Lindbergh's presentation website as well (peterlindbergh.com). I was also in charge of choosing, setting up and maintaining their virtual private servers which host their websites and serve a Gitlab instance for code versioning purpose.",
+      "fr": "Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme au service de l'industrie du luxe. Ma mission durant mon expérience chez Bonjour Paris fut de réaliser l'intégration de leur site internet de présentation de l'agence. Vous pouvez visiter ce site web en utilisant le lien ci-dessus. J'ai également été sollicité pour réaliser certaines parties du site du célèbre photographe allemand Peter Lindbergh et reprendre le développement du site e-commerce de Vuarnet, marque de lunettes de soleil française."
     },
     "technologies": [
       {

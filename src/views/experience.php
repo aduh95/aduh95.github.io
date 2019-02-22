@@ -52,7 +52,7 @@ return function ($doc, $section) {
                                     ->text($end->format('F Y'));
                         }
                         $span = $li->span(['lang'=>'fr']);
-                        // Using a span to avoid capatalization of the month name
+                        // Using a span to avoid capitalization of the month name
                         $span->span($hasEnded ? 'De ' : 'Depuis ')()
                             ->time(['datetime'=>$begin->format(DATE_FORMAT)])
                                 ->text($begin->format('m/Y'));
@@ -62,7 +62,7 @@ return function ($doc, $section) {
                                     ->text($end->format('m/Y'));
                         }
                     } else {
-                        // If the current experience did not last more than a mounth
+                        // If the current experience did not last more than a month
                         $li->span(['lang'=>'en'])
                             ->time(['datetime'=>$begin->format('Y-m')])
                                 ->text($begin->format('F Y'));
