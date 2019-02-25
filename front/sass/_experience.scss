@@ -3,12 +3,12 @@ $experience_longer_transition_duration: $experience_transition_duration + 50ms;
 
 section.experience {
   // Capitalize only child time tag for languages that does not autocapitalize month names
-  & ul,
-  & details {
+  ul,
+  details {
     padding-left: 2rem;
     margin-bottom: 0.5rem;
   }
-  & ul > li {
+  ul > li {
     line-height: 1.25em;
     time:first-child:last-child {
       display: inline-block;
@@ -18,7 +18,13 @@ section.experience {
     }
   }
 
-  & article {
+  &,
+  article,
+  details {
+    width: 100%;
+  }
+
+  article {
     margin-top: 1rem;
     @media print {
       margin-top: initial;
@@ -33,7 +39,7 @@ section.experience {
     }
   }
 
-  & details {
+  details {
     &:hover {
       &[open] {
         will-change: height;
@@ -129,20 +135,26 @@ body.moving-elements > main {
 
 @keyframes invisiblyGrowFontSize {
   0% {
-    font-size: 0;
     opacity: 0;
+    font-size: 0;
+    line-height: 0;
   }
   40% {
-    font-size: 0.5em;
     opacity: 0;
+    font-size: 0.5em;
+    letter-spacing: 0.2275rem;
+    line-height: 1.5rem;
   }
   80% {
     opacity: 0.5;
+    letter-spacing: normal;
     font-size: 1em;
+    line-height: 1.5rem;
   }
   100% {
-    font-size: 1em;
     opacity: 1;
+    font-size: 1em;
+    line-height: 1.5rem;
   }
 }
 
