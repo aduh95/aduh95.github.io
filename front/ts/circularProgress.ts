@@ -27,13 +27,13 @@ window.addEventListener("load", function() {
   const meterSection = document.querySelectorAll(".meter-section");
   const canvasContext = document.createElement("canvas").getContext("2d");
 
-  for (const section of <HTMLElement[]>(<any>meterSection)) {
+  for (const section of meterSection) {
     const titles = section.querySelectorAll("h5");
     const titlesWidth = [];
 
     // Getting the widths of the title elements
     canvasContext.font = getElementCSSFontValue(titles.item(0));
-    for (const title of <HTMLElement[]>(<any>titles)) {
+    for (const title of titles) {
       titlesWidth.push(canvasContext.measureText(title.textContent).width);
     }
 
@@ -41,7 +41,7 @@ window.addEventListener("load", function() {
     // Adding 10px gap as margin
     const minWidth = Math.max.apply(this, titlesWidth) + 10 + "px";
 
-    for (const title of <HTMLElement[]>(<any>titles)) {
+    for (const title of titles) {
       title.style.minWidth = minWidth;
     }
   }
@@ -50,12 +50,14 @@ window.addEventListener("load", function() {
 document.addEventListener(
   "DOMContentLoaded",
   function(this: Document) {
-    const progressElem = this.querySelectorAll("meter,progress");
+    const progressElem: NodeListOf<
+      HTMLMeterElement | HTMLProgressElement
+    > = this.querySelectorAll("meter,progress");
 
-    for (const elem of <HTMLMeterElement[]>(<any>progressElem)) {
+    for (const elem of progressElem) {
       const newElem = document.createElement("output");
       if (elem.hasChildNodes()) {
-        for (const child of <HTMLElement[]>(<any>elem.children)) {
+        for (const child of elem.children) {
           newElem.appendChild(child.cloneNode(true));
         }
       }

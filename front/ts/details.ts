@@ -1,7 +1,3 @@
-interface HTMLDetailsElement extends HTMLElement {
-  open: boolean;
-}
-
 document.addEventListener(
   "DOMContentLoaded",
   function(this: Document) {
@@ -9,14 +5,16 @@ document.addEventListener(
     const MOVABLE_ELEMENT_CLASS = "movable-element";
     const MOVING_ELEMENTS_CLASS = "moving-elements";
     const detailsSupport = window.hasOwnProperty("HTMLDetailsElement");
-    const summaryElem = this.querySelectorAll(SUMMARY_ELEMENT);
+    const summaryElem: NodeListOf<HTMLElement> = this.querySelectorAll(
+      SUMMARY_ELEMENT
+    );
 
     const animateElementsBelow = (
       parentElement: HTMLElement,
       height: number,
       callback: Function
     ) => {
-      // The goal of this fuunction is to make the animation smoother using JS than
+      // The goal of this function is to make the animation smoother using JS than
       // the one using only CSS. However, if the user disables JS, the animation still works.
       const articleIndex = Array.prototype.indexOf.call(
         document.querySelectorAll("main>.experience>*"),
@@ -33,7 +31,7 @@ document.addEventListener(
       document.body.style.setProperty("--movable-height", height + "px");
       document.body.classList.add(MOVING_ELEMENTS_CLASS);
       parentElement.classList.add(MOVABLE_ELEMENT_CLASS + "-after");
-      for (const movableElement of <HTMLElement[]>(<any>movableElements)) {
+      for (const movableElement of movableElements) {
         movableElement.classList.add(MOVABLE_ELEMENT_CLASS);
       }
 
@@ -43,7 +41,7 @@ document.addEventListener(
         () => {
           callback();
           parentElement.classList.remove(MOVABLE_ELEMENT_CLASS + "-after");
-          for (const movableElement of <HTMLElement[]>(<any>movableElements)) {
+          for (const movableElement of movableElements) {
             movableElement.classList.remove(MOVABLE_ELEMENT_CLASS);
           }
           document.body.classList.remove(MOVING_ELEMENTS_CLASS);
@@ -52,7 +50,7 @@ document.addEventListener(
       );
     };
 
-    for (const elem of <HTMLElement[]>(<any>summaryElem)) {
+    for (const elem of summaryElem) {
       if (detailsSupport) {
         // Allow the user to close the detail element by clicking on it
         // And add smooth transition when elements are changing height
@@ -89,8 +87,10 @@ document.addEventListener(
               this.style.minHeight = summaryHeight + "px";
 
               // Selecting the paragraph that will appear
-              const paragraph = <HTMLElement>this.querySelector(
-                `p[lang='${document.documentElement.getAttribute("lang")}']`
+              const paragraph = <HTMLElement>(
+                this.querySelector(
+                  `p[lang='${document.documentElement.getAttribute("lang")}']`
+                )
               );
 
               // Hiding the paragraph to compute its height

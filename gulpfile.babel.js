@@ -112,7 +112,8 @@ export const typescript = () =>
       ts({
         noImplicitAny: true,
         outFile: "global.js",
-        lib: ["es2017", "dom"],
+        lib: ["es2018", "dom", "DOM.Iterable"],
+        downlevelIteration: true,
         target: "ES5",
         module: "amd",
       }).on("error", errorHandler)

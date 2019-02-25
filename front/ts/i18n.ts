@@ -24,7 +24,7 @@ const changeLanguage = function() {
 
   htmlElement.setAttribute("lang", lang);
 
-  for (const elem of <HTMLTimeElement[]>(<any>progressElem)) {
+  for (const elem of progressElem) {
     const dateTime = elem.dateTime || elem.getAttribute("datetime");
     elem.innerText = new Date(dateTime).toLocaleDateString(locale, {
       year: "numeric",
@@ -34,9 +34,9 @@ const changeLanguage = function() {
 };
 
 if (!location.hash) {
-  const navigator = window.navigator;
+  const { navigator } = window;
   location.hash = extractLocale(
-    (<any>navigator).userLanguage ||
+    navigator.userLanguage ||
       ("languages" in navigator && navigator.languages[0]) ||
       navigator.language ||
       htmlElement.getAttribute("lang")
@@ -48,3 +48,9 @@ window.addEventListener("hashchange", changeLanguage);
 document.addEventListener("DOMContentLoaded", changeLanguage, false);
 
 export default null;
+
+declare global {
+  interface NavigatorLanguage {
+    userLanguage?: string;
+  }
+}
