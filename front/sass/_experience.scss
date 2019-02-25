@@ -52,6 +52,7 @@ section.experience {
 
     summary {
       outline: none;
+      height: min-content;
     }
 
     @media screen {
@@ -138,18 +139,21 @@ body.moving-elements > main {
     opacity: 0;
     font-size: 0;
     line-height: 0;
+    position: absolute;
   }
-  40% {
+  60% {
     opacity: 0;
     font-size: 0.5em;
-    letter-spacing: 0.2275rem;
+    letter-spacing: 0.22rem;
     line-height: 1.5rem;
+    position: absolute;
   }
   80% {
     opacity: 0.5;
     letter-spacing: normal;
     font-size: 1em;
     line-height: 1.5rem;
+    position: absolute;
   }
   100% {
     opacity: 1;

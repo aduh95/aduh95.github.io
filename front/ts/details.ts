@@ -1,18 +1,30 @@
+import { getElementCSSFontValue } from "./polyfill";
+
 document.addEventListener(
   "DOMContentLoaded",
   function(this: Document) {
     const SUMMARY_ELEMENT = "SUMMARY";
     const MOVABLE_ELEMENT_CLASS = "movable-element";
     const MOVING_ELEMENTS_CLASS = "moving-elements";
+    const LINE_HEIGHT = parseInt(
+      window
+        .getComputedStyle(document.querySelector(".experience p"))
+        .getPropertyValue("line-height")
+        .slice(0, -2)
+    );
     const detailsSupport = window.hasOwnProperty("HTMLDetailsElement");
     const summaryElem: NodeListOf<HTMLElement> = this.querySelectorAll(
       SUMMARY_ELEMENT
     );
+    const canvasContext = detailsSupport
+      ? document.createElement("canvas").getContext("2d")
+      : <never>{};
+    canvasContext.font = getElementCSSFontValue(this.querySelector("p"));
 
     const animateElementsBelow = (
       parentElement: HTMLElement,
       height: number,
-      callback: Function
+      callback?: Function
     ) => {
       // The goal of this function is to make the animation smoother using JS than
       // the one using only CSS. However, if the user disables JS, the animation still works.
@@ -39,7 +51,9 @@ document.addEventListener(
       movableElements.item(0).addEventListener(
         "transitionend",
         () => {
-          callback();
+          if (callback) {
+            callback();
+          }
           parentElement.classList.remove(MOVABLE_ELEMENT_CLASS + "-after");
           for (const movableElement of movableElements) {
             movableElement.classList.remove(MOVABLE_ELEMENT_CLASS);
@@ -57,6 +71,8 @@ document.addEventListener(
         elem.parentNode.addEventListener(
           "click",
           function(this: HTMLDetailsElement, ev: Event) {
+            // The details should close (collapse) only if it's already open and
+            // the user is not trying to select text
             const shouldClose = this.open && window.getSelection().isCollapsed;
             if (shouldClose) {
               // Compute the actual height of the element before
@@ -80,7 +96,7 @@ document.addEventListener(
               const summaryHeight = (<HTMLElement>this.firstElementChild)
                 .offsetHeight;
 
-              // Unsetting the height in case the transition did not end
+              // Removing CSS height in case the transition did not end
               this.style.height = "";
 
               // Saving the current height to allow sweet transition
@@ -93,28 +109,18 @@ document.addEventListener(
                 )
               );
 
-              // Hiding the paragraph to compute its height
-              paragraph.style.opacity = "0";
-              paragraph.style.position = "absolute";
-              paragraph.style.animation = "unset";
+              const estimatedHeight =
+                Math.ceil(
+                  canvasContext.measureText(paragraph.textContent).width /
+                    this.offsetWidth
+                ) * LINE_HEIGHT;
 
-              // Waiting for the paragraph to appear next frame
-              requestAnimationFrame(() => {
-                const { height } = paragraph.getBoundingClientRect();
-
-                // Triggers CSS animation
-                animateElementsBelow(
-                  this.parentElement,
-                  height - summaryHeight,
-                  () => {
-                    paragraph.style.removeProperty("position");
-                  }
-                );
-
-                // The paragraph can re-appear and make its transition now we know its height
-                paragraph.style.removeProperty("opacity");
-                paragraph.style.removeProperty("animation");
-              });
+              // Triggers CSS animation
+              // paragraph.style.position = "absolute";
+              animateElementsBelow(
+                this.parentElement,
+                estimatedHeight - summaryHeight
+              );
             }
             if (
               SUMMARY_ELEMENT !== (<HTMLElement>ev.target).nodeName &&
