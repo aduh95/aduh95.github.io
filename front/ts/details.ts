@@ -24,7 +24,7 @@ document.addEventListener(
     const animateElementsBelow = (
       parentElement: HTMLElement,
       height: number,
-      callback?: Function
+      callback: Function
     ) => {
       // The goal of this function is to make the animation smoother using JS than
       // the one using only CSS. However, if the user disables JS, the animation still works.
@@ -51,9 +51,7 @@ document.addEventListener(
       movableElements.item(0).addEventListener(
         "transitionend",
         () => {
-          if (callback) {
-            callback();
-          }
+          callback();
           parentElement.classList.remove(MOVABLE_ELEMENT_CLASS + "-after");
           for (const movableElement of movableElements) {
             movableElement.classList.remove(MOVABLE_ELEMENT_CLASS);
@@ -117,9 +115,13 @@ document.addEventListener(
 
               // Triggers CSS animation
               // paragraph.style.position = "absolute";
+              paragraph.style.position = "absolute";
               animateElementsBelow(
                 this.parentElement,
-                estimatedHeight - summaryHeight
+                estimatedHeight - summaryHeight,
+                () => {
+                  paragraph.style.removeProperty("position");
+                }
               );
             }
             if (
