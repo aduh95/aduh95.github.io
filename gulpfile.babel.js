@@ -1,5 +1,5 @@
 import gulp from "gulp";
-import fs from "fs";
+import { promises as fs } from "fs";
 import path from "path";
 
 import DataURI from "datauri";
@@ -193,7 +193,7 @@ export const watch = () => {
   gulp.watch("composer.json", composerUpdate).on("change", changeHandler);
 };
 
-export const oneFile = gulp.series(minify, function(done) {
+export const oneFile = gulp.series(minify, function packing(done) {
   console.info("Generating HTML...");
   exec("php public/index.php --one-file", { maxBuffer: 500 << 10 }, function(
     err,
@@ -204,60 +204,54 @@ export const oneFile = gulp.series(minify, function(done) {
       errorHandler(err);
       console.log(stderr);
     } else {
-      console.info("PHP done!");
-
       let cssLicenses = "";
-      const inlineCSS = (css, woff) => (match, $1) =>
-        "<style>" +
-        purifycss(
-          stdout,
-          css.toString().replace(/\/\*\!(\n.+?)+\*\//g, match => {
-            cssLicenses += match.replace("/*!", "\n").replace("*/", "") + "\n";
-            return "";
-          }),
-          {
-            minify: true,
-            info: true,
-            rejected: false,
-          }
-        )
-          .replace(/\n/g, "")
-          .replace(
-            'url(../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format("embedded-opentype"),',
-            ""
-          )
-          .replace(
-            ',url(../fonts/fontawesome-webfont.woff?v=4.7.0) format("woff"),url(../fonts/fontawesome-webfont.ttf?v=4.7.0) format("truetype"),url(../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format("svg")',
-            ""
-          )
-          .replace("../fonts/fontawesome-webfont.woff2?v=4.7.0", woff) +
-        "</style>";
 
       console.log("Reading CSS");
       const cssFileTag = /<!--style:(.+)-->/;
-      fs.readFile(stdout.match(cssFileTag)[1], (err, css) => {
-        if (err) return errorHandler(err);
-        console.info("Purifying css...");
 
-        console.info("Embedding font file...");
-        new DataURI().encode(OPTIMIZED_FONT_FILE, (err, dataURI) => {
-          if (err) {
-            errorHandler(err);
-          } else {
-            console.info("Success!");
-            fs.writeFile(
-              path.join(PROJECT_ROOT, "index.html"),
-              stdout
-                .replace(cssFileTag, inlineCSS(css, dataURI))
-                .replace("*Please see the attached CSS file*", cssLicenses),
-              function() {
-                console.log("Done");
-                done();
-              }
-            );
-          }
-        });
-      });
+      Promise.all([
+        fs.readFile(stdout.match(cssFileTag)[1]),
+        new Promise((resolve, reject) =>
+          new DataURI().encode(OPTIMIZED_FONT_FILE, (err, dataURI) =>
+            err ? reject(err) : resolve(dataURI)
+          )
+        ),
+      ])
+        .then(([css, woff]) =>
+          purifycss(
+            stdout,
+            css.toString().replace(/\/\*\!(\n.+?)+\*\//g, match => {
+              cssLicenses +=
+                match.replace("/*!", "\n").replace("*/", "") + "\n";
+              return "";
+            }),
+            {
+              minify: true,
+              info: true,
+              rejected: false,
+            }
+          )
+            .replace(/\n/g, "")
+            .replace(
+              'url(../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format("embedded-opentype"),',
+              ""
+            )
+            .replace(
+              ',url(../fonts/fontawesome-webfont.woff?v=4.7.0) format("woff"),url(../fonts/fontawesome-webfont.ttf?v=4.7.0) format("truetype"),url(../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format("svg")',
+              ""
+            )
+            .replace("../fonts/fontawesome-webfont.woff2?v=4.7.0", woff)
+        )
+        .then(finalCSS =>
+          fs.writeFile(
+            path.join(PROJECT_ROOT, "index.html"),
+            stdout
+              .replace(cssFileTag, `<style>${finalCSS}</style>`)
+              .replace("*Please see the attached CSS file*", cssLicenses)
+          )
+        )
+        .then(done)
+        .catch(errorHandler);
     }
   });
 });
