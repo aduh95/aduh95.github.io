@@ -1,3 +1,9 @@
+/*!
+ * Bootstrap v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/mixins";
@@ -8,5 +14,11 @@
 @import "../../node_modules/bootstrap/scss/utilities";
 @import "../../node_modules/bootstrap/scss/print";
 
+// LICENSE notice integrated into vendor file
 @import "../../node_modules/font-awesome/scss/font-awesome";
+
+/*!
+  * Balloon-css v0.5.0 (https://kazzkiq.github.io/balloon.css/)
+  * Licensed under MIT (https://github.com/kazzkiq/balloon.css/blob/master/LICENSE)
+  */
 @import "../../node_modules/balloon-css/src/balloon";
