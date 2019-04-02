@@ -29,6 +29,7 @@ const changeLanguage = function() {
     elem.innerText = new Date(dateTime).toLocaleDateString(locale, {
       year: "numeric",
       month: "long",
+      timeZone: "UTC",
     });
   }
 };
