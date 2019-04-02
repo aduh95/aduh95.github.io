@@ -13,7 +13,7 @@ const JS_MODULE_LOADER = '(function(){var n={};define=function(i,o,c){c.apply(th
 const UGLY_CSS_SRC = HTTP_ROOT.'/dist/global.min.css';
 const CSS_SRC = HTTP_ROOT.'/dist/global.css';
 
-const IMG_DIR = HTTP_ROOT.'/img/';
+const IMG_DIR = HTTP_ROOT;
 const PHOTO_FORMATS = array('jpeg');
 
 const FAVICON = IMG_DIR.'icon.png';

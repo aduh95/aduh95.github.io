@@ -91,6 +91,7 @@ export function connect(done) {
   PHPServer.server({
     port: 8080,
     base: path.join(PROJECT_ROOT, "public"),
+    router: path.join(PROJECT_ROOT, "src", "router.php"),
     livereload: true,
   });
 
