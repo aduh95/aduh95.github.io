@@ -1,10 +1,11 @@
 {
-    "name": "Antoine du HAMEL | Curriculum Vitae",
-    "short_name": "A. du HAMEL",
-    "start_url": "/",
-    "scope": "/",
-    "display": "minimal-ui",
-    "orientation": "natural",
-    "background_color": "#ff867c",
-    "theme_color": "#ef5350"
+  "name": "Antoine du HAMEL | Curriculum Vitae",
+  "short_name": "A. du HAMEL",
+  "description": "This is my personal résumé",
+  "start_url": "/",
+  "scope": "/",
+  "display": "minimal-ui",
+  "orientation": "natural",
+  "background_color": "#f7f7f7",
+  "theme_color": "#009530"
 }
