@@ -16,4 +16,4 @@ const CSS_SRC = HTTP_ROOT.'/dist/global.css';
 const IMG_DIR = HTTP_ROOT;
 const PHOTO_FORMATS = array('jpeg');
 
-const FAVICON = IMG_DIR.'icon.png';
+const FAVICON = HTTP_ROOT.'icons/';

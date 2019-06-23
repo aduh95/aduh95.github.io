@@ -52,10 +52,28 @@ class Document extends ParentDocument
         $this->head->link([
             'rel'=>'icon',
             'type'=>'image/png',
-            'href'=>$outputOneFile ?
-                'data:img/png;base64,'.base64_encode(file_get_contents(
-                    SRC_DIR . DIRECTORY_SEPARATOR .CONFIG\MEDIAS\FAVICON
-                )) :
+            'href'=>
+                format\getHref(CONFIG\MEDIAS\FAVICON.'16.png'),
+            'sizes' => '16x16'
+        ]);
+        $this->head->link([
+            'rel'=>'icon',
+            'type'=>'image/png',
+            'href'=>
+                format\getHref(CONFIG\MEDIAS\FAVICON.'196.png'),
+            'sizes' => '196x196'
+        ]);
+        $this->head->link([
+            'rel'=>'icon',
+            'type'=>'image/png',
+            'href'=>
+                format\getHref(CONFIG\MEDIAS\FAVICON.'32.png'),
+            'sizes' => '32x32'
+        ]);
+        $this->head->link([
+            'rel'=>'icon',
+            'type'=>'image/png',
+            'href'=>
                 format\getHref(CONFIG\MEDIAS\FAVICON)
         ]);
         $this->head->meta('viewport', 'width=device-width, initial-scale=1');
