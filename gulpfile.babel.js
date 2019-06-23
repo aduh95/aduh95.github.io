@@ -25,7 +25,7 @@ import { exec } from "child_process";
 
 const uglifyES6 = uglify_composer(uglify_es, console);
 const uglifyOptions = {
-  mangle: { toplevel: true },
+  toplevel: true,
   warnings: true,
   compress: {
     drop_console: true,
@@ -102,7 +102,9 @@ export const sass = () =>
   gulp
     .src(SASS_SRC)
     .pipe(sassCompiler().on("error", errorHandler))
-    .pipe(autoprefixer({ browsers: "> 1%" }))
+    .pipe(
+      autoprefixer({ overrideBrowserslist: ["last 2 version", "not dead"] })
+    )
     .pipe(gulp.dest(DEST))
     .pipe(livereload());
 
