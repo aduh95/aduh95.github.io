@@ -1,5 +1,4 @@
 %bar {
-  // position: absolute;
   stroke-width: 0.2em;
   stroke: $red_400_dark;
   width: 1em;
@@ -80,10 +79,9 @@
         stroke-dasharray: #{3.6 * $i}, 360;
       }
     }
-    }
   }
 
-  & output {
+  output {
     position: relative;
     font-size: 3rem;
     @media print {
@@ -95,6 +93,8 @@
     padding: 0;
     // background-color: $red_50_dark;
     overflow: visible;
+
+    --balloon-color: $balloon-bg;
 
     & *::before,
     & *::after {
@@ -129,7 +129,7 @@
       // transition-timing-function: ease-out;
     }
     &::before {
-      @include svg-arrow($balloon-bg, "down");
+      @include arrow-up();
       @include base-effects();
 
       content: "";
@@ -139,7 +139,7 @@
       left: 50%;
       margin-top: 5px;
       top: 100%;
-      transform: translate(-50%, -5px);
+      transform: translate(-50%, -100%);
     }
     &::after {
       content: attr(data-title);
