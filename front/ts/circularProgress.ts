@@ -1,23 +1,33 @@
 import { getElementCSSFontValue } from "./polyfill";
 
-const insertAfter = function(newNode: Node, referenceNode: Node) {
-  if (referenceNode.nextSibling) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+const SVGNamespace = "http://www.w3.org/2000/svg";
+
+const insertAfter = function(newNode: Node, { nextSibling, parentNode }: Node) {
+  if (nextSibling) {
+    parentNode.insertBefore(newNode, nextSibling);
   } else {
-    referenceNode.parentNode.appendChild(newNode);
+    parentNode.appendChild(newNode);
   }
 };
 
-const getSlice = () => {
-  const slice = document.createElement("div");
-  const bar = document.createElement("div");
-  const fill = document.createElement("div");
-  fill.className = "fill";
-  bar.className = "bar";
-  slice.className = "slice";
+const generateSlice = () => {
+  const slice = document.createElementNS(SVGNamespace, "svg");
+  const bar = document.createElementNS(SVGNamespace, "circle");
+  const fill = document.createElementNS(SVGNamespace, "circle");
+  slice.setAttribute("viewBox", "0 0 120 120");
+  fill.setAttribute("class", "fill");
+  bar.setAttribute("class", "bar");
+  slice.setAttribute("class", "slice");
 
-  slice.appendChild(bar);
+  fill.setAttribute("r", "56");
+  bar.setAttribute("r", "56");
+  bar.setAttribute("cx", "60");
+  bar.setAttribute("cy", "60");
+  fill.setAttribute("cy", "60");
+  fill.setAttribute("cx", "60");
+
   slice.appendChild(fill);
+  slice.appendChild(bar);
 
   return slice;
 };
@@ -61,7 +71,7 @@ document.addEventListener(
           newElem.appendChild(child.cloneNode(true));
         }
       }
-      newElem.appendChild(getSlice());
+      newElem.appendChild(generateSlice());
       newElem.dataset.title = elem.title;
 
       // Needed to use CSS hover on iOS (http://www.codehaven.co.uk/fix-css-hover-on-iphone-ipad/)

@@ -1,11 +1,9 @@
 %bar {
-  position: absolute;
-  border: 0.08em solid $red_400_dark;
+  // position: absolute;
+  stroke-width: 0.2em;
+  stroke: $red_400_dark;
   width: 1em;
   height: 1em;
-  clip: rect(0em, 0.5em, 1em, 0em);
-  border-radius: 50%;
-  transform: rotate(0deg);
 }
 
 .meter-section {
@@ -79,22 +77,9 @@
 
     @for $i from 1 through 100 {
       &[value="#{$i/100}"] + output .bar {
-        transform: rotate(3.6deg * $i);
+        stroke-dasharray: #{3.6 * $i}, 360;
       }
     }
-    @for $i from 5 through 10 {
-      &[value^="#{$i/10}"] + output {
-        & .fill {
-          @extend %bar;
-          transform: rotate(180deg);
-        }
-        & .bar::after {
-          transform: rotate(180deg);
-        }
-        & .slice {
-          clip: rect(auto, auto, auto, auto);
-        }
-      }
     }
   }
 
@@ -104,13 +89,11 @@
     @media print {
       font-size: 2.5rem;
     }
-    width: 1em;
-    height: 1em;
+    display: flex;
     border-radius: 50%;
-    float: left;
     margin: 0 auto 0.1em;
     padding: 0;
-    background-color: $red_50_dark;
+    // background-color: $red_50_dark;
     overflow: visible;
 
     & *::before,
@@ -175,14 +158,20 @@
       transition-duration: 0.2s;
       transition-timing-function: ease-in;
     }
-    & .slice {
-      position: absolute;
+    .slice {
       width: 1em;
       height: 1em;
-      clip: rect(0em, 1em, 1em, 0.5em);
+      stroke-linecap: round;
     }
-    & .bar {
+    .bar {
       @extend %bar;
+      transform: rotate(-90deg);
+      transform-origin: center;
+      fill: none;
+    }
+    .fill {
+      @extend %bar;
+      opacity: 0.1;
     }
   }
 }
