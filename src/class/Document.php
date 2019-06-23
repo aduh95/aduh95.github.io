@@ -89,17 +89,6 @@ class Document extends ParentDocument
         } elseif ($this->outputOneFile) {
             // Inlining JPEG image(s)
             $list = $this->getBody()->getElementsByTagName('img');
-            for ($i = $list->length - 1; $i >= 0; --$i) {
-                $list->item($i)->setAttribute(
-                    'src',
-                    substr($list->item($i)->getAttribute('src'), strlen(CONFIG\MEDIAS\IMG_DIR) - 1)
-                );
-                $this->head->link([
-                    'rel'=>'preload',
-                    'as'=>'image',
-                    'href'=>$list->item($i)->getAttribute('src')
-                ]);
-            }
 
             // Inlining minified JS
             $this->getBody()->script()->append(
