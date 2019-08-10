@@ -25,8 +25,9 @@ I also suggest you to have the Livereload browser extension:
 
 - for
   [Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
-- for [Firefox](https://addons.mozilla.org/fr/firefox/addon/livereload/)
-- ...
+- for
+  [Firefox](https://addons.mozilla.org/firefox/addon/livereload-web-extension/)
+- for [Safari](http://download.livereload.com/2.1.0/LiveReload-2.1.0.safariextz)
 
 Then you can proceed to the installation:
 
