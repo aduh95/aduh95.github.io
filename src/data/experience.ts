@@ -36,36 +36,7 @@ interface Experience {
 }
 
 export default {
-  "VIE Schneider Electric Ecobuilding": {
-    mission: {
-      en: "Web Programming Engineer and Data Analyst",
-      fr: "Ingénieur Développement Web et Analyse de Données",
-    },
-    info: {
-      date: {
-        begin: "2018-11-01",
-      },
-      place: {
-        link: "https://goo.gl/maps/fUQPfADV4Nq",
-        text: "BOC, Andover, Massachussets",
-      },
-    },
-    technologies: [
-      {
-        name: "JavaScript",
-        icon: faCode,
-      },
-      {
-        name: "Python",
-        icon: faCode,
-      },
-      {
-        name: "API integration",
-        icon: faDatabase,
-      },
-    ],
-  },
-  "Schneider Electric Ecobuilding": {
+  "Schneider Electric Digital Energy": {
     mission: {
       en: "Web Programming Engineer and Data Analyst",
       fr: "Ingénieur Développement Web et Analyse de Données",
@@ -73,12 +44,26 @@ export default {
     info: {
       date: {
         begin: "2018-04-03",
-        end: "2018-09-07",
+        end: "2019-10-31",
       },
       place: {
-        link: "https://goo.gl/maps/xf7HVYrEgFz",
-        text: "HIVE, Rueil-Malmaison, France",
+        link: "https://goo.gl/maps/fUQPfADV4Nq",
+        text: "Andover, Massachussets",
       },
+    },
+    keywords: {
+      en: ["Web integration", "User support", "Team work"],
+      fr: [
+        "Intégration web",
+        "Support utilisateur",
+        "Travail en collaboration",
+      ],
+    },
+    description: {
+      en:
+        "First as an intern, then as a VIE, I have worked in the marketing team of the Digital Energy department of Schneider Electric for 18 months. My role there was to fulfill the technical needs of the marketing team (application maintenance, developing specific tools, extracting marketing data from user databases, etc.), and also to provide user support for the platforms I was in charge of.",
+      fr:
+        "D'abord en tant que stagiaire puis en tant que VIE, j'ai travaillé dans l'équipe marketing du département Digital Energy de Schneider Electric pendant 18 mois. Ma mission était de répondre aux besoins techniques de mon équipe (maintenance des applications, développement d'outils spécifiques, extraction de données depuis les bases de données utilisateurs, etc.), et de fournir une assistance aux utilisateurs de nos plateformes.",
     },
     technologies: [
       {
@@ -90,7 +75,7 @@ export default {
         icon: faCode,
       },
       {
-        name: "API integration",
+        name: "SQL",
         icon: faDatabase,
       },
     ],
@@ -307,47 +292,6 @@ export default {
       {
         name: "JavaScript",
         icon: faCode,
-      },
-    ],
-  },
-  "Crédit Agricole": {
-    mission: {
-      en: "Business Manager Assistant",
-      fr: "Assistant chargé d'affaires en agence entreprise",
-    },
-    info: {
-      date: {
-        begin: "2015-07-06",
-        end: "2015-07-31",
-      },
-      place: {
-        link:
-          "https://www.google.fr/maps/place/Cr%C3%A9dit+Agricole+Charente-Maritime+Deux-S%C3%A8vres/@45.7468535,-0.6271264,19.27z/data=!4m8!1m2!2m1!1ssaintes+credit+agricole+entreprise!3m4!1s0x0:0xb7e8b7c7981d521d!8m2!3d45.746941!4d-0.627188",
-        text: "Saintes, France",
-      },
-    },
-    keywords: {
-      en: [
-        "Audit customers' files",
-        "Customer reminder tool",
-        "Reception of customers",
-      ],
-      fr: [
-        "Audit dossier clients",
-        "Modélisation relance clients",
-        "Accueil clients",
-      ],
-    },
-    description: {
-      en:
-        "During the time I spent working with Crédit-Agricole, at the enterprises' bank office, my task was to welcome customers who come by or phone. Also, I was in charge of checking customers juridical files integrity and contacting them to get updated documents.",
-      fr:
-        "Au sein de l'agence entreprise de Saintes du Crédit Agricole Charente-Maritime Deux-Sèvres, j'ai appris à gérer la relation client professionnel, notamment par l'accueil téléphonique et physique. Cette expérience m'a également permis de comprendre le fonctionnement interne des mécanismes bancaires. J'ai eu pour missions d'auditer les dossiers juridiques et de proposer une modélisation des relances client sur tableur.",
-    },
-    technologies: [
-      {
-        name: "Excel",
-        icon: faFileExcel,
       },
     ],
   },
