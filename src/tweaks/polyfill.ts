@@ -19,7 +19,7 @@ addEventListener(
       // If a browser eventually implements the WOFF2 format but does not implement the Font Loading API,
       // this script will report a false negative (which is preferable than having missing font).
       !document.fonts.check(
-        getElementCSSFontValue(document.querySelector(".fa"))
+        getElementCSSFontValue(document.querySelector(".fa") as Element)
       )
     ) {
       // For browsers in which WOFF2 support is not detected, the whole Font Awesome CSS is downloaded

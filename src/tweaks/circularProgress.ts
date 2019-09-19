@@ -2,14 +2,6 @@ import { getElementCSSFontValue } from "./polyfill";
 
 const SVGNamespace = "http://www.w3.org/2000/svg";
 
-const insertAfter = function(newNode: Node, { nextSibling, parentNode }: Node) {
-  if (nextSibling) {
-    parentNode.insertBefore(newNode, nextSibling);
-  } else {
-    parentNode.appendChild(newNode);
-  }
-};
-
 const generateSlice = () => {
   const slice = document.createElementNS(SVGNamespace, "svg");
   const bar = document.createElementNS(SVGNamespace, "circle");
@@ -35,7 +27,9 @@ const generateSlice = () => {
 window.addEventListener("load", function() {
   // Waiting load event to be sure CSS is fully loaded
   const meterSection = document.querySelectorAll(".meter-section");
-  const canvasContext = document.createElement("canvas").getContext("2d");
+  const canvasContext = document
+    .createElement("canvas")
+    .getContext("2d") as CanvasRenderingContext2D;
 
   for (const section of meterSection) {
     const titles = section.querySelectorAll("h5");
@@ -44,7 +38,9 @@ window.addEventListener("load", function() {
     // Getting the widths of the title elements
     canvasContext.font = getElementCSSFontValue(titles.item(0));
     for (const title of titles) {
-      titlesWidth.push(canvasContext.measureText(title.textContent).width);
+      titlesWidth.push(
+        canvasContext.measureText(title.textContent || "").width
+      );
     }
 
     // Computing max width as the min width of all the elements
@@ -77,7 +73,7 @@ document.addEventListener(
       // Needed to use CSS hover on iOS (http://www.codehaven.co.uk/fix-css-hover-on-iphone-ipad/)
       newElem.setAttribute("onclick", "");
 
-      insertAfter(newElem, elem);
+      elem.after(newElem);
       elem.hidden = true;
     }
   },

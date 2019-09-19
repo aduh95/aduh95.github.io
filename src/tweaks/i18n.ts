@@ -25,7 +25,7 @@ const changeLanguage = function() {
   htmlElement.setAttribute("lang", lang);
 
   for (const elem of progressElem) {
-    const dateTime = elem.dateTime || elem.getAttribute("datetime");
+    const dateTime = elem.dateTime || elem.getAttribute("datetime") || "";
     elem.innerText = new Date(dateTime).toLocaleDateString(locale, {
       year: "numeric",
       month: "long",
@@ -40,7 +40,8 @@ if (!location.hash) {
     navigator.userLanguage ||
       ("languages" in navigator && navigator.languages[0]) ||
       navigator.language ||
-      htmlElement.getAttribute("lang")
+      htmlElement.getAttribute("lang") ||
+      ""
   );
 }
 

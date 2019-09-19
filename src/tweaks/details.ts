@@ -8,7 +8,7 @@ document.addEventListener(
     const MOVING_ELEMENTS_CLASS = "moving-elements";
     const LINE_HEIGHT = parseInt(
       window
-        .getComputedStyle(document.querySelector(".experience p"))
+        .getComputedStyle(document.querySelector(".experience p") as Element)
         .getPropertyValue("line-height")
         .slice(0, -2)
     );
@@ -17,9 +17,13 @@ document.addEventListener(
       SUMMARY_ELEMENT
     );
     const canvasContext = detailsSupport
-      ? document.createElement("canvas").getContext("2d")
+      ? (document
+          .createElement("canvas")
+          .getContext("2d") as CanvasRenderingContext2D)
       : <never>{};
-    canvasContext.font = getElementCSSFontValue(this.querySelector("p"));
+    canvasContext.font = getElementCSSFontValue(this.querySelector(
+      "p"
+    ) as Element);
 
     const animateElementsBelow = (
       parentElement: HTMLElement,
@@ -66,22 +70,25 @@ document.addEventListener(
       if (detailsSupport) {
         // Allow the user to close the detail element by clicking on it
         // And add smooth transition when elements are changing height
-        elem.parentNode.addEventListener(
+        (elem.parentNode as Element).addEventListener(
           "click",
           function(this: HTMLDetailsElement, ev: Event) {
             // The details should close (collapse) only if it's already open and
             // the user is not trying to select text
-            const shouldClose = this.open && window.getSelection().isCollapsed;
+            const shouldClose =
+              this.open && (window.getSelection() || <never>{}).isCollapsed;
             if (shouldClose) {
               // Compute the actual height of the element before
               // the transition starts
               const currentHeight = this.offsetHeight;
               this.style.height = currentHeight + "px";
               window.requestAnimationFrame(() => {
-                const minHeight = parseInt(this.style.minHeight.slice(0, -2));
+                const minHeight = parseInt(
+                  (this.style.minHeight as string).slice(0, -2)
+                );
 
                 animateElementsBelow(
-                  this.parentElement,
+                  this.parentElement as HTMLElement,
                   minHeight - currentHeight,
                   () => {
                     // Set the height at the last known to start the transition
@@ -109,15 +116,15 @@ document.addEventListener(
 
               const estimatedHeight =
                 Math.ceil(
-                  canvasContext.measureText(paragraph.textContent).width /
-                    this.offsetWidth
+                  canvasContext.measureText(paragraph.textContent || <never>"")
+                    .width / this.offsetWidth
                 ) * LINE_HEIGHT;
 
               // Triggers CSS animation
               // paragraph.style.position = "absolute";
               paragraph.style.position = "absolute";
               animateElementsBelow(
-                this.parentElement,
+                this.parentElement as HTMLElement,
                 estimatedHeight - summaryHeight,
                 () => {
                   paragraph.style.removeProperty("position");
