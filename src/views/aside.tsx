@@ -1,11 +1,12 @@
-import personal_information from "../../front/json/personal_information.json";
-import about from "../../front/json/about.json";
-import skills from "../../front/json/skills.json";
-import hobbies from "../../front/json/hobbies.json";
 import { h } from "@aduh95/async-jsx";
-import FontAwesomeIcon from "@aduh95/jsx-fontawesome";
+import { FontAwesomeIcon } from "@aduh95/jsx-fontawesome";
 
-import { AUTHOR_NAME } from "./config.js";
+import personal_information from "../data/personal_information.json";
+import about from "../data/about.json";
+import skills from "../data/skills.json";
+import hobbies from "../data/hobbies.json";
+
+import { AUTHOR_NAME } from "../config.json";
 
 export default function Aside() {
   return (
@@ -14,11 +15,11 @@ export default function Aside() {
         <h3>
           <img src="./test.jpg" alt={AUTHOR_NAME} width="280" height="360" />
         </h3>
-        <ul class="personal_information">
+        <ul className="personal_information">
           {Object.entries(personal_information).map(
             ([className, { icon, href, text }]) => (
               <li className={className}>
-                <FontAwesomeIcon icon={icon} />
+                <FontAwesomeIcon icon={icon as "text"} />
                 <a href={href} target="_blank" rel="noopener">
                   {text}
                 </a>
@@ -27,20 +28,20 @@ export default function Aside() {
           )}
         </ul>
       </header>
-      <section class="about">
+      <section className="about">
         <h3 lang="en">About me</h3>
         <h3 lang="fr">À propos de moi</h3>
         {Object.entries(about).map(([lang, text]) => (
           <p lang={lang}>{text}</p>
         ))}
       </section>
-      <section class="skills">
+      <section className="skills">
         <h3 lang="en">Skills</h3>
         <h3 lang="fr">Points forts</h3>
         <ul>
           {Array.from(skills).map(({ icon, name }) => (
             <li>
-              <FontAwesomeIcon icon={icon} />
+              <FontAwesomeIcon icon={icon as "text"} />
               {Object.entries(name).map(([lang, text]) => (
                 <span lang={lang}>{text}</span>
               ))}
@@ -48,12 +49,12 @@ export default function Aside() {
           ))}
         </ul>
       </section>
-      <section class="hobbies">
+      <section className="hobbies">
         <h3 lang="en">Hobbies</h3>
         <h3 lang="fr">Loisirs</h3>
         {Array.from(hobbies).map(({ icon, name }) => (
           <li>
-            <FontAwesomeIcon icon={icon} />
+            <FontAwesomeIcon icon={icon as "text"} />
             {Object.entries(name).map(([lang, text]) => (
               <span lang={lang}>{text}</span>
             ))}
