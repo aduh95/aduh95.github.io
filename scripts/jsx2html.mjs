@@ -1,8 +1,7 @@
 import { promises as fs } from "fs";
-// import path from "path";
-import vm from "vm";
-import { pathToFileURL } from "url";
 import { createRequire } from "module";
+import { pathToFileURL } from "url";
+import vm from "vm";
 
 function createVMModuleFromString(scriptContent, { context, url }) {
   return new vm.SourceTextModule(scriptContent, {
@@ -32,16 +31,32 @@ async function linker(specifier, referencingModule) {
             .map(
               ([key, value]) => `export const ${key}=${JSON.stringify(value)}`
             )
-            .join(";") + `;export default {${Object.keys(jsonFile).join(",")}}`,
+            .join(";") + `;export default{${Object.keys(jsonFile).join(",")}}`,
       referencingModule
     );
   } else {
     let scriptPath;
     try {
+      if (!specifier.startsWith(".")) {
+        throw specifier;
+      }
       scriptPath = require.resolve(specifier);
     } catch {
-      const { module } = require(specifier + "/package.json");
-      scriptPath = require.resolve(specifier + "/" + module);
+      const { module, main } = require(specifier + "/package.json");
+      try {
+        scriptPath = require.resolve(specifier + "/" + module);
+      } catch {
+        return createVMModuleFromString(
+          "export default{oneOf:Function.prototype,oneOfType:Function.prototype,}",
+          referencingModule
+        );
+        const scriptContent = await fs.readFile(require.resolve(specifier));
+        const script = new vm.Script(scriptContent, {
+          filename: main.substring(main.lastIndexOf("/")),
+        });
+
+        script.runInContext(referencingModule.context);
+      }
     }
 
     return createVMModuleFromPath(scriptPath, referencingModule);
@@ -49,6 +64,7 @@ async function linker(specifier, referencingModule) {
 }
 
 export default async function runModule(window, scriptPath) {
+  window.customElements = { define() {} };
   const context = vm.createContext(window);
 
   const module = await createVMModuleFromPath(scriptPath, { context });
