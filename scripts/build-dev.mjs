@@ -34,10 +34,9 @@ Promise.all([
       })
     );
 
-    return jsx2html(window, path.join(OUTPUT_DIR, "index.js")).then(
-      console.log
-    );
-    return dom.serialize();
+    return jsx2html(window, path.join(OUTPUT_DIR, "index.js"))
+      .then(result => document.body.append(result))
+      .then(() => dom.serialize());
   })
   .then(html => fs.writeFile(path.join(OUTPUT_DIR, "index.html"), html))
   .then(() => console.log("index.html rewriten"))

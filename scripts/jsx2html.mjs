@@ -2,6 +2,7 @@ import { promises as fs } from "fs";
 import { createRequire } from "module";
 import { pathToFileURL } from "url";
 import vm from "vm";
+import rollup from "./rollup.mjs";
 
 function createVMModuleFromString(scriptContent, { context, url }) {
   return new vm.SourceTextModule(scriptContent, {
@@ -10,16 +11,39 @@ function createVMModuleFromString(scriptContent, { context, url }) {
   });
 }
 
+const cache = new Map();
 async function createVMModuleFromPath(scriptPath, { context }) {
-  const scriptContent = await fs.readFile(scriptPath, "utf8");
+  if (!cache.has(scriptPath)) {
+    const scriptContent = await fs.readFile(scriptPath, "utf8");
 
-  return createVMModuleFromString(scriptContent, {
-    context,
-    url: pathToFileURL(scriptPath).toString(),
-  });
+    cache.set(
+      scriptPath,
+      createVMModuleFromString(scriptContent, {
+        context,
+        url: pathToFileURL(scriptPath).toString(),
+      })
+    );
+  }
+  return cache.get(scriptPath);
 }
 
-async function linker(specifier, referencingModule) {
+async function nodeResolver(require, specifier, referencingModule) {
+  try {
+    const { module } = require(specifier + "/package.json");
+    return createVMModuleFromPath(
+      require.resolve(`${specifier}/${module}`),
+      referencingModule
+    );
+  } catch {
+    const url = require.resolve(specifier);
+    return createVMModuleFromString(await rollup(url), {
+      context: referencingModule.context,
+      url,
+    });
+  }
+}
+
+function linker(specifier, referencingModule) {
   const require = createRequire(referencingModule.url);
   if (specifier.endsWith(".json")) {
     const jsonFile = require(specifier);
@@ -35,39 +59,34 @@ async function linker(specifier, referencingModule) {
       referencingModule
     );
   } else {
-    let scriptPath;
     try {
       if (!specifier.startsWith(".")) {
         throw specifier;
       }
-      scriptPath = require.resolve(specifier);
+      return createVMModuleFromPath(
+        require.resolve(specifier),
+        referencingModule
+      );
     } catch {
-      const { module, main } = require(specifier + "/package.json");
-      try {
-        scriptPath = require.resolve(specifier + "/" + module);
-      } catch {
-        return createVMModuleFromString(
-          "export default{oneOf:Function.prototype,oneOfType:Function.prototype,}",
-          referencingModule
-        );
-        const scriptContent = await fs.readFile(require.resolve(specifier));
-        const script = new vm.Script(scriptContent, {
-          filename: main.substring(main.lastIndexOf("/")),
-        });
-
-        script.runInContext(referencingModule.context);
-      }
+      return nodeResolver(require, specifier, referencingModule);
     }
-
-    return createVMModuleFromPath(scriptPath, referencingModule);
   }
 }
 
-export default async function runModule(window, scriptPath) {
-  window.customElements = { define() {} };
+async function addCustomElementsPolyfill(context) {
+  const require = createRequire(import.meta.url);
+  const scriptPath = require.resolve("@webcomponents/custom-elements");
+
+  vm.runInContext(await fs.readFile(scriptPath, "utf8"), context);
+}
+
+export default async function runModule(window, scriptURL) {
+  window.process = { env: process.env };
   const context = vm.createContext(window);
 
-  const module = await createVMModuleFromPath(scriptPath, { context });
+  await addCustomElementsPolyfill(context);
+
+  const module = await createVMModuleFromPath(scriptURL, { context });
 
   await module.link(linker);
   module.instantiate();
