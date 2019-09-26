@@ -15,9 +15,11 @@
   "homepage": "https://aduh95.github.io/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.24",
+    "@webcomponents/custom-elements": "^1.3.0",
     "balloon-css": "^1.0.0"
   },
   "version": "0.0.3",
+  "type": "module",
   "devDependencies": {
     "@aduh95/async-jsx": "^0.1.2",
     "@aduh95/jsx-fontawesome": "^0.1.6",
@@ -26,6 +28,9 @@
     "jsdom": "^15.1.1",
     "mini-css-extract-plugin": "^0.8.0",
     "purify-css": "^1.2.5",
+    "rollup": "^1.21.4",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "sass": "^1.22.12",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
