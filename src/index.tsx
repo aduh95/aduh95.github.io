@@ -10,8 +10,8 @@ declare global {
   }
 }
 
-export default () => (
+(
   <Document>
     <Aside />
   </Document>
-);
+).then(e => document.body.append(e));
