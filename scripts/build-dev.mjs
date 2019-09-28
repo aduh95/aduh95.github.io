@@ -28,7 +28,7 @@ Promise.all([
     const { document } = window;
 
     const script = document.createElement("script");
-    script.textContent = "process=" + JSON.stringify(process);
+    script.textContent = `process={env:${JSON.stringify(process.env)}}`;
     document.head.append(script);
 
     return jsx2html(
