@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "es2015",
-    "lib": ["dom", "esnext", "dom.iterable"],
+    "lib": ["dom", "esnext", "dom.iterable", "webworker"],
     "jsx": "react",
     "jsxFactory": "h",
     "sourceMap": true,
