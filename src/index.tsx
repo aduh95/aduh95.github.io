@@ -1,6 +1,8 @@
 import Aside from "./views/aside.js";
 import { h, Fragment } from "@aduh95/async-jsx";
 
+import "./index.scss";
+
 const Document = Fragment as any;
 
 declare global {

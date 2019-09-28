@@ -8,6 +8,8 @@ import hobbies from "../data/hobbies.json";
 
 import { AUTHOR_NAME } from "../config.json";
 
+import "./aside.scss";
+
 export default function Aside() {
   return (
     <aside>

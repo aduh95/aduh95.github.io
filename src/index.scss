@@ -1,4 +1,5 @@
-$body_width: 1920px;
+@import "./views/variables";
+@import "./views/breakpoints";
 
 html {
   background-color: $red_400_light;
