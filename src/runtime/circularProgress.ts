@@ -1,4 +1,4 @@
-import { getElementCSSFontValue } from "./polyfill";
+import { getElementCSSFontValue } from "./polyfill.js";
 
 const SVGNamespace = "http://www.w3.org/2000/svg";
 

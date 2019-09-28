@@ -1,4 +1,4 @@
-import { getElementCSSFontValue } from "./polyfill";
+import { getElementCSSFontValue } from "./polyfill.js";
 
 document.addEventListener(
   "DOMContentLoaded",
