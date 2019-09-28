@@ -3,7 +3,7 @@
   "description": "My résumé",
   "main": "public/index.php",
   "scripts": {
-    "start": "gulp",
+    "start": "node --experimental-modules scripts/dev-watch.mjs",
     "build": "gulp one-file",
     "preversion": "yarn build",
     "version": "git add index.html",
@@ -27,6 +27,7 @@
     "@aduh95/jsx-fontawesome": "^0.1.6",
     "@types/react": "^16.9.2",
     "datauri": "^2.0.0",
+    "express": "^4.17.1",
     "jsdom": "^15.1.1",
     "mini-css-extract-plugin": "^0.8.0",
     "purify-css": "^1.2.5",
@@ -40,6 +41,7 @@
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "ts-loader": "^6.1.0",
-    "typescript": "^3.0.1"
+    "typescript": "^3.0.1",
+    "ws": "^7.1.2"
   }
 }
