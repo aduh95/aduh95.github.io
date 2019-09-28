@@ -1,21 +1,27 @@
 import resolve from "rollup-plugin-node-resolve";
 import commonJs from "rollup-plugin-commonjs";
+import json from "rollup-plugin-json";
+import typescript from "rollup-plugin-typescript2";
 import _rollup from "rollup";
 
-const plugins = [resolve(), commonJs()];
+const plugins = [typescript(), resolve(), commonJs(), json()];
 
-const cache = new Map();
+let cache;
 
-export default async function rollup(input) {
-  if (!cache.has(input)) {
-    const bundle = await _rollup.rollup({
-      input,
-      plugins,
-    });
+async function buildWithCache(input) {
+  const bundle = await _rollup.rollup({
+    input,
+    plugins,
+    // preserveModules: true,
+  });
+  cache = bundle.cache;
 
-    const { output } = await bundle.generate({ format: "esm" });
-
-    cache.set(input, output.map(({ code }) => code).join(";"));
-  }
-  return cache.get(input);
+  return bundle;
 }
+
+export default (input, output) =>
+  buildWithCache(input)
+    .then(bundle =>
+      bundle.write({ file: output, sourcemap: true, format: "esm" })
+    )
+    .then(console.log(output, typeof output));

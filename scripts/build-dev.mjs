@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 import getRuntimeScripts from "./getRuntimeScripts.mjs";
-import jsx2html from "./jsx2html.mjs";
+import jsx2html from "./rollup.mjs";
 
 import tsconfig from "../tsconfig.json";
 
@@ -16,6 +16,8 @@ const { rootDir, outDir } = tsconfig.compilerOptions;
 
 const INPUT_DIR = path.resolve(__dirname, "..", rootDir);
 const OUTPUT_DIR = path.resolve(__dirname, "..", outDir);
+
+const BUNDLE_NAME = "bundle.js";
 
 Promise.all([
   jsdom.JSDOM.fromFile(path.join(INPUT_DIR, "index.html")),
@@ -25,17 +27,24 @@ Promise.all([
     const { window } = dom;
     const { document } = window;
 
-    document.head.append(
-      ...runTimeScripts.map(relativePath => {
-        const scriptTag = document.createElement("script");
-        scriptTag.type = "module";
-        scriptTag.src = relativePath;
-        return scriptTag;
-      })
-    );
+    const script = document.createElement("script");
+    script.textContent = "process=" + JSON.stringify(process);
+    document.head.append(script);
 
-    return jsx2html(window, path.join(OUTPUT_DIR, "index.js"))
-      .then(result => document.body.append(result))
+    return jsx2html(
+      path.join(INPUT_DIR, "index.tsx"),
+      path.join(OUTPUT_DIR, BUNDLE_NAME)
+    )
+      .then(() =>
+        document.head.append(
+          ...["./" + BUNDLE_NAME].concat(runTimeScripts).map(relativePath => {
+            const scriptTag = document.createElement("script");
+            scriptTag.type = "module";
+            scriptTag.src = relativePath;
+            return scriptTag;
+          })
+        )
+      )
       .then(() => dom.serialize());
   })
   .then(html => fs.writeFile(path.join(OUTPUT_DIR, "index.html"), html))
