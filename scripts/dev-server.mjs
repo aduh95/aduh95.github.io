@@ -34,6 +34,9 @@ const createServer = express => {
   app.get(`/${AUTO_REFRESH_MODULE}`, (_, res) =>
     res.sendFile(path.join(__dirname, AUTO_REFRESH_MODULE))
   );
+  app.get(`/manifest.json`, (_, res) =>
+    res.sendFile(path.join(__dirname, "..", "manifest.json"))
+  );
   app.get(`/${BUNDLE_NAME}`, (_, res) => {
     res.header("Content-Type", "application/javascript");
     getRenderedJS()
