@@ -1,11 +1,10 @@
 import { h } from "@aduh95/async-jsx";
 import { FontAwesomeIcon } from "@aduh95/jsx-fontawesome";
-import { IconLookup } from "@fortawesome/fontawesome-common-types";
 
 import personal_information from "../data/personal_information.js";
 import about from "../data/about.json";
-import skills from "../data/skills.json";
-import hobbies from "../data/hobbies.json";
+import skills from "../data/skills.js";
+import hobbies from "../data/hobbies.js";
 
 import { AUTHOR_NAME } from "../config.json";
 
@@ -22,7 +21,7 @@ export default function Aside() {
           {Object.entries(personal_information).map(
             ([className, { icon, href, text }]) => (
               <li className={className}>
-                <FontAwesomeIcon icon={icon as IconLookup} />
+                <FontAwesomeIcon icon={icon} />
                 <a href={href} target="_blank" rel="noopener">
                   {text}
                 </a>
@@ -44,7 +43,7 @@ export default function Aside() {
         <ul>
           {Array.from(skills).map(({ icon, name }) => (
             <li>
-              <FontAwesomeIcon icon={icon as "text"} />
+              <FontAwesomeIcon icon={icon} />
               {Object.entries(name).map(([lang, text]) => (
                 <span lang={lang}>{text}</span>
               ))}
@@ -57,7 +56,7 @@ export default function Aside() {
         <h3 lang="fr">Loisirs</h3>
         {Array.from(hobbies).map(({ icon, name }) => (
           <li>
-            <FontAwesomeIcon icon={icon as "text"} />
+            <FontAwesomeIcon icon={icon} />
             {Object.entries(name).map(([lang, text]) => (
               <span lang={lang}>{text}</span>
             ))}
