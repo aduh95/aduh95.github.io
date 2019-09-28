@@ -1,7 +1,8 @@
 import { h } from "@aduh95/async-jsx";
 import { FontAwesomeIcon } from "@aduh95/jsx-fontawesome";
+import { IconLookup } from "@fortawesome/fontawesome-common-types";
 
-import personal_information from "../data/personal_information.json";
+import personal_information from "../data/personal_information.js";
 import about from "../data/about.json";
 import skills from "../data/skills.json";
 import hobbies from "../data/hobbies.json";
@@ -21,7 +22,7 @@ export default function Aside() {
           {Object.entries(personal_information).map(
             ([className, { icon, href, text }]) => (
               <li className={className}>
-                <FontAwesomeIcon icon={icon as "text"} />
+                <FontAwesomeIcon icon={icon as IconLookup} />
                 <a href={href} target="_blank" rel="noopener">
                   {text}
                 </a>
