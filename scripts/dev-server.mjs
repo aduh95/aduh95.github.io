@@ -1,15 +1,19 @@
+import path from "path";
+
 import getRenderedHTML from "./dev-build-html.mjs";
 import getRenderedJS from "./dev-build-js.mjs";
+import getRuntimeScripts from "./getRuntimeScripts.mjs";
+import ts2js from "./ts2js.mjs";
 
-import path from "path";
 import {
   __dirname,
   AUTO_REFRESH_MODULE,
   BUNDLE_NAME,
-  OUTPUT_DIR,
+  INPUT_DIR,
+  PORT_NUMBER,
 } from "./dev-config.mjs";
 
-const PORT_NUMBER = 8080;
+const INDEX_FILE = path.join(INPUT_DIR, "index.html");
 const connections = new Set();
 
 const createServer = express => {
@@ -17,7 +21,7 @@ const createServer = express => {
 
   app.get("/", (_, res) => {
     res.header("Content-Type", "text/html");
-    getRenderedHTML()
+    getRenderedHTML(INDEX_FILE)
       .then(html => res.send(html))
       .catch(e => {
         console.error(e);
@@ -26,9 +30,12 @@ const createServer = express => {
           .send(
             "<script type=module src='" +
               AUTO_REFRESH_MODULE +
-              "'></script><p>No markdown modified</p>"
+              "'></script><p>Rendering failed</p>"
           );
       });
+  });
+  app.get("/originalIndexFile", (_, res) => {
+    res.sendFile(INDEX_FILE);
   });
 
   app.get(`/${AUTO_REFRESH_MODULE}`, (_, res) =>
@@ -46,7 +53,24 @@ const createServer = express => {
         res.sendStatus(503);
       });
   });
-  app.use(express.static(OUTPUT_DIR));
+
+  getRuntimeScripts()
+    .then(scripts =>
+      scripts.map(([url, path]) => {
+        app.get(url, (_, res) => {
+          res.header("Content-Type", "application/javascript");
+
+          ts2js(path)
+            .then(outputText => res.send(outputText))
+            .catch(e => {
+              console.error(e);
+              res.sendStatus(503);
+            });
+        });
+      })
+    )
+    .catch(console.error);
+  app.use(express.static(INPUT_DIR));
 
   return app;
 };

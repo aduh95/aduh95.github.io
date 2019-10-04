@@ -13,3 +13,5 @@ export const OUTPUT_DIR = path.resolve(__dirname, "..", outDir);
 
 export const BUNDLE_NAME = "bundle.js";
 export const AUTO_REFRESH_MODULE = "autoRefresh.mjs";
+
+export const PORT_NUMBER = 8080;
