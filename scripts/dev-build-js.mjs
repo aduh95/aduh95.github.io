@@ -7,7 +7,7 @@ import sass from "rollup-plugin-sass";
 import runtime from "sass";
 import typescript from "rollup-plugin-typescript2";
 import _rollup from "rollup";
-import { INPUT_DIR } from "../../../../../../../home/duhamean/Documents/aduh95.github.io-vue/scripts/dev-config.mjs";
+import { INPUT_DIR } from "./dev-config.mjs";
 
 const plugins = [
   typescript(),
