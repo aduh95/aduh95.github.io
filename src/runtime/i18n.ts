@@ -49,10 +49,6 @@ window.addEventListener("hashchange", changeLanguage);
 
 document.addEventListener("DOMContentLoaded", changeLanguage, false);
 
-export default null;
-
-declare global {
-  interface NavigatorLanguage {
-    userLanguage?: string;
-  }
+interface NavigatorLanguage {
+  userLanguage?: string;
 }
