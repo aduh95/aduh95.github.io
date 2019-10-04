@@ -12,7 +12,7 @@ declare global {
   }
 }
 
-(
+export default (
   <Document>
     <Aside />
   </Document>
