@@ -35,6 +35,14 @@ const watchDir = dir =>
 watchDir(INPUT_DIR).then(() => startServer());
 
 const { bin } = require("typescript/package.json");
-spawn(process.argv0, [require.resolve(`typescript/${bin.tsc}`), "--watch"], {
-  stdio: "inherit",
-});
+spawn(
+  process.argv0,
+  [
+    require.resolve(`typescript/${bin.tsc}`),
+    "--watch",
+    "--preserveWatchOutput",
+  ],
+  {
+    stdio: "inherit",
+  }
+);
