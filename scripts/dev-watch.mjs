@@ -1,5 +1,9 @@
 import { watch, promises as fs } from "fs";
 import path from "path";
+import { spawn } from "child_process";
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
 
 import { INPUT_DIR } from "./dev-config.mjs";
 import { refreshBrowser } from "./dev-server.mjs";
@@ -29,3 +33,8 @@ const watchDir = dir =>
     );
 
 watchDir(INPUT_DIR).then(() => startServer());
+
+const { bin } = require("typescript/package.json");
+spawn(process.argv0, [require.resolve(`typescript/${bin.tsc}`), "--watch"], {
+  stdio: "inherit",
+});
