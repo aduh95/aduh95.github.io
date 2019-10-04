@@ -20,7 +20,7 @@ document.addEventListener(
       ? (document
           .createElement("canvas")
           .getContext("2d") as CanvasRenderingContext2D)
-      : <never>{};
+      : ({} as never);
     canvasContext.font = getElementCSSFontValue(this.querySelector(
       "p"
     ) as Element);
@@ -76,7 +76,7 @@ document.addEventListener(
             // The details should close (collapse) only if it's already open and
             // the user is not trying to select text
             const shouldClose =
-              this.open && (window.getSelection() || <never>{}).isCollapsed;
+              this.open && (window.getSelection() || ({} as never)).isCollapsed;
             if (shouldClose) {
               // Compute the actual height of the element before
               // the transition starts
@@ -98,7 +98,7 @@ document.addEventListener(
                 );
               });
             } else {
-              const summaryHeight = (<HTMLElement>this.firstElementChild)
+              const summaryHeight = (this.firstElementChild as HTMLElement)
                 .offsetHeight;
 
               // Removing CSS height in case the transition did not end
@@ -108,16 +108,15 @@ document.addEventListener(
               this.style.minHeight = summaryHeight + "px";
 
               // Selecting the paragraph that will appear
-              const paragraph = <HTMLElement>(
-                this.querySelector(
-                  `p[lang='${document.documentElement.getAttribute("lang")}']`
-                )
-              );
+              const paragraph = this.querySelector(
+                `p[lang='${document.documentElement.getAttribute("lang")}']`
+              ) as HTMLElement;
 
               const estimatedHeight =
                 Math.ceil(
-                  canvasContext.measureText(paragraph.textContent || <never>"")
-                    .width / this.offsetWidth
+                  canvasContext.measureText(
+                    paragraph.textContent || ("" as never)
+                  ).width / this.offsetWidth
                 ) * LINE_HEIGHT;
 
               // Triggers CSS animation
@@ -132,7 +131,7 @@ document.addEventListener(
               );
             }
             if (
-              SUMMARY_ELEMENT !== (<HTMLElement>ev.target).nodeName &&
+              SUMMARY_ELEMENT !== (ev.target as HTMLElement).nodeName &&
               shouldClose
             ) {
               this.open = false;
