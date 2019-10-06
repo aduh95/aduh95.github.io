@@ -26,7 +26,7 @@ const createServer = express => {
       .catch(e => {
         console.error(e);
         res
-          .status(503)
+          .status(500)
           .send(
             "<script type=module src='" +
               AUTO_REFRESH_MODULE +
@@ -50,7 +50,14 @@ const createServer = express => {
       .then(({ output }) => res.send(output[0].code))
       .catch(e => {
         console.error(e);
-        res.sendStatus(500);
+        res.status(206).send(
+          `const d=document.createElement('dialog');
+           d.style.whiteSpace='pre-wrap';
+           d.append(${JSON.stringify(
+             e.message
+           )}, '\\nSee console for more details');
+           document.body.append(d);d.showModal()`
+        );
       });
   });
 
@@ -64,7 +71,14 @@ const createServer = express => {
             .then(outputText => res.send(outputText))
             .catch(e => {
               console.error(e);
-              res.sendStatus(500);
+              res.status(206).send(
+                `const d=document.createElement('dialog');
+                 d.style.whiteSpace='pre-wrap';
+                 d.append(${JSON.stringify(
+                   e.message
+                 )}, '\\nSee console for more details');
+                 document.body.append(d);d.showModal()`
+              );
             });
         });
       })
