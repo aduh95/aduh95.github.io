@@ -1,6 +1,9 @@
 @import "./views/variables";
 @import "./views/breakpoints";
 
+@import "_i18n";
+@import "_print";
+
 html {
   background-color: $red_400_light;
 }

@@ -1,3 +1,5 @@
+@import "./breakpoints";
+
 $experience_transition_duration: 300ms;
 $experience_longer_transition_duration: $experience_transition_duration + 50ms;
 
@@ -85,6 +87,7 @@ section.experience {
         float: left;
 
         & > span {
+          $grid_gutter_width: 0;
           // I don't use transition to avoid weird font-size change
           animation: fadeOutKeepingFontSize #{$experience_longer_transition_duration *
             0.4} ease-out;
