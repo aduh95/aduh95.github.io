@@ -3,7 +3,14 @@ import { h } from "@aduh95/async-jsx";
 import experience from "../data/experience.json";
 import { FontAwesomeIcon } from "@aduh95/jsx-fontawesome";
 
-import { faThumbtack } from "@fortawesome/free-solid-svg-icons";
+import "./_experience.scss";
+
+import {
+  faThumbtack,
+  faCalendar,
+  faMapMarker,
+  faGlobe,
+} from "@fortawesome/free-solid-svg-icons";
 
 const MORE_INFO = {
   en: "More information",
@@ -11,9 +18,9 @@ const MORE_INFO = {
 };
 
 const ICONS = {
-  date: "calendar",
-  place: "map-marker",
-  website: "globe",
+  date: faCalendar,
+  place: faMapMarker,
+  website: faGlobe,
 };
 
 const SECONDS_IN_A_MONTH = 60 * 60 * 24 * 30;
@@ -28,6 +35,7 @@ type ExperienceInfoProps =
 
 const ExperienceInfo = (props: ExperienceInfoProps) => {
   let $value = props.value;
+  const icon = <FontAwesomeIcon icon={ICONS[props.type]} />;
   switch (props.type) {
     case "date":
       const { begin, end } = $value as { begin: string; end: string };
@@ -40,6 +48,7 @@ const ExperienceInfo = (props: ExperienceInfoProps) => {
       ) {
         return (
           <li>
+            {icon}
             <span lang="en">
               {$hasEnded ? "From " : "Since "}
               <time dateTime={$begin.toISOString()}>{$begin}</time>
@@ -60,6 +69,7 @@ const ExperienceInfo = (props: ExperienceInfoProps) => {
         // If the current experience did not last more than a month
         return (
           <li>
+            {icon}
             <span lang="en">
               <time dateTime={$begin.toISOString()}>{$begin}</time>
             </span>
@@ -81,6 +91,7 @@ const ExperienceInfo = (props: ExperienceInfoProps) => {
       const { link, text } = $value as { link: string; text: string };
       return (
         <li>
+          {icon}
           <a href={link} target="_blank" rel="noopener">
             {text}
           </a>
@@ -108,47 +119,47 @@ export default function Experience() {
         ]) => (
           <article>
             <h5>{name}</h5>
-            {Object.entries(mission).map(([lang, text]) => [
+            {Object.entries(mission).map(([lang, text]) => (
               <h6 lang={lang} className="mission">
                 {text}
-              </h6>,
-              <ul>
-                {Object.entries(info).map(([type, value]) => (
-                  <ExperienceInfo type={type as any} value={value} />
+              </h6>
+            ))}
+            <ul>
+              {Object.entries(info).map(([type, value]) => (
+                <ExperienceInfo type={type as any} value={value} />
+              ))}
+            </ul>
+
+            {description === null ? null : (
+              <details>
+                <summary>
+                  <FontAwesomeIcon icon={faThumbtack} />
+                  {Object.keys(description).map(lang => (
+                    <span lang={lang}>
+                      {lang in keywords
+                        ? (keywords as any)[lang].join(" · ")
+                        : MORE_INFO[lang as ("fr" | "en")]}
+                    </span>
+                  ))}
+                </summary>
+                {Object.entries(description).map(([lang, text]) => (
+                  <p lang={lang} className="mission">
+                    {text}
+                  </p>
                 ))}
-              </ul>,
+              </details>
+            )}
 
-              description === null ? null : (
-                <details>
-                  <summary>
-                    <FontAwesomeIcon icon={faThumbtack} />
-                    {Object.keys(description).map(lang => (
-                      <span lang={lang}>
-                        {lang in keywords
-                          ? (keywords as any)[lang].join(" · ")
-                          : MORE_INFO[lang as ("fr" | "en")]}
-                      </span>
-                    ))}
-                  </summary>
-                  {Object.entries(description).map(([lang, text]) => (
-                    <p lang={lang} className="mission">
-                      {text}
-                    </p>
-                  ))}
-                </details>
-              ),
-
-              Array.isArray(technologies) ? (
-                <ul>
-                  {technologies.map(({ icon, name }) => (
-                    <li>
-                      {/* <FontAwesomeIcon icon={icon} /> */}
-                      {name}
-                    </li>
-                  ))}
-                </ul>
-              ) : null,
-            ])}
+            {Array.isArray(technologies) ? (
+              <ul>
+                {technologies.map(({ icon, name }) => (
+                  <li>
+                    {/* <FontAwesomeIcon icon={icon} /> */}
+                    {name}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </article>
         )
       )}
