@@ -1,3 +1,5 @@
+import Experience from "./views/experience.js";
+import Education from "./views/education.js";
 import Aside from "./views/aside.js";
 import { h, Fragment } from "@aduh95/async-jsx";
 
@@ -14,6 +16,10 @@ declare global {
 
 export default (
   <Document>
+    <main>
+      <Experience />
+      <Education />
+    </main>
     <Aside />
   </Document>
 ).then(e => document.body.append(e));
