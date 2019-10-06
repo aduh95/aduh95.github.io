@@ -23,10 +23,11 @@ type ExperienceInfoProps =
       type: "date";
       value: { begin: string; end: string };
     }
-  | { type: "website" | "place"; value: string };
+  | { type: "website"; value: string }
+  | { type: "place"; value: { link: string; text: string } };
 
 const ExperienceInfo = (props: ExperienceInfoProps) => {
-  let $value: any = props.value;
+  let $value = props.value;
   switch (props.type) {
     case "date":
       const { begin, end } = $value as { begin: string; end: string };
@@ -77,10 +78,11 @@ const ExperienceInfo = (props: ExperienceInfoProps) => {
 
     // non breaking to add the list item
     case "place":
+      const { link, text } = $value as { link: string; text: string };
       return (
         <li>
-          <a href={$value.link} target="_blank" rel="noopener">
-            {$value.text}
+          <a href={link} target="_blank" rel="noopener">
+            {text}
           </a>
         </li>
       );
