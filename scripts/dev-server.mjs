@@ -50,7 +50,7 @@ const createServer = express => {
       .then(({ output }) => res.send(output[0].code))
       .catch(e => {
         console.error(e);
-        res.sendStatus(503);
+        res.sendStatus(500);
       });
   });
 
@@ -64,7 +64,7 @@ const createServer = express => {
             .then(outputText => res.send(outputText))
             .catch(e => {
               console.error(e);
-              res.sendStatus(503);
+              res.sendStatus(500);
             });
         });
       })
