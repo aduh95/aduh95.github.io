@@ -16,6 +16,22 @@ import {
 const INDEX_FILE = path.join(INPUT_DIR, "index.html");
 const connections = new Set();
 
+const showErrorOnBrowser = function(errorMessage) {
+  const d = document.createElement("dialog");
+  const h = document.createElement("h2");
+  h.append("TypeScript error");
+  const p = document.createElement("code");
+  p.style.whiteSpace = "pre-wrap";
+  p.style.border = "1px solid";
+  p.style.display = "block";
+  p.style.padding = ".5em";
+  p.style.backgroundColor = "lightgray";
+  p.append(errorMessage);
+  d.append(h, p, "See console for more details.");
+  document.body.append(d);
+  d.showModal();
+};
+
 const createServer = express => {
   const app = express();
 
@@ -50,14 +66,11 @@ const createServer = express => {
       .then(({ output }) => res.send(output[0].code))
       .catch(e => {
         console.error(e);
-        res.status(206).send(
-          `const d=document.createElement('dialog');
-           d.style.whiteSpace='pre-wrap';
-           d.append(${JSON.stringify(
-             e.message
-           )}, '\\nSee console for more details');
-           document.body.append(d);d.showModal()`
-        );
+        res
+          .status(206)
+          .send(
+            `(${showErrorOnBrowser.toString()})(${JSON.stringify(e.message)})`
+          );
       });
   });
 
@@ -71,14 +84,13 @@ const createServer = express => {
             .then(outputText => res.send(outputText))
             .catch(e => {
               console.error(e);
-              res.status(206).send(
-                `const d=document.createElement('dialog');
-                 d.style.whiteSpace='pre-wrap';
-                 d.append(${JSON.stringify(
-                   e.message
-                 )}, '\\nSee console for more details');
-                 document.body.append(d);d.showModal()`
-              );
+              res
+                .status(206)
+                .send(
+                  `(${showErrorOnBrowser.toString()})(${JSON.stringify(
+                    e.message
+                  )})`
+                );
             });
         });
       })
