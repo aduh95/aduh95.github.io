@@ -7,6 +7,8 @@ import "./languages.scss";
 export default function Languages() {
   return (
     <section className="languages meter-section">
+      <h3 lang="en">Languages</h3>
+      <h3 lang="fr">Langues</h3>
       {Object.values(languages).map(section => (
         <article>
           {Object.entries(section.name).map(([lang, text]) => (

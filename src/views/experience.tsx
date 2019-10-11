@@ -106,6 +106,8 @@ const ExperienceInfo = (props: ExperienceInfoProps) => {
 export default function Experience() {
   return (
     <section className="experience">
+      <h3 lang="en">Experience</h3>
+      <h3 lang="fr">Expérience professionnelle</h3>
       {Object.entries(experience).map(
         ([
           name,
