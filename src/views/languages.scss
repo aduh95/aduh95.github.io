@@ -1,3 +1,7 @@
+@import "./variables";
+@import "./breakpoints";
+@import "../../node_modules/balloon-css/src/balloon";
+
 %bar {
   stroke-width: 0.2em;
   stroke: $red_400_dark;
@@ -11,7 +15,7 @@
   justify-content: space-evenly;
 
   @include media-breakpoint-up(md) {
-    @include make-col(6);
+    // @include make-col(6);
   }
 
   & > h3 {
