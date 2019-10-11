@@ -11,6 +11,7 @@ import {
   BUNDLE_NAME,
   INPUT_DIR,
   PORT_NUMBER,
+  PROJECT_DIR,
 } from "./dev-config.mjs";
 
 const INDEX_FILE = path.join(INPUT_DIR, "index.html");
@@ -96,7 +97,7 @@ const createServer = express => {
       })
     )
     .catch(console.error);
-  app.use(express.static(INPUT_DIR));
+  app.use(express.static(PROJECT_DIR));
 
   return app;
 };

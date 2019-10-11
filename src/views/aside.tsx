@@ -15,7 +15,12 @@ export default function Aside() {
     <aside>
       <header>
         <h3>
-          <img src="./test.jpg" alt={AUTHOR_NAME} width="280" height="360" />
+          <img
+            src="./antoineduhamel.jpg"
+            alt={AUTHOR_NAME}
+            width="280"
+            height="360"
+          />
         </h3>
         <ul className="personal_information">
           {Object.entries(personal_information).map(
@@ -54,14 +59,16 @@ export default function Aside() {
       <section className="hobbies">
         <h3 lang="en">Hobbies</h3>
         <h3 lang="fr">Loisirs</h3>
-        {Array.from(hobbies).map(({ icon, name }) => (
-          <li>
-            <FontAwesomeIcon icon={icon} />
-            {Object.entries(name).map(([lang, text]) => (
-              <span lang={lang}>{text}</span>
-            ))}
-          </li>
-        ))}
+        <ul>
+          {Array.from(hobbies).map(({ icon, name }) => (
+            <li>
+              <FontAwesomeIcon icon={icon} />
+              {Object.entries(name).map(([lang, text]) => (
+                <span lang={lang}>{text}</span>
+              ))}
+            </li>
+          ))}
+        </ul>
       </section>
     </aside>
   );

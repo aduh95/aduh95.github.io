@@ -8,8 +8,9 @@ export const __dirname = path.dirname(__filename);
 
 const { rootDir, outDir } = tsconfig.compilerOptions;
 
-export const INPUT_DIR = path.resolve(__dirname, "..", rootDir);
-export const OUTPUT_DIR = path.resolve(__dirname, "..", outDir);
+export const PROJECT_DIR = path.resolve(__dirname, "..");
+export const INPUT_DIR = path.join(PROJECT_DIR, rootDir);
+export const OUTPUT_DIR = path.join(PROJECT_DIR, outDir);
 
 export const BUNDLE_NAME = "bundle.js";
 export const AUTO_REFRESH_MODULE = "autoRefresh.mjs";
