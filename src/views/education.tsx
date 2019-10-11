@@ -1,11 +1,11 @@
 import education from "../data/education.json";
 
 import { h } from "@aduh95/async-jsx";
-// import FontAwesomeIcon from "@aduh95/jsx-fontawesome";
+import { FontAwesomeIcon } from "@aduh95/jsx-fontawesome";
 
 export default function Education() {
   return (
-    <section>
+    <section className='education'>
       {education.map(section => (
         <article>
           {Object.entries(section.name).map(([lang, text]) => (
