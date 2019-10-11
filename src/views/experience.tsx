@@ -3,7 +3,7 @@ import { h } from "@aduh95/async-jsx";
 import experience from "../data/experience.json";
 import { FontAwesomeIcon } from "@aduh95/jsx-fontawesome";
 
-import "./_experience.scss";
+import "./experience.scss";
 
 import {
   faThumbtack,
