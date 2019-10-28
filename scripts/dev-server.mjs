@@ -64,7 +64,15 @@ const createServer = express => {
   app.get(`/${BUNDLE_NAME}`, (_, res) => {
     res.header("Content-Type", "application/javascript");
     getRenderedJS()
-      .then(({ output }) => res.send(output[0].code))
+      .then(({ output }) => {
+        const { code, map } = output[0];
+        delete map.sourcesContent;
+        res.send(
+          code +
+            "\n//# sourceMappingURL=data:application/json," +
+            encodeURI(JSON.stringify(map))
+        );
+      })
       .catch(e => {
         console.error(e);
         res
