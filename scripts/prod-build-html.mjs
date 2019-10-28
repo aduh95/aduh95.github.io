@@ -9,6 +9,13 @@ import { BUNDLE_NAME, PORT_NUMBER } from "./dev-config.mjs";
 import generateJS from "./prod-build-js.mjs";
 
 const OUTPUT_FILE = "index.html";
+const SVG_NS = "http://www.w3.org/2000/svg";
+
+const replicateAttributes = (originalNode, targetNode, attributeNames) => {
+  for (const attr of attributeNames) {
+    targetNode.setAttribute(attr, originalNode.getAttribute(attr));
+  }
+};
 
 function extractUsefulHTML(bundleURL) {
   return import(bundleURL)
@@ -35,19 +42,49 @@ function extractUsefulHTML(bundleURL) {
         .filter(n => n.nodeType === Node.TEXT_NODE)
         .forEach(n => n.remove());
 
-      Array.from(document.querySelectorAll("svg.svg-inline--fa")).forEach(
-        ({ classList }) => {
-          let className,
-            item = 0;
-          while ((className = classList.item(item))) {
-            if (className.endsWith("-undefined")) {
-              classList.remove(className);
-            } else {
-              item++;
-            }
+      const iconElements = Array.from(
+        document.querySelectorAll("svg.svg-inline--fa")
+      );
+      iconElements.forEach(({ classList }) => {
+        let className,
+          item = 0;
+        while ((className = classList.item(item))) {
+          if (className.endsWith("-undefined")) {
+            classList.remove(className);
+          } else {
+            item++;
           }
         }
-      );
+      });
+      const iconNames = new Set(iconElements.map(el => el.dataset.icon));
+      const wrapperSVG = document.createElementNS(SVG_NS, "svg");
+      wrapperSVG.style.display = "none";
+      let i = 0;
+      for (const iconName of iconNames) {
+        const thisIconElements = iconElements.filter(
+          el => el.dataset.icon === iconName
+        );
+        if (thisIconElements.length > 1) {
+          const originalIconElement = thisIconElements[0];
+          const symbol = document.createElementNS(SVG_NS, "symbol");
+          symbol.setAttribute("aria-hidden", "true");
+          symbol.id = `fa${i++}`;
+          replicateAttributes(originalIconElement, symbol, ["role", "viewBox"]);
+          symbol.append(originalIconElement.firstElementChild);
+          wrapperSVG.append(symbol);
+
+          thisIconElements.forEach(el => {
+            const wrapperSVG = document.createElementNS(SVG_NS, "svg");
+            const symbolCallback = document.createElementNS(SVG_NS, "use");
+            symbolCallback.setAttribute("href", `#${symbol.id}`);
+            wrapperSVG.setAttribute("class", el.getAttribute("class"));
+            wrapperSVG.append(symbolCallback);
+            el.replaceWith(wrapperSVG);
+          });
+        }
+      }
+      document.body.prepend(wrapperSVG);
+
       return document.documentElement.outerHTML;
     });
 }
@@ -78,6 +115,7 @@ const generateBundledHTML = async browser => {
         "(function(){var n={};define=function(i,o,c){c.apply(this,o.map(function() {return n}))}})();" +
         chunks.output.map(({ code }) => code).join(";")
     )
+    .then(js => fs.write("out.js", js))
     .then(jsCode => terser.minify(jsCode, { toplevel: true }))
     .then(result => (result.error ? Promise.reject(error) : result.code))
     .then(
