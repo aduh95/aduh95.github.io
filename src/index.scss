@@ -9,8 +9,17 @@ html {
 }
 
 body {
-  display: flex;
-  flex-flow: row wrap;
+  display: grid;
+  grid-template-areas:
+    "header"
+    "aside"
+    "main";
+  @include media-breakpoint-up(md) {
+    grid-template-areas:
+      "header header"
+      "aside main";
+    grid-template-columns: 1fr 2fr;
+  }
 
   margin: auto;
   max-width: $body_width;
@@ -18,10 +27,10 @@ body {
   background-color: #f8f8f8;
 
   & > * {
-    flex: 1 100%;
     padding: 1rem;
   }
   & > header {
+    grid-area: header;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -34,8 +43,7 @@ body {
     @media print {
       max-width: 33vw;
     }
-    flex: 1 auto;
-    order: 2;
+    grid-area: aside;
 
     display: flex;
     justify-content: space-between;
@@ -49,8 +57,7 @@ body {
     }
   }
   & > main {
-    order: 3;
-    flex: 5 0;
+    grid-area: main;
 
     display: flex;
     flex-wrap: wrap;
