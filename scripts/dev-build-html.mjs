@@ -24,6 +24,16 @@ export default indexFile =>
             return scriptTag;
           })
       );
+      const removeDialogScript = document.createElement("script");
+      const dialog = document.createElement("dialog");
+      dialog.open = true;
+      dialog.id = "placeholder-dialog";
+      dialog.append(
+        document.createElement("progress"),
+        " Building application..."
+      );
+      removeDialogScript.textContent = `import("./${BUNDLE_NAME}").then(()=>document.getElementById("${dialog.id}").remove())`;
+      document.body.append(dialog, removeDialogScript);
       return dom.serialize();
     }
   );
