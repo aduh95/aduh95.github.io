@@ -9,15 +9,16 @@ import { BUNDLE_NAME, PORT_NUMBER } from "./dev-config.mjs";
 import generateJS from "./prod-build-js.mjs";
 
 const OUTPUT_FILE = "index.html";
-const SVG_NS = "http://www.w3.org/2000/svg";
-
-const replicateAttributes = (originalNode, targetNode, attributeNames) => {
-  for (const attr of attributeNames) {
-    targetNode.setAttribute(attr, originalNode.getAttribute(attr));
-  }
-};
 
 function extractUsefulHTML(bundleURL) {
+  const SVG_NS = "http://www.w3.org/2000/svg";
+
+  const replicateAttributes = (originalNode, targetNode, attributeNames) => {
+    for (const attr of attributeNames) {
+      targetNode.setAttribute(attr, originalNode.getAttribute(attr));
+    }
+  };
+
   return import(bundleURL)
     .then(module => module.default)
     .then(() =>
@@ -110,14 +111,9 @@ const generateBundledHTML = async browser => {
   await browser.close();
 
   return generateJS()
-    .then(
-      chunks =>
-        "(function(){var n={};define=function(i,o,c){c.apply(this,o.map(function() {return n}))}})();" +
-        chunks.output.map(({ code }) => code).join(";")
-    )
-    .then(js => fs.write("out.js", js))
+    .then(chunks => chunks.output.map(({ code }) => code).join(";"))
     .then(jsCode => terser.minify(jsCode, { toplevel: true }))
-    .then(result => (result.error ? Promise.reject(error) : result.code))
+    .then(({ error, code }) => (error ? Promise.reject(error) : code))
     .then(
       jsCode =>
         "<!DOCTYPE html>\n" +
