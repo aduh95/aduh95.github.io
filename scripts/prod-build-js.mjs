@@ -10,10 +10,10 @@ function bundleRuntimeScripts() {
     name: "bundle-runtime-scripts",
     resolveId(source) {
       // this signals that rollup should not ask other plugins or check the file system to find this id
-      return source === "virtual-module" ? source : null;
+      return source === "runtime-modules" ? source : null;
     },
     load(id) {
-      if (id === "virtual-module") {
+      if (id === "runtime-modules") {
         return getRuntimeScripts().then(scripts =>
           scripts.map(([_, path]) => `import "${path}"`).join(";")
         );
@@ -26,7 +26,7 @@ function bundleRuntimeScripts() {
 export default () =>
   _rollup
     .rollup({
-      input: "virtual-module",
+      input: "runtime-modules",
       plugins,
     })
     .then(bundle => bundle.generate({ sourcemap: false, format: "iife" }));
