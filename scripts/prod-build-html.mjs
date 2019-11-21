@@ -19,11 +19,61 @@ function extractUsefulHTML(bundleURL) {
     }
   };
 
+  const minifySVGIcons = () => {
+    const iconElements = Array.from(
+      document.querySelectorAll("svg.svg-inline--fa")
+    );
+    iconElements.forEach(({ classList }) => {
+      // Remove undefined class names from SVG elements
+      let className,
+        item = 0;
+      while ((className = classList.item(item))) {
+        if (className.endsWith("-undefined")) {
+          classList.remove(className);
+        } else {
+          // The entry has been kept in the list, iterating to the next one
+          item++;
+        }
+      }
+    });
+    const iconNames = new Set(iconElements.map(el => el.dataset.icon));
+    const wrapperSVG = document.createElementNS(SVG_NS, "svg");
+    wrapperSVG.style.display = "none";
+    let i = 0;
+    for (const iconName of iconNames) {
+      const thisIconElements = iconElements.filter(
+        el => el.dataset.icon === iconName
+      );
+      // If the icon is only once in the document, don't bother
+      if (thisIconElements.length > 1) {
+        const [originalIconElement] = thisIconElements;
+        const symbol = document.createElementNS(SVG_NS, "symbol");
+        symbol.setAttribute("aria-hidden", "true");
+        symbol.id = `fa${i++}`;
+        replicateAttributes(originalIconElement, symbol, ["role", "viewBox"]);
+        symbol.append(originalIconElement.firstElementChild);
+        wrapperSVG.append(symbol);
+
+        // replacing all instances of the icon with a reference to the symbol
+        thisIconElements.forEach(el => {
+          const wrapperSVG = document.createElementNS(SVG_NS, "svg");
+          const symbolCallback = document.createElementNS(SVG_NS, "use");
+          symbolCallback.setAttribute("href", `#${symbol.id}`);
+          replicateAttributes(el, wrapperSVG, ["class"]);
+          wrapperSVG.append(symbolCallback);
+          el.replaceWith(wrapperSVG);
+        });
+      }
+    }
+    document.body.prepend(wrapperSVG);
+  };
+
   return import(bundleURL)
     .then(module => module.default)
+    .then(minifySVGIcons)
     .then(() =>
       purifycss(
-        document.documentElement.outerHTML,
+        document.body.outerHTML,
         Array.from(document.head.querySelectorAll("style")).reduce(
           (pv, style) => {
             pv += style.textContent;
@@ -42,49 +92,6 @@ function extractUsefulHTML(bundleURL) {
         .concat(Array.from(document.body.childNodes))
         .filter(n => n.nodeType === Node.TEXT_NODE)
         .forEach(n => n.remove());
-
-      const iconElements = Array.from(
-        document.querySelectorAll("svg.svg-inline--fa")
-      );
-      iconElements.forEach(({ classList }) => {
-        let className,
-          item = 0;
-        while ((className = classList.item(item))) {
-          if (className.endsWith("-undefined")) {
-            classList.remove(className);
-          } else {
-            item++;
-          }
-        }
-      });
-      const iconNames = new Set(iconElements.map(el => el.dataset.icon));
-      const wrapperSVG = document.createElementNS(SVG_NS, "svg");
-      wrapperSVG.style.display = "none";
-      let i = 0;
-      for (const iconName of iconNames) {
-        const thisIconElements = iconElements.filter(
-          el => el.dataset.icon === iconName
-        );
-        if (thisIconElements.length > 1) {
-          const originalIconElement = thisIconElements[0];
-          const symbol = document.createElementNS(SVG_NS, "symbol");
-          symbol.setAttribute("aria-hidden", "true");
-          symbol.id = `fa${i++}`;
-          replicateAttributes(originalIconElement, symbol, ["role", "viewBox"]);
-          symbol.append(originalIconElement.firstElementChild);
-          wrapperSVG.append(symbol);
-
-          thisIconElements.forEach(el => {
-            const wrapperSVG = document.createElementNS(SVG_NS, "svg");
-            const symbolCallback = document.createElementNS(SVG_NS, "use");
-            symbolCallback.setAttribute("href", `#${symbol.id}`);
-            wrapperSVG.setAttribute("class", el.getAttribute("class"));
-            wrapperSVG.append(symbolCallback);
-            el.replaceWith(wrapperSVG);
-          });
-        }
-      }
-      document.body.prepend(wrapperSVG);
 
       return document.documentElement.outerHTML;
     });
