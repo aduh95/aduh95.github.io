@@ -7,6 +7,7 @@ import terser from "terser";
 import { startServer } from "./dev-server.mjs";
 import { BUNDLE_NAME, PORT_NUMBER } from "./dev-config.mjs";
 import generateJS from "./prod-build-js.mjs";
+import minifyInlinedSVG from "./prod-build-svg.mjs";
 
 const OUTPUT_FILE = "index.html";
 
@@ -113,7 +114,9 @@ const generateBundledHTML = async browser => {
     }).replace(/\n/g, "")
   );
 
-  const html = await page.evaluate(extractUsefulHTML, `/${BUNDLE_NAME}`);
+  const html = await page
+    .evaluate(extractUsefulHTML, `/${BUNDLE_NAME}`)
+    .then(minifyInlinedSVG);
 
   await browser.close();
 
