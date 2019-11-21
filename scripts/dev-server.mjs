@@ -127,6 +127,8 @@ export const startServer = () =>
 
         connection.ping(1);
       });
+
+      return server;
     });
 
 export const refreshBrowser = () => {

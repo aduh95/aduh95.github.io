@@ -125,11 +125,12 @@ const generateBundledHTML = async browser => {
 };
 
 Promise.all([getGeneratedFileSize(), startServer()])
-  .then(([previousFileSize]) =>
+  .then(([previousFileSize, server]) =>
     puppeteer
       .launch()
       .then(generateBundledHTML)
       .then(html => fs.writeFile(OUTPUT_FILE, html))
+      .then(() => server.close())
       .then(getGeneratedFileSize)
       .then(
         newFileSize =>
@@ -137,5 +138,4 @@ Promise.all([getGeneratedFileSize(), startServer()])
       )
   )
   .then(console.log)
-  .catch(console.error)
-  .finally(() => process.exit());
+  .catch(console.error);
