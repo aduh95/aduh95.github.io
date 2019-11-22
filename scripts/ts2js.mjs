@@ -5,12 +5,13 @@ import ts from "typescript";
 const require = createRequire(import.meta.url);
 
 const { compilerOptions } = require("../tsconfig.json");
-export default source =>
+export default fileName =>
   fs
-    .readFile(source, "utf8")
-    .then(source =>
-      ts.transpileModule(source, {
+    .readFile(fileName, "utf8")
+    .then(tsModule =>
+      ts.transpileModule(tsModule, {
         compilerOptions,
+        fileName,
       })
     )
     .then(({ outputText, sourceMapText }) =>
