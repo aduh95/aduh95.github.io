@@ -14,11 +14,13 @@ const SVG_TAG = /<svg.*?>.+?<\/svg>/g;
 export default function minifyInlinedSVG(html) {
   const promises = [];
   let match;
+  let lastIndex = 0;
+  SVG_TAG.lastIndex = 0;
   while ((match = SVG_TAG.exec(html))) {
-    promises.push(svgo(match));
+    promises.push(html.substring(lastIndex, match.index), svgo(match));
+    lastIndex = SVG_TAG.lastIndex;
   }
+  promises.push(html.substring(lastIndex));
 
-  return Promise.all(promises).then(optimisedSVGs =>
-    html.split(SVG_TAG).reduce((pv, cv) => pv + cv + optimisedSVGs.shift(), "")
-  );
+  return Promise.all(promises).then(chunks => chunks.join(""));
 }
