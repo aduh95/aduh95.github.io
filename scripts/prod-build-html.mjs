@@ -11,7 +11,7 @@ import minifyInlinedSVG from "./prod-build-svg.mjs";
 
 const OUTPUT_FILE = "index.html";
 
-function extractUsefulHTML(bundleURL) {
+function domManipulationsRoutine(bundleURL) {
   const SVG_NS = "http://www.w3.org/2000/svg";
 
   const replicateAttributes = (originalNode, targetNode, attributeNames) => {
@@ -93,8 +93,6 @@ function extractUsefulHTML(bundleURL) {
         .concat(Array.from(document.body.childNodes))
         .filter(n => n.nodeType === Node.TEXT_NODE)
         .forEach(n => n.remove());
-
-      return document.documentElement.outerHTML;
     });
 }
 
@@ -114,9 +112,9 @@ const generateBundledHTML = async browser => {
     }).replace(/\n/g, "")
   );
 
-  const html = await page
-    .evaluate(extractUsefulHTML, `/${BUNDLE_NAME}`)
-    .then(minifyInlinedSVG);
+  await page.evaluate(domManipulationsRoutine, `/${BUNDLE_NAME}`);
+
+  const html = await page.content().then(minifyInlinedSVG);
 
   await browser.close();
 
@@ -124,13 +122,8 @@ const generateBundledHTML = async browser => {
     .then(chunks => chunks.output.map(({ code }) => code).join(";"))
     .then(jsCode => terser.minify(jsCode, { toplevel: true }))
     .then(({ error, code }) => (error ? Promise.reject(error) : code))
-    .then(
-      jsCode =>
-        "<!DOCTYPE html>\n" +
-        html.replace(
-          "</body></html>",
-          `<script>${jsCode}</script></body></html>`
-        )
+    .then(jsCode =>
+      html.replace("</body></html>", `<script>${jsCode}</script></body></html>`)
     );
 };
 
@@ -140,7 +133,7 @@ Promise.all([getGeneratedFileSize(), startServer()])
       .launch()
       .then(generateBundledHTML)
       .then(html => fs.writeFile(OUTPUT_FILE, html))
-      .then(() => server.close())
+      .finally(() => server.close())
       .then(getGeneratedFileSize)
       .then(
         newFileSize =>
@@ -148,4 +141,7 @@ Promise.all([getGeneratedFileSize(), startServer()])
       )
   )
   .then(console.log)
-  .catch(console.error);
+  .catch(e => {
+    console.error(e);
+    process.exitCode = 1;
+  });
