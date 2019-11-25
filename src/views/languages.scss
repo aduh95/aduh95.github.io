@@ -47,13 +47,7 @@
         font-weight: bold;
       }
 
-      & meter:not(:empty) {
-        & + output::before {
-          opacity: 1;
-        }
-      }
-
-      & output {
+      circular-meter {
         &::after {
           top: 004%;
           left: 004%;
@@ -77,15 +71,9 @@
     min-width: 1em;
     padding: 0.1rem;
     transform: translateX(10%);
-
-    @for $i from 1 through 100 {
-      &[value="#{$i/100}"] + output .bar {
-        stroke-dasharray: #{3.6 * $i}, 360;
-      }
-    }
   }
 
-  output {
+  circular-meter {
     position: relative;
     font-size: 3rem;
     @media print {
@@ -172,6 +160,7 @@
       transform: rotate(-90deg);
       transform-origin: center;
       fill: none;
+      stroke-dasharray: var(--stroke-dasharray), 360;
     }
     .fill {
       @extend %bar;
