@@ -9,34 +9,3 @@ export const getElementCSSFontValue = (elem: Element) => {
       .join(" ")
   );
 };
-
-// FontAwesome WOFF2 detection using CSS Font Loading API
-addEventListener(
-  "load",
-  function(this: Document) {
-    if (
-      !("fonts" in document) ||
-      // If a browser eventually implements the WOFF2 format but does not implement the Font Loading API,
-      // this script will report a false negative (which is preferable than having missing font).
-      !document.fonts.check(
-        getElementCSSFontValue(document.querySelector(".fa") as Element)
-      )
-    ) {
-      // For browsers in which WOFF2 support is not detected, the whole Font Awesome CSS is downloaded
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.type = "text/css";
-      link.href =
-        "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
-      link.media = "all";
-      document.head.appendChild(link);
-    }
-  },
-  false
-);
-
-declare global {
-  interface Document {
-    fonts: { check: (font: string) => boolean };
-  }
-}
