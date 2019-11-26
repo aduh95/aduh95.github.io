@@ -42,6 +42,7 @@ section.experience {
   }
 
   details {
+    $summary-line-height: 1.5rem;
     &:hover {
       &[open] {
         will-change: height;
@@ -55,6 +56,7 @@ section.experience {
     summary {
       outline: none;
       height: min-content;
+      line-height: $summary-line-height;
     }
 
     @media screen {
@@ -65,9 +67,9 @@ section.experience {
 
     & > summary > span {
       display: block;
-      margin-bottom: -1.5rem;
+      margin-bottom: -$summary-line-height;
       margin-left: 1rem;
-      transform: translateY(-1.5rem);
+      transform: translateY(-#{$summary-line-height});
 
       cursor: pointer;
       font-style: italic;
