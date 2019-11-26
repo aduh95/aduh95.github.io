@@ -32,7 +32,9 @@ export default indexFile =>
         document.createElement("progress"),
         " Building application..."
       );
-      removeDialogScript.textContent = `import("./${BUNDLE_NAME}").then(()=>document.getElementById("${dialog.id}").remove())`;
+      removeDialogScript.textContent = `import("./${BUNDLE_NAME}")
+        .then(()=>document.getElementById("${dialog.id}").remove())
+        .catch(e=>{document.body.textContent=e.message})`;
       document.body.append(dialog, removeDialogScript);
       return dom.serialize();
     }
