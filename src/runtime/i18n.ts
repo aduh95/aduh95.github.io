@@ -1,8 +1,9 @@
-const supportedLanguages = ["en", "fr"];
+import supportedLanguages, { SupportedLanguage } from "./SupportedLanguages.js";
+
 const htmlElement = window.document.documentElement;
 
 const extractLocale = (locale: string) => {
-  const localeLang = locale.substr(0, 2);
+  const localeLang = locale.substr(0, 2) as SupportedLanguage;
 
   if (supportedLanguages.includes(localeLang)) {
     const countryCode = locale.split("-")[1];
@@ -20,7 +21,7 @@ const extractLocale = (locale: string) => {
 const changeLanguage = function() {
   const locale = extractLocale(location.hash.replace(/^#/, ""));
   const progressElem = document.querySelectorAll("time");
-  const lang = locale.substr(0, 2);
+  const lang = locale.substr(0, 2) as SupportedLanguage;
 
   htmlElement.setAttribute("lang", lang);
 
@@ -49,6 +50,8 @@ window.addEventListener("hashchange", changeLanguage);
 
 document.addEventListener("DOMContentLoaded", changeLanguage, false);
 
-interface NavigatorLanguage {
-  userLanguage?: string;
+declare global {
+  interface NavigatorLanguage {
+    userLanguage?: string;
+  }
 }

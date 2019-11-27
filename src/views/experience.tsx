@@ -3,7 +3,7 @@ import { h } from "@aduh95/async-jsx";
 import experience from "../data/experience.js";
 import { FontAwesomeIcon } from "@aduh95/jsx-fontawesome";
 
-import { SupportedLanguage } from "../SupportedLanguage";
+import { SupportedLanguage } from "../runtime/SupportedLanguages";
 
 import "./experience.scss";
 
