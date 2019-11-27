@@ -281,7 +281,7 @@ export default {
       en: [
         "Team managment",
         "Quality process supervision",
-        "Intern ERP development",
+        "Internal ERP development",
       ],
       fr: ["Management", "Suivi qualité", "Développement d'un ERP interne"],
     },
