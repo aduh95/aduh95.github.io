@@ -4,7 +4,12 @@ let _svgo = null;
 function svgo(data) {
   if (_svgo === null)
     _svgo = new SVGO({
-      plugins: [{ removeHiddenElems: false }, { removeUselessDefs: false }],
+      plugins: [
+        { removeHiddenElems: false },
+        { removeUselessDefs: false },
+        { cleanupIDs: false },
+        { convertStyleToAttrs: false },
+      ],
     });
   return _svgo.optimize(data).then(result => result.data);
 }
