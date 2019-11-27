@@ -25,6 +25,8 @@
   "devDependencies": {
     "@aduh95/async-jsx": "^0.2.0-0",
     "@aduh95/jsx-fontawesome": "^0.1.6",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-modules": "^0.1.1",
     "@dishuostec/rollup-plugin-sass": "^1.2.3",
     "@types/react": "^16.9.2",
     "datauri": "^2.0.0",
@@ -34,6 +36,7 @@
     "puppeteer": "^2.0.0",
     "purify-css": "^1.2.5",
     "rollup": "^1.21.4",
+    "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",

@@ -1,9 +1,10 @@
 import typescript from "rollup-plugin-typescript2";
 import _rollup from "rollup";
+import babel from "rollup-plugin-babel";
 
 import getRuntimeScripts from "./getRuntimeScripts.mjs";
 
-const plugins = [bundleRuntimeScripts(), typescript()];
+const plugins = [bundleRuntimeScripts(), babel(), typescript()];
 
 function bundleRuntimeScripts() {
   return {
@@ -29,4 +30,4 @@ export default () =>
       input: "runtime-modules",
       plugins,
     })
-    .then(bundle => bundle.generate({ sourcemap: false, format: "iife" }));
+    .then(bundle => bundle.generate({ sourcemap: false, format: "module" }));

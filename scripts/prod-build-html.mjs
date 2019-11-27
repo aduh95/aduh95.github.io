@@ -123,7 +123,10 @@ const generateBundledHTML = async browser => {
     .then(jsCode => terser.minify(jsCode, { toplevel: true }))
     .then(({ error, code }) => (error ? Promise.reject(error) : code))
     .then(jsCode =>
-      html.replace("</body></html>", `<script>${jsCode}</script></body></html>`)
+      html.replace(
+        "</body></html>",
+        `<script type="module">${jsCode}</script></body></html>`
+      )
     );
 };
 
