@@ -1,7 +1,9 @@
 import { h } from "@aduh95/async-jsx";
 
-import experience from "../data/experience.json";
+import experience from "../data/experience.js";
 import { FontAwesomeIcon } from "@aduh95/jsx-fontawesome";
+
+import { SupportedLanguage } from "../SupportedLanguage";
 
 import "./experience.scss";
 
@@ -28,7 +30,7 @@ const SECONDS_IN_A_MONTH = 60 * 60 * 24 * 30;
 type ExperienceInfoProps =
   | {
       type: "date";
-      value: { begin: string; end: string };
+      value: { begin: string; end?: string };
     }
   | { type: "website"; value: string }
   | { type: "place"; value: { link: string; text: string } };
@@ -38,10 +40,10 @@ const ExperienceInfo = (props: ExperienceInfoProps) => {
   const icon = <FontAwesomeIcon icon={ICONS[props.type]} />;
   switch (props.type) {
     case "date":
-      const { begin, end } = $value as { begin: string; end: string };
+      const { begin, end } = $value as { begin: string; end?: string };
       const $begin = new Date(begin);
       const $hasEnded = !Boolean(end);
-      const $end = $hasEnded ? new Date(end) : (null as never);
+      const $end = $hasEnded ? new Date(end as string) : (null as never);
       if (
         !$hasEnded ||
         ($end as any) - ($begin as any) < SECONDS_IN_A_MONTH * 1000
@@ -122,13 +124,13 @@ export default function Experience() {
           <article>
             <h5>{name}</h5>
             {Object.entries(mission).map(([lang, text]) => (
-              <h6 lang={lang} className="mission">
+              <h6 lang={lang as SupportedLanguage} className="mission">
                 {text}
               </h6>
             ))}
             <ul>
               {Object.entries(info).map(([type, value]) => (
-                <ExperienceInfo type={type as any} value={value} />
+                <ExperienceInfo type={type as any} value={value as any} />
               ))}
             </ul>
 
@@ -139,8 +141,8 @@ export default function Experience() {
                   {Object.keys(description).map(lang => (
                     <span lang={lang}>
                       {lang in keywords
-                        ? (keywords as any)[lang].join(" · ")
-                        : MORE_INFO[lang as ("fr" | "en")]}
+                        ? keywords[lang].join(" · ")
+                        : MORE_INFO[lang as SupportedLanguage]}
                     </span>
                   ))}
                 </summary>
@@ -156,7 +158,7 @@ export default function Experience() {
               <ul>
                 {technologies.map(({ icon, name }) => (
                   <li>
-                    {/* <FontAwesomeIcon icon={icon} /> */}
+                    <FontAwesomeIcon icon={icon} />
                     {name}
                   </li>
                 ))}
