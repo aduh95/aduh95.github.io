@@ -1,6 +1,7 @@
 @import "./variables";
 @import "./breakpoints";
-@import "../../node_modules/balloon-css/src/balloon";
+@import "../../node_modules/balloon-css/src/variables";
+@import "../../node_modules/balloon-css/src/mixins";
 
 %bar {
   stroke-width: 0.2em;
