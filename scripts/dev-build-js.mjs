@@ -3,10 +3,10 @@ import path from "path";
 import resolve from "rollup-plugin-node-resolve";
 import commonJs from "rollup-plugin-commonjs";
 import json from "rollup-plugin-json";
-import sass from "@dishuostec/rollup-plugin-sass";
 import runtime from "sass";
 import typescript from "rollup-plugin-typescript2";
 import _rollup from "rollup";
+import sass from "./rollup-plugin-sass.mjs";
 import { INPUT_DIR } from "./dev-config.mjs";
 
 const plugins = [
