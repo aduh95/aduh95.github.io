@@ -149,7 +149,7 @@ const generateBundledHTML = async browser => {
   await page.exposeFunction("minifyCSS", (css, usedFaSelectors) =>
     postcss([
       removeUselessFARules({ usedFaSelectors }),
-      cssnano({ preset: ["default"] }),
+      cssnano({ preset: ["advanced"] }),
     ])
       .process(css, { from: undefined, map: { annotation: false } })
       .then(result => result.css)
