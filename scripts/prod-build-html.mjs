@@ -1,7 +1,8 @@
 import { promises as fs } from "fs";
 
 import puppeteer from "puppeteer";
-import purifycss from "purify-css";
+import postcss from "postcss";
+import cssnano from "cssnano";
 import terser from "terser";
 
 import { startServer } from "./dev-server.mjs";
@@ -10,6 +11,19 @@ import generateJS from "./prod-build-js.mjs";
 import minifyInlinedSVG from "./prod-build-svg.mjs";
 
 const OUTPUT_FILE = "index.html";
+
+const postCSSProcessor = postcss([
+  cssnano({
+    preset: [
+      "default",
+      {
+        discardComments: {
+          removeAll: true,
+        },
+      },
+    ],
+  }),
+]);
 
 function domManipulationsRoutine(bundleURL) {
   const SVG_NS = "http://www.w3.org/2000/svg";
@@ -73,8 +87,7 @@ function domManipulationsRoutine(bundleURL) {
     .then(module => module.default)
     .then(minifySVGIcons)
     .then(() =>
-      purifycss(
-        document.body.outerHTML,
+      minifyCSS(
         Array.from(document.head.querySelectorAll("style")).reduce(
           (pv, style) => {
             pv += style.textContent;
@@ -104,12 +117,10 @@ const generateBundledHTML = async browser => {
   await page.goto(`http://localhost:${PORT_NUMBER}/originalIndexFile`);
 
   await page.evaluate(env => (window.process = { env }), process.env);
-  await page.exposeFunction("purifycss", (html, css) =>
-    purifycss(html, css, {
-      minify: true,
-      info: true,
-      rejected: false,
-    }).replace(/\n/g, "")
+  await page.exposeFunction("minifyCSS", css =>
+    postCSSProcessor
+      .process(css, { from: undefined, map: { annotation: false } })
+      .then(result => result.css)
   );
 
   await page.evaluate(domManipulationsRoutine, `/${BUNDLE_NAME}`);
