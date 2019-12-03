@@ -1,9 +1,12 @@
+import { h, Fragment } from "@aduh95/async-jsx";
+
 import Experience from "./views/experience.js";
 import Education from "./views/education.js";
 import Languages from "./views/languages.js";
 import ProgramingLanguages from "./views/programing_languages.js";
 import Aside from "./views/aside.js";
-import { h, Fragment } from "@aduh95/async-jsx";
+
+import easter_egg from "./views/easter_egg.js";
 
 import "./index.scss";
 
@@ -15,6 +18,8 @@ declare global {
       extends Promise<DocumentFragment | HTMLElement | SVGElement> {}
   }
 }
+
+document.head.append(easter_egg);
 
 export default (
   <Document>
