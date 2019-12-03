@@ -12,18 +12,33 @@ import minifyInlinedSVG from "./prod-build-svg.mjs";
 
 const OUTPUT_FILE = "index.html";
 
-const postCSSProcessor = postcss([
-  cssnano({
-    preset: [
-      "default",
-      {
-        discardComments: {
-          removeAll: true,
-        },
-      },
-    ],
-  }),
-]);
+const removeUselessFARules = postcss.plugin(
+  "postcss-remove-unused-font-awesome-rules-plugin",
+  function(opts) {
+    const isFASelector = /\.fa-[_a-zA-Z0-9-]+/g;
+    opts = opts || {};
+    opts.usedFaSelectors = opts.usedFaSelectors || [];
+
+    return function(root, result) {
+      // Transform CSS AST here
+      root.walkRules(rule => {
+        if (
+          isFASelector.test(rule.selector) &&
+          !rule.selectors
+            .flatMap(selector =>
+              Array.from(selector.match(isFASelector), selector =>
+                selector.substring(1)
+              )
+            )
+            .find(className => opts.usedFaSelectors.includes(className))
+        ) {
+          // If it's a font-awesome selector and it's not used
+          rule.remove();
+        }
+      });
+    };
+  }
+);
 
 if ("function" !== String.prototype.replaceAll) {
   String.prototype.replaceAll = function replaceAll(needle, replacementText) {
@@ -102,6 +117,13 @@ function domManipulationsRoutine(bundleURL) {
             return pv;
           },
           ""
+        ),
+        Array.from(
+          new Set(
+            Array.from(document.querySelectorAll("[class]")).flatMap(el =>
+              Array.from(el.classList)
+            )
+          )
         )
       )
     )
@@ -124,8 +146,11 @@ const generateBundledHTML = async browser => {
   await page.goto(`http://localhost:${PORT_NUMBER}/originalIndexFile`);
 
   await page.evaluate(env => (window.process = { env }), process.env);
-  await page.exposeFunction("minifyCSS", css =>
-    postCSSProcessor
+  await page.exposeFunction("minifyCSS", (css, usedFaSelectors) =>
+    postcss([
+      removeUselessFARules({ usedFaSelectors }),
+      cssnano({ preset: ["default"] }),
+    ])
       .process(css, { from: undefined, map: { annotation: false } })
       .then(result => result.css)
   );
