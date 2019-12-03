@@ -18,6 +18,7 @@ class CircularMeterElement extends HTMLElement {
     const circularMeter = document.createElement(CIRCULAR_METER);
 
     if (meterElement.hasChildNodes()) {
+      circularMeter.classList.add("ballooned");
       circularMeter.append(...meterElement.children);
     }
 
