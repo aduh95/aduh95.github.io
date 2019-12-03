@@ -42,11 +42,11 @@ const ExperienceInfo = (props: ExperienceInfoProps) => {
     case "date":
       const { begin, end } = $value as { begin: string; end?: string };
       const $begin = new Date(begin);
-      const $hasEnded = !Boolean(end);
+      const $hasEnded = end && Date.parse(end) < Date.now();
       const $end = $hasEnded ? new Date(end as string) : (null as never);
       if (
         !$hasEnded ||
-        ($end as any) - ($begin as any) < SECONDS_IN_A_MONTH * 1000
+        ($end as any) - ($begin as any) > SECONDS_IN_A_MONTH * 1000
       ) {
         return (
           <li>
