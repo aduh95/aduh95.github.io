@@ -1,44 +1,15 @@
 import { promises as fs } from "fs";
 
 import puppeteer from "puppeteer";
-import postcss from "postcss";
-import cssnano from "cssnano";
 import terser from "terser";
 
 import { startServer } from "./dev-server.mjs";
 import { BUNDLE_NAME, PORT_NUMBER } from "./dev-config.mjs";
 import generateJS from "./prod-build-js.mjs";
+import minifyCSS from "./prod-build-css.mjs";
 import minifyInlinedSVG from "./prod-build-svg.mjs";
 
 const OUTPUT_FILE = "index.html";
-
-const removeUselessFARules = postcss.plugin(
-  "postcss-remove-unused-font-awesome-rules-plugin",
-  function(opts) {
-    const isFASelector = /\.fa-[_a-zA-Z0-9-]+/g;
-    opts = opts || {};
-    opts.usedFaSelectors = opts.usedFaSelectors || [];
-
-    return function(root, result) {
-      // Transform CSS AST here
-      root.walkRules(rule => {
-        if (
-          isFASelector.test(rule.selector) &&
-          !rule.selectors
-            .flatMap(selector =>
-              Array.from(selector.match(isFASelector), selector =>
-                selector.substring(1)
-              )
-            )
-            .find(className => opts.usedFaSelectors.includes(className))
-        ) {
-          // If it's a font-awesome selector and it's not used
-          rule.remove();
-        }
-      });
-    };
-  }
-);
 
 if ("function" !== String.prototype.replaceAll) {
   String.prototype.replaceAll = function replaceAll(needle, replacementText) {
@@ -146,14 +117,7 @@ const generateBundledHTML = async browser => {
   await page.goto(`http://localhost:${PORT_NUMBER}/originalIndexFile`);
 
   await page.evaluate(env => (window.process = { env }), process.env);
-  await page.exposeFunction("minifyCSS", (css, usedFaSelectors) =>
-    postcss([
-      removeUselessFARules({ usedFaSelectors }),
-      cssnano({ preset: ["advanced"] }),
-    ])
-      .process(css, { from: undefined, map: { annotation: false } })
-      .then(result => result.css)
-  );
+  await page.exposeFunction("minifyCSS", minifyCSS);
 
   await page.evaluate(domManipulationsRoutine, `/${BUNDLE_NAME}`);
 
