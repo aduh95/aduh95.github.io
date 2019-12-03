@@ -19,9 +19,8 @@ const extractLocale = (locale: string) => {
 };
 
 const changeLanguage = function() {
-  const locale = extractLocale(location.hash.replace(/^#/, ""));
+  const { locale, lang } = getCurrentLocale();
   const progressElem = document.querySelectorAll("time");
-  const lang = locale.substr(0, 2) as SupportedLanguage;
 
   htmlElement.setAttribute("lang", lang);
 
@@ -49,6 +48,11 @@ if (!location.hash) {
 window.addEventListener("hashchange", changeLanguage);
 
 document.addEventListener("DOMContentLoaded", changeLanguage, false);
+
+export default function getCurrentLocale() {
+  const locale = extractLocale(location.hash.replace(/^#/, ""));
+  return { locale, lang: locale.substr(0, 2) as SupportedLanguage };
+}
 
 declare global {
   interface NavigatorLanguage {

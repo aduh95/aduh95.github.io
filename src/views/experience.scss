@@ -29,6 +29,11 @@ section.experience {
   details {
     width: 100%;
   }
+  p {
+    margin: 0;
+    margin-bottom: inherit;
+    line-height: 1.5rem;
+  }
 
   article {
     margin-top: 1rem;
@@ -111,6 +116,7 @@ section.experience {
       & > p {
         animation: invisiblyGrowFontSize #{$experience_longer_transition_duration}
           ease-out;
+        letter-spacing: 0;
         margin-left: 1rem;
         min-height: 1.5rem;
         text-align: justify;
@@ -138,9 +144,11 @@ section.experience {
   transform: translateY(var(--movable-height));
   transition: transform #{$experience_transition_duration} ease-in;
 }
-body.moving-elements > main {
-  margin-bottom: var(--movable-height, 1rem);
-  transition: margin-bottom #{$experience_transition_duration} ease-in;
+@include media-breakpoint-up(md) {
+  body.moving-elements > main {
+    margin-bottom: var(--movable-height, 1rem);
+    transition: margin-bottom #{$experience_transition_duration} ease-in;
+  }
 }
 
 @keyframes invisiblyGrowFontSize {
@@ -157,12 +165,13 @@ body.moving-elements > main {
   }
   80% {
     opacity: 0.5;
-    letter-spacing: normal;
+    letter-spacing: 0;
     font-size: 1em;
     line-height: 1.5rem;
   }
   100% {
     opacity: 1;
+    letter-spacing: 0;
     font-size: 1em;
     line-height: 1.5rem;
   }

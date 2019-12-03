@@ -1,8 +1,12 @@
 import { getElementCSSFontValue } from "./polyfill.js";
+import getCurrentLocale from "./i18n.js";
 
 const SUMMARY_ELEMENT = "SUMMARY";
+const EXPERIENCE_SECTION = "main>.experience";
 const MOVABLE_ELEMENT_CLASS = "movable-element";
 const MOVING_ELEMENTS_CLASS = "moving-elements";
+
+const reduceAnimations = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 const animateElementsBelow = (
   parentElement: HTMLElement,
@@ -12,15 +16,17 @@ const animateElementsBelow = (
   // The goal of this function is to make the animation smoother using JS than
   // the one using only CSS. However, if the user disables JS, the animation still works.
   const articleIndex = Array.prototype.indexOf.call(
-    document.querySelectorAll("main>.experience>*"),
+    document.querySelectorAll(`${EXPERIENCE_SECTION}>*`),
     parentElement
   );
   const movableElements = document.querySelectorAll(
     [
-      "main>.experience~section",
-      `main>.experience>article:nth-child(n + ${articleIndex + 2})`,
-      `main>.experience>article:nth-child(${articleIndex + 1})>details+*`,
-    ].join(",")
+      "~section",
+      `>article:nth-child(n + ${articleIndex + 2})`,
+      `>article:nth-child(${articleIndex + 1})>details~*`,
+    ]
+      .map(selector => EXPERIENCE_SECTION + selector)
+      .join(",")
   );
 
   document.body.style.setProperty("--movable-height", height + "px");
@@ -29,8 +35,6 @@ const animateElementsBelow = (
   for (const movableElement of movableElements) {
     movableElement.classList.add(MOVABLE_ELEMENT_CLASS);
   }
-
-  console.log(movableElements.item(0));
 
   // When the animation has ended, cleaning up
   movableElements.item(0).addEventListener(
@@ -50,10 +54,9 @@ const animateElementsBelow = (
 document.addEventListener(
   "DOMContentLoaded",
   function(this: Document) {
+    const paragraphElement = document.querySelector(".experience p") as Element;
     const LINE_HEIGHT = parseInt(
-      window.getComputedStyle(
-        document.querySelector(".experience p") as Element
-      ).lineHeight
+      window.getComputedStyle(paragraphElement).lineHeight || "20"
     );
 
     const summaryElem: NodeListOf<HTMLElement> = this.querySelectorAll(
@@ -62,6 +65,7 @@ document.addEventListener(
 
     if (!window.hasOwnProperty("HTMLDetailsElement")) {
       // For browsers that do not support <details>, let's hide the summaries
+      // and return to exit the function
       return Array.from(summaryElem, elem => {
         elem.hidden = true;
       });
@@ -71,9 +75,7 @@ document.addEventListener(
       .createElement("canvas")
       .getContext("2d") as CanvasRenderingContext2D;
 
-    canvasContext.font = getElementCSSFontValue(
-      this.querySelector("p") as Element
-    );
+    canvasContext.font = getElementCSSFontValue(paragraphElement);
 
     for (const elem of summaryElem) {
       // Allow the user to close the detail element by clicking on it
@@ -81,11 +83,14 @@ document.addEventListener(
       (elem.parentNode as Element).addEventListener(
         "click",
         function(this: HTMLDetailsElement, ev: Event) {
-          // The details should close (collapse) only if it's already open and
-          // the user is not trying to select text
-          const shouldClose =
-            this.open && (window.getSelection() || ({} as never)).isCollapsed;
-          if (shouldClose) {
+          if (!(window.getSelection() || ({} as never)).isCollapsed) {
+            // If the click results of a user selection, don't do anything
+            return;
+          }
+          if (reduceAnimations.matches) {
+            // Disable animations if user prefers without
+          } else if (this.open) {
+            // The details should close (collapse) only if it's already open
             // Compute the actual height of the element before
             // the transition starts
             const currentHeight = this.offsetHeight;
@@ -106,8 +111,13 @@ document.addEventListener(
           } else {
             // The element is already closed, it's gonna open but first let's
             // try to put a nice transition in place.
-            const summaryHeight = (this.firstElementChild as HTMLElement)
-              .offsetHeight;
+            const visibleSummary = this.querySelector(
+              `span[lang="${getCurrentLocale().lang}"]`
+            ) as Element;
+            const {
+              height: summaryHeight,
+              width: summaryWidth,
+            } = visibleSummary.getBoundingClientRect();
 
             // Removing CSS height in case the transition did not end
             this.style.height = "";
@@ -122,9 +132,11 @@ document.addEventListener(
 
             const estimatedHeight =
               Math.ceil(
-                canvasContext.measureText(
+                (canvasContext.measureText(
                   paragraph.textContent || ("" as never)
-                ).width / this.offsetWidth
+                ).width *
+                  1.1) / // Allow 10% error due to line breaks
+                  summaryWidth
               ) * LINE_HEIGHT;
 
             // Triggers CSS animation
@@ -137,9 +149,10 @@ document.addEventListener(
               }
             );
           }
+
           if (
             SUMMARY_ELEMENT !== (ev.target as HTMLElement).nodeName &&
-            shouldClose
+            this.open
           ) {
             // Allows user to close the details by clicking on any children
             // (only the summary element has this behavior by default)
