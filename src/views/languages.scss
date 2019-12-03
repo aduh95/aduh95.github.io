@@ -88,7 +88,7 @@
     // background-color: $red_50_dark;
     overflow: visible;
 
-    --balloon-color: $balloon-bg;
+    --balloon-color: #{$balloon-bg};
 
     & *::before,
     & *::after {
