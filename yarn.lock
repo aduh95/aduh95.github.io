@@ -8,9 +8,9 @@
   integrity sha512-/o5O/gt1jCMNK7oPDhQRWXDtnPa2H6S+mUAUDi8D6riSKnsgcd1fGGYEnsj6ySqPjA5zcZRwvNs5wuRs22iKcA==
 
 "@aduh95/jsx-fontawesome@^0.1.6":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@aduh95/jsx-fontawesome/-/jsx-fontawesome-0.1.7.tgz#887e6de2c475d3d6eca6a5529880f857c339ea7a"
-  integrity sha512-/jGWOuDqPf4eg+idXHPN6I8f/FgbhIShZsaD9I0QgRIBHjPxMGzUGqGYXzkk8AneheHTuon31/FwjvGZtGyL7w==
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@aduh95/jsx-fontawesome/-/jsx-fontawesome-0.1.8.tgz#8d9b9cde2ac8edeb34cd32a5cf1d258d51117665"
+  integrity sha512-vZDZQwSHAvKz5g6as8xmU9KJbacmhZCO7xe4NwzbsO1q2p8xco6v0Xr93jMj9mV0BTATMLne9TyRQRBlFnRgDA==
   dependencies:
     prop-types "^15.5.10"
 
@@ -210,6 +210,13 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.25"
 
+"@rollup/plugin-json@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-json/-/plugin-json-4.0.0.tgz#4462e83c7ad5544bef4a601a6e8450daedc4b69b"
+  integrity sha512-Z65CtEVWv40+ri4CvmswyhtuUtki9yP5p0UJN/GyCKKyU4jRuDS9CG0ZuV7/XuS7zGkoajyE7E4XBEaC4GW62A==
+  dependencies:
+    rollup-pluginutils "^2.5.0"
+
 "@types/estree@*":
   version "0.0.40"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.40.tgz#0e6cb9b9bbd098031fa19e4b4e8131bc70e5de13"
@@ -249,11 +256,6 @@
   integrity sha512-auApPaJf3NPfe18hSoJkp8EbZzer2ISk7o8mCC3M9he/a04+gbMF97NkpD2S8riMGvm4BMRI59/SZQSaLTKpsQ==
   dependencies:
     "@types/node" "*"
-
-"@webcomponents/custom-elements@^1.3.0":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@webcomponents/custom-elements/-/custom-elements-1.3.1.tgz#6a654d4d8cbdcb6344af15e9c518c2de8416b3f5"
-  integrity sha512-busXK/Mkz6NcvUK8izF9pePo6gPVjybO7vopX2NkZow6U7ZCjUvCGzcS3tCIURAD8WLrAI9MW3PqslOQOYa4lg==
 
 abab@^2.0.0:
   version "2.0.3"
@@ -2538,13 +2540,6 @@ rollup-plugin-commonjs@^10.1.0:
     resolve "^1.11.0"
     rollup-pluginutils "^2.8.1"
 
-rollup-plugin-json@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-json/-/rollup-plugin-json-4.0.0.tgz#a18da0a4b30bf5ca1ee76ddb1422afbb84ae2b9e"
-  integrity sha512-hgb8N7Cgfw5SZAkb3jf0QXii6QX/FOkiIq2M7BAQIEydjHvTyxXHQiIzZaTFgx1GK0cRCHOCBHIyEkkLdWKxow==
-  dependencies:
-    rollup-pluginutils "^2.5.0"
-
 rollup-plugin-node-resolve@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/rollup-plugin-node-resolve/-/rollup-plugin-node-resolve-5.2.0.tgz#730f93d10ed202473b1fb54a5997a7db8c6d8523"
@@ -2556,10 +2551,10 @@ rollup-plugin-node-resolve@^5.2.0:
     resolve "^1.11.1"
     rollup-pluginutils "^2.8.1"
 
-rollup-plugin-typescript2@^0.24.3:
-  version "0.24.3"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-typescript2/-/rollup-plugin-typescript2-0.24.3.tgz#276fa33a9d584d500da62d3e5400307f4a46bdf2"
-  integrity sha512-D7yovQlhnRoz7pG/RF0ni+koxgzEShwfAGuOq6OVqKzcATHOvmUt2ePeYVdc9N0adcW1PcTzklUEM0oNWE/POw==
+rollup-plugin-typescript2@^0.25.3:
+  version "0.25.3"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-typescript2/-/rollup-plugin-typescript2-0.25.3.tgz#a5fb2f0f85488789334ce540abe6c7011cbdf40f"
+  integrity sha512-ADkSaidKBovJmf5VBnZBZe+WzaZwofuvYdzGAKTN/J4hN7QJCFYAq7IrH9caxlru6T5qhX41PNFS1S4HqhsGQg==
   dependencies:
     find-cache-dir "^3.0.0"
     fs-extra "8.1.0"
