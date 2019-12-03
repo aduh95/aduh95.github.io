@@ -16,7 +16,7 @@ for another project, but they can certainly be used for inspiration.
 LICENSE INFORMATION: The following document is licensed under
 [CC BY-NC-ND 4.0](https://github.com/aduh95/aduh95.github.io/blob/master/LICENSE).
 
-Generation date: ${new Date().toISOString()}
+Generation timestamp: ${new Date().toISOString()}
 
 `;
 
