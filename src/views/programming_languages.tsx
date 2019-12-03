@@ -4,7 +4,7 @@ import { h } from "@aduh95/async-jsx";
 
 import "./languages.scss";
 
-export default function ProgramingLanguages() {
+export default function ProgrammingLanguages() {
   return (
     <section className="programming_languages meter-section">
       <h3 lang="en">Programming Languages</h3>

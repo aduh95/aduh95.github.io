@@ -3,7 +3,7 @@ import { h, Fragment } from "@aduh95/async-jsx";
 import Experience from "./views/experience.js";
 import Education from "./views/education.js";
 import Languages from "./views/languages.js";
-import ProgramingLanguages from "./views/programing_languages.js";
+import ProgrammingLanguages from "./views/programming_languages.js";
 import Aside from "./views/aside.js";
 
 import easter_egg from "./views/easter_egg.js";
@@ -37,7 +37,7 @@ export default (
       <Experience />
       <Education />
       <Languages />
-      <ProgramingLanguages />
+      <ProgrammingLanguages />
     </main>
     <Aside />
   </Document>
