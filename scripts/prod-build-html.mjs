@@ -25,6 +25,13 @@ const postCSSProcessor = postcss([
   }),
 ]);
 
+if ("function" !== String.prototype.replaceAll) {
+  String.prototype.replaceAll = function replaceAll(needle, replacementText) {
+    const reg = new RegExp(needle, "g");
+    return this.replace(reg, replacementText);
+  };
+}
+
 function domManipulationsRoutine(bundleURL) {
   const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -134,10 +141,12 @@ const generateBundledHTML = async browser => {
     .then(jsCode => terser.minify(jsCode, { toplevel: true }))
     .then(({ error, code }) => (error ? Promise.reject(error) : code))
     .then(jsCode =>
-      html.replace(
-        "</body></html>",
-        `<script type="module">${jsCode}</script></body></html>`
-      )
+      html
+        .replaceAll("svg-inline--fa", "f")
+        .replace(
+          "</body></html>",
+          `<script type="module">${jsCode}</script></body></html>`
+        )
     );
 };
 
