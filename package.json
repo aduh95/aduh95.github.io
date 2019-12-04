@@ -6,7 +6,7 @@
     "start": "node --experimental-modules --experimental-json-modules scripts/dev-watch.mjs",
     "build": "node --experimental-modules --experimental-json-modules scripts/prod-build.mjs",
     "preversion": "yarn build",
-    "version": "git add index.html 'Antoine du Hamel – CV-en.pdf' 'Antoine du Hamel – CV-en.pdf'",
+    "version": "git add index.html 'Antoine du Hamel – CV-en.pdf' 'Antoine du Hamel – CV-fr.pdf'",
     "postversion": "git push",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,7 +19,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "balloon-css": "^1.0.0"
   },
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "devDependencies": {
     "@aduh95/async-jsx": "^0.2.0-0",
