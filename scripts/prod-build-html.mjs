@@ -1,15 +1,12 @@
 import { promises as fs } from "fs";
 
-import puppeteer from "puppeteer";
 import terser from "terser";
 
-import { startServer } from "./dev-server.mjs";
 import { BUNDLE_NAME, PORT_NUMBER } from "./dev-config.mjs";
 import generateJS from "./prod-build-js.mjs";
 import minifyCSS from "./prod-build-css.mjs";
 import minifyInlinedSVG from "./prod-build-svg.mjs";
-
-const OUTPUT_FILE = "index.html";
+import { OUTPUT_HTML_FILE } from "./prod-config.mjs";
 
 if ("function" !== String.prototype.replaceAll) {
   String.prototype.replaceAll = function replaceAll(needle, replacementText) {
@@ -109,10 +106,7 @@ function domManipulationsRoutine(bundleURL) {
     });
 }
 
-const getGeneratedFileSize = () =>
-  fs.stat(OUTPUT_FILE).then(stats => stats.size);
-
-const generateBundledHTML = async browser => {
+export default async function generateBundledHTML(browser) {
   const page = await browser.newPage();
   await page.goto(`http://localhost:${PORT_NUMBER}/originalIndexFile`);
 
@@ -123,9 +117,7 @@ const generateBundledHTML = async browser => {
 
   const html = await page.content().then(minifyInlinedSVG);
 
-  await browser.close();
-
-  return generateJS()
+  await generateJS()
     .then(chunks => chunks.output.map(({ code }) => code).join(";"))
     .then(jsCode => terser.minify(jsCode, { toplevel: true }))
     .then(({ error, code }) => (error ? Promise.reject(error) : code))
@@ -136,24 +128,8 @@ const generateBundledHTML = async browser => {
           "</body></html>",
           `<script type="module">${jsCode}</script></body></html>`
         )
-    );
-};
+    )
+    .then(html => fs.writeFile(OUTPUT_HTML_FILE, html));
 
-Promise.all([getGeneratedFileSize(), startServer()])
-  .then(([previousFileSize, server]) =>
-    puppeteer
-      .launch()
-      .then(generateBundledHTML)
-      .then(html => fs.writeFile(OUTPUT_FILE, html))
-      .finally(() => server.close())
-      .then(getGeneratedFileSize)
-      .then(
-        newFileSize =>
-          `New file is ${newFileSize - previousFileSize} bytes bigger.`
-      )
-  )
-  .then(console.log)
-  .catch(e => {
-    console.error(e);
-    process.exitCode = 1;
-  });
+  return browser;
+}
