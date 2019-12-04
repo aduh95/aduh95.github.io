@@ -5,6 +5,9 @@
 
   main {
     font-size: 16px;
+    & > section:last-child {
+      margin-bottom: 0;
+    }
   }
 
   h5 {
@@ -12,17 +15,29 @@
   }
   ul {
     margin-bottom: 0.25rem;
+    .education & {
+      margin: 0.5rem 0;
+      font-size: small;
+    }
+  }
+
+  .experience {
+    ul,
+    details {
+      font-size: small;
+    }
   }
 
   details {
     & summary {
       visibility: hidden;
-      transform: translate(-1rem, -0.25rem);
+      transform: translateX(-1rem);
       & span {
         text-decoration: none !important;
       }
       & > .svg-inline--fa {
         visibility: visible;
+        transform: translateY(-25%);
       }
     }
     &[open] summary {

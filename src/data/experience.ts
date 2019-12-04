@@ -39,7 +39,7 @@ export default {
   "Schneider Electric Digital Energy": {
     mission: {
       en: "Web Programming Engineer and Data Analyst",
-      fr: "Ingénieur Développement Web et Analyse de Données",
+      fr: "Ingénieur Développement Web",
     },
     info: {
       date: {
@@ -202,7 +202,7 @@ export default {
         link:
           "https://www.google.fr/maps/place/Bonjour+Paris/@48.8748121,2.3530751,17z/data=!3m1!4b1!4m5!3m4!1s0x47e66e12e8380f8b:0x26663d64703602b5!8m2!3d48.8748121!4d2.3552638",
       },
-      website: "http://dev.bonjour.agency",
+      website: "http://bonjour.agency",
     },
     keywords: {
       en: [

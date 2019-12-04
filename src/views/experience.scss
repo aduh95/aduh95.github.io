@@ -18,9 +18,11 @@ section.experience {
         text-transform: uppercase;
       }
     }
-    &:first-child > .svg-inline--fa {
-      min-width: auto;
-      margin-right: 0.5ch;
+    @media screen {
+      &:first-child > .svg-inline--fa {
+        min-width: auto;
+        margin-right: 0.5ch;
+      }
     }
   }
 

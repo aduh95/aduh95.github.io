@@ -22,7 +22,8 @@ body {
     "header"
     "aside"
     "main";
-  @include media-breakpoint-up(md) {
+
+  @media (min-width: #{breakpoint-min(md, $grid-breakpoints)}), print {
     grid-template-areas:
       "header header"
       "aside main";
@@ -49,9 +50,6 @@ body {
     background-color: $red_400_light;
   }
   & > aside {
-    @media print {
-      max-width: 33vw;
-    }
     grid-area: aside;
 
     display: flex;
