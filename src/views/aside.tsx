@@ -14,14 +14,13 @@ export default function Aside() {
   return (
     <aside>
       <header>
-        <h3>
-          <img
-            src="./antoineduhamel.jpg"
-            alt={AUTHOR_NAME}
-            width="280"
-            height="360"
-          />
-        </h3>
+        <img
+          src="./antoineduhamel.jpg"
+          alt={AUTHOR_NAME}
+          width="280"
+          height="360"
+        />
+
         <ul className="personal_information">
           {Object.entries(personal_information).map(
             ([className, { icon, href, text }]) => (

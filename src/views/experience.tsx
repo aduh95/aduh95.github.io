@@ -136,7 +136,7 @@ export default function Experience() {
 
             {description === null ? null : (
               <details>
-                <summary>
+                <summary tabindex={0}>
                   <FontAwesomeIcon icon={faThumbtack} />
                   {Object.keys(description).map(lang => (
                     <span lang={lang}>
@@ -169,4 +169,10 @@ export default function Experience() {
       )}
     </section>
   );
+}
+
+declare module "react" {
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    tabindex?: number;
+  }
 }

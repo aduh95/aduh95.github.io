@@ -161,6 +161,7 @@ document.addEventListener(
         },
         true
       );
+      (elem.parentNode as HTMLElement).tabIndex = 0;
     }
   },
   false

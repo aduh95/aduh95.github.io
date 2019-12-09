@@ -6,7 +6,7 @@ const CIRCULAR_METER = "circular-meter";
 
 const generateSlice = () => {
   return (
-    <svg viewBox="0 0 120 120" className="slice">
+    <svg viewBox="0 0 120 120" className="slice" aria-hidden="true">
       <circle className="fill" r="56" cx="60" cy="60" />
       <circle className="bar" r="56" cx="60" cy="60" />
     </svg>
