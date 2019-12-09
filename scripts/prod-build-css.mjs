@@ -29,9 +29,27 @@ const removeUselessFARules = postcss.plugin(
   }
 );
 
+const mergeDarkModeRules = postcss.plugin(
+  "postcss-merge-dark-mode-rules",
+  opts => (root, result) => {
+    const mediaQuery = "screen and (prefers-color-scheme: dark)";
+    const wrapper = postcss.atRule({
+      name: "media",
+      params: mediaQuery,
+    });
+    root.walkAtRules("media", (rule, index) => {
+      if (rule.params === mediaQuery) {
+        rule.walkRules(rule => wrapper.append(rule));
+      }
+    });
+    root.append(wrapper);
+  }
+);
+
 export default (css, usedFaSelectors) =>
   postcss([
     removeUselessFARules({ usedFaSelectors }),
+    mergeDarkModeRules(),
     cssnano({ preset: ["advanced"] }),
   ])
     .process(css, { from: undefined, map: { annotation: false } })
