@@ -20,13 +20,15 @@ class CircularMeterElement extends HTMLElement {
     if (meterElement.hasChildNodes()) {
       circularMeter.classList.add("ballooned");
       circularMeter.append(...meterElement.children);
+
+      // Needed to use CSS hover on iOS
+      // @see http://www.codehaven.co.uk/fix-css-hover-on-iphone-ipad/
+      circularMeter.setAttribute("onclick", "");
+      circularMeter.setAttribute("tabindex", "0");
     }
 
     circularMeter.dataset.title = meterElement.title;
     circularMeter.setAttribute("value", meterElement.value as any);
-
-    // Needed to use CSS hover on iOS (http://www.codehaven.co.uk/fix-css-hover-on-iphone-ipad/)
-    circularMeter.setAttribute("onclick", "");
 
     circularMeter.append(generateSlice() as any);
 
