@@ -112,6 +112,7 @@ function domManipulationsRoutine(bundleURL) {
 }
 
 export default async function generateBundledHTML(browser) {
+  console.log("Building HTML file...");
   const page = await browser.newPage();
 
   await page.setRequestInterception(true);
@@ -149,6 +150,4 @@ export default async function generateBundledHTML(browser) {
         )
     )
     .then(html => fs.writeFile(OUTPUT_HTML_FILE, html));
-
-  return browser;
 }

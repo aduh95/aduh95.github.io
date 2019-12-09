@@ -20,13 +20,14 @@ Promise.all([getGeneratedFileSize(), startServer()])
           .finally(() => {
             browser.close();
             server.close();
+            console.log("Server is off.");
           })
       )
 
       .then(getGeneratedFileSize)
       .then(
         newFileSize =>
-          `New file is ${newFileSize - previousFileSize} bytes bigger.`
+          `\n=> HTML file is ${newFileSize - previousFileSize} bytes bigger.\n`
       )
   )
   .then(console.log)
