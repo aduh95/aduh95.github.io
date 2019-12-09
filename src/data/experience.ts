@@ -1,15 +1,18 @@
 import {
   faCode,
-  faDatabase,
   faCoffee,
+  faDatabase,
+  faMicrochip,
   faServer,
-  faFileExcel,
   IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
 import {
-  faWindows,
   faAndroid,
+  faJs,
   faLinux,
+  faPhp,
+  faPython,
+  faWindows,
 } from "@fortawesome/free-brands-svg-icons";
 
 interface Experience {
@@ -68,11 +71,11 @@ export default {
     technologies: [
       {
         name: "JavaScript",
-        icon: faCode,
+        icon: faJs,
       },
       {
         name: "Python",
-        icon: faCode,
+        icon: faPython,
       },
       {
         name: "SQL",
@@ -114,7 +117,7 @@ export default {
     technologies: [
       {
         name: "JavaScript",
-        icon: faCode,
+        icon: faJs,
       },
       {
         name: "ASP.NET",
@@ -175,7 +178,7 @@ export default {
       },
       {
         name: "PHP",
-        icon: faCode,
+        icon: faPhp,
       },
       {
         name: "Apache",
@@ -183,7 +186,7 @@ export default {
       },
       {
         name: "C",
-        icon: faCode,
+        icon: faMicrochip,
       },
     ],
   },
@@ -225,11 +228,11 @@ export default {
     technologies: [
       {
         name: "PHP",
-        icon: faCode,
+        icon: faPhp,
       },
       {
         name: "JavaScript",
-        icon: faCode,
+        icon: faJs,
       },
       {
         name: "Linux",
@@ -283,7 +286,7 @@ export default {
       },
       {
         name: "PHP",
-        icon: faCode,
+        icon: faPhp,
       },
       {
         name: "SQL",
@@ -291,7 +294,7 @@ export default {
       },
       {
         name: "JavaScript",
-        icon: faCode,
+        icon: faJs,
       },
     ],
   },
