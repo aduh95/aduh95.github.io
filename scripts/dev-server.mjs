@@ -2,7 +2,6 @@ import path from "path";
 
 import getRenderedHTML from "./dev-build-html.mjs";
 import getRenderedJS from "./dev-build-js.mjs";
-import getRuntimeScripts from "./getRuntimeScripts.mjs";
 import ts2js from "./ts2js.mjs";
 
 import {
@@ -33,88 +32,87 @@ const showErrorOnBrowser = function(errorMessage) {
   d.showModal();
 };
 
-const createServer = express => {
-  const app = express();
-
-  app.get("/", (_, res) => {
-    res.header("Content-Type", "text/html");
-    getRenderedHTML(INDEX_FILE)
-      .then(html => res.send(html))
-      .catch(e => {
-        console.error(e);
-        res
-          .status(500)
-          .send(
+const runtimeScripts = import("./getRuntimeScripts.mjs").then(module =>
+  module.default()
+);
+const requestListener = async (req, res) => {
+  switch (req.url) {
+    case "/":
+      res.setHeader("Content-Type", "text/html");
+      return getRenderedHTML(INDEX_FILE)
+        .then(html => res.end(html))
+        .catch(e => {
+          console.error(e);
+          res.statusCode = 500;
+          res.end(
             "<script type=module src='" +
               AUTO_REFRESH_MODULE +
               "'></script><p>Rendering failed</p>"
           );
-      });
-  });
-  app.get("/originalIndexFile", (_, res) => {
-    res.sendFile(INDEX_FILE);
-  });
+        });
 
-  app.get(`/${AUTO_REFRESH_MODULE}`, (_, res) =>
-    res.sendFile(path.join(__dirname, AUTO_REFRESH_MODULE))
-  );
-  app.get(`/manifest.json`, (_, res) =>
-    res.sendFile(path.join(__dirname, "..", "manifest.json"))
-  );
-  app.get(`/${BUNDLE_NAME}`, (_, res) => {
-    res.header("Content-Type", "application/javascript");
-    getRenderedJS()
-      .then(({ output }) => {
-        const { code, map } = output[0];
-        delete map.sourcesContent;
-        res.send(
-          code +
-            "\n//# sourceMappingURL=data:application/json," +
-            encodeURI(JSON.stringify(map))
-        );
-      })
-      .catch(e => {
-        console.error(e);
-        res
-          .status(206)
-          .send(
+    case `/${AUTO_REFRESH_MODULE}`:
+      res.setHeader("Content-Type", "application/javascript");
+      return import("fs").then(({ createReadStream }) =>
+        createReadStream(path.join(__dirname, AUTO_REFRESH_MODULE)).pipe(res)
+      );
+
+    case `/${BUNDLE_NAME}`:
+      res.setHeader("Content-Type", "application/javascript");
+      return getRenderedJS()
+        .then(({ output }) => {
+          const { code, map } = output[0];
+          delete map.sourcesContent;
+          res.end(
+            code +
+              "\n//# sourceMappingURL=data:application/json," +
+              encodeURI(JSON.stringify(map))
+          );
+        })
+        .catch(e => {
+          console.error(e);
+          res.statusCode = 206;
+          res.end(
             `(${showErrorOnBrowser.toString()})(${JSON.stringify(e.message)})`
           );
-      });
-  });
-
-  getRuntimeScripts()
-    .then(scripts =>
-      scripts.map(([url, path]) => {
-        app.get(url, (_, res) => {
-          res.header("Content-Type", "application/javascript");
-
-          ts2js(path)
-            .then(outputText => res.send(outputText))
-            .catch(e => {
-              console.error(e);
-              res
-                .status(206)
-                .send(
-                  `(${showErrorOnBrowser.toString()})(${JSON.stringify(
-                    e.message
-                  )})`
-                );
-            });
         });
-      })
-    )
-    .catch(console.error);
-  app.use(express.static(PROJECT_DIR));
 
-  return app;
+    default:
+      const script = (await runtimeScripts).find(([url]) => url === req.url);
+      if (script) {
+        res.setHeader("Content-Type", "application/javascript");
+        ts2js(script[1])
+          .then(outputText => res.end(outputText))
+          .catch(e => {
+            console.error(e);
+            res.statusCode = 206;
+            res.end(
+              `(${showErrorOnBrowser.toString()})(${JSON.stringify(e.message)})`
+            );
+          });
+      } else {
+        const resolvedPath = path.join(PROJECT_DIR, req.url);
+        import("fs")
+          .then(({ promises, constants, createReadStream }) =>
+            promises.access(resolvedPath, constants.R_OK).then(() => {
+              createReadStream(resolvedPath).pipe(res);
+            })
+          )
+
+          .catch(e => {
+            console.error(e);
+            res.statusCode = 404;
+            res.end(`Cannot find '${req.url}' on this server.`);
+          });
+      }
+  }
 };
 
 export const startServer = () =>
-  Promise.all([import("express"), import("ws")])
+  Promise.all([import("http"), import("ws")])
     .then(_ => _.map(module => module.default))
-    .then(([express, { Server }]) => {
-      const server = createServer(express).listen(
+    .then(([{ createServer }, { Server }]) => {
+      const server = createServer(requestListener).listen(
         PORT_NUMBER,
         "localhost",
         function() {

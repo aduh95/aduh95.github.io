@@ -1,3 +1,8 @@
+import tsconfig from "../tsconfig.json";
+
+const { rootDir } = tsconfig.compilerOptions;
+
+export const INPUT_HTML_FILE = `${rootDir}/index.html`;
 export const OUTPUT_HTML_FILE = "index.html";
 
 export const OUTPUT_PDF_LANGUAGES = ["en", "fr"];

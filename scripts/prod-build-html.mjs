@@ -6,7 +6,7 @@ import { BUNDLE_NAME, PORT_NUMBER } from "./dev-config.mjs";
 import generateJS from "./prod-build-js.mjs";
 import minifyCSS from "./prod-build-css.mjs";
 import minifyInlinedSVG from "./prod-build-svg.mjs";
-import { OUTPUT_HTML_FILE } from "./prod-config.mjs";
+import { INPUT_HTML_FILE, OUTPUT_HTML_FILE } from "./prod-config.mjs";
 
 if ("function" !== String.prototype.replaceAll) {
   String.prototype.replaceAll = function replaceAll(needle, replacementText) {
@@ -108,7 +108,21 @@ function domManipulationsRoutine(bundleURL) {
 
 export default async function generateBundledHTML(browser) {
   const page = await browser.newPage();
-  await page.goto(`http://localhost:${PORT_NUMBER}/originalIndexFile`);
+
+  await page.setRequestInterception(true);
+  page.on("request", req => {
+    if (
+      req.isNavigationRequest() ||
+      new URL(req.url()).pathname === `/${BUNDLE_NAME}`
+    ) {
+      req.continue();
+    } else {
+      // Let's disable external resources to be sure the HTML doesn't get changed.
+      // Also it speeds up the build process.
+      req.abort();
+    }
+  });
+  await page.goto(`http://localhost:${PORT_NUMBER}/${INPUT_HTML_FILE}`);
 
   await page.evaluate(env => (window.process = { env }), process.env);
   await page.exposeFunction("minifyCSS", minifyCSS);
