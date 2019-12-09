@@ -25,12 +25,10 @@ export default (
   <Document>
     <header>
       <h1>Antoine du Hamel</h1>
-      <h5 lang="en">
-        IT electronic engineering student specialized in web development
-      </h5>
+      <h5 lang="en">IT electronic engineer specialized in web development</h5>
       <h5 lang="fr">
-        Étudiant Ingénieur en informatique et électronique, spécialisé en
-        développement web
+        Étudiant Ingénieur Diplômé en informatique et électronique, spécialisé
+        en développement web
       </h5>
     </header>
     <main>
