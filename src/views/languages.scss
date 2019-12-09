@@ -5,7 +5,7 @@
 
 %bar {
   stroke-width: 0.2em;
-  stroke: $secondary_color;
+  stroke: var(--balloon-color);
   width: 1em;
   height: 1em;
 }
@@ -89,6 +89,9 @@
     overflow: visible;
 
     --balloon-color: #{$balloon-bg};
+    @media screen and (prefers-color-scheme: dark) {
+      --balloon-color: #555358;
+    }
 
     & *::before,
     & *::after {
@@ -98,9 +101,9 @@
     & > span {
       @include base-effects();
 
-      background: $balloon-bg;
+      background-color: var(--balloon-color);
       border-radius: 4px;
-      color: #fff;
+      color: white;
       font-size: $balloon-base-size + 2;
       padding: 0.5em 1em;
       position: absolute;
@@ -113,7 +116,7 @@
       bottom: 0;
       line-height: 5em;
       font-size: 0;
-      color: white;
+
       // display: block;
       text-align: center;
       white-space: nowrap;
@@ -161,6 +164,7 @@
       @extend %bar;
       transform: rotate(-90deg);
       transform-origin: center;
+      fill: none;
       stroke-dasharray: var(--stroke-dasharray), 360;
     }
     .fill {

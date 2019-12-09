@@ -53,16 +53,30 @@ const ExperienceInfo = (props: ExperienceInfoProps) => {
             {icon}
             <span lang="en">
               {$hasEnded ? "From " : "Since "}
-              <time dateTime={$begin.toISOString()}>{$begin}</time>
+              <time dateTime={$begin.toISOString()}>
+                {$begin.toDateString()}
+              </time>
               {$hasEnded
-                ? [" to ", <time dateTime={$end.toISOString()}>{$end}</time>]
+                ? [
+                    " to ",
+                    <time dateTime={$end.toISOString()}>
+                      {$end.toDateString()}
+                    </time>,
+                  ]
                 : null}
             </span>
             <span lang="fr">
               {$hasEnded ? "De " : "Depuis "}
-              <time dateTime={$begin.toISOString()}>{$begin}</time>
+              <time dateTime={$begin.toISOString()}>
+                {$begin.toLocaleDateString("fr")}
+              </time>
               {$hasEnded
-                ? [" à ", <time dateTime={$end.toISOString()}>{$end}</time>]
+                ? [
+                    " à ",
+                    <time dateTime={$end.toISOString()}>
+                      {$end.toLocaleDateString("fr")}
+                    </time>,
+                  ]
                 : null}
             </span>
           </li>
