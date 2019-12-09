@@ -14,10 +14,15 @@ Promise.all([getGeneratedFileSize(), startServer()])
   .then(([previousFileSize, server]) =>
     puppeteer
       .launch()
-      .then(generateBundledHTML)
-      .then(generatePDFFiles)
-      .then(browser => browser.close())
-      .finally(() => server.close())
+      .then(browser =>
+        generateBundledHTML(browser)
+          .then(() => generatePDFFiles(browser))
+          .finally(() => {
+            browser.close();
+            server.close();
+          })
+      )
+
       .then(getGeneratedFileSize)
       .then(
         newFileSize =>
