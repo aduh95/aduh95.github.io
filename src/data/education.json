@@ -1,20 +1,22 @@
 [
   {
     "name": {
-      "en": "Groupe ESEO — Graduate Engineering School",
-      "fr": "Groupe ESEO — Grande école d'ingénieur"
+      "en": "Groupe ESEO (Graduate Engineering School)",
+      "fr": "Groupe ESEO (Grande école d'ingénieur)"
     },
-    "begin": 2015,
-    "end": 2018,
+    "graduation": 2018,
     "place": "Angers, France",
-    "description": null
+    "description": {
+      "en": "Engineering degree",
+      "fr": "Diplôme d'Ingénieur"
+    }
   },
   {
     "name": {
       "en": "French baccalauréat (A-level)",
       "fr": "Baccalauréat"
     },
-    "date": 2013,
+    "graduation": 2013,
     "place": "Bordeaux, France",
     "description": {
       "en": null,
