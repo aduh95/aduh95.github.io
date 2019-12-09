@@ -1,16 +1,7 @@
 $body_width: 1920px;
 
-$red_400: #3dcd58;
-$red_400_light: #009530;
-$red_400_dark: #e47f00;
+$primary_color: #333;
+$secondary_color: #b53f51;
+$aside_color: #4b4b4b;
 
-$red_50_dark: #9fa0a4;
-$white: #fff;
-
-@mixin add-fa-icon($icon-name) {
-  @include fa-icon();
-  @extend .#{$fa-css-prefix}-#{$icon-name};
-  &::before {
-    padding-right: 0.5em;
-  }
-}
+$font-color: #212529;

@@ -10,8 +10,8 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  color: #212529;
-  background-color: $red_400_light;
+  color: $font_color;
+  background-color: $primary_color;
 
   overflow-x: hidden;
 }
@@ -23,18 +23,22 @@ body {
     "aside"
     "main";
 
+  margin: auto;
+  width: 100vw;
+  max-width: $body_width;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+
+  @media screen and (prefers-color-scheme: dark) {
+    background-color: black;
+    color: white;
+  }
   @media (min-width: #{breakpoint-min(md, $grid-breakpoints)}), print {
     grid-template-areas:
       "header header"
       "aside main";
     grid-template-columns: 1fr 2fr;
   }
-
-  margin: auto;
-  width: 100vw;
-  max-width: $body_width;
-  min-height: 100vh;
-  background-color: #f8f8f8;
 
   & > * {
     padding: 1rem;
@@ -47,7 +51,8 @@ body {
 
     text-align: center;
 
-    background-color: $red_400_light;
+    background-color: $primary_color;
+    color: white;
   }
   & > aside {
     grid-area: aside;
@@ -56,7 +61,8 @@ body {
     justify-content: space-between;
     flex-direction: column;
 
-    background-color: $red_400;
+    background-color: $aside_color;
+    color: white;
     line-height: 1.5rem;
 
     & > ul {
