@@ -7,6 +7,7 @@ function svgo(data) {
       plugins: [
         { removeHiddenElems: false },
         { removeUselessDefs: false },
+        { removeXMLNS: true },
         { cleanupIDs: false },
         { convertStyleToAttrs: false },
       ],

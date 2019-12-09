@@ -42,8 +42,8 @@ function domManipulationsRoutine(bundleURL) {
       }
     });
     const iconNames = new Set(iconElements.map(el => el.dataset.icon));
-    const wrapperSVG = document.createElementNS(SVG_NS, "svg");
-    wrapperSVG.style.display = "none";
+    const wrapperSVG = document.createDocumentFragment();
+
     let i = 0;
     for (const iconName of iconNames) {
       const thisIconElements = iconElements.filter(
@@ -53,7 +53,6 @@ function domManipulationsRoutine(bundleURL) {
       if (thisIconElements.length > 1) {
         const [originalIconElement] = thisIconElements;
         const symbol = document.createElementNS(SVG_NS, "symbol");
-        symbol.setAttribute("aria-hidden", "true");
         symbol.id = `fa${i++}`;
         replicateAttributes(originalIconElement, symbol, ["role", "viewBox"]);
         symbol.append(originalIconElement.firstElementChild);
@@ -66,11 +65,17 @@ function domManipulationsRoutine(bundleURL) {
           symbolCallback.setAttribute("href", `#${symbol.id}`);
           replicateAttributes(el, wrapperSVG, ["class"]);
           wrapperSVG.append(symbolCallback);
+          wrapperSVG.setAttribute("aria-hidden", "true");
           el.replaceWith(wrapperSVG);
         });
+      } else {
+        const [svg] = thisIconElements;
+        for (const key in svg.dataset) {
+          delete svg.dataset[key];
+        }
       }
     }
-    document.body.prepend(wrapperSVG);
+    document.querySelector("svg").prepend(wrapperSVG);
   };
 
   return import(bundleURL)
