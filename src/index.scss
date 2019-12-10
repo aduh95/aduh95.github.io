@@ -79,6 +79,7 @@ main {
 
   display: flex;
   flex-wrap: wrap;
+  gap: 0 1rem;
 
   @include media-breakpoint-down(sm) {
     & > section[class*="col-"],
