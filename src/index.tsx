@@ -1,10 +1,11 @@
 import { h, Fragment } from "@aduh95/async-jsx";
 
-import Experience from "./views/experience.js";
+import Aside from "./views/aside.js";
 import Education from "./views/education.js";
+import Experience from "./views/experience.js";
+import Header from "./views/header.js";
 import Languages from "./views/languages.js";
 import ProgrammingLanguages from "./views/programming_languages.js";
-import Aside from "./views/aside.js";
 
 import easter_egg from "./views/easter_egg.js";
 
@@ -23,14 +24,7 @@ document.head.append(easter_egg);
 
 export default (
   <Document>
-    <header>
-      <h1>Antoine du Hamel</h1>
-      <h5 lang="en">IT electronic engineer specialized in web development</h5>
-      <h5 lang="fr">
-        Étudiant Ingénieur Diplômé en informatique et électronique, spécialisé
-        en développement web
-      </h5>
-    </header>
+    <Header />
     <main>
       <Experience />
       <Education />
