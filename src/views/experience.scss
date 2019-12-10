@@ -79,7 +79,7 @@ section.experience {
     & > summary > span {
       display: block;
       margin-bottom: -$summary-line-height;
-      margin-left: 1rem;
+      margin-left: 1em;
       transform: translateY(-#{$summary-line-height});
 
       cursor: pointer;

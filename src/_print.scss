@@ -1,12 +1,16 @@
 @media print {
   :root {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   main {
     font-size: 16px;
-    & > section:last-child {
-      margin-bottom: 0;
+    margin-bottom: 0;
+    & > section {
+      margin-bottom: 1rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -15,15 +19,13 @@
   }
   ul {
     margin-bottom: 0.25rem;
-    .education & {
-      margin: 0.5rem 0;
-      font-size: small;
-    }
   }
 
-  .experience {
+  .experience,
+  .education {
     ul,
     details {
+      margin: 0.5rem 0;
       font-size: small;
     }
   }
@@ -31,13 +33,17 @@
   details {
     & summary {
       visibility: hidden;
-      transform: translateX(-1rem);
+      transform: translate(-1em, -3.5px);
+      // 1em is to cancel out the hidden control
+      // No idea why 3.5px
       & span {
         text-decoration: none !important;
       }
       & > .svg-inline--fa {
         visibility: visible;
-        transform: translateY(-25%);
+        position: absolute;
+        top: 0;
+        left: 1em;
       }
     }
     &[open] summary {

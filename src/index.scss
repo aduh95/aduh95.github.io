@@ -2,7 +2,6 @@
 @import "./views/breakpoints";
 
 @import "_i18n";
-@import "_print";
 
 html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -58,83 +57,85 @@ body {
       color: $font_color;
     }
   }
-  & > aside {
-    grid-area: aside;
+}
+aside {
+  grid-area: aside;
 
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 
-    background-color: $aside_color;
-    color: white;
-    line-height: 1.5rem;
+  background-color: $aside_color;
+  color: white;
+  line-height: 1.5rem;
 
-    & > ul {
-      margin: 0;
-      padding: 0;
+  & > ul {
+    margin: 0;
+    padding: 0;
+  }
+}
+main {
+  grid-area: main;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  @include media-breakpoint-down(sm) {
+    & > section[class*="col-"],
+    & > section.col {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
-  & > main {
-    grid-area: main;
 
-    display: flex;
-    flex-wrap: wrap;
+  margin-bottom: 1rem;
+  & > section {
+    margin-bottom: 2rem;
+  }
 
-    @include media-breakpoint-down(sm) {
-      & > section[class*="col-"],
-      & > section.col {
-        padding-left: 0;
-        padding-right: 0;
-      }
+  & h5 {
+    display: inline-block;
+    font-size: 1rem;
+    color: $secondary-color;
+    @media screen and (prefers-color-scheme: dark) {
+      color: $sunny;
     }
-
-    margin-bottom: 1rem;
-    & > section {
-      margin-bottom: 2rem;
-    }
-
-    & h5 {
+    & ~ h6 {
       display: inline-block;
-      font-size: 1rem;
-      color: $secondary-color;
-      @media screen and (prefers-color-scheme: dark) {
-        color: $sunny;
-      }
-      & ~ h6 {
-        display: inline-block;
-        &::before {
-          content: "—";
-          padding: 0 0.4em;
-          display: inherit;
-        }
+      &::before {
+        content: "—";
+        padding: 0 0.4em;
+        display: inherit;
       }
     }
+  }
 
-    & ul {
-      & > li {
-        display: inline-block;
-        & a {
-          color: inherit;
-          text-decoration: none;
-        }
-        &::before {
-          padding-right: 0.3em;
-        }
+  & ul {
+    & > li {
+      display: inline-block;
+      & a {
+        color: inherit;
+        text-decoration: none;
+      }
+      &::before {
+        padding-right: 0.3em;
+      }
+      &::after {
+        content: "|";
+        padding: 0 0.5rem;
+      }
+      &:empty,
+      &:last-child {
         &::after {
-          content: "|";
-          padding: 0 0.5rem;
-        }
-        &:empty,
-        &:last-child {
-          &::after {
-            visibility: hidden;
-            font-size: 0;
-          }
+          visibility: hidden;
+          font-size: 0;
         }
       }
     }
   }
 }
+
+@import "_print";
 
 h1,
 h2,
