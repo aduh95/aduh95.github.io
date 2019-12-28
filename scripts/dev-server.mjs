@@ -61,13 +61,13 @@ const requestListener = async (req, res) => {
       res.setHeader("Content-Type", "application/javascript");
       return getRenderedJS()
         .then(({ output }) => {
-          const { code, map } = output[0];
+          const [{ code, map }] = output;
+          res.write(code);
+
+          // Appends Source map to help debugging
           delete map.sourcesContent;
-          res.end(
-            code +
-              "\n//# sourceMappingURL=data:application/json," +
-              encodeURI(JSON.stringify(map))
-          );
+          res.write("\n//# sourceMappingURL=data:application/json,");
+          res.end(encodeURI(JSON.stringify(map)));
         })
         .catch(e => {
           console.error(e);
