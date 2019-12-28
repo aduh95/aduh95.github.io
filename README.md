@@ -32,9 +32,7 @@ You need [Node.js](https://nodejs.org) 12+ on your local machine for this
 project, also [Yarn](https://yarnpkg.com) is recommended.
 
 - `yarn install`: installs the NPM dependencies.
-- `yarn start`: starts the development server; run it and visit `localhost:8080`
-  with your browser. Then you can modify the `scr` files and your browser will
-  reload automatically so you can check your changes.
+- `yarn start`: starts the development server on `localhost:8080`.
 - `yarn build`: builds the production-ready HTML file and the PDF files.
 
 ### File structure
@@ -45,17 +43,27 @@ project, also [Yarn](https://yarnpkg.com) is recommended.
 - `/icons/`: favicon for the web browser.
 - `/scripts/`: all the custom scripts used for development and building.
 - `/src/`: contains the source code;
-  - `/src/index.html`: HTML template, you can add HTML tags in the header from
-    here.
-  - `/src/index.tsx`: root of the "compile-time" code; this module will be
-    imported from the HTML template, and all changes it made to the DOM before
-    its exported promise resolves will be kept in the final file. N.B.: you
-    cannot define any runtime logic (event handler, etc.) here.
+  - `/src/index.html`: HTML template, typically where you should define metadata
+    tags.
+  - `/src/index.tsx`: root of the "compile-time" code. This module will be
+    transpiled to an ECMAScript module then imported from the HTML template; at
+    build-time, once its default export resolves, the DOM is frozen and the JS
+    code is ditched. It should contain only server-side-rendering logic
+    (creating elements, import stylesheets, etc.) and no client-side code (no
+    event handlers, no need for polyfills, etc.).
   - `/src/data/`: the data files describing each part of the résumé.
-  - `/src/runtime/`: TypeScript modules that are sent to the client, for better
-    interactivity. N.B.: all the files in this folder are _magically_ bundled in
-    the final file.
+  - `/src/runtime/`: client-side TypeScript modules; at build time, those are
+    transpiled and bundled to an ECMAScript module, which is added at the end of
+    the production HTML file. You should try to keep these modules small in size
+    and use APIs available on all "module-ready" browsers.
   - `/src/views/`: TSX modules and SASS files that defines the HTML structure
     and the styles of the web page – those will not be run on the client; at
     build time, they will be parsed, executed, applied to the HTML template, and
     only the resulting DOM tree will be saved.
+
+### Multilingual?
+
+Yes, there are versions available (French and English). The default language is
+English, the client switches if the preferred language is French
+(`navigator.userLanguage`). You can force a locale by changing the hash on the
+URL (`#en` or `#fr`).
