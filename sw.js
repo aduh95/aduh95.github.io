@@ -1,1 +1,0 @@
-"use strict";var e=self;e.addEventListener("install",function(t){t.waitUntil(e.skipWaiting())}),e.addEventListener("fetch",function(e){e.respondWith(fetch(e.request).catch(()=>caches.match(e.request)))}),e.addEventListener("activate",function(t){t.waitUntil(caches.keys().then(e=>Promise.all(e.map(e=>"sw-aduh95"!==e?caches.delete(e):void 0))).then(()=>e.clients.claim()))});
