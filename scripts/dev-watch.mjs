@@ -28,4 +28,6 @@ const watchDir = dir =>
       )
     );
 
-watchDir(INPUT_DIR).then(() => startServer());
+watchDir(INPUT_DIR)
+  .then(() => startServer())
+  .catch(console.error);

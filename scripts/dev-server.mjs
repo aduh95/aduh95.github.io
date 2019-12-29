@@ -54,9 +54,15 @@ const requestListener = async (req, res) => {
 
     case `/${AUTO_REFRESH_MODULE}`:
       res.setHeader("Content-Type", "application/javascript");
-      return import("fs").then(({ createReadStream }) =>
-        createReadStream(path.join(__dirname, AUTO_REFRESH_MODULE)).pipe(res)
-      );
+      return import("fs")
+        .then(({ createReadStream }) =>
+          createReadStream(path.join(__dirname, AUTO_REFRESH_MODULE)).pipe(res)
+        )
+        .catch(e => {
+          console.error(e);
+          res.statusCode = 500;
+          res.end();
+        });
 
     case `/${BUNDLE_NAME}`:
       res.setHeader("Content-Type", "application/javascript");

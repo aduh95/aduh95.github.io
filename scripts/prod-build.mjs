@@ -8,7 +8,10 @@ import generatePDFFiles from "./prod-build-pdf.mjs";
 import { OUTPUT_HTML_FILE } from "./prod-config.mjs";
 
 const getGeneratedFileSize = () =>
-  fs.stat(OUTPUT_HTML_FILE).then(stats => stats.size);
+  fs
+    .stat(OUTPUT_HTML_FILE)
+    .then(stats => stats.size)
+    .catch(e => 0);
 
 Promise.all([getGeneratedFileSize(), startServer()])
   .then(([previousFileSize, server]) =>
