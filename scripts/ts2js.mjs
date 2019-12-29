@@ -1,22 +1,19 @@
-import { createRequire } from "module";
 import { promises as fs } from "fs";
+
 import ts from "typescript";
 
-const require = createRequire(import.meta.url);
+import tsConfig from "../tsconfig.json";
 
-const { compilerOptions } = require("../tsconfig.json");
-export default fileName =>
-  fs
-    .readFile(fileName, "utf8")
-    .then(tsModule =>
-      ts.transpileModule(tsModule, {
-        compilerOptions,
-        fileName,
-      })
-    )
-    .then(({ outputText, sourceMapText }) =>
-      outputText.replace(
-        /# sourceMappingURL=[\w\.]+\.map$/,
-        "# sourceMappingURL=data:application/json," + encodeURI(sourceMapText)
-      )
-    );
+export default async fileName => {
+  const { compilerOptions } = tsConfig;
+
+  const { outputText, sourceMapText } = ts.transpileModule(
+    await fs.readFile(fileName, "utf8"),
+    { compilerOptions, fileName }
+  );
+
+  return outputText.replace(
+    /# sourceMappingURL=[\w\.]+\.map$/,
+    "# sourceMappingURL=data:application/json," + encodeURI(sourceMapText)
+  );
+};

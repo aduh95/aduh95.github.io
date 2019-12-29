@@ -1,8 +1,9 @@
-import SVGO from "svgo";
+const SVG_TAG = /<svg.*?>.+?<\/svg>/g;
 
 let _svgo = null;
-function svgo(data) {
-  if (_svgo === null)
+async function svgo(svg) {
+  if (_svgo === null) {
+    const SVGO = await import("svgo").then(module => module.default);
     _svgo = new SVGO({
       plugins: [
         { removeHiddenElems: false },
@@ -12,10 +13,10 @@ function svgo(data) {
         { convertStyleToAttrs: false },
       ],
     });
-  return _svgo.optimize(data).then(result => result.data);
+  }
+  const { data } = await _svgo.optimize(svg);
+  return data;
 }
-
-const SVG_TAG = /<svg.*?>.+?<\/svg>/g;
 
 export default function minifyInlinedSVG(html) {
   const promises = [];

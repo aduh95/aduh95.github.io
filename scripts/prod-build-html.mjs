@@ -1,7 +1,5 @@
 import { promises as fs } from "fs";
 
-import terser from "terser";
-
 import { BUNDLE_NAME, PORT_NUMBER } from "./dev-config.mjs";
 import generateJS from "./prod-build-js.mjs";
 import minifyCSS from "./prod-build-css.mjs";
@@ -137,17 +135,24 @@ export default async function generateBundledHTML(browser) {
 
   const html = await page.content().then(minifyInlinedSVG);
 
-  await generateJS()
-    .then(chunks => chunks.output.map(({ code }) => code).join(";"))
-    .then(jsCode => terser.minify(jsCode, { toplevel: true }))
-    .then(({ error, code }) => (error ? Promise.reject(error) : code))
-    .then(jsCode =>
-      html
-        .replaceAll("svg-inline--fa", "f")
-        .replace(
-          "</body></html>",
-          `<script type="module">${jsCode}</script></body></html>`
-        )
-    )
-    .then(html => fs.writeFile(OUTPUT_HTML_FILE, html));
+  const jsCode = await Promise.all([import("terser"), generateJS()]).then(
+    ([terser, jsChunks]) => {
+      const { error, code } = terser.default.minify(
+        jsChunks.output.map(({ code }) => code).join(";"),
+        { toplevel: true }
+      );
+
+      return error ? Promise.reject(error) : code;
+    }
+  );
+
+  return fs.writeFile(
+    OUTPUT_HTML_FILE,
+    html
+      .replaceAll("svg-inline--fa", "f")
+      .replace(
+        "</body></html>",
+        `<script type="module">${jsCode}</script></body></html>`
+      )
+  );
 }
