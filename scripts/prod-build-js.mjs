@@ -2,7 +2,7 @@ import typescript from "rollup-plugin-typescript2";
 import _rollup from "rollup";
 import babel from "rollup-plugin-babel";
 
-import getRuntimeScripts from "./getRuntimeScripts.mjs";
+import getRuntimeModules from "./runtime-modules.mjs";
 
 const plugins = [bundleRuntimeScripts(), babel(), typescript()];
 
@@ -15,7 +15,7 @@ function bundleRuntimeScripts() {
     },
     load(id) {
       if (id === "runtime-modules") {
-        return getRuntimeScripts().then(scripts =>
+        return getRuntimeModules().then(scripts =>
           scripts.map(([_, path]) => `import "${path}"`).join(";")
         );
       }

@@ -32,7 +32,8 @@ const showErrorOnBrowser = function(errorMessage) {
   d.showModal();
 };
 
-const runtimeScripts = import("./getRuntimeScripts.mjs").then(module =>
+// Loading list of client side modules to make url resolution faster
+const runtimeModules = import("./runtime-modules.mjs").then(module =>
   module.default()
 );
 const requestListener = async (req, res) => {
@@ -78,7 +79,7 @@ const requestListener = async (req, res) => {
         });
 
     default:
-      const script = (await runtimeScripts).find(([url]) => url === req.url);
+      const script = (await runtimeModules).find(([url]) => url === req.url);
       if (script) {
         res.setHeader("Content-Type", "application/javascript");
         ts2js(script[1])
