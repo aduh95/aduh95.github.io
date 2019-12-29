@@ -23,7 +23,7 @@ const onClose = () => {
   console.info("Connection lost");
   setInterval(() => {
     new WebSocket(SOCKET_ADDRESS).onopen = reloadPage;
-  }, 3000);
+  }, 5000);
 };
 
 // Listen for messages to reload the page

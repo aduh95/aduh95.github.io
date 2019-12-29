@@ -14,17 +14,17 @@ const getGeneratedFileSize = () =>
     .catch(e => 0);
 
 Promise.all([getGeneratedFileSize(), startServer()])
-  .then(([previousFileSize, server]) =>
+  .then(([previousFileSize, closeServer]) =>
     puppeteer
       .launch()
       .then(browser =>
         generateBundledHTML(browser)
           .then(() => generatePDFFiles(browser))
-          .finally(() => {
-            browser.close();
-            server.close();
-            console.log("Server is off.");
-          })
+          .finally(() =>
+            Promise.all([browser.close(), closeServer()]).then(() =>
+              console.log("Server stopped.")
+            )
+          )
       )
 
       .then(getGeneratedFileSize)

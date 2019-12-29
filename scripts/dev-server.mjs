@@ -133,7 +133,13 @@ export const startServer = () =>
         connection.ping(1);
       });
 
-      return server;
+      return () =>
+        new Promise(done => {
+          for (const connection of connections) {
+            connection.terminate();
+          }
+          server.unref().close(done);
+        });
     });
 
 export const refreshBrowser = () => {
