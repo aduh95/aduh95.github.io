@@ -6,7 +6,7 @@
     "start": "node --experimental-modules --experimental-json-modules scripts/dev-watch.mjs",
     "build": "node --experimental-modules --experimental-json-modules scripts/prod-build.mjs",
     "preversion": "yarn build",
-    "version": "git add index.html 'Antoine du Hamel – CV-en.pdf' 'Antoine du Hamel – CV-fr.pdf'",
+    "version": "git add index.html dist/",
     "postversion": "git push",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

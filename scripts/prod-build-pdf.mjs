@@ -15,7 +15,7 @@ export default browser =>
         );
 
         await page.pdf({
-          path: `${OUTPUT_PDF_FILE_PREFIX}-${lang}.pdf`,
+          path: `dist/${OUTPUT_PDF_FILE_PREFIX}-${lang}.pdf`,
           printBackground: true,
           preferCSSPageSize: true,
         });
