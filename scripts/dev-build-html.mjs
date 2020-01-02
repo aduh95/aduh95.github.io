@@ -24,13 +24,20 @@ export default indexFile =>
           return scriptTag;
         })
     );
+    const noScriptAlert = document.createElement("noscript");
     const removeDialogScript = document.createElement("script");
     const dialog = document.createElement("dialog");
     dialog.open = true;
     dialog.id = "placeholder-dialog";
     dialog.append(
       document.createElement("progress"),
-      " Building application..."
+      " Building application...",
+      noScriptAlert
+    );
+    noScriptAlert.append(
+      document.createElement("br"),
+      document.createElement("br"),
+      "Warning, your browser in on no-script mode!"
     );
     removeDialogScript.textContent = `import("./${BUNDLE_NAME}")
         .then(()=>document.getElementById("${dialog.id}").remove())
