@@ -5,10 +5,10 @@
   "scripts": {
     "start": "node --experimental-modules --experimental-json-modules scripts/dev-watch.mjs",
     "build": "node --experimental-modules --experimental-json-modules scripts/prod-build.mjs",
-    "preversion": "yarn build",
+    "preversion": "yarn build && yarn test",
     "version": "git add index.html dist/",
     "postversion": "git push",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --unhandled-rejections=strict scripts/test.js dist/"
   },
   "author": "Antoine du HAMEL",
   "license": "CC-BY-NC-ND-4.0",
@@ -35,6 +35,7 @@
     "cssnano-preset-advanced": "^4.0.7",
     "fibers": "^4.0.2",
     "jsdom": "^16.0.0",
+    "pdf-parse": "^1.1.1",
     "postcss": "^7.0.23",
     "puppeteer": "^2.0.0",
     "rollup": "^1.21.4",
