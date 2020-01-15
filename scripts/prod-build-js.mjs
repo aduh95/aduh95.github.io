@@ -1,4 +1,4 @@
-import typescript from "rollup-plugin-typescript2";
+import typescript from "@rollup/plugin-typescript";
 import _rollup from "rollup";
 import babel from "rollup-plugin-babel";
 
