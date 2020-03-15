@@ -1,5 +1,5 @@
 import typescript from "@rollup/plugin-typescript";
-import _rollup from "rollup";
+import { rollup } from "rollup";
 import babel from "rollup-plugin-babel";
 
 import getRuntimeModules from "./runtime-modules.mjs";
@@ -25,9 +25,7 @@ function bundleRuntimeScripts() {
 }
 
 export default () =>
-  _rollup
-    .rollup({
-      input: "runtime-modules",
-      plugins,
-    })
-    .then(bundle => bundle.generate({ sourcemap: false, format: "module" }));
+  rollup({
+    input: "runtime-modules",
+    plugins,
+  }).then(bundle => bundle.generate({ sourcemap: false, format: "module" }));

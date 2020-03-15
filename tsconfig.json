@@ -6,7 +6,6 @@
     "jsx": "react",
     "jsxFactory": "h",
     "sourceMap": true,
-    "outDir": "./dist",
     "rootDir": "./src",
     "removeComments": true,
 
