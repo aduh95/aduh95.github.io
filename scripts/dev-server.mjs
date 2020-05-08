@@ -40,17 +40,19 @@ const requestListener = async (req, res) => {
   switch (req.url) {
     case "/":
       res.setHeader("Content-Type", "text/html");
-      return getRenderedHTML(INDEX_FILE)
-        .then(html => res.end(html))
-        .catch(e => {
-          console.error(e);
-          res.statusCode = 500;
-          res.end(
-            "<script type=module src='" +
-              AUTO_REFRESH_MODULE +
-              "'></script><p>Rendering failed</p>"
-          );
-        });
+      return process.env.NODE_ENV === "production"
+        ? res.end("Disabled on production server.")
+        : getRenderedHTML(INDEX_FILE)
+            .then((html) => res.end(html))
+            .catch((e) => {
+              console.error(e);
+              res.statusCode = 500;
+              res.end(
+                "<script type=module src='" +
+                  AUTO_REFRESH_MODULE +
+                  "'></script><p>Rendering failed</p>"
+              );
+            });
 
     case `/${AUTO_REFRESH_MODULE}`:
       res.setHeader("Content-Type", "application/javascript");

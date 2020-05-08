@@ -7,6 +7,8 @@ import generatePDFFiles from "./prod-build-pdf.mjs";
 
 import { OUTPUT_HTML_FILE } from "./prod-config.mjs";
 
+process.env.NODE_ENV = "production";
+
 const getGeneratedFileSize = () =>
   fs
     .stat(OUTPUT_HTML_FILE)
