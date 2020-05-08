@@ -13,6 +13,7 @@ html {
   background-color: $primary_color;
 
   overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -23,7 +24,7 @@ body {
     "main";
 
   margin: auto;
-  width: 100vw;
+  width: 100%;
   max-width: $body_width;
   min-height: 100vh;
   background-color: #f8f8f8;
