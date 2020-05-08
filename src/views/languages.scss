@@ -87,7 +87,7 @@
 
     --balloon-color: #{$balloon-bg};
     @media screen and (prefers-color-scheme: dark) {
-      --balloon-color: #555358;
+      --balloon-color: #{$autumn};
     }
 
     & *::before,
