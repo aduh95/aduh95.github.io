@@ -13,7 +13,7 @@ export default function ProgrammingLanguages() {
         .sort((el1, el2) =>
           el1.level > el2.level ? -1 : el1.level < el2.level ? 1 : 0
         )
-        .map(section => (
+        .map((section) => (
           <article>
             <h5>{section.name}</h5>
             <meter

@@ -10,7 +10,11 @@ interface Props {
   [key: string]: any;
 }
 
-export default function h(element: string, props: Props | null = null, ...children: any) {
+export default function h(
+  element: string,
+  props: Props | null = null,
+  ...children: any
+) {
   const domElement = document.createElementNS(SVG_NAMESPACE, element);
 
   if (props) {

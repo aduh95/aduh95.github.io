@@ -16,7 +16,7 @@ import {
 const INDEX_FILE = path.join(INPUT_DIR, "index.html");
 const connections = new Set();
 
-const showErrorOnBrowser = function(errorMessage) {
+const showErrorOnBrowser = function (errorMessage) {
   const d = document.createElement("dialog");
   const h = document.createElement("h2");
   h.append("TypeScript error");
@@ -33,7 +33,7 @@ const showErrorOnBrowser = function(errorMessage) {
 };
 
 // Loading list of client side modules to make url resolution faster
-const runtimeModules = import("./runtime-modules.mjs").then(module =>
+const runtimeModules = import("./runtime-modules.mjs").then((module) =>
   module.default()
 );
 const requestListener = async (req, res) => {
@@ -60,7 +60,7 @@ const requestListener = async (req, res) => {
         .then(({ createReadStream }) =>
           createReadStream(path.join(__dirname, AUTO_REFRESH_MODULE)).pipe(res)
         )
-        .catch(e => {
+        .catch((e) => {
           console.error(e);
           res.statusCode = 500;
           res.end();
@@ -78,7 +78,7 @@ const requestListener = async (req, res) => {
           res.write("\n//# sourceMappingURL=data:application/json,");
           res.end(encodeURI(JSON.stringify(map)));
         })
-        .catch(e => {
+        .catch((e) => {
           console.error(e);
           res.statusCode = 206;
           res.end(
@@ -91,8 +91,8 @@ const requestListener = async (req, res) => {
       if (script) {
         res.setHeader("Content-Type", "application/javascript");
         ts2js(script[1])
-          .then(outputText => res.end(outputText))
-          .catch(e => {
+          .then((outputText) => res.end(outputText))
+          .catch((e) => {
             console.error(e);
             res.statusCode = 206;
             res.end(
@@ -108,7 +108,7 @@ const requestListener = async (req, res) => {
             })
           )
 
-          .catch(e => {
+          .catch((e) => {
             console.error(e);
             res.statusCode = 404;
             res.end(`Cannot find '${req.url}' on this server.`);
@@ -119,24 +119,24 @@ const requestListener = async (req, res) => {
 
 export const startServer = () =>
   Promise.all([import("http"), import("ws")])
-    .then(_ => _.map(module => module.default))
+    .then((_) => _.map((module) => module.default))
     .then(([{ createServer }, { Server }]) => {
       const server = createServer(requestListener).listen(
         PORT_NUMBER,
         "localhost",
-        function() {
+        () => {
           console.log(`Server started on http://localhost:${PORT_NUMBER}`);
         }
       );
 
-      new Server({ server }).on("connection", connection => {
+      new Server({ server }).on("connection", (connection) => {
         connections.add(connection);
 
         connection.ping(1);
       });
 
       return () =>
-        new Promise(done => {
+        new Promise((done) => {
           for (const connection of connections) {
             connection.terminate();
           }

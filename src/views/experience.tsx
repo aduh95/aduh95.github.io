@@ -152,7 +152,7 @@ export default function Experience() {
               <details>
                 <summary tabindex={0}>
                   <FontAwesomeIcon icon={faThumbtack} />
-                  {Object.keys(description).map(lang => (
+                  {Object.keys(description).map((lang) => (
                     <span lang={lang}>
                       {lang in keywords
                         ? keywords[lang].join(" · ")

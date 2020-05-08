@@ -33,4 +33,4 @@ export default (
     </main>
     <Aside />
   </Document>
-).then(e => document.body.append(e));
+).then((e) => document.body.append(e));

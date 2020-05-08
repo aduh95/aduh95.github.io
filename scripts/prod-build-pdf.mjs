@@ -5,10 +5,10 @@ import {
   OUTPUT_HTML_FILE,
 } from "./prod-config.mjs";
 
-export default browser =>
+export default (browser) =>
   Promise.all(
-    OUTPUT_PDF_LANGUAGES.map(lang =>
-      browser.newPage().then(async page => {
+    OUTPUT_PDF_LANGUAGES.map((lang) =>
+      browser.newPage().then(async (page) => {
         console.log(`Building PDF file with locale ${lang}...`);
         await page.goto(
           `http://localhost:${PORT_NUMBER}/${OUTPUT_HTML_FILE}#${lang}`

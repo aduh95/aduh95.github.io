@@ -18,7 +18,7 @@ const extractLocale = (locale: string) => {
   return locale;
 };
 
-const changeLanguage = function() {
+const changeLanguage = function () {
   const { locale, lang } = getCurrentLocale();
   const progressElem = document.querySelectorAll("time");
 

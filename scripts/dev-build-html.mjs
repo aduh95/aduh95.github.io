@@ -1,9 +1,9 @@
 import { BUNDLE_NAME, AUTO_REFRESH_MODULE } from "./dev-config.mjs";
 import getRuntimeModules from "./runtime-modules.mjs";
 
-export default indexFile =>
+export default (indexFile) =>
   Promise.all([
-    import("jsdom").then(module => module.default.JSDOM.fromFile(indexFile)),
+    import("jsdom").then((module) => module.default.JSDOM.fromFile(indexFile)),
     getRuntimeModules(),
   ]).then(([dom, runTimeModules]) => {
     const { window } = dom;
@@ -15,9 +15,9 @@ export default indexFile =>
 
     document.head.append(
       ...[BUNDLE_NAME, AUTO_REFRESH_MODULE]
-        .map(name => `./${name}`)
+        .map((name) => `./${name}`)
         .concat(runTimeModules.map(([url]) => url))
-        .map(relativePath => {
+        .map((relativePath) => {
           const scriptTag = document.createElement("script");
           scriptTag.type = "module";
           scriptTag.src = relativePath;

@@ -28,13 +28,7 @@ export default function plugin() {
             sourceMap: "true",
             sourceMapEmbed: true,
           },
-          function(err, result) {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(result);
-            }
-          }
+          (err, result) => (err ? reject(err) : resolve(result))
         )
       ).then(
         ({ css }) =>

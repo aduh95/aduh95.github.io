@@ -3,7 +3,7 @@ const SVG_TAG = /<svg.*?>.+?<\/svg>/g;
 let _svgo = null;
 async function svgo(svg) {
   if (_svgo === null) {
-    const SVGO = await import("svgo").then(module => module.default);
+    const SVGO = await import("svgo").then((module) => module.default);
     _svgo = new SVGO({
       plugins: [
         { removeHiddenElems: false },
@@ -29,5 +29,5 @@ export default function minifyInlinedSVG(html) {
   }
   promises.push(html.substring(lastIndex));
 
-  return Promise.all(promises).then(chunks => chunks.join(""));
+  return Promise.all(promises).then((chunks) => chunks.join(""));
 }

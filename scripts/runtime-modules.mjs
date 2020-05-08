@@ -9,10 +9,10 @@ const TS_EXTENSION = /\.tsx?$/;
 export default () =>
   fs
     .readdir(path.join(INPUT_DIR, RUNTIME_MODULES_DIR_NAME))
-    .then(files =>
+    .then((files) =>
       files
-        .filter(fileName => TS_EXTENSION.test(fileName))
-        .map(fileName => [
+        .filter((fileName) => TS_EXTENSION.test(fileName))
+        .map((fileName) => [
           `/${RUNTIME_MODULES_DIR_NAME}/${fileName.replace(
             TS_EXTENSION,
             ".js"

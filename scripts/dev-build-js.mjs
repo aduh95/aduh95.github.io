@@ -24,6 +24,6 @@ async function buildWithCache(input) {
 }
 
 export default () =>
-  buildWithCache(path.join(INPUT_DIR, "index.tsx")).then(bundle =>
+  buildWithCache(path.join(INPUT_DIR, "index.tsx")).then((bundle) =>
     bundle.generate({ sourcemap: "hidden", format: "esm" })
   );

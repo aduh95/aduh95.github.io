@@ -4,7 +4,7 @@ import ts from "typescript";
 
 import tsConfig from "../tsconfig.json";
 
-export default async fileName => {
+export default async (fileName) => {
   const { compilerOptions } = tsConfig;
 
   const { outputText, sourceMapText } = ts.transpileModule(

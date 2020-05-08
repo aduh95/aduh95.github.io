@@ -14,7 +14,7 @@ export default function Education() {
     <section className="education">
       <h3 lang="en">Education</h3>
       <h3 lang="fr">Formation</h3>
-      {education.map(section => (
+      {education.map((section) => (
         <article>
           {Object.entries(section.name).map(([lang, text]) => (
             <h5 lang={lang}>{text}</h5>

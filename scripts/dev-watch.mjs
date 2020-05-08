@@ -10,18 +10,18 @@ const watcher = (event, fileName) => {
   refreshBrowser();
 };
 
-const watchFile = path => watch(path, watcher);
-const watchDir = dir =>
+const watchFile = (path) => watch(path, watcher);
+const watchDir = (dir) =>
   fs
     .readdir(dir)
-    .then(files =>
+    .then((files) =>
       Promise.all(
         files
-          .map(file => path.join(dir, file))
-          .map(path =>
+          .map((file) => path.join(dir, file))
+          .map((path) =>
             fs
               .stat(path)
-              .then(stats =>
+              .then((stats) =>
                 stats.isDirectory() ? watchDir(path) : watchFile(path)
               )
           )

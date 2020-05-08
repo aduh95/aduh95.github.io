@@ -48,7 +48,7 @@ class CircularMeterElement extends HTMLElement {
 
 customElements.define(CIRCULAR_METER, CircularMeterElement);
 
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
   // Waiting load event to be sure CSS is fully loaded
   const meterSection = document.querySelectorAll(".meter-section");
   const canvasContext = document
@@ -62,7 +62,7 @@ window.addEventListener("load", function() {
 
     const titlesWidth = Array.from(
       titles,
-      title => canvasContext.measureText(title.textContent || "").width
+      (title) => canvasContext.measureText(title.textContent || "").width
     );
 
     // Computing max width as the min width of all the elements
@@ -77,7 +77,7 @@ window.addEventListener("load", function() {
 
 document.addEventListener(
   "DOMContentLoaded",
-  function(this: Document) {
+  function (this: Document) {
     Array.from(this.querySelectorAll("meter"), CircularMeterElement.from);
   },
   false

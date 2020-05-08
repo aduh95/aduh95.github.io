@@ -19,7 +19,7 @@ function bundleRuntimeScripts() {
     },
     load(id) {
       if (id === "runtime-modules") {
-        return getRuntimeModules().then(scripts =>
+        return getRuntimeModules().then((scripts) =>
           scripts.map(([_, path]) => `import "${path}"`).join(";")
         );
       }
@@ -32,4 +32,4 @@ export default () =>
   rollup({
     input: "runtime-modules",
     plugins,
-  }).then(bundle => bundle.generate({ sourcemap: false, format: "module" }));
+  }).then((bundle) => bundle.generate({ sourcemap: false, format: "module" }));

@@ -25,7 +25,7 @@ const animateElementsBelow = (
       `>article:nth-child(n + ${articleIndex + 2})`,
       `>article:nth-child(${articleIndex + 1})>details~*`,
     ]
-      .map(selector => EXPERIENCE_SECTION + selector)
+      .map((selector) => EXPERIENCE_SECTION + selector)
       .join(",")
   );
 
@@ -53,7 +53,7 @@ const animateElementsBelow = (
 
 document.addEventListener(
   "DOMContentLoaded",
-  function(this: Document) {
+  function (this: Document) {
     const paragraphElement = document.querySelector(".experience p") as Element;
     const LINE_HEIGHT = parseInt(
       window.getComputedStyle(paragraphElement).lineHeight || "20"
@@ -66,7 +66,7 @@ document.addEventListener(
     if (!window.hasOwnProperty("HTMLDetailsElement")) {
       // For browsers that do not support <details>, let's hide the summaries
       // and return to exit the function
-      return Array.from(summaryElem, elem => {
+      return Array.from(summaryElem, (elem) => {
         elem.hidden = true;
       });
     }
@@ -82,7 +82,7 @@ document.addEventListener(
       // And add smooth transition when elements are changing height
       (elem.parentNode as Element).addEventListener(
         "click",
-        function(this: HTMLDetailsElement, ev: Event) {
+        function (this: HTMLDetailsElement, ev: Event) {
           if (!(window.getSelection() || ({} as never)).isCollapsed) {
             // If the click results of a user selection, don't do anything
             return;

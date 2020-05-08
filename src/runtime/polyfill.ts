@@ -5,7 +5,7 @@ export const getElementCSSFontValue = (elem: Element) => {
     elemStyle.getPropertyValue("font") ||
     // Gecko (on Firefox) does not compute the font property, so each sub property must be retrieved
     ["font-style", "font-variant", "font-weight", "font-size", "font-family"]
-      .map(property => elemStyle.getPropertyValue(property))
+      .map((property) => elemStyle.getPropertyValue(property))
       .join(" ")
   );
 };

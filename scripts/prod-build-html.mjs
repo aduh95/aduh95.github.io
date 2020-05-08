@@ -39,13 +39,13 @@ function domManipulationsRoutine(bundleURL) {
         }
       }
     });
-    const iconNames = new Set(iconElements.map(el => el.dataset.icon));
+    const iconNames = new Set(iconElements.map((el) => el.dataset.icon));
     const wrapperSVG = document.createDocumentFragment();
 
     let i = 0;
     for (const iconName of iconNames) {
       const thisIconElements = iconElements.filter(
-        el => el.dataset.icon === iconName
+        (el) => el.dataset.icon === iconName
       );
       // If the icon is only once in the document, don't bother
       if (thisIconElements.length > 1) {
@@ -57,7 +57,7 @@ function domManipulationsRoutine(bundleURL) {
         wrapperSVG.append(symbol);
 
         // replacing all instances of the icon with a reference to the symbol
-        thisIconElements.forEach(el => {
+        thisIconElements.forEach((el) => {
           const wrapperSVG = document.createElementNS(SVG_NS, "svg");
           const symbolCallback = document.createElementNS(SVG_NS, "use");
           symbolCallback.setAttribute("href", `#${symbol.id}`);
@@ -77,7 +77,7 @@ function domManipulationsRoutine(bundleURL) {
   };
 
   return import(bundleURL)
-    .then(module => module.default)
+    .then((module) => module.default)
     .then(minifySVGIcons)
     .then(() =>
       minifyCSS(
@@ -91,21 +91,21 @@ function domManipulationsRoutine(bundleURL) {
         ),
         Array.from(
           new Set(
-            Array.from(document.querySelectorAll("[class]")).flatMap(el =>
+            Array.from(document.querySelectorAll("[class]")).flatMap((el) =>
               Array.from(el.classList)
             )
           )
         )
       )
     )
-    .then(css => {
+    .then((css) => {
       const style = document.createElement("style");
       style.textContent = css;
       document.head.append(style);
       Array.from(document.head.childNodes)
         .concat(Array.from(document.body.childNodes))
-        .filter(n => n.nodeType === Node.TEXT_NODE)
-        .forEach(n => n.remove());
+        .filter((n) => n.nodeType === Node.TEXT_NODE)
+        .forEach((n) => n.remove());
     });
 }
 
@@ -114,7 +114,7 @@ export default async function generateBundledHTML(browser) {
   const page = await browser.newPage();
 
   await page.setRequestInterception(true);
-  page.on("request", req => {
+  page.on("request", (req) => {
     if (
       req.isNavigationRequest() ||
       new URL(req.url()).pathname === `/${BUNDLE_NAME}`
@@ -128,7 +128,7 @@ export default async function generateBundledHTML(browser) {
   });
   await page.goto(`http://localhost:${PORT_NUMBER}/${INPUT_HTML_FILE}`);
 
-  await page.evaluate(env => (window.process = { env }), process.env);
+  await page.evaluate((env) => (window.process = { env }), process.env);
   await page.exposeFunction("minifyCSS", minifyCSS);
 
   await page.evaluate(domManipulationsRoutine, `/${BUNDLE_NAME}`);
