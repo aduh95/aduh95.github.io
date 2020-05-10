@@ -1,7 +1,7 @@
 import path from "path";
 
 import getRenderedHTML from "./dev-build-html.mjs";
-import getRenderedJS from "./dev-build-js.mjs";
+import getRenderedJS from "./dev-build-js-from-worker.mjs";
 import ts2js from "./ts2js.mjs";
 
 import {
