@@ -2,11 +2,13 @@ import { watch, promises as fs } from "fs";
 import path from "path";
 
 import { INPUT_DIR } from "./dev-config.mjs";
+import { sendRebuildSignal } from "./dev-build-js-from-worker.mjs";
 import { refreshBrowser } from "./dev-server.mjs";
 import { startServer } from "./dev-server.mjs";
 
 const watcher = (event, fileName) => {
   console.log(event, fileName);
+  sendRebuildSignal();
   refreshBrowser();
 };
 

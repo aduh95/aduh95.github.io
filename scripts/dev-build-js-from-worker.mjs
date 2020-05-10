@@ -19,13 +19,25 @@ if (isMainThread) {
     jobs.forEach(({ reject }) => reject(error));
   });
 } else {
-  import("./dev-build-js.mjs").catch(Function.prototype); // pre-load modules
-  parentPort.on("message", ({ id }) => {
-    import("./dev-build-js.mjs")
+  let buildCache;
+  const build = () => {
+    buildCache = import("./dev-build-js.mjs")
       .then((m) => m.default())
-      .then((result) => parentPort.postMessage({ id, result }))
-      .catch((error) => parentPort.postMessage({ id, error }));
+      .then((result) => ({ result }))
+      .catch((error) => ({ error }));
+  };
+  build();
+  parentPort.on("message", ({ id, rebuild }) => {
+    if (rebuild) {
+      build();
+    } else {
+      buildCache.then((cache) => parentPort.postMessage({ id, ...cache }));
+    }
   });
+}
+
+export function sendRebuildSignal() {
+  worker.postMessage({ rebuild: true });
 }
 
 export default () =>
