@@ -109,7 +109,17 @@ function domManipulationsRoutine(bundleURL) {
     });
 }
 
-export default async function generateBundledHTML(browser) {
+const generateMinifiedJS = () =>
+  Promise.all([import("terser"), generateJS()]).then(([terser, jsChunks]) => {
+    const { error, code } = terser.default.minify(
+      jsChunks.output.map(({ code }) => code).join(";"),
+      { toplevel: true }
+    );
+
+    return error ? Promise.reject(error) : code;
+  });
+
+async function generateBundledHTML(browser) {
   console.log("Building HTML file...");
   const page = await browser.newPage();
 
@@ -133,26 +143,21 @@ export default async function generateBundledHTML(browser) {
 
   await page.evaluate(domManipulationsRoutine, `/${BUNDLE_NAME}`);
 
-  const html = await page.content().then(minifyInlinedSVG);
-
-  const jsCode = await Promise.all([import("terser"), generateJS()]).then(
-    ([terser, jsChunks]) => {
-      const { error, code } = terser.default.minify(
-        jsChunks.output.map(({ code }) => code).join(";"),
-        { toplevel: true }
-      );
-
-      return error ? Promise.reject(error) : code;
-    }
-  );
-
-  return fs.writeFile(
-    OUTPUT_HTML_FILE,
-    html
-      .replaceAll("svg-inline--fa", "f")
-      .replace(
-        "</body></html>",
-        `<script type="module">${jsCode}</script></body></html>`
-      )
-  );
+  return page.content().then(minifyInlinedSVG);
 }
+
+export default (browser) =>
+  Promise.all([
+    generateBundledHTML(browser),
+    generateMinifiedJS(),
+  ]).then(([html, jsCode]) =>
+    fs.writeFile(
+      OUTPUT_HTML_FILE,
+      html
+        .replaceAll("svg-inline--fa", "f")
+        .replace(
+          "</body></html>",
+          `<script type="module">${jsCode}</script></body></html>`
+        )
+    )
+  );
