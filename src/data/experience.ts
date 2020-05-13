@@ -15,29 +15,6 @@ import {
   faWindows,
 } from "@fortawesome/free-brands-svg-icons";
 
-interface Experience {
-  mission: {
-    [lang: string]: string;
-  };
-
-  info: {
-    date?: {
-      begin: string;
-      end?: string;
-    };
-    place?: {
-      link: string;
-      text: string;
-    };
-    website?: string;
-  };
-
-  technologies: { name: string; icon: IconDefinition }[];
-
-  keywords?: { [lang: string]: string[] };
-  description?: { [lang: string]: string };
-}
-
 export default {
   "Schneider Electric Digital Energy": {
     mission: {
@@ -299,3 +276,26 @@ export default {
     ],
   },
 } as { [experienceName: string]: Experience };
+
+interface Experience {
+  mission: {
+    [lang: string]: string;
+  };
+
+  info: {
+    date?: {
+      begin: string;
+      end?: string;
+    };
+    place?: {
+      link: string;
+      text: string;
+    };
+    website?: string;
+  };
+
+  technologies: { name: string; icon: IconDefinition }[];
+
+  keywords?: { [lang: string]: string[] };
+  description?: { [lang: string]: string };
+}

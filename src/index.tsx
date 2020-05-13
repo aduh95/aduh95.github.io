@@ -11,19 +11,10 @@ import easter_egg from "./views/easter_egg.js";
 
 import "./index.scss";
 
-const Document = Fragment as any;
-
-declare global {
-  namespace JSX {
-    interface Element
-      extends Promise<DocumentFragment | HTMLElement | SVGElement> {}
-  }
-}
-
-document.head.append(easter_egg);
+const Body = Fragment as any;
 
 export default (
-  <Document>
+  <Body>
     <Header />
     <main>
       <Experience />
@@ -32,5 +23,14 @@ export default (
       <ProgrammingLanguages />
     </main>
     <Aside />
-  </Document>
+  </Body>
 ).then((e) => document.body.append(e));
+
+document.head.append(easter_egg);
+
+declare global {
+  namespace JSX {
+    interface Element
+      extends Promise<DocumentFragment | HTMLElement | SVGElement> {}
+  }
+}
