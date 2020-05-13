@@ -6,7 +6,7 @@ import about from "../data/about.json";
 import skills from "../data/skills.js";
 import hobbies from "../data/hobbies.js";
 
-import { AUTHOR_NAME } from "../config.json";
+import { AUTHOR_NAME } from "../data/header.json";
 
 import "./aside.scss";
 
