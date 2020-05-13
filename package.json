@@ -8,6 +8,7 @@
     "preversion": "yarn build && yarn test",
     "version": "git add index.html dist/",
     "postversion": "git push",
+    "postinstall": "patch-package",
     "test": "node --unhandled-rejections=strict scripts/test.js dist/"
   },
   "author": "Antoine du HAMEL",
@@ -27,7 +28,6 @@
     "@babel/core": "^7.7.4",
     "@babel/preset-modules": "^0.1.1",
     "@rollup/plugin-babel": "^5.0.0",
-    "@rollup/plugin-commonjs": "^11.0.1",
     "@rollup/plugin-json": "^4.0.0",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "@rollup/plugin-typescript": "^4.0.0",
@@ -36,6 +36,7 @@
     "cssnano-preset-advanced": "^4.0.7",
     "fibers": "^5.0.0",
     "jsdom": "^16.0.0",
+    "patch-package": "^6.2.2",
     "pdf-parse": "^1.1.1",
     "postcss": "^7.0.23",
     "puppeteer": "^3.0.4",

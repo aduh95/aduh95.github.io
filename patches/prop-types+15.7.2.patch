@@ -1,0 +1,55 @@
+diff --git a/node_modules/prop-types/factoryWithThrowingShims.js b/node_modules/prop-types/factoryWithThrowingShims.js
+index e5b2f9c..bd572a3 100644
+--- a/node_modules/prop-types/factoryWithThrowingShims.js
++++ b/node_modules/prop-types/factoryWithThrowingShims.js
+@@ -4,16 +4,13 @@
+  * This source code is licensed under the MIT license found in the
+  * LICENSE file in the root directory of this source tree.
+  */
+-
+-'use strict';
+-
+-var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
++import ReactPropTypesSecret from'./lib/ReactPropTypesSecret.js';
+ 
+ function emptyFunction() {}
+ function emptyFunctionWithReset() {}
+ emptyFunctionWithReset.resetWarningCache = emptyFunction;
+ 
+-module.exports = function() {
++export default function() {
+   function shim(props, propName, componentName, location, propFullName, secret) {
+     if (secret === ReactPropTypesSecret) {
+       // It is still safe when called from React.
+diff --git a/node_modules/prop-types/index.js b/node_modules/prop-types/index.js
+index e9ef51d..023c589 100644
+--- a/node_modules/prop-types/index.js
++++ b/node_modules/prop-types/index.js
+@@ -5,15 +5,6 @@
+  * LICENSE file in the root directory of this source tree.
+  */
+ 
+-if (process.env.NODE_ENV !== 'production') {
+-  var ReactIs = require('react-is');
++import factory from './factoryWithThrowingShims.js';
+ 
+-  // By explicitly using `prop-types` you are opting into new development behavior.
+-  // http://fb.me/prop-types-in-prod
+-  var throwOnDirectAccess = true;
+-  module.exports = require('./factoryWithTypeCheckers')(ReactIs.isElement, throwOnDirectAccess);
+-} else {
+-  // By explicitly using `prop-types` you are opting into new production behavior.
+-  // http://fb.me/prop-types-in-prod
+-  module.exports = require('./factoryWithThrowingShims')();
+-}
++export default factory();
+diff --git a/node_modules/prop-types/lib/ReactPropTypesSecret.js b/node_modules/prop-types/lib/ReactPropTypesSecret.js
+index f54525e..b127604 100644
+--- a/node_modules/prop-types/lib/ReactPropTypesSecret.js
++++ b/node_modules/prop-types/lib/ReactPropTypesSecret.js
+@@ -9,4 +9,4 @@
+ 
+ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+ 
+-module.exports = ReactPropTypesSecret;
++export default ReactPropTypesSecret;
