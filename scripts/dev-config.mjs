@@ -10,6 +10,7 @@ const { rootDir } = tsconfig.compilerOptions;
 
 export const PROJECT_DIR = path.resolve(__dirname, "..");
 export const INPUT_DIR = path.join(PROJECT_DIR, rootDir);
+export const DATA_DIR = path.join(INPUT_DIR, "data");
 
 export const BUNDLE_NAME = "bundle.js";
 export const AUTO_REFRESH_MODULE = "autoRefresh.mjs";

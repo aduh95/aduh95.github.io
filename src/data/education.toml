@@ -1,0 +1,21 @@
+__subinterfaces__ = { name = "lang", description = "lang" }
+
+[[item]]
+    graduation = 2018
+    place = "Angers, France"
+    [item.name]
+        "en" = "Groupe ESEO (Graduate Engineering School)"
+        "fr" = "Groupe ESEO (Grande école d'ingénieur)"
+    [item.description]
+        "en" = "Engineering degree"
+        "fr" = "Diplôme d'Ingénieur"
+
+[[item]]
+    graduation = 2013
+    place = "Bordeaux, France"
+    [item.name]
+        "en" = "French baccalauréat (A-level)"
+        "fr" = "Baccalauréat"
+    [item.description]
+        "en" = ""
+        "fr" = "Mention Bien"

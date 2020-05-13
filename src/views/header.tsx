@@ -1,6 +1,6 @@
 import { h } from "@aduh95/async-jsx";
 
-import { AUTHOR_NAME, description } from "../data/header.json";
+import { AUTHOR_NAME, description } from "../data/header.toml";
 
 export default () => (
   <header>

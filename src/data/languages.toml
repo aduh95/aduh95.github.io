@@ -1,0 +1,32 @@
+__interface__ = "lang"
+__subinterfaces__ = { name = "lang", description = "lang" }
+
+[en]
+    level = 0.93
+    levelTitle = "TOEIC"
+    [en.name]
+        en = "English"
+        fr = "Anglais"
+    [en.description]
+        en = "Quite fluent (TOEIC score 930)"
+        fr = "Courant (TOEIC 930)"
+
+[fr]
+    level = 1
+    levelTitle = ""
+    [fr.name]
+        en = "French"
+        fr = "Français"
+    [fr.description]
+        en = "Native speaker"
+        fr = "Langue maternelle"
+
+[de]
+    level = 0.5
+    levelTitle = "B1"
+    [de.name]
+        en = "German"
+        fr = "Allemand"
+    [de.description]
+        en = "Working knowledge (Goethe-Zertifikat B1)"
+        fr = "Notions élémentaires (Goethe-Zertifikat B1)"

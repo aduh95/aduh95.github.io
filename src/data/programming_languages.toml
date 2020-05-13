@@ -1,0 +1,23 @@
+[[item]]
+name = "JavaScript"
+level = 0.8
+
+[[item]]
+name = "PHP"
+level = 0.6
+
+[[item]]
+name = "SQL"
+level = 0.7
+
+[[item]]
+name = "C"
+level = 0.6
+
+[[item]]
+name = "Python"
+level = 0.6
+
+[[item]]
+name = "HTML/CSS"
+level = 0.75

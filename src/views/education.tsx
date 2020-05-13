@@ -1,4 +1,4 @@
-import education from "../data/education.json";
+import education from "../data/education.toml";
 
 import { h } from "@aduh95/async-jsx";
 import { FontAwesomeIcon } from "@aduh95/jsx-fontawesome";

@@ -2,11 +2,11 @@ import { h } from "@aduh95/async-jsx";
 import { FontAwesomeIcon } from "@aduh95/jsx-fontawesome";
 
 import personal_information from "../data/personal_information.js";
-import about from "../data/about.json";
+import about from "../data/about.toml";
 import skills from "../data/skills.js";
 import hobbies from "../data/hobbies.js";
 
-import { AUTHOR_NAME } from "../data/header.json";
+import { AUTHOR_NAME } from "../data/header.toml";
 
 import "./aside.scss";
 

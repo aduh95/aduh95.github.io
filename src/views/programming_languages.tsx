@@ -1,4 +1,4 @@
-import languages from "../data/programming_languages.json";
+import languages from "../data/programming_languages.toml";
 
 import { h } from "@aduh95/async-jsx";
 
