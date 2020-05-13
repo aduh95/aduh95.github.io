@@ -2,11 +2,18 @@ import { promises as fs, existsSync, constants } from "fs";
 import path from "path";
 
 import { DATA_DIR } from "./dev-config.mjs";
-import { getTOMLKeys, internalProperty } from "./rollup-plugin-toml.mjs";
+import {
+  getTOMLKeys,
+  internalProperty,
+  autoImportIdentifierStrictRegEx,
+  importStatementStrictRegEx,
+} from "./rollup-plugin-toml.mjs";
 
 function getJSONType(data) {
   const type = typeof data;
-  if (type !== "object") {
+  if (type === "string" && autoImportIdentifierStrictRegEx.test(data)) {
+    return "AutoImport";
+  } else if (type !== "object") {
     return type;
   } else if (data === null) {
     return "null";
@@ -45,18 +52,34 @@ function expendSubInterfaces(data, subInterfaces) {
 
 export function toml2dTs(fd) {
   return fd.readFile("utf8").then((toml) => {
-    const { data, exportableKeys, isArray } = getTOMLKeys(toml);
+    const { data, exportableKeys, isArray, imports } = getTOMLKeys(toml);
     if ("__subinterfaces__" in data) {
       expendSubInterfaces(data, data.__subinterfaces__);
     }
-    return isArray
-      ? `declare const exports: ${getJSONType(data)};\nexport default exports;`
+    let dTs = isArray
+      ? `declare const exports: ${getJSONType(
+          isArray
+        )};\nexport default exports;`
       : exportableKeys
           .map((key) => `export const ${key}: ${getJSONType(data[key])}`)
           .join(";\n") +
-          ";\ninterface toml " +
-          getJSONType(data) +
-          "\ndeclare const exports: toml;\nexport default exports;";
+        ";\ninterface toml " +
+        getJSONType(data) +
+        "\ndeclare const exports: toml;\nexport default exports;";
+    if (imports.length) {
+      dTs =
+        `${imports.join(
+          ";\n"
+        )};\ntype AutoImport = ${imports
+          .map((importStatement) =>
+            importStatement.replace(
+              importStatementStrictRegEx,
+              (_, $1) => `typeof ${$1}`
+            )
+          )
+          .join("|")};\n` + dTs;
+    }
+    return dTs;
   });
 }
 
@@ -82,7 +105,7 @@ export async function tomlTSInterop(tomlFile) {
       .finally(() => fd.close());
     return fs.writeFile(fullPath + ".d.ts", dTs);
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 

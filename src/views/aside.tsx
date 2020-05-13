@@ -1,10 +1,10 @@
 import { h } from "@aduh95/async-jsx";
 import { FontAwesomeIcon } from "@aduh95/jsx-fontawesome";
 
-import personal_information from "../data/personal_information.js";
+import personal_information from "../data/personal_information.toml";
 import about from "../data/about.toml";
-import skills from "../data/skills.js";
-import hobbies from "../data/hobbies.js";
+import skills from "../data/skills.toml";
+import hobbies from "../data/hobbies.toml";
 
 import { AUTHOR_NAME } from "../data/header.toml";
 

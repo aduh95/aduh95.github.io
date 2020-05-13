@@ -1,0 +1,39 @@
+__subinterfaces__ = { name = "lang" }
+__auto_imports__ = ["icon"]
+
+[[item]]
+  icon = "@fortawesome/free-solid-svg-icons:faBullseye"
+  [item.name]
+    fr = "Autonome"
+    en = "Autonomous"
+
+[[item]]
+  icon = "@fortawesome/free-solid-svg-icons:faPencilAlt"
+  [item.name]
+    fr = "Polyvalent"
+    en = "Versatile"
+
+[[item]]
+  icon = "@fortawesome/free-solid-svg-icons:faBolt"
+  [item.name]
+    fr = "Esprit créatif"
+    en = "Creative mind"
+
+[[item]]
+  icon = "@fortawesome/free-solid-svg-icons:faAssistiveListeningSystems"
+  [item.name]
+    fr = "Attentif"
+    en = "Focused"
+
+[[item]]
+  icon = "@fortawesome/free-solid-svg-icons:faHandshake"
+  [item.name]
+    fr = "Entreprenant"
+    en = "Resourceful"
+
+[[item]]
+  icon = "@fortawesome/free-solid-svg-icons:faTachometerAlt"
+  [item.name]
+    fr = "Enthousiaste"
+    en = "Enthusiastic"
+

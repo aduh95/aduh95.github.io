@@ -1,6 +1,6 @@
 import { h } from "@aduh95/async-jsx";
 
-import experience from "../data/experience.js";
+import experience from "../data/experience.toml";
 import { FontAwesomeIcon } from "@aduh95/jsx-fontawesome";
 
 import { SupportedLanguage } from "../runtime/SupportedLanguages";
@@ -124,17 +124,15 @@ export default function Experience() {
     <section className="experience">
       <h3 lang="en">Experience</h3>
       <h3 lang="fr">Expérience professionnelle</h3>
-      {Object.entries(experience).map(
-        ([
+      {experience.map(
+        ({
           name,
-          {
-            mission,
-            info = {},
-            description = null,
-            technologies = null,
-            keywords = {},
-          },
-        ]) => (
+          mission,
+          info = {},
+          description = null,
+          technologies = null,
+          keywords = {},
+        }) => (
           <article>
             <h5>{name}</h5>
             {Object.entries(mission).map(([lang, text]) => (

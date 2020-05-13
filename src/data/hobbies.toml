@@ -1,0 +1,20 @@
+__auto_imports__ = ["icon"]
+__subinterfaces__ = { name = "lang", description = "lang" }
+
+[[item]]
+    icon = "@fortawesome/free-brands-svg-icons:faAngellist"
+    [item.name]
+        fr = "Mouvement scout"
+        en = "Boy-scout"
+
+[[item]]
+    icon = "@fortawesome/free-solid-svg-icons:faMusic"
+    [item.name]
+        fr = "Piano"
+        en = "Piano"
+
+[[item]]
+    icon = "@fortawesome/free-solid-svg-icons:faPlane"
+    [item.name]
+        fr = "Voyages"
+        en = "Abroad ravels"
