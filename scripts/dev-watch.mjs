@@ -3,13 +3,11 @@ import path from "path";
 
 import { INPUT_DIR } from "./dev-config.mjs";
 import { sendRebuildSignal } from "./dev-build-js-from-worker.mjs";
-import { tomlTSInterop } from "./dev-build-toml-module.mjs";
 import { refreshBrowser } from "./dev-server.mjs";
 import { startServer } from "./dev-server.mjs";
 
 const watcher = (event, fileName) => {
   console.log(event, fileName);
-  tomlTSInterop(fileName).catch(console.error);
   sendRebuildSignal();
   refreshBrowser();
 };

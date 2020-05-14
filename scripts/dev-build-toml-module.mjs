@@ -1,13 +1,17 @@
-import { promises as fs, existsSync, constants } from "fs";
-import path from "path";
+import { promises as fs, existsSync } from "fs";
+import { pathToFileURL } from "url";
 
-import { DATA_DIR } from "./dev-config.mjs";
 import {
-  getTOMLKeys,
   internalProperty,
   autoImportIdentifierStrictRegEx,
   importStatementStrictRegEx,
 } from "./rollup-plugin-toml.mjs";
+
+const getPrologComment = (tomlFilePath) => `/**
+* Auto generated file to use TOML file with TypeScript.
+* @see ${pathToFileURL(tomlFilePath)}
+*/
+`;
 
 function getJSONType(data) {
   const type = typeof data;
@@ -50,65 +54,42 @@ function expendSubInterfaces(data, subInterfaces) {
   }
 }
 
-export function toml2dTs(fd) {
-  return fd.readFile("utf8").then((toml) => {
-    const { data, exportableKeys, isArray, imports } = getTOMLKeys(toml);
-    if ("__subinterfaces__" in data) {
-      expendSubInterfaces(data, data.__subinterfaces__);
-    }
-    let dTs = isArray
-      ? `declare const exports: ${getJSONType(
-          isArray
-        )};\nexport default exports;`
-      : exportableKeys
-          .map((key) => `export const ${key}: ${getJSONType(data[key])}`)
-          .join(";\n") +
-        ";\ninterface toml " +
-        getJSONType(data) +
-        "\ndeclare const exports: toml;\nexport default exports;";
-    if (imports.length) {
-      dTs =
-        `${imports.join(
-          ";\n"
-        )};\ntype AutoImport = ${imports
-          .map((importStatement) =>
-            importStatement.replace(
-              importStatementStrictRegEx,
-              (_, $1) => `typeof ${$1}`
-            )
+const createDummyJSFile = (tomlFile) =>
+  fs.writeFile(tomlFile + ".js", getPrologComment(tomlFile));
+
+export function generateDTs({ data, exportableKeys, isArray, imports }) {
+  if ("__subinterfaces__" in data) {
+    expendSubInterfaces(data, data.__subinterfaces__);
+  }
+  const dTs = isArray
+    ? `declare const exports: ${getJSONType(isArray)};\nexport default exports;`
+    : exportableKeys
+        .map((key) => `export const ${key}: ${getJSONType(data[key])}`)
+        .join(";\n") +
+      ";\ninterface toml " +
+      getJSONType(data) +
+      "\ndeclare const exports: toml;\nexport default exports;";
+  const importStatements = imports.length
+    ? `${imports.join(
+        ";\n"
+      )};\ntype AutoImport = ${imports
+        .map((importStatement) =>
+          importStatement.replace(
+            importStatementStrictRegEx,
+            (_, $1) => `typeof ${$1}`
           )
-          .join("|")};\n` + dTs;
-    }
-    return dTs;
-  });
+        )
+        .join("|")};\n`
+    : "";
+  return importStatements + dTs;
 }
 
-const createDummyFile = (tomlFile) =>
-  fs.writeFile(tomlFile + ".js", "// Dummy file for TypeScript compiler.");
-
-export async function tomlTSInterop(tomlFile) {
-  if (!tomlFile.endsWith(".toml")) {
-    return;
+export async function updateTSInteropFiles(path, tomlKeys) {
+  if (!existsSync(path + ".js")) {
+    await createDummyJSFile(fullPath);
   }
-  const fullPath = path.join(DATA_DIR, tomlFile);
-  try {
-    const fd = await fs.open(fullPath, constants.R_OK);
-    if (!existsSync(fullPath + ".js")) {
-      await createDummyFile(fullPath);
-    }
-    const dTs = await toml2dTs(fd)
-      .catch((message) => {
-        const error = new Error(message);
-        error.fileName = fullPath;
-        return Promise.reject(error);
-      })
-      .finally(() => fd.close());
-    return fs.writeFile(fullPath + ".d.ts", dTs);
-  } catch (e) {
-    console.error(e);
-  }
+  return fs.writeFile(
+    path + ".d.ts",
+    getPrologComment(path) + generateDTs(tomlKeys)
+  );
 }
-
-fs.readdir(DATA_DIR)
-  .then((files) => Promise.all(files.map(tomlTSInterop)))
-  .catch(console.error);

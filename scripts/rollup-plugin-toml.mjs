@@ -1,4 +1,5 @@
 import { toml2json } from "@aduh95/toml2json";
+import { updateTSInteropFiles } from "./dev-build-toml-module.mjs";
 
 const reservedNames = [
   "instanceof",
@@ -120,6 +121,14 @@ export default function plugin() {
           );
         code.replace(autoImportQuotedIdentifier, (_, identifier) => identifier);
       }
+
+      updateTSInteropFiles(id, {
+        data,
+        exportableKeys,
+        nonExportableKeys,
+        isArray,
+        imports,
+      }).catch(console.error);
 
       return { code, map: { mappings: "" } };
     },

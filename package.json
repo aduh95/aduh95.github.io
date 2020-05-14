@@ -3,12 +3,12 @@
   "description": "My résumé",
   "main": "public/index.php",
   "scripts": {
-    "start": "node --experimental-modules --experimental-json-modules scripts/dev-watch.mjs",
-    "build": "node --experimental-modules --experimental-json-modules scripts/prod-build.mjs",
+    "start": "node --experimental-json-modules scripts/dev-watch.mjs",
+    "build": "node --experimental-json-modules scripts/prod-build.mjs",
     "preversion": "yarn build && yarn test",
     "version": "git add index.html dist/",
     "postversion": "git push",
-    "postinstall": "patch-package",
+    "postinstall": "patch-package && node --experimental-json-modules scripts/dev-generate-toml-interop-files.mjs",
     "test": "node --unhandled-rejections=strict scripts/test.js dist/"
   },
   "author": "Antoine du HAMEL",
@@ -19,6 +19,9 @@
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "balloon-css": "^1.0.0"
+  },
+  "engines": {
+    "node": "^12.17.0 || >=13.2.0"
   },
   "version": "0.1.2",
   "type": "module",
