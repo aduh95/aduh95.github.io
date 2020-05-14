@@ -1,5 +1,14 @@
-__subinterfaces__ = { mission="lang", keywords="lang", description="lang" }
-__auto_imports__ = ["icon"] # Find icon names at https://fontawesome.com/icons
+### "magic" fields to improve the TypeScript definition result.
+
+# Those fields define instances of a `lang` type.
+__use_generic_keys__ = { mission="lang", keywords="lang", description="lang" }
+
+# The `icon` fields should be treated as instances of Font-Awesome icons rather
+# than actual string. Find icon names at https://fontawesome.com/icons.
+__auto_imports__ = ["icon"]
+
+###
+
 
 [[item]]
   name = "Schneider Electric Digital Energy"

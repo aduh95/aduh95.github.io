@@ -1,5 +1,12 @@
+### "magic" fields to improve the TypeScript definition result.
+
+# Those fields define instances of a `lang` type.
+__use_generic_keys__ = { description="lang" }
+
+###
+
 AUTHOR_NAME = "Antoine du Hamel"
 
 [description]
-"en" = "IT electronic engineer specialized in web development"
-"fr" = "Étudiant Ingénieur Diplômé en informatique et électronique, spécialisé en développement web"
+    "en" = "IT electronic engineer specialized in web development"
+    "fr" = "Étudiant Ingénieur Diplômé en informatique et électronique, spécialisé en développement web"

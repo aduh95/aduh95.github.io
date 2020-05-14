@@ -1,3 +1,10 @@
+### "magic" fields to improve the TypeScript definition result.
+
+# Current scope keys (en, fr) define instances of a generic `lang` type.
+__use_generic_keys_for_current_scope__ = "lang"
+
+###
+
 "en" = """
 Graduated in the French engineering school ESEO, I am fond of project management
 and team management. Programming is a second nature for me since I made my first

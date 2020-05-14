@@ -1,5 +1,13 @@
-__auto_imports__ = ["icon"] # Find icon names at https://fontawesome.com/icons
-__subinterfaces__ = { name = "lang", description = "lang" }
+### "magic" fields to improve the TypeScript definition result.
+
+# The `icon` fields should be treated as instances of Font-Awesome icons rather
+# than actual string. Find icon names at https://fontawesome.com/icons.
+__auto_imports__ = ["icon"]
+
+# `name` and `description` fields define instances of a generic `lang` type.
+__use_generic_keys__ = { name = "lang", description = "lang" }
+
+###
 
 [[item]]
     icon = "@fortawesome/free-brands-svg-icons:faAngellist"

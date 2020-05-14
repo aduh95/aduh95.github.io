@@ -1,5 +1,12 @@
-__interface__ = "lang"
-__subinterfaces__ = { name = "lang", description = "lang" }
+### "magic" fields to improve the TypeScript definition result.
+
+# Current scope keys (en, fr, de) define instances of a generic `lang` type.
+__use_generic_keys_for_current_scope__ = "lang"
+
+# `name` and `description` fields also define instances of a `lang` type.
+__use_generic_keys__ = { name = "lang", description = "lang" }
+
+###
 
 [en]
     level = 0.93

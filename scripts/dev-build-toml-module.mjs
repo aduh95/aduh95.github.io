@@ -28,13 +28,15 @@ function getJSONType(data) {
     } else {
       return `Array<${[...types].join("|")}>`;
     }
-  } else if (data.__interface__) {
+  } else if (data.__use_generic_keys_for_current_scope__) {
     const interfaces = new Set(
       Object.entries(data)
         .filter(([key]) => !internalProperty.test(key))
         .map(([_, entry]) => getJSONType(entry))
     );
-    return `{ [${data.__interface__}: string]: ${[...interfaces].join("|")}}`;
+    return `{ [${data.__use_generic_keys_for_current_scope__}: string]: ${[
+      ...interfaces,
+    ].join("|")}}`;
   } else {
     return `{${Object.entries(data)
       .map(([key, value]) => `${JSON.stringify(key)}: ${getJSONType(value)}`)
@@ -47,7 +49,7 @@ function expendSubInterfaces(data, subInterfaces) {
   for (const [key, entry] of Object.entries(data)) {
     if (typeof entry !== "object") {
     } else if (interfaces.includes(key)) {
-      entry["__interface__"] = subInterfaces[key];
+      entry["__use_generic_keys_for_current_scope__"] = subInterfaces[key];
     } else {
       expendSubInterfaces(entry, subInterfaces);
     }
@@ -58,8 +60,8 @@ const createDummyJSFile = (tomlFile) =>
   fs.writeFile(tomlFile + ".js", getPrologComment(tomlFile));
 
 export function generateDTs({ data, exportableKeys, isArray, imports }) {
-  if ("__subinterfaces__" in data) {
-    expendSubInterfaces(data, data.__subinterfaces__);
+  if ("__use_generic_keys__" in data) {
+    expendSubInterfaces(data, data.__use_generic_keys__);
   }
   const dTs = isArray
     ? `declare const exports: ${getJSONType(isArray)};\nexport default exports;`

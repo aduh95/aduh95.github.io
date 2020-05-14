@@ -1,4 +1,13 @@
-__auto_imports__ = ["icon"] # Find icon names at https://fontawesome.com/icons
+### "magic" fields to improve the TypeScript definition result.
+
+# Current scope keys define instances of a generic `medium` type.
+__use_generic_keys_for_current_scope__ = "medium"
+
+# The `icon` fields should be treated as instances of Font-Awesome icons rather
+# than actual string. Find icon names at https://fontawesome.com/icons.
+__auto_imports__ = ["icon"]
+
+###
 
 [linkedin]
 icon= "@fortawesome/free-brands-svg-icons:faLinkedin"
