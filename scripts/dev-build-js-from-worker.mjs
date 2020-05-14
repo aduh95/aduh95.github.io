@@ -4,7 +4,7 @@ let jobs = [];
 let idCounter = 0;
 let worker;
 
-if (isMainThread) {
+const startWorker = () => {
   // This re-loads the current file inside a Worker instance.
   worker = new Worker(new URL(import.meta.url));
   worker.on("message", ({ id, result, error }) => {
@@ -17,7 +17,13 @@ if (isMainThread) {
   });
   worker.on("error", (error) => {
     jobs.forEach(({ reject }) => reject(error));
+    worker.terminate();
+    worker = null;
   });
+};
+
+if (isMainThread) {
+  startWorker();
 } else {
   let buildCache;
   const build = () => {
@@ -43,7 +49,11 @@ export function sendRebuildSignal() {
 export default () =>
   new Promise((resolve, reject) => {
     const id = idCounter++;
-    worker.ref();
+    if (worker == null) {
+      startWorker();
+    } else {
+      worker.ref();
+    }
     jobs[id] = { resolve, reject };
     worker.postMessage({ id });
   });
