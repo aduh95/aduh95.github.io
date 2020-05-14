@@ -1,4 +1,4 @@
-__auto_imports__ = ["icon"]
+__auto_imports__ = ["icon"] # Find icon names at https://fontawesome.com/icons
 __subinterfaces__ = { name = "lang", description = "lang" }
 
 [[item]]

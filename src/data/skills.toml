@@ -1,5 +1,5 @@
 __subinterfaces__ = { name = "lang" }
-__auto_imports__ = ["icon"]
+__auto_imports__ = ["icon"] # Find icon names at https://fontawesome.com/icons
 
 [[item]]
   icon = "@fortawesome/free-solid-svg-icons:faBullseye"

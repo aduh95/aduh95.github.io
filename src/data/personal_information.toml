@@ -1,4 +1,4 @@
-__auto_imports__ = ["icon"]
+__auto_imports__ = ["icon"] # Find icon names at https://fontawesome.com/icons
 
 [linkedin]
 icon= "@fortawesome/free-brands-svg-icons:faLinkedin"
