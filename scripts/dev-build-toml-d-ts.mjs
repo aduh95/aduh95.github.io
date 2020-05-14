@@ -63,6 +63,9 @@ export function generateDTs({ data, exportableKeys, isArray, imports }) {
   if ("__use_generic_keys__" in data) {
     expendSubInterfaces(data, data.__use_generic_keys__);
   }
+  if ("__use_generic_keys_for_current_scope__" in data) {
+    exportableKeys = [];
+  }
   const dTs = isArray
     ? `declare const exports: ${getJSONType(isArray)};\nexport default exports;`
     : exportableKeys
@@ -70,7 +73,7 @@ export function generateDTs({ data, exportableKeys, isArray, imports }) {
         .join(";\n") +
       "\ndeclare const exports: " +
       getJSONType(data) +
-      ";\nexport default exports;";
+      ";\nexport default exports;\n";
   const importStatements = imports.length
     ? `${imports.join(
         ";\n"
