@@ -1,11 +1,14 @@
 ### "magic" fields to improve the TypeScript definition result.
 
-# Those fields define instances of a `lang` type.
-__use_generic_keys__ = { mission="lang", keywords="lang", description="lang" }
-
 # The `icon` fields should be treated as instances of Font-Awesome icons rather
 # than actual string. Find icon names at https://fontawesome.com/icons.
 __auto_imports__ = ["icon"]
+
+# Those fields define instances of a `lang` type.
+[__use_generic_keys__]
+  mission = "lang"
+  keywords = "lang"
+  description = "lang"
 
 ###
 
@@ -21,7 +24,7 @@ __auto_imports__ = ["icon"]
     begin = "2018-04-03"
     end = "2019-10-31"
 
-  [item.place]
+  [item.info.place]
     link = "https://goo.gl/maps/fUQPfADV4Nq"
     text = "Andover, Massachussets"
 
@@ -37,7 +40,7 @@ to fulfill the technical needs of the marketing team (application maintenance,
 developing specific tools, extracting marketing data from user databases, etc.),
 and also to provide user support for the platforms I was in charge of.
 """
-    fr="""
+    fr = """
 D'abord en tant que stagiaire puis en tant que VIE, j'ai travaillé dans l'équipe
 marketing du département Digital Energy de Schneider Electric pendant 18 mois.
 Ma mission était de répondre aux besoins techniques de mon équipe (maintenance
@@ -58,37 +61,38 @@ aux utilisateurs de nos plateformes.
     icon = "@fortawesome/free-solid-svg-icons:faDatabase"
      
 [[item]]
-  name= "Freelance (Bonjour Paris)"
-  website="https://vuarnet.com"
+  name = "Freelance (Bonjour Paris)"
   [item.mission]
-    en= "Front-end web developer"
-    fr= "Développeur web (front-end)"
+    en = "Front-end web developer"
+    fr = "Développeur web (front-end)"
 
-  [item.info.date]
-    begin="2017-01-09"
-    end="2018-03-30"
+  [item.info]
+    website = "https://vuarnet.com"
+    [item.info.date]
+      begin = "2017-01-09"
+      end = "2018-03-30"
 
-  [item.place]
-    link="https://www.google.fr/maps/place/Angers/@47.481983,-0.6331467,12z/data=!3m1!4b1!4m5!3m4!1s0x480878da00e58e9d:0x40d37521e0d9c30!8m2!3d47.478419!4d-0.563166"
-    text= "Angers, France"
+    [item.info.place]
+      link = "https://www.google.fr/maps/place/Angers/@47.481983,-0.6331467,12z/data =!3m1!4b1!4m5!3m4!1s0x480878da00e58e9d:0x40d37521e0d9c30!8m2!3d47.478419!4d-0.563166"
+      text = "Angers, France"
 
   [item.keywords]
-    en= ["Freelance", "e-shop", "Team work"]
-    fr= [
+    en = ["Freelance", "e-shop", "Team work"]
+    fr = [
       "Auto-entrepreneur",
       "Plateforme e-commerce",
       "Travail en collaboration",
     ]
 
   [item.description]
-      en="""
+      en = """
 Along side my formation at Groupe ESEO, Bonjour Paris asked me to continue to
 work for them on the Vuarnet website we have been building. My task was to code
 the evolutions of their current e-shop website on the front end, and to add
 some scripts on the server (Windows Server 2012) to automate the deploying
 process. You can browse this very website using the link above.
 """
-      fr="""
+      fr = """
 En parallèle de ma formation à l'ESEO, Bonjour Paris a souhaité que je continue
 à m'occuper des évolutions sur le site e-commerce de Vuarnet, entreprise
 française, connue pour ses lunettes de soleil et ses masques de ski. Mes
@@ -98,43 +102,43 @@ site web en utilisant le lien ci-dessus.
 """
  
   [[item.technologies]]
-    name= "JavaScript"
-    icon= "@fortawesome/free-brands-svg-icons:faJs"
+    name = "JavaScript"
+    icon = "@fortawesome/free-brands-svg-icons:faJs"
   [[item.technologies]]
-    name= "ASP.NET"
-    icon= "@fortawesome/free-solid-svg-icons:faCode"
+    name = "ASP.NET"
+    icon = "@fortawesome/free-solid-svg-icons:faCode"
   [[item.technologies]]
-    name= "Windows Server"
-    icon= "@fortawesome/free-brands-svg-icons:faWindows"
+    name = "Windows Server"
+    icon = "@fortawesome/free-brands-svg-icons:faWindows"
      
 [[item]]
-  name= "ProSE (ESEO + Qowisio)"
+  name = "ProSE (ESEO + Qowisio)"
   [item.mission]
-    en= "Android developer"
-    fr= "Développeur d'application Android"
+    en = "Android developer"
+    fr = "Développeur d'application Android"
 
   [item.info.date]
-    begin="2017-03-15"
-    end="2017-06-21"
+    begin = "2017-03-15"
+    end = "2017-06-21"
 
-  [item.place]
-    link="https://www.google.fr/maps/place/Qowisio/@47.4622272,-0.5630493,17.78z/data=!4m5!3m4!1s0x48087447aea98d77:0xd175597396fb2edd!8m2!3d47.4623394!4d-0.5619584"
-    text= "Angers, France"
+  [item.info.place]
+    link = "https://www.google.fr/maps/place/Qowisio/@47.4622272,-0.5630493,17.78z/ data =!4m5!3m4!1s0x48087447aea98d77:0xd175597396fb2edd!8m2!3d47.4623394!4d-0.5619584"
+    text = "Angers, France"
 
   [item.keywords]
-    en= [
+    en = [
       "Project management",
       "Android app development",
       "Connected objects",
     ]
-    fr= [
+    fr = [
       "Gestion de projet",
       "Conception de systèmes embarqués",
       "Développement mobile",
     ]
 
   [item.description]
-    en="""
+    en = """
 The small French company Qowisio asked us to make a demonstration kit for its
 Ultra-Narrow-Band technology (UNB) implementation; the purpose of this kit is
 to emulate a UNB network able to interact with the connected objects nearby,
@@ -144,7 +148,7 @@ gathers all the data from the connected objets and displays it on the screen.
 This application is internally used by Qowisio to sell its technology to its
 customers.
 """
-    fr="""
+    fr = """
 Qowisio, PME angevine spécialisée dans le traitement de données issues d'objets
 connectés, nous a demandé de réaliser un kit de démonstration de sa technologie
 Ultra-Narrow-Band (UNB). Le kit devait être capable d'émuler un réseau UNB
@@ -175,34 +179,35 @@ et de réaliser l'API qui permet à ladîte application de récupérer les donn�
     icon = "@fortawesome/free-solid-svg-icons:faMicrochip"
      
 [[item]]
-  name= "Bonjour Paris"
-  website= "https://bonjour.agency"
+  name = "Bonjour Paris"
   [item.mission]
-    en= "Web developer"
-    fr= "Intégration de solutions web"
+    en = "Web developer"
+    fr = "Intégration de solutions web"
 
-  [item.info.date]
-    begin="2016-07-11"
-    end="2016-11-26"
+  [item.info]
+    website = "https://bonjour.agency"
+    [item.info.date]
+      begin = "2016-07-11"
+      end = "2016-11-26"
 
-  [item.place]
-    text= "Paris, France"
-    link="https://www.google.fr/maps/place/Bonjour+Paris/@48.8748121,2.3530751,17z/data=!3m1!4b1!4m5!3m4!1s0x47e66e12e8380f8b:0x26663d64703602b5!8m2!3d48.8748121!4d2.3552638"
+    [item.info.place]
+      text = "Paris, France"
+      link = "https://www.google.fr/maps/place/Bonjour+Paris/@48.8748121,2.3530751,17z/data =!3m1!4b1!4m5!3m4!1s0x47e66e12e8380f8b:0x26663d64703602b5!8m2!3d48.8748121!4d2.3552638"
 
   [item.keywords]
-    en= [
+    en = [
       "Server maintenance&administration",
       "UI design integration",
       "WebDev",
     ]
-    fr= [
+    fr = [
       "Administration de serveur",
       "Conception d'interface d'utilisateur",
       "Développement Web",
     ]
 
   [item.description]
-    en="""
+    en = """
 Bonjour Paris is a global luxury communication agency focused on
 forward-thinking ideas, business-minded solutions for premium brands. My task
 was to build up the agency's website from scratch using the agency's visual
@@ -213,7 +218,7 @@ talented team of designers, I collaborated on the Vuarnet commercial website
 maintaining their virtual private servers which host their websites and serve a
 Gitlab instance for code versioning purpose.
 """
-    fr="""
+    fr = """
 Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme
 au service de l'industrie du luxe. Ma mission durant mon expérience chez
 Bonjour Paris fut de réaliser l'intégration de leur site internet de
@@ -224,52 +229,53 @@ site e-commerce de Vuarnet, marque de lunettes de soleil française.
 """
 
   [[item.technologies]]
-    name= "PHP"
-    icon= "@fortawesome/free-brands-svg-icons:faPhp"
+    name = "PHP"
+    icon = "@fortawesome/free-brands-svg-icons:faPhp"
   [[item.technologies]]
-    name= "JavaScript"
-    icon= "@fortawesome/free-brands-svg-icons:faJs"
+    name = "JavaScript"
+    icon = "@fortawesome/free-brands-svg-icons:faJs"
   [[item.technologies]]
-    name= "Linux"
-    icon= "@fortawesome/free-brands-svg-icons:faLinux"
+    name = "Linux"
+    icon = "@fortawesome/free-brands-svg-icons:faLinux"
   [[item.technologies]]
-    name= "ASP.NET"
-    icon= "@fortawesome/free-solid-svg-icons:faCode"
+    name = "ASP.NET"
+    icon = "@fortawesome/free-solid-svg-icons:faCode"
   [[item.technologies]]
-    name= "SQL"
-    icon= "@fortawesome/free-solid-svg-icons:faDatabase"
+    name = "SQL"
+    icon = "@fortawesome/free-solid-svg-icons:faDatabase"
      
 [[item]]
-  name= "SEIO Junior-Entreprise"
-  website="https://seio.org/"
+  name = "SEIO Junior-Entreprise"
   [item.mission]
-    en= "Vice-Chairman"
-    fr= "Vice-Président"
+    en = "Vice-Chairman"
+    fr = "Vice-Président"
 
-  [item.info.date]
-    begin="2015-06-11"
-    end="2017-05-11"
+  [item.info]
+    website = "https://seio.org"
+    [item.info.date]
+      begin = "2015-06-11"
+      end = "2017-05-11"
 
-  [item.place]
-    text= "Angers, France"
-    link="https://www.google.com/maps/place/SEIO+Junior-Entreprise/@47.493483,-0.550851,16z/data=!4m5!3m4!1s0x0:0x9ba3d648073c86d5!8m2!3d47.4934831!4d-0.5508506?ll=47.493483,-0.550851&z=16&t=m&hl=fr&gl=FR&mapclient=embed&cid=11215043101930063573"
+    [item.info.place]
+      text = "Angers, France"
+      link = "https://www.google.com/maps/place/SEIO+Junior-Entreprise/@47.493483,-0.550851,16z/data =!4m5!3m4!1s0x0:0x9ba3d648073c86d5!8m2!3d47.4934831!4d-0.5508506?ll =47.493483,-0.550851&z =16&t =m&hl =fr&gl =FR&mapclient =embed&cid =11215043101930063573"
 
   [item.keywords]
-    en= [
+    en = [
       "Team managment",
       "Quality process supervision",
       "Internal ERP development",
     ]
-    fr= ["Management", "Suivi qualité", "Développement d'un ERP interne"]
+    fr = ["Management", "Suivi qualité", "Développement d'un ERP interne"]
 
   [item.description]
-    en="""
+    en = """
 The SEIO is the Junior Entreprise of Groupe ESEO (the engineer school I attend).
 As Vice-Chairman, my task was to supervise the internal and external
 communication department, audit and quality department and IT department. I was
 in charge of managing the development of our internal ERP.
 """
-    fr="""
+    fr = """
 Le SEIO est la Junior-Entreprise de l'ESEO, école dans laquelle j'effectue ma
 formation d'ingénieur. J'ai occupé le poste de Vice-Président chargé de la
 communication interne et externe, du pôle audit et qualité, et des systèmes
