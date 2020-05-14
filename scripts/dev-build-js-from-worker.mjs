@@ -22,6 +22,18 @@ const startWorker = () => {
   });
 };
 
+const getWorker = (keepAlive = false) => {
+  if (worker == null) {
+    startWorker();
+    if (!worker.keepAlive) {
+      worker.unref();
+    }
+  } else if (keepAlive) {
+    worker.ref();
+  }
+  return worker;
+};
+
 if (isMainThread) {
   startWorker();
 } else {
@@ -43,17 +55,12 @@ if (isMainThread) {
 }
 
 export function sendRebuildSignal() {
-  worker.postMessage({ rebuild: true });
+  getWorker().postMessage({ rebuild: true });
 }
 
 export default () =>
   new Promise((resolve, reject) => {
     const id = idCounter++;
-    if (worker == null) {
-      startWorker();
-    } else {
-      worker.ref();
-    }
     jobs[id] = { resolve, reject };
-    worker.postMessage({ id });
+    getWorker(true).postMessage({ id });
   });
