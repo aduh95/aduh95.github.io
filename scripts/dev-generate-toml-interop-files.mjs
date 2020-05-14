@@ -8,7 +8,7 @@ import { getTOMLKeys } from "./rollup-plugin-toml.mjs";
 const getTOMLKeysFromFileDescriptor = (fd) =>
   fd.readFile("utf8").then(getTOMLKeys);
 
-async function createInteropFilesFromTOMLFile(tomlFile) {
+export async function createInteropFilesFromTOMLFile(tomlFile) {
   if (!tomlFile.endsWith(".toml")) {
     return;
   }

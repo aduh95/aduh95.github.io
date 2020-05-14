@@ -38,15 +38,20 @@ if (isMainThread) {
   startWorker();
 } else {
   let buildCache;
-  const build = () => {
-    buildCache = import("./dev-build-js.mjs")
+  const build = () =>
+    (buildCache = import("./dev-build-js.mjs")
       .then((m) => m.default())
       .then((result) => ({ result }))
-      .catch((error) => ({ error }));
-  };
-  build();
+      .catch((error) => ({ error })));
+  buildCache = import("./dev-generate-toml-interop-files.mjs").then(build);
   parentPort.on("message", ({ id, rebuild }) => {
-    if (rebuild) {
+    if ("string" === typeof rebuild && rebuild.endsWith(".toml")) {
+      buildCache = Promise.allSettled([
+        import("./dev-generate-toml-interop-files.mjs").then((module) =>
+          module.createInteropFilesFromTOMLFile(rebuild)
+        ),
+      ]).then(build);
+    } else if (rebuild) {
       build();
     } else {
       buildCache.then((cache) => parentPort.postMessage({ id, ...cache }));
@@ -54,8 +59,8 @@ if (isMainThread) {
   });
 }
 
-export function sendRebuildSignal() {
-  getWorker().postMessage({ rebuild: true });
+export function sendRebuildSignal(fileName) {
+  getWorker().postMessage({ rebuild: fileName });
 }
 
 export default () =>

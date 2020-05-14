@@ -8,7 +8,7 @@ import { startServer } from "./dev-server.mjs";
 
 const watcher = (event, fileName) => {
   console.log(event, fileName);
-  sendRebuildSignal();
+  sendRebuildSignal(fileName);
   refreshBrowser();
 };
 

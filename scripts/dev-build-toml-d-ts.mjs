@@ -89,12 +89,14 @@ export function generateDTs({ data, exportableKeys, isArray, imports }) {
   return importStatements + dTs;
 }
 
+const dTsCache = new Map();
 export async function updateTSInteropFiles(path, tomlKeys) {
   if (!existsSync(path + ".js")) {
     await createDummyJSFile(fullPath);
   }
-  return fs.writeFile(
-    path + ".d.ts",
-    getPrologComment(path) + generateDTs(tomlKeys)
-  );
+  const dTs = generateDTs(tomlKeys);
+  if (dTsCache.get(path) !== dTs) {
+    await fs.writeFile(path + ".d.ts", getPrologComment(path) + dTs);
+    dTsCache.set(path, dTs);
+  }
 }
