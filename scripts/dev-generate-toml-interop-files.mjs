@@ -2,7 +2,7 @@ import { promises as fs, constants } from "fs";
 import path from "path";
 
 import { DATA_DIR } from "./dev-config.mjs";
-import { updateTSInteropFiles } from "./dev-build-toml-module.mjs";
+import { updateTSInteropFiles } from "./dev-build-toml-d-ts.mjs";
 import { getTOMLKeys } from "./rollup-plugin-toml.mjs";
 
 const getTOMLKeysFromFileDescriptor = (fd) =>

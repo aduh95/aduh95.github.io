@@ -1,5 +1,5 @@
 import { toml2json } from "@aduh95/toml2json";
-import { updateTSInteropFiles } from "./dev-build-toml-module.mjs";
+import { updateTSInteropFiles } from "./dev-build-toml-d-ts.mjs";
 
 const reservedNames = [
   "instanceof",
@@ -119,9 +119,9 @@ export default function plugin() {
             autoImportQuotedIdentifier,
             (_, identifier) => identifier
           );
-        code.replace(autoImportQuotedIdentifier, (_, identifier) => identifier);
       }
 
+      // This should come last because it mutates the data object.
       updateTSInteropFiles(id, {
         data,
         exportableKeys,

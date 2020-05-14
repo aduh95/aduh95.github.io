@@ -36,11 +36,11 @@ function getJSONType(data) {
     );
     return `{ [${data.__use_generic_keys_for_current_scope__}: string]: ${[
       ...interfaces,
-    ].join("|")}}`;
+    ].join("|")} }`;
   } else {
-    return `{${Object.entries(data)
+    return `{\n\t${Object.entries(data)
       .map(([key, value]) => `${JSON.stringify(key)}: ${getJSONType(value)}`)
-      .join(";")}}`;
+      .join(";\n\t")}\n}`;
   }
 }
 
@@ -68,20 +68,20 @@ export function generateDTs({ data, exportableKeys, isArray, imports }) {
     : exportableKeys
         .map((key) => `export const ${key}: ${getJSONType(data[key])}`)
         .join(";\n") +
-      ";\ninterface toml " +
+      "\ndeclare const exports: " +
       getJSONType(data) +
-      "\ndeclare const exports: toml;\nexport default exports;";
+      ";\nexport default exports;";
   const importStatements = imports.length
     ? `${imports.join(
         ";\n"
-      )};\ntype AutoImport = ${imports
+      )};\n\ntype AutoImport = \n\t| ${imports
         .map((importStatement) =>
           importStatement.replace(
             importStatementStrictRegEx,
             (_, $1) => `typeof ${$1}`
           )
         )
-        .join("|")};\n`
+        .join("\n\t| ")};\n\n`
     : "";
   return importStatements + dTs;
 }
