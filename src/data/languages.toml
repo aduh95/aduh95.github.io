@@ -1,39 +1,39 @@
 ### "magic" fields to improve the TypeScript definition result.
 
-# Current scope keys (en, fr, de) define instances of a generic `lang` type.
-__use_generic_keys_for_current_scope__ = "lang"
-
 # `name` and `description` fields also define instances of a `lang` type.
 __use_generic_keys__ = { name = "lang", description = "lang" }
 
 ###
 
-[en]
+[[item]]
+    IETF_language_tag = "en"
     level = 0.93
     levelTitle = "TOEIC"
-    [en.name]
+    [item.name]
         en = "English"
         fr = "Anglais"
-    [en.description]
+    [item.description]
         en = "Quite fluent (TOEIC score 930)"
         fr = "Courant (TOEIC 930)"
 
-[fr]
+[[item]]
+    IETF_language_tag = "fr"
     level = 1
     levelTitle = ""
-    [fr.name]
+    [item.name]
         en = "French"
         fr = "Français"
-    [fr.description]
+    [item.description]
         en = "Native speaker"
         fr = "Langue maternelle"
 
-[de]
+[[item]]
+    IETF_language_tag = "de"
     level = 0.5
     levelTitle = "B1"
-    [de.name]
+    [item.name]
         en = "German"
         fr = "Allemand"
-    [de.description]
+    [item.description]
         en = "Working knowledge (Goethe-Zertifikat B1)"
         fr = "Notions élémentaires (Goethe-Zertifikat B1)"
