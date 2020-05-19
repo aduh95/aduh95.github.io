@@ -1,4 +1,4 @@
-import { toml2json } from "@aduh95/toml2json";
+import TOML from "@aduh95/toml";
 import { updateTSInteropFiles } from "./dev-build-toml-d-ts.mjs";
 
 const reservedNames = [
@@ -46,7 +46,7 @@ function* getImports(data, autoImports) {
 }
 
 export function getTOMLKeys(toml) {
-  const data = JSON.parse(toml2json(toml));
+  const data = TOML.parse(toml);
 
   const imports = [];
   if ("__auto_imports__" in data) {
