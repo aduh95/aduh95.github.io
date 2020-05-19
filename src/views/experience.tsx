@@ -32,8 +32,7 @@ type ExperienceInfoProps =
       type: "date";
       value: { begin: string; end?: string };
     }
-  | { type: "website"; value: string }
-  | { type: "place"; value: { link: string; text: string } };
+  | { type: "place" | "website"; value: { link: string; text: string } };
 
 const ExperienceInfo = (props: ExperienceInfoProps) => {
   let $value = props.value;
@@ -97,11 +96,6 @@ const ExperienceInfo = (props: ExperienceInfoProps) => {
       }
 
     case "website":
-      $value = {
-        link: $value as string,
-        text: ($value as string).replace(/^https?:\/\/(www\.)?/, ""),
-      };
-
     // non breaking to add the list item
     case "place":
       const { link, text } = $value as { link: string; text: string };
