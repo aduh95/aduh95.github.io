@@ -23,7 +23,7 @@
   "engines": {
     "node": "^12.17.0 || >=13.2.0"
   },
-  "version": "0.1.2",
+  "version": "0.2.0",
   "type": "module",
   "devDependencies": {
     "@aduh95/async-jsx": "^0.2.0-0",
