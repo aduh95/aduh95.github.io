@@ -38,7 +38,7 @@ export default function Aside() {
         <h3 lang="en">About me</h3>
         <h3 lang="fr">À propos de moi</h3>
         {Object.entries(about).map(([lang, text]) => (
-          <p lang={lang}>{text}</p>
+          <p lang={lang}>{text.trim()}</p>
         ))}
       </section>
       <section className="skills">

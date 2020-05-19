@@ -154,7 +154,7 @@ export default function Experience() {
                 </summary>
                 {Object.entries(description).map(([lang, text]) => (
                   <p lang={lang} className="mission">
-                    {text}
+                    {text.trim()}
                   </p>
                 ))}
               </details>
