@@ -20,7 +20,7 @@ function bundleRuntimeScripts() {
     load(id) {
       if (id === "runtime-modules") {
         return getRuntimeModules().then((scripts) =>
-          scripts.map(([_, path]) => `import "${path}"`).join(";")
+          scripts.map(([_, path]) => `import ${JSON.stringify(path)}`).join(";")
         );
       }
       return null; // other ids should be handled as usually

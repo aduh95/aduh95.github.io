@@ -92,7 +92,7 @@ export function generateDTs({ data, exportableKeys, isArray, imports }) {
 const dTsCache = new Map();
 export async function updateTSInteropFiles(path, tomlKeys) {
   if (!existsSync(path + ".js")) {
-    await createDummyJSFile(fullPath);
+    await createDummyJSFile(path);
   }
   const dTs = generateDTs(tomlKeys);
   if (dTsCache.get(path) !== dTs) {
