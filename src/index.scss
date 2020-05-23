@@ -21,7 +21,8 @@ body {
   grid-template-areas:
     "header"
     "aside"
-    "main";
+    "main"
+    "footer";
 
   margin: auto;
   width: 100%;
@@ -36,8 +37,14 @@ body {
   @media (min-width: #{breakpoint-min(md, $grid-breakpoints)}), print {
     grid-template-areas:
       "header header"
-      "aside main";
+      "aside main"
+      "footer footer";
     grid-template-columns: 1fr 2fr;
+  }
+  @media print {
+    grid-template-areas:
+      "header header"
+      "aside main";
   }
 
   & > * {

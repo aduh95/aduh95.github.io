@@ -1,0 +1,27 @@
+@import "../i18n";
+@import "./variables";
+
+footer {
+  grid-area: footer;
+  background-color: $primary_color;
+  text-align: center;
+  @media screen and (prefers-color-scheme: dark) {
+    background-color: $mist;
+    color: $font_color;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    @each $lang in $languages {
+      :root[lang="#{$lang}"] &[href="##{$lang}"] {
+        display: none;
+      }
+    }
+
+    &[lang]:hover {
+      text-decoration: underline;
+    }
+  }
+}

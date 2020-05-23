@@ -7,6 +7,8 @@ import Header from "./views/header.js";
 import Languages from "./views/languages.js";
 import ProgrammingLanguages from "./views/programming_languages.js";
 
+import Footer from "./views/footer.js";
+
 import easter_egg from "./views/easter_egg.js";
 
 import "./index.scss";
@@ -23,6 +25,7 @@ export default (
       <ProgrammingLanguages />
     </main>
     <Aside />
+    <Footer />
   </Body>
 ).then((e) => document.body.append(e));
 
