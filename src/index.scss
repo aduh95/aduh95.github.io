@@ -43,38 +43,8 @@ body {
   & > * {
     padding: 1rem;
   }
-  & > header {
-    grid-area: header;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-
-    text-align: center;
-
-    background-color: $primary_color;
-    color: white;
-    @media screen and (prefers-color-scheme: dark) {
-      background-color: $mist;
-      color: $font_color;
-    }
-  }
 }
-aside {
-  grid-area: aside;
 
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-
-  background-color: $aside_color;
-  color: white;
-  line-height: 1.5rem;
-
-  & > ul {
-    margin: 0;
-    padding: 0;
-  }
-}
 main {
   grid-area: main;
 

@@ -1,6 +1,17 @@
 @import "./breakpoints";
+@import "./variables";
 
 body > aside {
+  grid-area: aside;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  background-color: $aside_color;
+  color: white;
+  line-height: 1.5rem;
+
   & header {
     display: flex;
     flex-direction: column;
@@ -44,6 +55,8 @@ body > aside {
   }
 
   ul {
+    margin: 0;
+    padding: 0;
     padding-left: 1rem;
     @include media-breakpoint-up(lg) {
       padding-left: 2rem;
