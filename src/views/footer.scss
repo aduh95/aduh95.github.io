@@ -5,6 +5,7 @@ footer {
   grid-area: footer;
   background-color: $primary_color;
   text-align: center;
+  color: white;
   @media screen and (prefers-color-scheme: dark) {
     background-color: $mist;
     color: $font_color;
