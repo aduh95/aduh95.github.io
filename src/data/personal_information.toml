@@ -10,36 +10,36 @@ __auto_imports__ = ["icon"]
 ###
 
 [linkedin]
-icon= "@fortawesome/free-brands-svg-icons:faLinkedin"
-href= "https://www.linkedin.com/in/antoine-du-hamel/"
-text= "/in/antoine-du-hamel"
+  icon = "@fortawesome/free-brands-svg-icons:faLinkedin"
+  href = "https://www.linkedin.com/in/antoine-du-hamel/"
+  text = "/in/antoine-du-hamel"
 
 [telephone]
-text= "+33 6 40 20 15 36"
-icon= "@fortawesome/free-solid-svg-icons:faPhone"
-href= "tel:+33640201536"
+  text = "+33 6 40 20 15 36"
+  icon = "@fortawesome/free-solid-svg-icons:faPhone"
+  href = "tel:+33640201536"
 
 [email]
-icon= "@fortawesome/free-solid-svg-icons:faEnvelope"
-href= "mailto:duhamelantoine1995@gmail.com"
-text= "duhamelantoine1995@gmail.com"
+  icon = "@fortawesome/free-solid-svg-icons:faEnvelope"
+  href = "mailto:duhamelantoine1995@gmail.com"
+  text = "duhamelantoine1995@gmail.com"
 
 [address]
-icon= "@fortawesome/free-solid-svg-icons:faMap"
-href= "https=//www.google.fr/maps/place/La+Merci+Dieu,+86270+La+Roche-Posay/@46.764378,0.834581,17z/data=!3m1!4b1!4m5!3m4!1s0x47fc59a1ff228a7b:0x54bb6a6f82327164!8m2!3d46.764378!4d0.836775"
-text= "5 La Merci-Dieu, 86270 La Roche-Posay, France"
+  icon = "@fortawesome/free-solid-svg-icons:faMap"
+  href = "https=//www.google.fr/maps/place/La+Merci+Dieu,+86270+La+Roche-Posay/@46.764378,0.834581,17z/data=!3m1!4b1!4m5!3m4!1s0x47fc59a1ff228a7b:0x54bb6a6f82327164!8m2!3d46.764378!4d0.836775"
+  text = "5 La Merci-Dieu, 86270 La Roche-Posay, France"
 
 [website]
-icon= "@fortawesome/free-solid-svg-icons:faGlobe"
-href= "https://aduh95.github.io/"
-text= "aduh95.github.io"
+  icon = "@fortawesome/free-solid-svg-icons:faGlobe"
+  href = "https://aduh95.github.io/"
+  text = "aduh95.github.io"
 
 [github]
-icon= "@fortawesome/free-brands-svg-icons:faGithub"
-href= "https://www.github.com/aduh95"
-text= "aduh95"
+  icon = "@fortawesome/free-brands-svg-icons:faGithub"
+  href = "https://www.github.com/aduh95"
+  text = "aduh95"
 
 [bitbucket]
-icon= "@fortawesome/free-brands-svg-icons:faBitbucket"
-href= "https://www.bitbucket.com/aduh95"
-text= "aduh95"
+  icon = "@fortawesome/free-brands-svg-icons:faBitbucket"
+  href = "https://www.bitbucket.com/aduh95"
+  text = "aduh95"

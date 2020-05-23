@@ -19,13 +19,13 @@ __use_generic_keys__.description = "lang"
     en = "Web Programming Engineer and Data Analyst"
     fr = "Ingénieur Développement Web"
 
-  [item.info.date]
-    begin = "2018-04-03"
-    end = "2019-10-31"
+    [item.info.date]
+      begin = "2018-04-03"
+      end = "2019-10-31"
 
-  [item.info.place]
-    link = "https://goo.gl/maps/fUQPfADV4Nq"
-    text = "Andover, Massachussets"
+    [item.info.place]
+      link = "https://goo.gl/maps/fUQPfADV4Nq"
+      text = "Andover, Massachussets"
 
   [item.keywords]
     en = ["Web integration", "User support", "Team work"]
@@ -58,7 +58,7 @@ aux utilisateurs de nos plateformes.
   [[item.technologies]]
     name = "SQL"
     icon = "@fortawesome/free-solid-svg-icons:faDatabase"
-     
+
 [[item]]
   name = "Freelance (Bonjour Paris)"
   [item.mission]
@@ -71,7 +71,7 @@ aux utilisateurs de nos plateformes.
 
     place.link = "https://www.google.fr/maps/place/Angers/@47.481983,-0.6331467,12z/data =!3m1!4b1!4m5!3m4!1s0x480878da00e58e9d:0x40d37521e0d9c30!8m2!3d47.478419!4d-0.563166"
     place.text = "Angers, France"
-    
+
     website.link = "https://vuarnet.com/"
     website.text = "vuarnet.com"
 
@@ -84,14 +84,14 @@ aux utilisateurs de nos plateformes.
     ]
 
   [item.description]
-      en = """
+    en = """
 Along side my formation at Groupe ESEO, Bonjour Paris asked me to continue to
 work for them on the Vuarnet website we have been building. My task was to code
-the evolutions of their current e-shop website on the front end, and to add
-some scripts on the server (Windows Server 2012) to automate the deploying
-process. You can browse this very website using the link above.
+the evolutions of their current e-shop website on the front end, and to add some
+scripts on the server (Windows Server 2012) to automate the deploying process.
+You can browse this very website using the link above.
 """
-      fr = """
+    fr = """
 En parallèle de ma formation à l'ESEO, Bonjour Paris a souhaité que je continue
 à m'occuper des évolutions sur le site e-commerce de Vuarnet, entreprise
 française, connue pour ses lunettes de soleil et ses masques de ski. Mes
@@ -99,7 +99,7 @@ missions consistent à implémenter les nouvelles fonctionnalités demandées pa
 Vuarnet sur la partie front-end de leur site internet. Vous pouvez visiter ce
 site web en utilisant le lien ci-dessus.
 """
- 
+
   [[item.technologies]]
     name = "JavaScript"
     icon = "@fortawesome/free-brands-svg-icons:faJs"
@@ -109,27 +109,23 @@ site web en utilisant le lien ci-dessus.
   [[item.technologies]]
     name = "Windows Server"
     icon = "@fortawesome/free-brands-svg-icons:faWindows"
-     
+
 [[item]]
   name = "ProSE (ESEO + Qowisio)"
   [item.mission]
     en = "Android developer"
     fr = "Développeur d'application Android"
 
-  [item.info.date]
-    begin = "2017-03-15"
-    end = "2017-06-21"
+    [item.info.date]
+      begin = "2017-03-15"
+      end = "2017-06-21"
 
-  [item.info.place]
-    link = "https://www.google.fr/maps/place/Qowisio/@47.4622272,-0.5630493,17.78z/ data =!4m5!3m4!1s0x48087447aea98d77:0xd175597396fb2edd!8m2!3d47.4623394!4d-0.5619584"
-    text = "Angers, France"
+    [item.info.place]
+      link = "https://www.google.fr/maps/place/Qowisio/@47.4622272,-0.5630493,17.78z/ data =!4m5!3m4!1s0x48087447aea98d77:0xd175597396fb2edd!8m2!3d47.4623394!4d-0.5619584"
+      text = "Angers, France"
 
   [item.keywords]
-    en = [
-      "Project management",
-      "Android app development",
-      "Connected objects",
-    ]
+    en = ["Project management", "Android app development", "Connected objects"]
     fr = [
       "Gestion de projet",
       "Conception de systèmes embarqués",
@@ -139,12 +135,12 @@ site web en utilisant le lien ci-dessus.
   [item.description]
     en = """
 The small French company Qowisio asked us to make a demonstration kit for its
-Ultra-Narrow-Band technology (UNB) implementation; the purpose of this kit is
-to emulate a UNB network able to interact with the connected objects nearby,
-and a WiFi network to allow customers to connect their device and try the
-Android app we created with the team I led (four developers). This application
-gathers all the data from the connected objets and displays it on the screen.
-This application is internally used by Qowisio to sell its technology to its
+Ultra-Narrow-Band technology (UNB) implementation; the purpose of this kit is to
+emulate a UNB network able to interact with the connected objects nearby, and a
+WiFi network to allow customers to connect their device and try the Android app
+we created with the team I led (four developers). This application gathers all
+the data from the connected objets and displays it on the screen. This
+application is internally used by Qowisio to sell its technology to its
 customers.
 """
     fr = """
@@ -157,7 +153,7 @@ Qowisio. Mon rôle dans ce projet fut de diriger l'équipe Android de 4 personne
 et de réaliser l'API qui permet à ladîte application de récupérer les données
 émanant des objets connectés.
 """
- 
+
   [[item.technologies]]
     name = "Android"
     icon = "@fortawesome/free-brands-svg-icons:faAndroid"
@@ -176,7 +172,7 @@ et de réaliser l'API qui permet à ladîte application de récupérer les donn�
   [[item.technologies]]
     name = "C"
     icon = "@fortawesome/free-solid-svg-icons:faMicrochip"
-     
+
 [[item]]
   name = "Bonjour Paris"
   [item.mission]
@@ -210,8 +206,8 @@ et de réaliser l'API qui permet à ladîte application de récupérer les donn�
 Bonjour Paris is a global luxury communication agency focused on
 forward-thinking ideas, business-minded solutions for premium brands. My task
 was to build up the agency's website from scratch using the agency's visual
-identity; you can browse this very website using the link above. With a
-talented team of designers, I collaborated on the Vuarnet commercial website
+identity; you can browse this very website using the link above. With a talented
+team of designers, I collaborated on the Vuarnet commercial website
 (vuarnet.com), and the Peter Lindbergh's presentation website as well
 (peterlindbergh.com). I was also in charge of choosing, setting up and
 maintaining their virtual private servers which host their websites and serve a
@@ -219,12 +215,12 @@ Gitlab instance for code versioning purpose.
 """
     fr = """
 Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme
-au service de l'industrie du luxe. Ma mission durant mon expérience chez
-Bonjour Paris fut de réaliser l'intégration de leur site internet de
-présentation de l'agence. Vous pouvez visiter ce site web en utilisant le lien
-ci-dessus. J'ai également été sollicité pour réaliser certaines parties du site
-du célèbre photographe allemand Peter Lindbergh et reprendre le développement du
-site e-commerce de Vuarnet, marque de lunettes de soleil française.
+au service de l'industrie du luxe. Ma mission durant mon expérience chez Bonjour
+Paris fut de réaliser l'intégration de leur site internet de présentation de
+l'agence. Vous pouvez visiter ce site web en utilisant le lien ci-dessus. J'ai
+également été sollicité pour réaliser certaines parties du site du célèbre
+photographe allemand Peter Lindbergh et reprendre le développement du site
+e-commerce de Vuarnet, marque de lunettes de soleil française.
 """
 
   [[item.technologies]]
@@ -242,7 +238,7 @@ site e-commerce de Vuarnet, marque de lunettes de soleil française.
   [[item.technologies]]
     name = "SQL"
     icon = "@fortawesome/free-solid-svg-icons:faDatabase"
-     
+
 [[item]]
   name = "SEIO Junior-Entreprise"
   [item.mission]
@@ -278,10 +274,10 @@ in charge of managing the development of our internal ERP.
 Le SEIO est la Junior-Entreprise de l'ESEO, école dans laquelle j'effectue ma
 formation d'ingénieur. J'ai occupé le poste de Vice-Président chargé de la
 communication interne et externe, du pôle audit et qualité, et des systèmes
-d'informations. Mon rôle au sein de cette Junior-Entreprise était de manager
-mes équipes et participer aux prises de décisions concernant le fonctionnement
-de l'association. Pour ce faire, j'ai réalisé, en collaboration avec deux de
-mes camarades, un intranet intégré aux différents environnements de travail
+d'informations. Mon rôle au sein de cette Junior-Entreprise était de manager mes
+équipes et participer aux prises de décisions concernant le fonctionnement de
+l'association. Pour ce faire, j'ai réalisé, en collaboration avec deux de mes
+camarades, un intranet intégré aux différents environnements de travail
 nécessaires à notre activité.
 """
 

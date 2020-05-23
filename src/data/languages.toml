@@ -6,34 +6,34 @@ __use_generic_keys__ = { name = "lang", description = "lang" }
 ###
 
 [[item]]
-    IETF_language_tag = "en"
-    level = 0.93
-    levelTitle = "TOEIC"
-    [item.name]
-        en = "English"
-        fr = "Anglais"
-    [item.description]
-        en = "Quite fluent (TOEIC score 930)"
-        fr = "Courant (TOEIC 930)"
+  IETF_language_tag = "en"
+  level = 0.93
+  levelTitle = "TOEIC"
+  [item.name]
+    en = "English"
+    fr = "Anglais"
+  [item.description]
+    en = "Quite fluent (TOEIC score 930)"
+    fr = "Courant (TOEIC 930)"
 
 [[item]]
-    IETF_language_tag = "fr"
-    level = 1
-    levelTitle = ""
-    [item.name]
-        en = "French"
-        fr = "Français"
-    [item.description]
-        en = "Native speaker"
-        fr = "Langue maternelle"
+  IETF_language_tag = "fr"
+  level = 1
+  levelTitle = ""
+  [item.name]
+    en = "French"
+    fr = "Français"
+  [item.description]
+    en = "Native speaker"
+    fr = "Langue maternelle"
 
 [[item]]
-    IETF_language_tag = "de"
-    level = 0.5
-    levelTitle = "B1"
-    [item.name]
-        en = "German"
-        fr = "Allemand"
-    [item.description]
-        en = "Working knowledge (Goethe-Zertifikat B1)"
-        fr = "Notions élémentaires (Goethe-Zertifikat B1)"
+  IETF_language_tag = "de"
+  level = 0.5
+  levelTitle = "B1"
+  [item.name]
+    en = "German"
+    fr = "Allemand"
+  [item.description]
+    en = "Working knowledge (Goethe-Zertifikat B1)"
+    fr = "Notions élémentaires (Goethe-Zertifikat B1)"
