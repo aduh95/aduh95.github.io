@@ -9,7 +9,8 @@
     "version": "git add index.html dist/",
     "postversion": "git push",
     "postinstall": "patch-package && node --experimental-json-modules scripts/dev-generate-toml-interop-files.mjs",
-    "test": "node --unhandled-rejections=strict scripts/test.js dist/"
+    "test": "node --unhandled-rejections=strict scripts/test.js dist/",
+    "prettify": "node scripts/pretty-toml.mjs src/data"
   },
   "author": "Antoine du HAMEL",
   "license": "CC-BY-NC-ND-4.0",
