@@ -9,4 +9,7 @@ AUTHOR_NAME = "Antoine du Hamel"
 
 [description]
   en = "IT electronic engineer specialized in web development"
-  fr = "Étudiant Ingénieur Diplômé en informatique et électronique, spécialisé en développement web"
+  fr = """
+Étudiant Ingénieur Diplômé en informatique et électronique, spécialisé en
+développement web\
+"""

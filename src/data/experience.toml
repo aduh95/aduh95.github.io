@@ -69,7 +69,7 @@ aux utilisateurs de nos plateformes.
     date.begin = "2017-01-09"
     date.end = "2018-03-30"
 
-    place.link = "https://www.google.fr/maps/place/Angers/@47.481983,-0.6331467,12z/data =!3m1!4b1!4m5!3m4!1s0x480878da00e58e9d:0x40d37521e0d9c30!8m2!3d47.478419!4d-0.563166"
+    place.link = "https://goo.gl/maps/H1kEBc6395VgmpbH8"
     place.text = "Angers, France"
 
     website.link = "https://vuarnet.com/"
@@ -121,7 +121,7 @@ site web en utilisant le lien ci-dessus.
       end = "2017-06-21"
 
     [item.info.place]
-      link = "https://www.google.fr/maps/place/Qowisio/@47.4622272,-0.5630493,17.78z/ data =!4m5!3m4!1s0x48087447aea98d77:0xd175597396fb2edd!8m2!3d47.4623394!4d-0.5619584"
+      link = "https://goo.gl/maps/37ENzCAEFxe4pNg7A"
       text = "Angers, France"
 
   [item.keywords]
@@ -184,7 +184,7 @@ et de réaliser l'API qui permet à ladîte application de récupérer les donn�
     date.end = "2016-11-26"
 
     place.text = "Paris, France"
-    place.link = "https://www.google.fr/maps/place/Bonjour+Paris/@48.8748121,2.3530751,17z/data =!3m1!4b1!4m5!3m4!1s0x47e66e12e8380f8b:0x26663d64703602b5!8m2!3d48.8748121!4d2.3552638"
+    place.link = "https://goo.gl/maps/cx3eAWy4HPPkyXV89"
 
     website.link = "https://dev.bonjour.agency"
     website.text = "bonjour.agency"
@@ -250,7 +250,7 @@ e-commerce de Vuarnet, marque de lunettes de soleil française.
     date.end = "2017-05-11"
 
     place.text = "Angers, France"
-    place.link = "https://www.google.com/maps/place/SEIO+Junior-Entreprise/@47.493483,-0.550851,16z/data =!4m5!3m4!1s0x0:0x9ba3d648073c86d5!8m2!3d47.4934831!4d-0.5508506?ll =47.493483,-0.550851&z =16&t =m&hl =fr&gl =FR&mapclient =embed&cid =11215043101930063573"
+    place.link = "https://goo.gl/maps/R2rsdXk3ezFeDBAH7"
 
     website.link = "https://seio.org"
     website.text = "seio.org"

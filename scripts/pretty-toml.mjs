@@ -114,8 +114,16 @@ async function* prettier(input) {
 export async function prettierFile(output, input) {
   const reader = createReadStream(input);
   const writer = createWriteStream(output);
+  let lineNumber = 0;
   for await (const line of prettier(reader)) {
+    lineNumber++;
     writer.write(line + "\n");
+    if (line.length > LINE_LENGTH_LIMIT) {
+      console.warn(
+        `${output}:${lineNumber} exceeds the ${LINE_LENGTH_LIMIT} char limit.`
+      );
+      process.exitCode = 1;
+    }
   }
   return new Promise((done) => writer.end(done));
 }
