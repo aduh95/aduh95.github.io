@@ -75,10 +75,4 @@ window.addEventListener("load", function () {
   }
 });
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function (this: Document) {
-    Array.from(this.querySelectorAll("meter"), CircularMeterElement.from);
-  },
-  false
-);
+Array.from(document.querySelectorAll("meter"), CircularMeterElement.from);

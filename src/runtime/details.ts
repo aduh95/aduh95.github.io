@@ -51,26 +51,15 @@ const animateElementsBelow = (
   );
 };
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function (this: Document) {
-    const paragraphElement = document.querySelector(".experience p") as Element;
-    const LINE_HEIGHT = parseInt(
-      window.getComputedStyle(paragraphElement).lineHeight || "20"
-    );
+{
+  const paragraphElement = document.querySelector(".experience p") as Element;
+  const LINE_HEIGHT = parseInt(
+    window.getComputedStyle(paragraphElement).lineHeight || "20"
+  );
 
-    const summaryElem: NodeListOf<HTMLElement> = this.querySelectorAll(
-      SUMMARY_ELEMENT
-    );
+  const summaryElem = document.querySelectorAll(SUMMARY_ELEMENT);
 
-    if (!window.hasOwnProperty("HTMLDetailsElement")) {
-      // For browsers that do not support <details>, let's hide the summaries
-      // and return to exit the function
-      return Array.from(summaryElem, (elem) => {
-        elem.hidden = true;
-      });
-    }
-
+  if ("HTMLDetailsElement" in window) {
     const canvasContext = document
       .createElement("canvas")
       .getContext("2d") as CanvasRenderingContext2D;
@@ -80,7 +69,7 @@ document.addEventListener(
     for (const elem of summaryElem) {
       // Allow the user to close the detail element by clicking on it
       // And add smooth transition when elements are changing height
-      (elem.parentNode as Element).addEventListener(
+      elem.parentNode!.addEventListener(
         "click",
         function (this: HTMLDetailsElement, ev: Event) {
           if (!(window.getSelection() || ({} as never)).isCollapsed) {
@@ -96,10 +85,10 @@ document.addEventListener(
             const currentHeight = this.offsetHeight;
             this.style.height = currentHeight + "px";
             window.requestAnimationFrame(() => {
-              const minHeight = parseInt(this.style.minHeight as string);
+              const minHeight = parseInt(this.style.minHeight);
 
               animateElementsBelow(
-                this.parentElement as HTMLElement,
+                this.parentElement!,
                 minHeight - currentHeight,
                 () => {
                   // Set the height at the last known to start the transition
@@ -113,7 +102,7 @@ document.addEventListener(
             // try to put a nice transition in place.
             const visibleSummary = this.querySelector(
               `span[lang="${getCurrentLocale().lang}"]`
-            ) as Element;
+            )!;
             const {
               height: summaryHeight,
               width: summaryWidth,
@@ -142,7 +131,7 @@ document.addEventListener(
             // Triggers CSS animation
             paragraph.style.position = "absolute";
             animateElementsBelow(
-              this.parentElement as HTMLElement,
+              this.parentElement!,
               estimatedHeight - summaryHeight,
               () => {
                 paragraph.style.removeProperty("position");
@@ -161,8 +150,12 @@ document.addEventListener(
         },
         true
       );
-      (elem.parentNode as HTMLElement).tabIndex = 0;
+      elem.parentElement!.tabIndex = 0;
     }
-  },
-  false
-);
+  } else {
+    // For browsers that do not support <details>, let's hide the summaries
+    Array.from(summaryElem as any, (elem: HTMLElement) => {
+      elem.hidden = true;
+    });
+  }
+}
