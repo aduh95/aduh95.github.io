@@ -18,7 +18,7 @@ export async function prettierFile(output, input) {
     writer.write(line + "\n");
     if (line.length > LINE_LENGTH_LIMIT) {
       console.warn(
-        `${output}:${lineNumber} exceeds the ${LINE_LENGTH_LIMIT} char limit.`
+        `${input}:${lineNumber} exceeds the ${LINE_LENGTH_LIMIT} char limit.`
       );
       process.exitCode = 1;
     }
@@ -31,11 +31,19 @@ const TARGET_DIR = resolve(process.argv[2]);
 
 Promise.all([fs.mkdtemp(TMP_DIR), fs.readdir(TARGET_DIR)])
   .then(([tmp, files]) =>
-    Promise.all(
+    Promise.allSettled(
       files
         .filter((f) => f.endsWith(".toml"))
-        .map((f) => [TARGET_DIR, tmp].map((d) => join(d, f)))
-        .map((args) => fs.rename(...args).then(() => prettierFile(...args)))
+        .map((f) => [tmp, TARGET_DIR].map((d) => join(d, f)))
+        .map((args) => prettierFile(...args).then(() => fs.rename(...args)))
     )
+  )
+  .then((results) =>
+    results
+      .filter(({ status }) => status === "rejected")
+      .forEach(({ reason }) => {
+        process.exitCode = 1;
+        console.error(reason);
+      })
   )
   .catch(console.error);
