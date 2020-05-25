@@ -8,10 +8,10 @@ export default function Footer() {
   return (
     <footer>
       © 2020 {AUTHOR_NAME} –{" "}
-      <a lang="en" href={sourceLocation}>
+      <a lang="en" target="_blank" rel="noopener" href={sourceLocation}>
         View the code
       </a>
-      <a lang="fr" href={sourceLocation}>
+      <a lang="fr" target="_blank" rel="noopener" href={sourceLocation}>
         Voir code source
       </a>
     </footer>
