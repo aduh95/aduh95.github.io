@@ -18,7 +18,7 @@ export default function ProgrammingLanguages() {
             <h5>{section.name}</h5>
             <meter
               value={section.level}
-              title={Number(section.level) * 100 + "%" || ""}
+              title={Math.round(Number(section.level) * 100) + "%" || ""}
             />
           </article>
         ))}
