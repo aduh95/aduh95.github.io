@@ -14,10 +14,22 @@
   dependencies:
     prop-types "^15.7.2"
 
+"@aduh95/toml-prettifier@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@aduh95/toml-prettifier/-/toml-prettifier-1.0.0.tgz#9346bba43bbcbf9ec1ca14d3ccacfeb23cbf9ebd"
+  integrity sha512-vukJfaKZggBWr7mwuOwojXi7uVWj61oyiE1hcy46JCxT968zCSaOx+FkmUn7QASS1ndaZ3lKy0btaNTpeazaYg==
+  dependencies:
+    "@aduh95/toml" "^0.2.1"
+
 "@aduh95/toml@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@aduh95/toml/-/toml-0.2.0.tgz#e4c6b84001ba2c3e261df03ac3021b502a0115fe"
   integrity sha512-63VqRq0su8eFvVlXYEeRvr+gtbHMPTd9pONzcUagCjDRj5NNz1QWCCBc/5j/9zyl3Y9HM8aPS/CiBDl0rQGx7A==
+
+"@aduh95/toml@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@aduh95/toml/-/toml-0.2.1.tgz#275c190bfe4d9906a00168558f186f6beeb6d8b4"
+  integrity sha512-QIV1vzddIe5rjGDuIeqJcuFkUM+KfBYYdiuXeWxaXXU72cDNYoAIRsD1XEKTo8fN22dT+nqoPuhhAallFZ7oaQ==
 
 "@babel/code-frame@^7.8.3":
   version "7.8.3"
