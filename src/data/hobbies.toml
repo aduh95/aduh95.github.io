@@ -5,7 +5,7 @@
 __auto_imports__ = ["icon"]
 
 # `name` and `description` fields define instances of a generic `lang` type.
-__use_generic_keys__ = { name = "lang", description = "lang" }
+__use_generic_keys__ = { name = "lang" }
 
 ###
 

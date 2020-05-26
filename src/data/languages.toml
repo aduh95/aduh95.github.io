@@ -1,7 +1,7 @@
 ### "magic" fields to improve the TypeScript definition result.
 
 # `name` and `description` fields also define instances of a `lang` type.
-__use_generic_keys__ = { name = "lang", description = "lang" }
+__use_generic_keys__ = { description = "lang", name = "lang" }
 
 ###
 

@@ -32,21 +32,23 @@ __use_generic_keys__.description = "lang"
     fr = ["Intégration web", "Support utilisateur", "Travail en collaboration"]
 
   [item.description]
-    en = """
-First as an intern, then as a VIE, I have worked in the marketing team of the
-Digital Energy department of Schneider Electric for 18 months. My role there was
-to fulfill the technical needs of the marketing team (application maintenance,
-developing specific tools, extracting marketing data from user databases, etc.),
-and also to provide user support for the platforms I was in charge of.
-"""
-    fr = """
-D'abord en tant que stagiaire puis en tant que VIE, j'ai travaillé dans l'équipe
-marketing du département Digital Energy de Schneider Electric pendant 18 mois.
-Ma mission était de répondre aux besoins techniques de mon équipe (maintenance
-des applications, développement d'outils spécifiques, extraction de données
-depuis les bases de données utilisateurs, etc.), et de fournir une assistance
-aux utilisateurs de nos plateformes.
-"""
+    en = """\
+      First as an intern, then as a VIE, I have worked in the marketing team \
+      of the Digital Energy department of Schneider Electric for 18 months. My \
+      role there was to fulfill the technical needs of the marketing team \
+      (application maintenance, developing specific tools, extracting \
+      marketing data from user databases, etc.), and also to provide user \
+      support for the platforms I was in charge of.\
+    """
+    fr = """\
+      D'abord en tant que stagiaire puis en tant que VIE, j'ai travaillé dans \
+      l'équipe marketing du département Digital Energy de Schneider Electric \
+      pendant 18 mois. Ma mission était de répondre aux besoins techniques de \
+      mon équipe (maintenance des applications, développement d'outils \
+      spécifiques, extraction de données depuis les bases de données \
+      utilisateurs, etc.), et de fournir une assistance aux utilisateurs de \
+      nos plateformes.\
+    """
 
   [[item.technologies]]
     name = "JavaScript"
@@ -84,21 +86,23 @@ aux utilisateurs de nos plateformes.
     ]
 
   [item.description]
-    en = """
-Along side my formation at Groupe ESEO, Bonjour Paris asked me to continue to
-work for them on the Vuarnet website we have been building. My task was to code
-the evolutions of their current e-shop website on the front end, and to add some
-scripts on the server (Windows Server 2012) to automate the deploying process.
-You can browse this very website using the link above.
-"""
-    fr = """
-En parallèle de ma formation à l'ESEO, Bonjour Paris a souhaité que je continue
-à m'occuper des évolutions sur le site e-commerce de Vuarnet, entreprise
-française, connue pour ses lunettes de soleil et ses masques de ski. Mes
-missions consistent à implémenter les nouvelles fonctionnalités demandées par
-Vuarnet sur la partie front-end de leur site internet. Vous pouvez visiter ce
-site web en utilisant le lien ci-dessus.
-"""
+    en = """\
+      Along side my formation at Groupe ESEO, Bonjour Paris asked me to \
+      continue to work for them on the Vuarnet website we have been building. \
+      My task was to code the evolutions of their current e-shop website on \
+      the front end, and to add some scripts on the server (Windows Server \
+      2012) to automate the deploying process. You can browse this very \
+      website using the link above.\
+    """
+    fr = """\
+      En parallèle de ma formation à l'ESEO, Bonjour Paris a souhaité que je \
+      continue à m'occuper des évolutions sur le site e-commerce de Vuarnet, \
+      entreprise française, connue pour ses lunettes de soleil et ses masques \
+      de ski. Mes missions consistent à implémenter les nouvelles \
+      fonctionnalités demandées par Vuarnet sur la partie front-end de leur \
+      site internet. Vous pouvez visiter ce site web en utilisant le lien \
+      ci-dessus.\
+    """
 
   [[item.technologies]]
     name = "JavaScript"
@@ -133,26 +137,27 @@ site web en utilisant le lien ci-dessus.
     ]
 
   [item.description]
-    en = """
-The small French company Qowisio asked us to make a demonstration kit for its
-Ultra-Narrow-Band technology (UNB) implementation; the purpose of this kit is to
-emulate a UNB network able to interact with the connected objects nearby, and a
-WiFi network to allow customers to connect their device and try the Android app
-we created with the team I led (four developers). This application gathers all
-the data from the connected objets and displays it on the screen. This
-application is internally used by Qowisio to sell its technology to its
-customers.
-"""
-    fr = """
-Qowisio, PME angevine spécialisée dans le traitement de données issues d'objets
-connectés, nous a demandé de réaliser un kit de démonstration de sa technologie
-Ultra-Narrow-Band (UNB). Le kit devait être capable d'émuler un réseau UNB
-hébergeant quelques objets connectés de Qowisio ainsi qu'un réseau WiFi sur
-lequel les prospects peuvent se connecter pour constater l'efficacité du réseau
-Qowisio. Mon rôle dans ce projet fut de diriger l'équipe Android de 4 personnes
-et de réaliser l'API qui permet à ladîte application de récupérer les données
-émanant des objets connectés.
-"""
+    en = """\
+      The small French company Qowisio asked us to make a demonstration kit \
+      for its Ultra-Narrow-Band technology (UNB) implementation; the purpose \
+      of this kit is to emulate a UNB network able to interact with the \
+      connected objects nearby, and a WiFi network to allow customers to \
+      connect their device and try the Android app we created with the team I \
+      led (four developers). This application gathers all the data from the \
+      connected objets and displays it on the screen. This application is \
+      internally used by Qowisio to sell its technology to its customers.\
+    """
+    fr = """\
+      Qowisio, PME angevine spécialisée dans le traitement de données issues \
+      d'objets connectés, nous a demandé de réaliser un kit de démonstration \
+      de sa technologie Ultra-Narrow-Band (UNB). Le kit devait être capable \
+      d'émuler un réseau UNB hébergeant quelques objets connectés de Qowisio \
+      ainsi qu'un réseau WiFi sur lequel les prospects peuvent se connecter \
+      pour constater l'efficacité du réseau Qowisio. Mon rôle dans ce projet \
+      fut de diriger l'équipe Android de 4 personnes et de réaliser l'API qui \
+      permet à ladîte application de récupérer les données émanant des objets \
+      connectés.\
+    """
 
   [[item.technologies]]
     name = "Android"
@@ -202,26 +207,28 @@ et de réaliser l'API qui permet à ladîte application de récupérer les donn�
     ]
 
   [item.description]
-    en = """
-Bonjour Paris is a global luxury communication agency focused on
-forward-thinking ideas, business-minded solutions for premium brands. My task
-was to build up the agency's website from scratch using the agency's visual
-identity; you can browse this very website using the link above. With a talented
-team of designers, I collaborated on the Vuarnet commercial website
-(vuarnet.com), and the Peter Lindbergh's presentation website as well
-(peterlindbergh.com). I was also in charge of choosing, setting up and
-maintaining their virtual private servers which host their websites and serve a
-Gitlab instance for code versioning purpose.
-"""
-    fr = """
-Bonjour Paris est une agence de design parisienne spécialisée dans le graphisme
-au service de l'industrie du luxe. Ma mission durant mon expérience chez Bonjour
-Paris fut de réaliser l'intégration de leur site internet de présentation de
-l'agence. Vous pouvez visiter ce site web en utilisant le lien ci-dessus. J'ai
-également été sollicité pour réaliser certaines parties du site du célèbre
-photographe allemand Peter Lindbergh et reprendre le développement du site
-e-commerce de Vuarnet, marque de lunettes de soleil française.
-"""
+    en = """\
+      Bonjour Paris is a global luxury communication agency focused on \
+      forward-thinking ideas, business-minded solutions for premium brands. My \
+      task was to build up the agency's website from scratch using the \
+      agency's visual identity; you can browse this very website using the \
+      link above. With a talented team of designers, I collaborated on the \
+      Vuarnet commercial website (vuarnet.com), and the Peter Lindbergh's \
+      presentation website as well (peterlindbergh.com). I was also in charge \
+      of choosing, setting up and maintaining their virtual private servers \
+      which host their websites and serve a Gitlab instance for code \
+      versioning purpose.\
+    """
+    fr = """\
+      Bonjour Paris est une agence de design parisienne spécialisée dans le \
+      graphisme au service de l'industrie du luxe. Ma mission durant mon \
+      expérience chez Bonjour Paris fut de réaliser l'intégration de leur site \
+      internet de présentation de l'agence. Vous pouvez visiter ce site web en \
+      utilisant le lien ci-dessus. J'ai également été sollicité pour réaliser \
+      certaines parties du site du célèbre photographe allemand Peter \
+      Lindbergh et reprendre le développement du site e-commerce de Vuarnet, \
+      marque de lunettes de soleil française.\
+    """
 
   [[item.technologies]]
     name = "PHP"
@@ -264,22 +271,24 @@ e-commerce de Vuarnet, marque de lunettes de soleil française.
     fr = ["Management", "Suivi qualité", "Développement d'un ERP interne"]
 
   [item.description]
-    en = """
-The SEIO is the Junior Entreprise of Groupe ESEO (the engineer school I attend).
-As Vice-Chairman, my task was to supervise the internal and external
-communication department, audit and quality department and IT department. I was
-in charge of managing the development of our internal ERP.
-"""
-    fr = """
-Le SEIO est la Junior-Entreprise de l'ESEO, école dans laquelle j'effectue ma
-formation d'ingénieur. J'ai occupé le poste de Vice-Président chargé de la
-communication interne et externe, du pôle audit et qualité, et des systèmes
-d'informations. Mon rôle au sein de cette Junior-Entreprise était de manager mes
-équipes et participer aux prises de décisions concernant le fonctionnement de
-l'association. Pour ce faire, j'ai réalisé, en collaboration avec deux de mes
-camarades, un intranet intégré aux différents environnements de travail
-nécessaires à notre activité.
-"""
+    en = """\
+      The SEIO is the Junior Entreprise of Groupe ESEO (the engineer school I \
+      attend). As Vice-Chairman, my task was to supervise the internal and \
+      external communication department, audit and quality department and IT \
+      department. I was in charge of managing the development of our internal \
+      ERP.\
+    """
+    fr = """\
+      Le SEIO est la Junior-Entreprise de l'ESEO, école dans laquelle \
+      j'effectue ma formation d'ingénieur. J'ai occupé le poste de \
+      Vice-Président chargé de la communication interne et externe, du pôle \
+      audit et qualité, et des systèmes d'informations. Mon rôle au sein de \
+      cette Junior-Entreprise était de manager mes équipes et participer aux \
+      prises de décisions concernant le fonctionnement de l'association. Pour \
+      ce faire, j'ai réalisé, en collaboration avec deux de mes camarades, un \
+      intranet intégré aux différents environnements de travail nécessaires à \
+      notre activité.\
+    """
 
   [[item.technologies]]
     name = "Linux"
