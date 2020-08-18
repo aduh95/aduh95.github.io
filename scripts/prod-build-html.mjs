@@ -110,14 +110,11 @@ function domManipulationsRoutine(bundleURL) {
 }
 
 const generateMinifiedJS = () =>
-  Promise.all([import("terser"), generateJS()]).then(([terser, jsChunks]) => {
-    const { error, code } = terser.default.minify(
-      jsChunks.output.map(({ code }) => code).join(";"),
-      { toplevel: true }
-    );
-
-    return error ? Promise.reject(error) : code;
-  });
+  Promise.all([import("terser"), generateJS()]).then(([terser, jsChunks]) =>
+    terser.minify(jsChunks.output.map(({ code }) => code).join(";"), {
+      module: true,
+    })
+  );
 
 async function generateBundledHTML(browser) {
   console.log("Building HTML file...");
@@ -157,7 +154,7 @@ export default (browser) =>
         .replaceAll("svg-inline--fa", "f")
         .replace(
           "</body></html>",
-          `<script type="module">${jsCode}</script></body></html>`
+          `<script type="module">${jsCode.code}</script></body></html>`
         )
     )
   );
