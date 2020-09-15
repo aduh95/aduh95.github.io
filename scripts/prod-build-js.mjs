@@ -1,14 +1,9 @@
 import typescript from "@rollup/plugin-typescript";
 import { rollup } from "rollup";
-import babel from "@rollup/plugin-babel";
 
 import getRuntimeModules from "./runtime-modules.mjs";
 
-const plugins = [
-  bundleRuntimeScripts(),
-  babel.default({ babelHelpers: "bundle" }),
-  typescript({ sourceMap: false }),
-];
+const plugins = [bundleRuntimeScripts(), typescript({ sourceMap: false })];
 
 function bundleRuntimeScripts() {
   return {
