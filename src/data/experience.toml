@@ -13,6 +13,28 @@ __use_generic_keys__.description = "lang"
 
 
 [[item]]
+  name = "Node.js open-source project"
+
+  [item.mission]
+    en = "Collaborator and project member"
+    fr = "Collaborateur"
+    [item.info.date]
+      begin = "2020-10-07"
+    [item.info.website]
+      link = "https://nodejs.org/"
+      text = "nodejs.org"
+
+  [[item.technologies]]
+    name = "JavaScript"
+    icon = "@fortawesome/free-brands-svg-icons:faJs"
+  [[item.technologies]]
+    name = "Node.js"
+    icon = "@fortawesome/free-brands-svg-icons:faNode"
+  [[item.technologies]]
+    name = "GitHub"
+    icon = "@fortawesome/free-brands-svg-icons:faGithub"
+
+[[item]]
   name = "e-Comas"
 
   [item.mission]
