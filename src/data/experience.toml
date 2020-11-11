@@ -13,6 +13,32 @@ __use_generic_keys__.description = "lang"
 
 
 [[item]]
+  name = "e-Comas"
+
+  [item.mission]
+    en = "Web Programming Engineer and Data Analyst"
+    fr = "Chef de projet Web"
+    [item.info.date]
+      begin = "2020-09-01"
+    [item.info.place]
+      link = "https://goo.gl/maps/oUAGiewPScieXkxn9"
+      text = "Luxembourg, Luxembourg"
+    [item.info.website]
+      link = "https://e-comas.com/"
+      text = "e-comas.com"
+
+  [item.keywords]
+    en = ["Web integration", "Project management", "Team work"]
+    fr = ["Intégration web", "Gestion de projet", "Travail en collaboration"]
+
+  [[item.technologies]]
+    name = "JavaScript"
+    icon = "@fortawesome/free-brands-svg-icons:faJs"
+  [[item.technologies]]
+    name = "SalesForce"
+    icon = "@fortawesome/free-brands-svg-icons:faSalesforce"
+
+[[item]]
   name = "Schneider Electric Digital Energy"
 
   [item.mission]
