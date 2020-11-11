@@ -13,6 +13,37 @@ const getPrologComment = (tomlFilePath) => `/**
 */
 `;
 
+function getCompactedJSONType(data) {
+  if (!Array.isArray(data)) throw new Error("Expected an array");
+
+  if (
+    data.every(
+      (e) =>
+        typeof e === "object" &&
+        !Array.isArray(e) &&
+        !e.__use_generic_keys_for_current_scope__
+    )
+  ) {
+    const dataKeys = data.map(Object.keys);
+    const allKeys = new Set(dataKeys.flat());
+    let tDsRepresentation = `{\n\t`;
+    for (const key of allKeys) {
+      const concerned = [];
+      let optional = "";
+      dataKeys.forEach((keys, i) => {
+        if (keys.includes(key)) concerned.push(data[i][key]);
+        else optional = "?";
+      });
+
+      tDsRepresentation += `${key}${optional}:${getCompactedJSONType(concerned)
+        .replace(/\[\]$/, "")
+        .replace(/^Array\<(.*)\>$/ms, "$1")},\n\t`;
+    }
+    tDsRepresentation += `\n}[]`;
+    return tDsRepresentation;
+  } else return getJSONType(data);
+}
+
 function getJSONType(data) {
   const type = typeof data;
   if (type === "string" && autoImportIdentifierStrictRegEx.test(data)) {
@@ -67,7 +98,9 @@ export function generateDTs({ data, exportableKeys, isArray, imports }) {
     exportableKeys = [];
   }
   const dTs = isArray
-    ? `declare const exports: ${getJSONType(isArray)};\nexport default exports;`
+    ? `declare const exports: ${getCompactedJSONType(
+        isArray
+      )};\nexport default exports;`
     : exportableKeys
         .map((key) => `export const ${key}: ${getJSONType(data[key])}`)
         .join(";\n") +
