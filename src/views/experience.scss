@@ -152,7 +152,12 @@ section.experience {
     transition: margin-bottom #{$experience_transition_duration} ease-in;
   }
 }
-
+@media (prefers-reduced-motion) {
+  * {
+    transition-duration: 0 !important;
+    animation-duration: 0 !important;
+  }
+}
 @keyframes invisiblyGrowFontSize {
   0% {
     opacity: 0;

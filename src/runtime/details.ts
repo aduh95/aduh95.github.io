@@ -8,6 +8,26 @@ const MOVING_ELEMENTS_CLASS = "moving-elements";
 
 const reduceAnimations = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+const runAfterTransition = (element: Node, callback: Function) => {
+  const options = { once: true, passive: true };
+  const timeout = setTimeout(clean, 50);
+  function listener(this: EventTarget, ev: Event) {
+    if (this === ev.target) clean();
+  }
+  function clean() {
+    element.removeEventListener("transitionstart", cancel);
+    element.removeEventListener("transitionend", listener);
+    element.removeEventListener("transitioncancel", listener);
+    callback();
+  }
+  function cancel() {
+    clearTimeout(timeout);
+  }
+  element.addEventListener("transitionstart", cancel, options);
+  element.addEventListener("transitionend", listener, options);
+  element.addEventListener("transitioncancel", listener, options);
+};
+
 const animateElementsBelow = (
   parentElement: HTMLElement,
   height: number,
@@ -36,19 +56,14 @@ const animateElementsBelow = (
     movableElement.classList.add(MOVABLE_ELEMENT_CLASS);
   }
 
-  // When the animation has ended, cleaning up
-  movableElements.item(0).addEventListener(
-    "transitionend",
-    () => {
-      callback();
-      parentElement.classList.remove(MOVABLE_ELEMENT_CLASS + "-after");
-      for (const movableElement of movableElements) {
-        movableElement.classList.remove(MOVABLE_ELEMENT_CLASS);
-      }
-      document.body.classList.remove(MOVING_ELEMENTS_CLASS);
-    },
-    { once: true, passive: true }
-  );
+  runAfterTransition(movableElements.item(0), () => {
+    callback();
+    parentElement.classList.remove(MOVABLE_ELEMENT_CLASS + "-after");
+    for (const movableElement of movableElements) {
+      movableElement.classList.remove(MOVABLE_ELEMENT_CLASS);
+    }
+    document.body.classList.remove(MOVING_ELEMENTS_CLASS);
+  });
 };
 
 {
