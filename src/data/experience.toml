@@ -250,8 +250,8 @@ __use_generic_keys__.description = "lang"
     ]
     fr = [
       "Administration de serveur",
-      "Conception d'interface d'utilisateur",
       "Développement Web",
+      "UI / UX",
     ]
 
   [item.description]
