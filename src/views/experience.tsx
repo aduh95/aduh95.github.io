@@ -118,61 +118,63 @@ export default function Experience() {
     <section className="experience">
       <h3 lang="en">Experience</h3>
       <h3 lang="fr">Expérience professionnelle</h3>
-      {experience.map(
-        ({
-          name,
-          mission,
-          info = {},
-          description = null,
-          technologies = null,
-          keywords = {},
-        }) => (
-          <article>
-            <h5>{name}</h5>
-            {Object.entries(mission).map(([lang, text]) => (
-              <h6 lang={lang as SupportedLanguage} className="mission">
-                {text}
-              </h6>
-            ))}
-            <ul>
-              {Object.entries(info).map(([type, value]) => (
-                <ExperienceInfo type={type as any} value={value as any} />
+      {experience
+        .filter(({ exclude }) => !exclude)
+        .map(
+          ({
+            name,
+            mission,
+            info = {},
+            description = null,
+            technologies = null,
+            keywords = {},
+          }) => (
+            <article>
+              <h5>{name}</h5>
+              {Object.entries(mission).map(([lang, text]) => (
+                <h6 lang={lang as SupportedLanguage} className="mission">
+                  {text}
+                </h6>
               ))}
-            </ul>
-
-            {description === null ? null : (
-              <details>
-                <summary tabindex={0}>
-                  <FontAwesomeIcon icon={faThumbtack} />
-                  {Object.keys(description).map((lang) => (
-                    <span lang={lang}>
-                      {lang in keywords
-                        ? keywords[lang].join(" · ")
-                        : MORE_INFO[lang as SupportedLanguage]}
-                    </span>
-                  ))}
-                </summary>
-                {Object.entries(description).map(([lang, text]) => (
-                  <p lang={lang} className="mission">
-                    {text.trim()}
-                  </p>
-                ))}
-              </details>
-            )}
-
-            {Array.isArray(technologies) ? (
               <ul>
-                {technologies.map(({ icon, name }) => (
-                  <li>
-                    <FontAwesomeIcon icon={icon} />
-                    {name}
-                  </li>
+                {Object.entries(info).map(([type, value]) => (
+                  <ExperienceInfo type={type as any} value={value as any} />
                 ))}
               </ul>
-            ) : null}
-          </article>
-        )
-      )}
+
+              {description === null ? null : (
+                <details>
+                  <summary tabindex={0}>
+                    <FontAwesomeIcon icon={faThumbtack} />
+                    {Object.keys(description).map((lang) => (
+                      <span lang={lang}>
+                        {lang in keywords
+                          ? keywords[lang].join(" · ")
+                          : MORE_INFO[lang as SupportedLanguage]}
+                      </span>
+                    ))}
+                  </summary>
+                  {Object.entries(description).map(([lang, text]) => (
+                    <p lang={lang} className="mission">
+                      {text.trim()}
+                    </p>
+                  ))}
+                </details>
+              )}
+
+              {Array.isArray(technologies) ? (
+                <ul>
+                  {technologies.map(({ icon, name }) => (
+                    <li>
+                      <FontAwesomeIcon icon={icon} />
+                      {name}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </article>
+          )
+        )}
     </section>
   );
 }

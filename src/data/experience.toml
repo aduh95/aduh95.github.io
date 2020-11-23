@@ -296,6 +296,7 @@ __use_generic_keys__.description = "lang"
 
 [[item]]
   name = "SEIO Junior-Entreprise"
+  exclude = true
   [item.mission]
     en = "Vice-Chairman"
     fr = "Vice-Président"
