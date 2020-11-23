@@ -48,31 +48,4 @@ class CircularMeterElement extends HTMLElement {
 
 customElements.define(CIRCULAR_METER, CircularMeterElement);
 
-window.addEventListener("load", function () {
-  // Waiting load event to be sure CSS is fully loaded
-  const meterSection = document.querySelectorAll(".meter-section");
-  const canvasContext = document
-    .createElement("canvas")
-    .getContext("2d") as CanvasRenderingContext2D;
-
-  for (const section of meterSection) {
-    const titles = section.querySelectorAll("h5");
-    // Getting the widths of the title elements
-    canvasContext.font = getElementCSSFontValue(titles.item(0));
-
-    const titlesWidth = Array.from(
-      titles,
-      (title) => canvasContext.measureText(title.textContent || "").width
-    );
-
-    // Computing max width as the min width of all the elements
-    // Adding 10px gap as margin
-    const minWidth = Math.max(...titlesWidth) + 10 + "px";
-
-    for (const title of titles) {
-      title.style.minWidth = minWidth;
-    }
-  }
-});
-
 Array.from(document.querySelectorAll("meter"), CircularMeterElement.from);
