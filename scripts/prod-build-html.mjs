@@ -8,8 +8,7 @@ import { INPUT_HTML_FILE, OUTPUT_HTML_FILE } from "./prod-config.mjs";
 
 if ("function" !== String.prototype.replaceAll) {
   String.prototype.replaceAll = function replaceAll(needle, replacementText) {
-    const reg = new RegExp(needle, "g");
-    return this.replace(reg, replacementText);
+    return new RegExp(needle, "g")[Symbol.replace](this, replacementText);
   };
 }
 
