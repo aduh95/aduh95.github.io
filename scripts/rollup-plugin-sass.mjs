@@ -1,5 +1,4 @@
 import sass from "sass";
-import fiber from "fibers";
 
 const PLUGIN_HELPER = "sass-plugin:createStyleElement";
 
@@ -29,7 +28,6 @@ export default function plugin() {
           sass.render(
             {
               file: id,
-              fiber,
               sourceMap: "true",
               sourceMapEmbed: true,
             },

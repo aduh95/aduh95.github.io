@@ -1,20 +1,28 @@
 const SVG_TAG = /<svg.*?>.+?<\/svg>/g;
 
-let _svgo = null;
+const config = {
+  plugins: [
+    {
+      name: "preset-default",
+      params: {
+        overrides: {
+          removeHiddenElems: false,
+          removeUselessDefs: false,
+          cleanupIDs: false,
+        },
+      },
+    },
+    { name: "removeXMLNS" },
+    { name: "convertStyleToAttrs", active: false },
+  ],
+}
+
+let _svgo
 async function svgo(svg) {
-  if (_svgo === null) {
-    const SVGO = await import("svgo").then((module) => module.default);
-    _svgo = new SVGO({
-      plugins: [
-        { removeHiddenElems: false },
-        { removeUselessDefs: false },
-        { removeXMLNS: true },
-        { cleanupIDs: false },
-        { convertStyleToAttrs: false },
-      ],
-    });
+  if (_svgo == null) {
+    _svgo = await import("svgo");
   }
-  const { data } = await _svgo.optimize(svg);
+  const { data } = await _svgo.optimize(svg, config);
   return data;
 }
 

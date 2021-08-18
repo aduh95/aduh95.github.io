@@ -9,9 +9,8 @@ function registerConnection(connection) {
 }
 
 export const startServer = () =>
-  Promise.all([import("http"), import("ws"), import("./router.js")])
-    .then((_) => _.map((module) => module.default))
-    .then(([{ createServer }, { Server }, requestListener]) => {
+  Promise.all([import("http"), import("ws"), import("./router.js")]).then(
+    ([{ createServer }, { WebSocketServer }, { default: requestListener }]) => {
       const server = createServer(requestListener).listen(
         PORT_NUMBER,
         "localhost",
@@ -21,7 +20,7 @@ export const startServer = () =>
       );
 
       server.on("connection", registerConnection);
-      new Server({ server }).on("connection", registerConnection);
+      new WebSocketServer({ server }).on("connection", registerConnection);
 
       return () =>
         new Promise((done) => {
@@ -31,7 +30,8 @@ export const startServer = () =>
           }
           server.unref().close(done);
         });
-    });
+    }
+  );
 
 export const refreshBrowser = () => {
   const OPEN = 1;
