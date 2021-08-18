@@ -25,4 +25,4 @@ __use_generic_keys__ = { name = "lang" }
   icon = "@fortawesome/free-solid-svg-icons:faPlane"
   [item.name]
     fr = "Voyages"
-    en = "Abroad ravels"
+    en = "Abroad Travels"
