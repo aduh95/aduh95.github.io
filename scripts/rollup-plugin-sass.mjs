@@ -35,9 +35,9 @@ export default function plugin() {
           )
         ).then(
           ({ css }) =>
-            `import helper from "${PLUGIN_HELPER}";export default helper(\`${css
-              .toString()
-              .replace("`", "\\`")}\`,"${id.replace('"', '\\"')}")`
+            `import helper from "${PLUGIN_HELPER}";export default helper(${JSON.stringify(
+              css.toString()
+            )},${JSON.stringify(id)})`
         );
       }
     },
