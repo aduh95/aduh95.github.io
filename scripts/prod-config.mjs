@@ -1,4 +1,4 @@
-import tsconfig from "../tsconfig.json";
+import tsconfig from "../tsconfig.json" assert { type: "json" };
 
 const { rootDir } = tsconfig.compilerOptions;
 

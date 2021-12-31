@@ -24,21 +24,17 @@ export default function plugin() {
       if (id === PLUGIN_HELPER) {
         return `export default ${createStyleElement};`;
       } else if (id.endsWith(".scss")) {
-        return new Promise((resolve, reject) =>
-          sass.render(
-            {
-              file: id,
-              sourceMap: "true",
-              sourceMapEmbed: true,
-            },
-            (err, result) => (err ? reject(err) : resolve(result))
-          )
-        ).then(
-          ({ css }) =>
-            `import helper from "${PLUGIN_HELPER}";export default helper(${JSON.stringify(
-              css.toString()
-            )},${JSON.stringify(id)})`
-        );
+        const { css, sourceMap } = sass.compile(id, { sourceMap: true });
+
+        // Don't send useless info to browser
+        delete sourceMap.sourcesContent;
+
+        return `import helper from "${PLUGIN_HELPER}";export default helper(${JSON.stringify(
+          css +
+            "\n/*# sourceMappingURL=data:application/json," +
+            encodeURI(JSON.stringify(sourceMap)) +
+            " */"
+        )},${JSON.stringify(id)})`;
       }
     },
   };

@@ -1,7 +1,7 @@
 import path from "path";
 import { fileURLToPath } from "url";
 
-import tsconfig from "../tsconfig.json";
+import tsconfig from "../tsconfig.json" assert { type: "json" };
 
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);

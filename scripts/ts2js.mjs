@@ -2,7 +2,7 @@ import { promises as fs } from "fs";
 
 import ts from "typescript";
 
-import tsConfig from "../tsconfig.json";
+import tsConfig from "../tsconfig.json" assert { type: "json" };
 
 export default async (fileName) => {
   const { compilerOptions } = tsConfig;

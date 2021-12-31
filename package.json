@@ -1,14 +1,14 @@
 {
   "name": "my-resume",
   "description": "My résumé",
-  "main": "public/index.php",
+  "packageManager": "yarn@3.1.0",
   "scripts": {
     "start": "node --experimental-json-modules scripts/dev-watch.mjs",
     "build": "node --experimental-json-modules scripts/prod-build.mjs",
     "preversion": "yarn build && yarn test",
     "version": "git add index.html dist/",
     "postversion": "git push",
-    "postinstall": "patch-package && node --experimental-json-modules scripts/dev-generate-toml-interop-files.mjs",
+    "postinstall": "node --experimental-json-modules scripts/dev-generate-toml-interop-files.mjs",
     "test": "node --unhandled-rejections=strict scripts/test.js dist/",
     "prettify": "node scripts/pretty-toml.mjs src/data"
   },
@@ -22,7 +22,8 @@
     "balloon-css": "^1.0.0"
   },
   "engines": {
-    "node": "^12.17.0 || >=13.2.0"
+    "node": ">=17.0.0",
+    "yarn": "3.x"
   },
   "version": "0.4.0",
   "type": "module",
@@ -32,13 +33,12 @@
     "@aduh95/toml": "^0.4.2",
     "@aduh95/toml-prettifier": "^1.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
-    "@rollup/plugin-typescript": "^8.0.0",
+    "@rollup/plugin-sucrase": "4.0.1",
     "@types/react": "^17.0.18",
     "cssnano": "^5.0.8",
     "cssnano-preset-advanced": "^5.0.8",
     "jsdom": "^17.0.0",
-    "patch-package": "^6.2.2",
-    "pdf-parse": "^1.1.1",
+    "pdf-parse": "1.1.1",
     "postcss": "^8.1.7",
     "puppeteer": "^10.2.0",
     "rollup": "^2.0.6",
@@ -48,5 +48,10 @@
     "tslib": "^2.0.0",
     "typescript": "^4.0.2",
     "ws": "^8.2.0"
+  },
+  "resolutions": {
+    "@rollup/plugin-sucrase@4.0.1": "patch:@rollup/plugin-sucrase@npm:4.0.1#.yarn/patches/@rollup-plugin-sucrase-npm-4.0.1-4a1e7679d7",
+    "prop-types": "patch:prop-types@npm:15.7.2#.yarn/patches/prop-types-npm-15.7.2-d7a04f2274",
+    "pdf-parse@1.1.1": "patch:pdf-parse@npm:1.1.1#.yarn/patches/pdf-parse-npm-1.1.1-04a6109b2a"
   }
 }

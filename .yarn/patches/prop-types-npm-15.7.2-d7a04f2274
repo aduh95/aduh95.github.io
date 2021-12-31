@@ -1,7 +1,7 @@
-diff --git a/node_modules/prop-types/factoryWithThrowingShims.js b/node_modules/prop-types/factoryWithThrowingShims.js
-index e5b2f9c..bd572a3 100644
---- a/node_modules/prop-types/factoryWithThrowingShims.js
-+++ b/node_modules/prop-types/factoryWithThrowingShims.js
+diff --git a/factoryWithThrowingShims.js b/factoryWithThrowingShims.js
+index e5b2f9ce0f3ddd031af553acc909af2b164b7a65..bd572a3167f1841f62f1a8cf4978d2ca2c982916 100644
+--- a/factoryWithThrowingShims.js
++++ b/factoryWithThrowingShims.js
 @@ -4,16 +4,13 @@
   * This source code is licensed under the MIT license found in the
   * LICENSE file in the root directory of this source tree.
@@ -21,10 +21,10 @@ index e5b2f9c..bd572a3 100644
    function shim(props, propName, componentName, location, propFullName, secret) {
      if (secret === ReactPropTypesSecret) {
        // It is still safe when called from React.
-diff --git a/node_modules/prop-types/index.js b/node_modules/prop-types/index.js
-index e9ef51d..023c589 100644
---- a/node_modules/prop-types/index.js
-+++ b/node_modules/prop-types/index.js
+diff --git a/index.js b/index.js
+index e9ef51d6f39a3a26da5023d5470d73882139727a..023c589411324b08abc7192fd2300070f0ab4180 100644
+--- a/index.js
++++ b/index.js
 @@ -5,15 +5,6 @@
   * LICENSE file in the root directory of this source tree.
   */
@@ -43,10 +43,10 @@ index e9ef51d..023c589 100644
 -  module.exports = require('./factoryWithThrowingShims')();
 -}
 +export default factory();
-diff --git a/node_modules/prop-types/lib/ReactPropTypesSecret.js b/node_modules/prop-types/lib/ReactPropTypesSecret.js
-index f54525e..b127604 100644
---- a/node_modules/prop-types/lib/ReactPropTypesSecret.js
-+++ b/node_modules/prop-types/lib/ReactPropTypesSecret.js
+diff --git a/lib/ReactPropTypesSecret.js b/lib/ReactPropTypesSecret.js
+index f54525e7f12a47338a6fb8cb4527b30c6affbe6e..b127604a72a8f7c757431d1d104dda01511a306a 100644
+--- a/lib/ReactPropTypesSecret.js
++++ b/lib/ReactPropTypesSecret.js
 @@ -9,4 +9,4 @@
  
  var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';

@@ -1,2 +1,4 @@
 /node_modules/
 src/data/*.toml.*
+.yarn/cache
+.yarn/install-state.gz

@@ -1,0 +1,53 @@
+diff --git a/.vscode/settings.json b/.vscode/settings.json
+new file mode 100644
+index 0000000000000000000000000000000000000000..7c2feb7ef4731d430facfcafcbac59e3ea861849
+--- /dev/null
++++ b/.vscode/settings.json
+@@ -0,0 +1,3 @@
++{
++  "editor.formatOnSave": false
++}
+diff --git a/dist/index.es.js b/dist/index.es.js
+index b9d63141f378876d9ba1f94dbe236eb27d9e6e1d..70bed5d3c0ff5f9b5b69795e0f2bb735d551a236 100644
+--- a/dist/index.es.js
++++ b/dist/index.es.js
+@@ -12,14 +12,12 @@ module.exports = function sucrase(opts = {}) {
+ 
+     // eslint-disable-next-line consistent-return
+     resolveId(importee, importer) {
+-      if (importer && /^[./]/.test(importee)) {
++      if (importer && importee.endsWith('.js')) {
+         const resolved = path.resolve(importer ? path.dirname(importer) : process.cwd(), importee);
+         // resolve in the same order that TypeScript resolves modules
+         const resolvedFilename = [
+-          `${resolved}.ts`,
+-          `${resolved}.tsx`,
+-          `${resolved}/index.ts`,
+-          `${resolved}/index.tsx`
++          `${resolved.slice(0, -3)}.ts`,
++          `${resolved.slice(0, -3)}.tsx`
+         ].find((filename) => fs.existsSync(filename));
+ 
+         if (resolvedFilename) {
+diff --git a/dist/index.js b/dist/index.js
+index 55d7a97c59810d47ebcaae9723c837445f95477d..a0d0a6d4cb08e24e32353c6068495ce1d3cb1fea 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -14,14 +14,12 @@ module.exports = function sucrase(opts = {}) {
+ 
+     // eslint-disable-next-line consistent-return
+     resolveId(importee, importer) {
+-      if (importer && /^[./]/.test(importee)) {
++      if (importer && importee.endsWith('.js')) {
+         const resolved = path.resolve(importer ? path.dirname(importer) : process.cwd(), importee);
+         // resolve in the same order that TypeScript resolves modules
+         const resolvedFilename = [
+-          `${resolved}.ts`,
+-          `${resolved}.tsx`,
+-          `${resolved}/index.ts`,
+-          `${resolved}/index.tsx`
++          `${resolved.slice(0, -3)}.ts`,
++          `${resolved.slice(0, -3)}.tsx`
+         ].find((filename) => fs.existsSync(filename));
+ 
+         if (resolvedFilename) {

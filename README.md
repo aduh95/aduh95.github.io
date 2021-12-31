@@ -28,12 +28,11 @@ your own.
 
 ### Run locally
 
-You need [Node.js](https://nodejs.org) 12+ on your local machine for this
-project, also [Yarn](https://yarnpkg.com) is recommended.
+You need [Node.js](https://nodejs.org) 17+ on your local machine.
 
-- `yarn install`: installs the NPM dependencies.
-- `yarn start`: starts the development server on `localhost:8080`.
-- `yarn build`: builds the production-ready HTML file and the PDF files.
+- `corepack yarn install`: installs the NPM dependencies.
+- `corepack yarn start`: starts the development server on `localhost:8080`.
+- `corepack yarn build`: builds the production-ready HTML file and the PDF files.
 
 ### File structure
 

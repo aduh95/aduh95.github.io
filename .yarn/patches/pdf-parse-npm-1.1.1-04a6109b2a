@@ -1,0 +1,13 @@
+diff --git a/index.js b/index.js
+index e9fc367a00904fca3385a05b2b435fed23d14d77..96b3a84bf6cc4cec3efd3b964d89a7a55c7ae124 100644
+--- a/index.js
++++ b/index.js
+@@ -3,7 +3,7 @@ const Pdf = require('./lib/pdf-parse.js');
+ 
+ module.exports = Pdf;
+ 
+-let isDebugMode = !module.parent; 
++let isDebugMode = require.main===module;
+ 
+ //process.env.AUTO_KENT_DEBUG
+ 
