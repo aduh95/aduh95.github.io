@@ -13,6 +13,28 @@ __use_generic_keys__.description = "lang"
 
 
 [[item]]
+  name = "Transloadit"
+
+  [item.mission]
+    en = "Software engineer"
+    fr = "Ingénieur logiciel"
+    [item.info.date]
+      begin = "2021-06-01"
+    [item.info.website]
+      link = "https://tranloadit.com/"
+      text = "transloadit.com"
+
+  [[item.technologies]]
+    name = "JavaScript"
+    icon = "@fortawesome/free-brands-svg-icons:faJs"
+  [[item.technologies]]
+    name = "Node.js"
+    icon = "@fortawesome/free-brands-svg-icons:faNode"
+  [[item.technologies]]
+    name = "GitHub"
+    icon = "@fortawesome/free-brands-svg-icons:faGithub"
+
+[[item]]
   name = "Node.js open-source project"
 
   [item.mission]
@@ -164,6 +186,7 @@ __use_generic_keys__.description = "lang"
 
 [[item]]
   name = "ProSE (ESEO + Qowisio)"
+  exclude = true
   [item.mission]
     en = "Android developer"
     fr = "Développeur d'application Android"
@@ -228,6 +251,7 @@ __use_generic_keys__.description = "lang"
 
 [[item]]
   name = "Bonjour Paris"
+  exclude = true
   [item.mission]
     en = "Web developer"
     fr = "Intégration de solutions web"
