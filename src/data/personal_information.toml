@@ -14,10 +14,8 @@ __auto_imports__ = ["icon"]
   href = "https://www.linkedin.com/in/antoine-du-hamel/"
   text = "/in/antoine-du-hamel"
 
-[telephone]
-  text = "+33 6 40 20 15 36"
-  icon = "@fortawesome/free-solid-svg-icons:faPhone"
-  href = "tel:+33640201536"
+# [telephone]
+  # icon = "@fortawesome/free-solid-svg-icons:faPhone"
 
 [email]
   icon = "@fortawesome/free-solid-svg-icons:faEnvelope"
@@ -26,8 +24,8 @@ __auto_imports__ = ["icon"]
 
 [address]
   icon = "@fortawesome/free-solid-svg-icons:faMap"
-  href = "https://goo.gl/maps/9WkgiCy6bcbva8KPA"
-  text = "5 La Merci-Dieu, 86270 La Roche-Posay, France"
+  href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  text = "France"
 
 [website]
   icon = "@fortawesome/free-solid-svg-icons:faGlobe"

@@ -1,9 +1,21 @@
-import typescript from "@rollup/plugin-typescript";
+import typescript from "@rollup/plugin-sucrase";
 import { rollup } from "rollup";
 
+import tsConfig from "../tsconfig.json" assert { type: "json" };
 import getRuntimeModules from "./runtime-modules.mjs";
 
-const plugins = [bundleRuntimeScripts(), typescript({ sourceMap: false })];
+const plugins = [
+  bundleRuntimeScripts(),
+  typescript({
+    jsxFragmentPragma: tsConfig.compilerOptions.jsxFragmentFactory,
+    jsxPragma: tsConfig.compilerOptions.jsxFactory,
+    transforms: ["jsx", "typescript"],
+    disableESTransforms: true,
+    include: ["**.tsx", "**.ts"],
+    production: true,
+    sourceMap: false,
+  }),
+];
 
 function bundleRuntimeScripts() {
   return {
