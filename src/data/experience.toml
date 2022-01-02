@@ -21,7 +21,7 @@ __use_generic_keys__.description = "lang"
     [item.info.date]
       begin = "2021-06-01"
     [item.info.website]
-      link = "https://tranloadit.com/"
+      link = "https://transloadit.com/"
       text = "transloadit.com"
 
   [[item.technologies]]
