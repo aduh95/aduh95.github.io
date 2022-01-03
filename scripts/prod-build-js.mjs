@@ -1,21 +1,10 @@
-import typescript from "@rollup/plugin-sucrase";
+import typescript from "./rollup-plugin-typescript.mjs";
 import { rollup } from "rollup";
 
-import tsConfig from "../tsconfig.json" assert { type: "json" };
 import getRuntimeModules from "./runtime-modules.mjs";
 
-const plugins = [
-  bundleRuntimeScripts(),
-  typescript({
-    jsxFragmentPragma: tsConfig.compilerOptions.jsxFragmentFactory,
-    jsxPragma: tsConfig.compilerOptions.jsxFactory,
-    transforms: ["jsx", "typescript"],
-    disableESTransforms: true,
-    include: ["**.tsx", "**.ts"],
-    production: true,
-    sourceMap: false,
-  }),
-];
+const sourcemap = false;
+const plugins = [bundleRuntimeScripts(), typescript()];
 
 function bundleRuntimeScripts() {
   return {
@@ -39,4 +28,4 @@ export default () =>
   rollup({
     input: "runtime-modules",
     plugins,
-  }).then((bundle) => bundle.generate({ sourcemap: false, format: "module" }));
+  }).then((bundle) => bundle.generate({ sourcemap, format: "module" }));
