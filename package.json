@@ -5,9 +5,7 @@
   "scripts": {
     "start": "node --experimental-json-modules scripts/dev-watch.mjs",
     "build": "node --experimental-json-modules scripts/prod-build.mjs",
-    "preversion": "yarn build && yarn test",
-    "version": "git add index.html dist/",
-    "postversion": "git push",
+    "deploy": "yarn build && yarn test && git add index.html dist/ && git commit && git push",
     "postinstall": "node --experimental-json-modules scripts/dev-generate-toml-interop-files.mjs",
     "test": "node --unhandled-rejections=strict scripts/test.js dist/",
     "prettify": "node scripts/pretty-toml.mjs src/data"
@@ -25,7 +23,7 @@
     "node": ">=17.0.0",
     "yarn": "3.x"
   },
-  "version": "0.4.0",
+  "private": true,
   "type": "module",
   "devDependencies": {
     "@aduh95/async-jsx": "^0.2.0-0",
