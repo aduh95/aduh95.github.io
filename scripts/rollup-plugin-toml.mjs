@@ -86,22 +86,12 @@ export function getTOMLKeys(toml) {
 export default function plugin() {
   return {
     name: "toml",
-    resolveId(source) {
-      // This signals that rollup should not ask other plugins or check the file
-      // system to find this id.
-      return source.endsWith(".toml") ? source : null;
-    },
     transform(code, id) {
       if (!id.endsWith(".toml")) {
         return null;
       }
-      const {
-        data,
-        exportableKeys,
-        nonExportableKeys,
-        isArray,
-        imports,
-      } = getTOMLKeys(code);
+      const { data, exportableKeys, nonExportableKeys, isArray, imports } =
+        getTOMLKeys(code);
       code = isArray
         ? `export default ${JSON.stringify(isArray)}`
         : exportableKeys

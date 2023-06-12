@@ -1,4 +1,5 @@
-import sass from "sass";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import * as sass from "sass";
 
 const PLUGIN_HELPER = "sass-plugin:createStyleElement";
 
@@ -13,12 +14,8 @@ function createStyleElement(css, id) {
 export default function plugin() {
   return {
     name: "sass",
-    resolveId(source) {
-      // This signals that rollup should not ask other plugins or check the file
-      // system to find this id.
-      return source.endsWith(".scss") || source === PLUGIN_HELPER
-        ? source
-        : null;
+    resolveId(specifier, importer) {
+      if (specifier === PLUGIN_HELPER) return PLUGIN_HELPER;
     },
     load(id) {
       if (id === PLUGIN_HELPER) {

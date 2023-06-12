@@ -18,7 +18,9 @@ const getGeneratedFileSize = () =>
 Promise.all([getGeneratedFileSize(), startServer()])
   .then(([previousFileSize, closeServer]) =>
     puppeteer
-      .launch()
+      .launch({
+        headless: 'new'
+      })
       .then((browser) =>
         generateBundledHTML(browser)
           .then(() => generatePDFFiles(browser))

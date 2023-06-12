@@ -8,16 +8,16 @@ const config = {
         overrides: {
           removeHiddenElems: false,
           removeUselessDefs: false,
-          cleanupIDs: false,
+          cleanupIds: false,
         },
       },
     },
     { name: "removeXMLNS" },
     { name: "convertStyleToAttrs", active: false },
   ],
-}
+};
 
-let _svgo
+let _svgo;
 async function svgo(svg) {
   if (_svgo == null) {
     _svgo = await import("svgo");
