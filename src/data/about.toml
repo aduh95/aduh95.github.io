@@ -6,11 +6,10 @@ __use_generic_keys_for_current_scope__ = "lang"
 ###
 
 en = """\
-  Graduated in the French engineering school ESEO, I am fond of project \
-  management and team management. Programming is a second nature for me since \
-  I made my first steps in the IT world at age 13 helping my parents at the \
-  book store by computerizing inventory management. Since then I have been \
-  working on more than 20 B2B projects.\
+  I am a strong open-source believer, both as a way to contribute and as a way \
+  to improve my own skills. I have been quite active in the Node.js project \
+  since 2020, which leads me to contribute also to other projects such as the \
+  V8 engine, Deno, highlight.js, and many more.
 """
 
 fr = """\
