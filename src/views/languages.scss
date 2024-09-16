@@ -77,18 +77,18 @@
   circular-meter {
     position: relative;
     font-size: 3rem;
-    @media print {
-      font-size: 2.5rem;
-    }
     display: flex;
     border-radius: 50%;
     margin: 0 auto 0.1em;
     padding: 0;
     overflow: visible;
-
+ 
     --balloon-color: #{$balloon-bg};
     @media screen and (prefers-color-scheme: dark) {
       --balloon-color: #{$autumn};
+    }
+    @media print {
+      font-size: 2.5rem;
     }
 
     & *::before,

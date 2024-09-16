@@ -54,6 +54,7 @@ body {
 
 main {
   grid-area: main;
+  margin-bottom: 1rem;
 
   display: flex;
   flex-wrap: wrap;
@@ -67,7 +68,6 @@ main {
     }
   }
 
-  margin-bottom: 1rem;
   & > section {
     margin-bottom: 2rem;
   }

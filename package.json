@@ -1,7 +1,7 @@
 {
   "name": "my-resume",
   "description": "My résumé",
-  "packageManager": "yarn@4.0.0-rc.45+sha224.54f0a052d2349fb4ea87e32dfc16e12c5a6fae38c6bf3aa249501c80",
+  "packageManager": "yarn@4.5.0+sha224.e38a15ab6bfde21fc4f3b1cd1a56357ab64e902ba2ab76179f9cf36e",
   "scripts": {
     "start": "node --experimental-json-modules scripts/dev-watch.mjs",
     "build": "node --experimental-json-modules scripts/prod-build.mjs",
@@ -20,8 +20,8 @@
     "balloon-css": "^1.0.0"
   },
   "engines": {
-    "node": ">=17.0.0",
-    "yarn": "3.x"
+    "node": ">=20.0.0",
+    "yarn": "4.x"
   },
   "private": true,
   "type": "module",
@@ -33,12 +33,12 @@
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-sucrase": "5.0.1",
     "@types/react": "^17.0.18",
-    "cssnano": "^6.0.0",
-    "cssnano-preset-advanced": "^6.0.0",
-    "jsdom": "^22.0.0",
+    "cssnano": "^7.0.0",
+    "cssnano-preset-advanced": "^7.0.0",
+    "jsdom": "^25.0.0",
     "pdf-parse": "1.1.1",
     "postcss": "^8.1.7",
-    "puppeteer": "^20.0.1",
+    "puppeteer": "^23.0.1",
     "rollup": "^3.0.6",
     "sass": "^1.22.12",
     "svgo": "^3.0.0",
