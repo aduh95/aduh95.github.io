@@ -13,6 +13,7 @@ import {
   faMapMarker,
   faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const MORE_INFO = {
   en: "More information",
@@ -21,6 +22,7 @@ const MORE_INFO = {
 
 const ICONS = {
   date: faCalendar,
+  github: faGithub,
   place: faMapMarker,
   website: faGlobe,
 };
@@ -32,7 +34,7 @@ type ExperienceInfoProps =
       type: "date";
       value: { begin: string; end?: string };
     }
-  | { type: "place" | "website"; value: { link: string; text: string } };
+  | { type: "place" | "website" | "github"; value: { link: string; text: string } };
 
 const ExperienceInfo = (props: ExperienceInfoProps) => {
   let $value = props.value;
@@ -95,9 +97,11 @@ const ExperienceInfo = (props: ExperienceInfoProps) => {
         );
       }
 
-    case "website":
-    // non breaking to add the list item
-    case "place":
+      case "github":
+        ($value as { link: string; text: string }).link = `https://github.com/${$value.text}`;
+        // non breaking to add the list item
+      case "place":
+      case "website":
       const { link, text } = $value as { link: string; text: string };
       return (
         <li>

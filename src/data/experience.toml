@@ -13,16 +13,40 @@ __use_generic_keys__.description = "lang"
 
 
 [[item]]
-  name = "Transloadit"
+  name = "Caritat (Open-source voting software)"
 
   [item.mission]
-    en = "Software engineer"
-    fr = "Ingénieur logiciel"
+    en = "Lead maintainer"
+    fr = "Logiciel de vote électronique open-source"
+    [item.info.date]
+      begin = "2022-01-15"
+    [item.info.github]
+      text = "nodejs/caritat"
+
+  [[item.technologies]]
+    name = "Cryptography"
+    icon = "@fortawesome/free-solid-svg-icons:faKey"
+  [[item.technologies]]
+    name = "JavaScript"
+    icon = "@fortawesome/free-brands-svg-icons:faJs"
+  [[item.technologies]]
+    name = "Git"
+    icon = "@fortawesome/free-brands-svg-icons:faGit"
+
+[[item]]
+  name = "Uppy (open-source file uploader for the web)"
+
+  [item.mission]
+    en = "Web developer"
+    fr = "Développeur web"
     [item.info.date]
       begin = "2021-06-01"
+      end = "2024-09-05"
+    [item.info.github]
+      text = "transloadit/uppy"
     [item.info.website]
-      link = "https://transloadit.com/"
-      text = "transloadit.com"
+      link = "https://uppy.io"
+      text = "uppy.io"
 
   [[item.technologies]]
     name = "JavaScript"
@@ -31,17 +55,42 @@ __use_generic_keys__.description = "lang"
     name = "Node.js"
     icon = "@fortawesome/free-brands-svg-icons:faNode"
   [[item.technologies]]
-    name = "GitHub"
-    icon = "@fortawesome/free-brands-svg-icons:faGithub"
+    name = "Web development"
+    icon = "@fortawesome/free-brands-svg-icons:faHtml5"
+
+[[item]]
+  name = "Transloadit"
+
+  [item.mission]
+    en = "Software engineer"
+    fr = "Ingénieur logiciel"
+    [item.info.date]
+      begin = "2021-06-01"
+      end = "2024-09-05"
+    [item.info.website]
+      link = "https://transloadit.com/"
+      text = "transloadit.com"
+
+  [[item.technologies]]
+    name = "Nix"
+    icon = "@fortawesome/free-solid-svg-icons:faSnowflake"
+  [[item.technologies]]
+    name = "Node.js"
+    icon = "@fortawesome/free-brands-svg-icons:faNode"
+  [[item.technologies]]
+    name = "AWS"
+    icon = "@fortawesome/free-brands-svg-icons:faAws"
 
 [[item]]
   name = "Node.js open-source project"
 
   [item.mission]
-    en = "Collaborator and project member"
+    en = "Collaborator and TSC member"
     fr = "Collaborateur"
     [item.info.date]
       begin = "2020-10-07"
+    [item.info.github]
+      text = "nodejs/node"
     [item.info.website]
       link = "https://nodejs.org/"
       text = "nodejs.org"
@@ -53,11 +102,12 @@ __use_generic_keys__.description = "lang"
     name = "Node.js"
     icon = "@fortawesome/free-brands-svg-icons:faNode"
   [[item.technologies]]
-    name = "GitHub"
-    icon = "@fortawesome/free-brands-svg-icons:faGithub"
+    name = "C++"
+    icon = "@fortawesome/free-solid-svg-icons:faBug"
 
 [[item]]
   name = "e-Comas"
+  exclude = true
 
   [item.mission]
     en = "Web Programming Engineer and Data Analyst"
@@ -84,6 +134,7 @@ __use_generic_keys__.description = "lang"
 
 [[item]]
   name = "Schneider Electric Digital Energy"
+  exclude = true
 
   [item.mission]
     en = "Web Programming Engineer and Data Analyst"
@@ -133,6 +184,7 @@ __use_generic_keys__.description = "lang"
 
 [[item]]
   name = "Freelance (Bonjour Paris)"
+  exclude = true
   [item.mission]
     en = "Front-end web developer"
     fr = "Développeur web (front-end)"
