@@ -1,17 +1,17 @@
 [[item]]
   name = "JavaScript"
-  level = 0.8
+  level = 0.95
 
 [[item]]
   name = "PHP"
-  level = 0.6
+  level = 0.5
 
 [[item]]
   name = "SQL"
   level = 0.7
 
 [[item]]
-  name = "C"
+  name = "C / C++"
   level = 0.6
 
 [[item]]
