@@ -27,17 +27,17 @@ __auto_imports__ = ["icon"]
   href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
   text = "France"
 
-[website]
-  icon = "@fortawesome/free-solid-svg-icons:faGlobe"
-  href = "https://aduh95.github.io/"
-  text = "aduh95.github.io"
+# [website]
+#   icon = "@fortawesome/free-solid-svg-icons:faGlobe"
+#   href = "https://aduh95.github.io/"
+#   text = "aduh95.github.io"
 
 [github]
   icon = "@fortawesome/free-brands-svg-icons:faGithub"
   href = "https://www.github.com/aduh95"
   text = "aduh95"
 
-[bitbucket]
-  icon = "@fortawesome/free-brands-svg-icons:faBitbucket"
-  href = "https://www.bitbucket.com/aduh95"
-  text = "aduh95"
+# [bitbucket]
+#   icon = "@fortawesome/free-brands-svg-icons:faBitbucket"
+#   href = "https://www.bitbucket.com/aduh95"
+#   text = "aduh95"
