@@ -5,425 +5,100 @@
 __auto_imports__ = ["icon"]
 
 # Those fields define instances of a `lang` type.
-__use_generic_keys__.mission = "lang"
+__use_generic_keys__.title = "lang"
 __use_generic_keys__.keywords = "lang"
 __use_generic_keys__.description = "lang"
 
 ###
 
-
 [[item]]
-  name = "Caritat (Open-source voting software)"
+  name = "Open-source contributions"
+  [item.description]
+    en = "On my free time and on company sponsored time"
+    fr = ""
+  [item.info.date]
+    begin = "2020-10-07"
 
-  [item.mission]
+  [[item.item]]
+  name = "Node.js"
+  icon = "@fortawesome/free-brands-svg-icons:faNode"
+  repo = "nodejs/node"
+  website = "nodejs.org"
+  [item.item.title]
+    en = "TSC member"
+    fr = "Member du TSC"
+
+  [[item.item]]
+  name = "Caritat"
+  icon = "@fortawesome/free-solid-svg-icons:faKey"
+  repo = "nodejs/caritat"
+  [item.item.title]
     en = "Lead maintainer"
     fr = "Logiciel de vote électronique open-source"
-    [item.info.date]
-      begin = "2022-01-15"
-    [item.info.github]
-      text = "nodejs/caritat"
 
-  [[item.technologies]]
-    name = "Cryptography"
-    icon = "@fortawesome/free-solid-svg-icons:faKey"
-  [[item.technologies]]
-    name = "JavaScript"
-    icon = "@fortawesome/free-brands-svg-icons:faJs"
-  [[item.technologies]]
-    name = "Git"
-    icon = "@fortawesome/free-brands-svg-icons:faGit"
+  [[item.item]]
+  name = "V8"
+  icon = "@fortawesome/free-brands-svg-icons:faVuejs"
+  repo = "v8/v8"
+  website = "v8.dev"
+  [item.item.title]
+    en = "Occasional contributor"
+    fr = "Contributeur occasionel"
 
-[[item]]
-  name = "Uppy (open-source file uploader for the web)"
-
-  [item.mission]
-    en = "Web developer"
-    fr = "Développeur web"
-    [item.info.date]
-      begin = "2021-06-01"
-      end = "2024-09-05"
-    [item.info.github]
-      text = "transloadit/uppy"
-    [item.info.website]
-      link = "https://uppy.io"
-      text = "uppy.io"
-
-  [[item.technologies]]
-    name = "JavaScript"
-    icon = "@fortawesome/free-brands-svg-icons:faJs"
-  [[item.technologies]]
-    name = "Node.js"
-    icon = "@fortawesome/free-brands-svg-icons:faNode"
-  [[item.technologies]]
-    name = "Web development"
-    icon = "@fortawesome/free-brands-svg-icons:faHtml5"
 
 [[item]]
   name = "Transloadit"
+  [item.description]
+    en = "Working full-time remotely"
+    fr = ""
+  [item.info.date]
+    begin = "2021-06-01"
+    end = "2024-09-05"
 
-  [item.mission]
-    en = "Software engineer"
+  [[item.item]]
+  name = "Transloadit"
+  icon = "@fortawesome/free-solid-svg-icons:faRobot"
+  website = "transloadit.com"
+  [item.item.title]
+    en = "Full-stack developer"
     fr = "Ingénieur logiciel"
-    [item.info.date]
-      begin = "2021-06-01"
-      end = "2024-09-05"
-    [item.info.website]
-      link = "https://transloadit.com/"
-      text = "transloadit.com"
 
-  [[item.technologies]]
-    name = "Nix"
-    icon = "@fortawesome/free-solid-svg-icons:faSnowflake"
-  [[item.technologies]]
-    name = "Node.js"
-    icon = "@fortawesome/free-brands-svg-icons:faNode"
-  [[item.technologies]]
-    name = "AWS"
-    icon = "@fortawesome/free-brands-svg-icons:faAws"
+  [[item.item]]
+  name = "Uppy"
+  icon = "@fortawesome/free-solid-svg-icons:faDog"
+  website = "uppy.io"
+  repo = "transloadit/uppy"
+  [item.item.title]
+    en = "Web developer"
+    fr = "Développeur web"
 
-[[item]]
-  name = "Node.js open-source project"
-
-  [item.mission]
-    en = "Collaborator and TSC member"
-    fr = "Collaborateur"
-    [item.info.date]
-      begin = "2020-10-07"
-    [item.info.github]
-      text = "nodejs/node"
-    [item.info.website]
-      link = "https://nodejs.org/"
-      text = "nodejs.org"
-
-  [[item.technologies]]
-    name = "JavaScript"
-    icon = "@fortawesome/free-brands-svg-icons:faJs"
-  [[item.technologies]]
-    name = "Node.js"
-    icon = "@fortawesome/free-brands-svg-icons:faNode"
-  [[item.technologies]]
-    name = "C++"
-    icon = "@fortawesome/free-solid-svg-icons:faBug"
+  [[item.item]]
+  name = "Nix"
+  icon = "@fortawesome/free-solid-svg-icons:faSnowflake"
+  repo = "nixos/nixpkgs"
+  website = "nixos.org"
+  [item.item.title]
+    en = "Maintainer of nodejs packages"
+    fr = "Maintenance"
 
 [[item]]
-  name = "e-Comas"
-  exclude = true
+  name = "Earlier experiences"
+  [item.info.date]
+    begin = "2018-04-03"
+    end = "2021-05-31"
 
-  [item.mission]
-    en = "Web Programming Engineer and Data Analyst"
+  [[item.item]]
+  name = "eComas"
+  icon = "@fortawesome/free-solid-svg-icons:faShoppingCart"
+  website = "e-comas.com"
+  [item.item.title]
+    en = "Built their website and some internal tools"
     fr = "Chef de projet Web"
-    [item.info.date]
-      begin = "2020-09-01"
-    [item.info.place]
-      link = "https://goo.gl/maps/oUAGiewPScieXkxn9"
-      text = "Luxembourg, Luxembourg"
-    [item.info.website]
-      link = "https://e-comas.com/"
-      text = "e-comas.com"
 
-  [item.keywords]
-    en = ["Web integration", "Project management", "Team work"]
-    fr = ["Intégration web", "Gestion de projet", "Travail en collaboration"]
-
-  [[item.technologies]]
-    name = "JavaScript"
-    icon = "@fortawesome/free-brands-svg-icons:faJs"
-  [[item.technologies]]
-    name = "SalesForce"
-    icon = "@fortawesome/free-brands-svg-icons:faSalesforce"
-
-[[item]]
-  name = "Schneider Electric Digital Energy"
-  exclude = true
-
-  [item.mission]
+  [[item.item]]
+  name = "Schneider Electric"
+  icon = "@fortawesome/free-solid-svg-icons:faBolt"
+  website = "se.com"
+  [item.item.title]
     en = "Web Programming Engineer and Data Analyst"
     fr = "Ingénieur Développement Web"
-
-    [item.info.date]
-      begin = "2018-04-03"
-      end = "2019-10-31"
-
-    [item.info.place]
-      link = "https://goo.gl/maps/fUQPfADV4Nq"
-      text = "Andover, Massachussets"
-
-  [item.keywords]
-    en = ["Web integration", "User support", "Team work"]
-    fr = ["Intégration web", "Support utilisateur", "Travail en collaboration"]
-
-  [item.description]
-    en = """\
-      First as an intern, then as a VIE, I have worked in the marketing team \
-      of the Digital Energy department of Schneider Electric for 18 months. My \
-      role there was to fulfill the technical needs of the marketing team \
-      (application maintenance, developing specific tools, extracting \
-      marketing data from user databases, etc.), and also to provide user \
-      support for the platforms I was in charge of.\
-    """
-    fr = """\
-      D'abord en tant que stagiaire puis en tant que VIE, j'ai travaillé dans \
-      l'équipe marketing du département Digital Energy de Schneider Electric \
-      pendant 18 mois. Ma mission était de répondre aux besoins techniques de \
-      mon équipe (maintenance des applications, développement d'outils \
-      spécifiques, extraction de données depuis les bases de données \
-      utilisateurs, etc.), et de fournir une assistance aux utilisateurs de \
-      nos plateformes.\
-    """
-
-  [[item.technologies]]
-    name = "JavaScript"
-    icon = "@fortawesome/free-brands-svg-icons:faJs"
-  [[item.technologies]]
-    name = "Python"
-    icon = "@fortawesome/free-brands-svg-icons:faPython"
-
-  [[item.technologies]]
-    name = "SQL"
-    icon = "@fortawesome/free-solid-svg-icons:faDatabase"
-
-[[item]]
-  name = "Freelance (Bonjour Paris)"
-  exclude = true
-  [item.mission]
-    en = "Front-end web developer"
-    fr = "Développeur web (front-end)"
-
-  [item.info]
-    date.begin = "2017-01-09"
-    date.end = "2018-03-30"
-
-    place.link = "https://goo.gl/maps/H1kEBc6395VgmpbH8"
-    place.text = "Angers, France"
-
-    website.link = "https://vuarnet.com/"
-    website.text = "vuarnet.com"
-
-  [item.keywords]
-    en = ["Freelance", "e-shop", "Team work"]
-    fr = [
-      "Auto-entrepreneur",
-      "Plateforme e-commerce",
-      "Travail en collaboration",
-    ]
-
-  [item.description]
-    en = """\
-      Along side my formation at Groupe ESEO, Bonjour Paris asked me to \
-      continue to work for them on the Vuarnet website we have been building. \
-      My task was to code the evolutions of their current e-shop website on \
-      the front end, and to add some scripts on the server (Windows Server \
-      2012) to automate the deploying process. You can browse this very \
-      website using the link above.\
-    """
-    fr = """\
-      En parallèle de ma formation à l'ESEO, Bonjour Paris a souhaité que je \
-      continue à m'occuper des évolutions sur le site e-commerce de Vuarnet, \
-      entreprise française, connue pour ses lunettes de soleil et ses masques \
-      de ski. Mes missions consistent à implémenter les nouvelles \
-      fonctionnalités demandées par Vuarnet sur la partie front-end de leur \
-      site internet. Vous pouvez visiter ce site web en utilisant le lien \
-      ci-dessus.\
-    """
-
-  [[item.technologies]]
-    name = "JavaScript"
-    icon = "@fortawesome/free-brands-svg-icons:faJs"
-  [[item.technologies]]
-    name = "ASP.NET"
-    icon = "@fortawesome/free-solid-svg-icons:faCode"
-  [[item.technologies]]
-    name = "Windows Server"
-    icon = "@fortawesome/free-brands-svg-icons:faWindows"
-
-[[item]]
-  name = "ProSE (ESEO + Qowisio)"
-  exclude = true
-  [item.mission]
-    en = "Android developer"
-    fr = "Développeur d'application Android"
-
-    [item.info.date]
-      begin = "2017-03-15"
-      end = "2017-06-21"
-
-    [item.info.place]
-      link = "https://goo.gl/maps/37ENzCAEFxe4pNg7A"
-      text = "Angers, France"
-
-  [item.keywords]
-    en = ["Project management", "Android app development", "Connected objects"]
-    fr = [
-      "Gestion de projet",
-      "Conception de systèmes embarqués",
-      "Développement mobile",
-    ]
-
-  [item.description]
-    en = """\
-      The small French company Qowisio asked us to make a demonstration kit \
-      for its Ultra-Narrow-Band technology (UNB) implementation; the purpose \
-      of this kit is to emulate a UNB network able to interact with the \
-      connected objects nearby, and a WiFi network to allow customers to \
-      connect their device and try the Android app we created with the team I \
-      led (four developers). This application gathers all the data from the \
-      connected objets and displays it on the screen. This application is \
-      internally used by Qowisio to sell its technology to its customers.\
-    """
-    fr = """\
-      Qowisio, PME angevine spécialisée dans le traitement de données issues \
-      d'objets connectés, nous a demandé de réaliser un kit de démonstration \
-      de sa technologie Ultra-Narrow-Band (UNB). Le kit devait être capable \
-      d'émuler un réseau UNB hébergeant quelques objets connectés de Qowisio \
-      ainsi qu'un réseau WiFi sur lequel les prospects peuvent se connecter \
-      pour constater l'efficacité du réseau Qowisio. Mon rôle dans ce projet \
-      fut de diriger l'équipe Android de 4 personnes et de réaliser l'API qui \
-      permet à ladîte application de récupérer les données émanant des objets \
-      connectés.\
-    """
-
-  [[item.technologies]]
-    name = "Android"
-    icon = "@fortawesome/free-brands-svg-icons:faAndroid"
-  [[item.technologies]]
-    name = "Java"
-    icon = "@fortawesome/free-solid-svg-icons:faCoffee"
-  [[item.technologies]]
-    name = "Linux"
-    icon = "@fortawesome/free-brands-svg-icons:faLinux"
-  [[item.technologies]]
-    name = "PHP"
-    icon = "@fortawesome/free-brands-svg-icons:faPhp"
-  [[item.technologies]]
-    name = "Apache"
-    icon = "@fortawesome/free-solid-svg-icons:faServer"
-  [[item.technologies]]
-    name = "C"
-    icon = "@fortawesome/free-solid-svg-icons:faMicrochip"
-
-[[item]]
-  name = "Bonjour Paris"
-  exclude = true
-  [item.mission]
-    en = "Web developer"
-    fr = "Intégration de solutions web"
-
-  [item.info]
-    date.begin = "2016-07-11"
-    date.end = "2016-11-26"
-
-    place.text = "Paris, France"
-    place.link = "https://goo.gl/maps/cx3eAWy4HPPkyXV89"
-
-    website.link = "https://dev.bonjour.agency"
-    website.text = "bonjour.agency"
-
-  [item.keywords]
-    en = [
-      "Server maintenance&administration",
-      "UI design integration",
-      "WebDev",
-    ]
-    fr = [
-      "Administration de serveur",
-      "Développement Web",
-      "UI / UX",
-    ]
-
-  [item.description]
-    en = """\
-      Bonjour Paris is a global luxury communication agency focused on \
-      forward-thinking ideas, business-minded solutions for premium brands. My \
-      task was to build up the agency's website from scratch using the \
-      agency's visual identity; you can browse this very website using the \
-      link above. With a talented team of designers, I collaborated on the \
-      Vuarnet commercial website (vuarnet.com), and the Peter Lindbergh's \
-      presentation website as well (peterlindbergh.com). I was also in charge \
-      of choosing, setting up and maintaining their virtual private servers \
-      which host their websites and serve a Gitlab instance for code \
-      versioning purpose.\
-    """
-    fr = """\
-      Bonjour Paris est une agence de design parisienne spécialisée dans le \
-      graphisme au service de l'industrie du luxe. Ma mission durant mon \
-      expérience chez Bonjour Paris fut de réaliser l'intégration de leur site \
-      internet de présentation de l'agence. Vous pouvez visiter ce site web en \
-      utilisant le lien ci-dessus. J'ai également été sollicité pour réaliser \
-      certaines parties du site du célèbre photographe allemand Peter \
-      Lindbergh et reprendre le développement du site e-commerce de Vuarnet, \
-      marque de lunettes de soleil française.\
-    """
-
-  [[item.technologies]]
-    name = "PHP"
-    icon = "@fortawesome/free-brands-svg-icons:faPhp"
-  [[item.technologies]]
-    name = "JavaScript"
-    icon = "@fortawesome/free-brands-svg-icons:faJs"
-  [[item.technologies]]
-    name = "Linux"
-    icon = "@fortawesome/free-brands-svg-icons:faLinux"
-  [[item.technologies]]
-    name = "ASP.NET"
-    icon = "@fortawesome/free-solid-svg-icons:faCode"
-  [[item.technologies]]
-    name = "SQL"
-    icon = "@fortawesome/free-solid-svg-icons:faDatabase"
-
-[[item]]
-  name = "SEIO Junior-Entreprise"
-  exclude = true
-  [item.mission]
-    en = "Vice-Chairman"
-    fr = "Vice-Président"
-
-  [item.info]
-    date.begin = "2015-06-11"
-    date.end = "2017-05-11"
-
-    place.text = "Angers, France"
-    place.link = "https://goo.gl/maps/R2rsdXk3ezFeDBAH7"
-
-    website.link = "https://seio.org"
-    website.text = "seio.org"
-
-  [item.keywords]
-    en = [
-      "Team managment",
-      "Quality process supervision",
-      "Internal ERP development",
-    ]
-    fr = ["Management", "Suivi qualité", "Développement d'un ERP interne"]
-
-  [item.description]
-    en = """\
-      The SEIO is the Junior Entreprise of Groupe ESEO (the engineer school I \
-      attend). As Vice-Chairman, my task was to supervise the internal and \
-      external communication department, audit and quality department and IT \
-      department. I was in charge of managing the development of our internal \
-      ERP.\
-    """
-    fr = """\
-      Le SEIO est la Junior-Entreprise de l'ESEO, école dans laquelle \
-      j'effectue ma formation d'ingénieur. J'ai occupé le poste de \
-      Vice-Président chargé de la communication interne et externe, du pôle \
-      audit et qualité, et des systèmes d'informations. Mon rôle au sein de \
-      cette Junior-Entreprise était de manager mes équipes et participer aux \
-      prises de décisions concernant le fonctionnement de l'association. Pour \
-      ce faire, j'ai réalisé, en collaboration avec deux de mes camarades, un \
-      intranet intégré aux différents environnements de travail nécessaires à \
-      notre activité.\
-    """
-
-  [[item.technologies]]
-    name = "Linux"
-    icon = "@fortawesome/free-brands-svg-icons:faLinux"
-  [[item.technologies]]
-    name = "PHP"
-    icon = "@fortawesome/free-brands-svg-icons:faPhp"
-  [[item.technologies]]
-    name = "SQL"
-    icon = "@fortawesome/free-solid-svg-icons:faDatabase"
-  [[item.technologies]]
-    name = "JavaScript"
-    icon = "@fortawesome/free-brands-svg-icons:faJs"
