@@ -8,7 +8,7 @@ __use_generic_keys__ = { description = "lang" }
 AUTHOR_NAME = "Antoine du Hamel"
 
 [description]
-  en = "IT electronic engineer specialized in Node.js development"
+  en = "Software engineer specialized in Node.js app development"
   fr = """\
     Ingénieur Diplômé en informatique et électronique, spécialisé en \
     développement Node.js\

@@ -10,19 +10,19 @@ __use_generic_keys__ = { name = "lang" }
 ###
 
 [[item]]
-  icon = "@fortawesome/free-brands-svg-icons:faAngellist"
-  [item.name]
-    fr = "Mouvement scout"
-    en = "Boy-scout"
-
-[[item]]
   icon = "@fortawesome/free-solid-svg-icons:faMusic"
   [item.name]
     fr = "Piano"
     en = "Piano"
 
 [[item]]
-  icon = "@fortawesome/free-solid-svg-icons:faPlane"
+  icon = "@fortawesome/free-solid-svg-icons:faTrain"
   [item.name]
     fr = "Voyages"
     en = "Abroad Travels"
+
+[[item]]
+  icon = "@fortawesome/free-solid-svg-icons:faCoffee"
+  [item.name]
+    fr = "Café"
+    en = "Coffee"

@@ -6,10 +6,7 @@ __use_generic_keys_for_current_scope__ = "lang"
 ###
 
 en = """\
-  I am a strong open-source believer, both as a way to contribute and as a way \
-  to improve my own skills. I have been quite active in the Node.js project \
-  since 2020, which leads me to contribute also to other projects such as the \
-  V8 engine, Deno, highlight.js, and many more.
+  Building upon a foundation laid in the open-source community – particularly contributions to Node.js – I carved out a niche for myself as a software engineer with a forte in enhancing Developer Experience (DX). This path led me to Transloadit, where I was able to further my career and gather some experience in cloud computing. My strength lies in creating tools that simplify and improve the development process, a passion that continues to drive my work in the tech industry.
 """
 
 fr = """\

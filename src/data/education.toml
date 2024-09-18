@@ -5,7 +5,7 @@ __use_generic_keys__ = { description = "lang", name = "lang" }
   graduation = 2018
   place = "Angers, France"
   [item.name]
-    en = "Groupe ESEO (Graduate Engineering School)"
+    en = "Groupe ESEO (Graduate Electronics Engineering School)"
     fr = "Groupe ESEO (Grande école d'ingénieur)"
   [item.description]
     en = "Engineering degree"
